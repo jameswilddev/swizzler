@@ -3,8 +3,11 @@ export { compileJavascript } from "./compilation/compile-javascript";
 export { compileTypeScript } from "./compilation/compile-type-script";
 
 export { vec2 } from "./constructors/vec2";
+export { bvec2 } from "./constructors/bvec2";
 export { vec3 } from "./constructors/vec3";
+export { bvec3 } from "./constructors/bvec3";
 export { vec4 } from "./constructors/vec4";
+export { bvec4 } from "./constructors/bvec4";
 
 export { acos } from "./functions/angle-and-trigonometry/acos";
 export { asin } from "./functions/angle-and-trigonometry/asin";

@@ -7,7 +7,7 @@ export function zzyx(
   a: Expression<Vec3Primitive | Vec4Primitive>
 ): Expression<Vec4Primitive> {
   return new Expression(
-    new SwizzleImplementation("vec4", a.javascript, [2,2, 1, 0]),
+    new SwizzleImplementation("vec4", a.javascript, [2, 2, 1, 0]),
     new PropertyImplementation("vec4", a.glsl, "zzyx")
   );
 }

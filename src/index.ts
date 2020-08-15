@@ -401,4 +401,13 @@ export { Expression } from "./expression";
 
 export { bool, float } from "./literals";
 
-export { FloatPrimitive, Vec2Primitive, Vec3Primitive, Vec4Primitive } from "./primitive"
+export {
+  FloatPrimitive,
+  Vec2Primitive,
+  Vec3Primitive,
+  Vec4Primitive,
+  BoolPrimitive,
+  Bvec2Primitive,
+  Bvec3Primitive,
+  Bvec4Primitive,
+} from "./primitive";

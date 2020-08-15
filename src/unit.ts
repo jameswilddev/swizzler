@@ -95,17 +95,87 @@ if (vertexShader === null) {
               const func = new Function(unwrappedFunctionBody);
               const actual = func();
 
-              expect(actual).toEqual(
-                expected.length === 1 ? expected[0] : expected
-              );
+              if (expected.length === 1) {
+                const scalar = expected[0];
+
+                switch (scalar) {
+                  case false:
+                    expect(actual).toBeFalse();
+                    break;
+
+                  case true:
+                    expect(actual).toBeTrue();
+                    break;
+
+                  default:
+                    expect(actual).toBeCloseTo(scalar, 3);
+                    break;
+                }
+              } else {
+                expect(actual.length).toEqual(expected.length);
+
+                for (let i = 0; i < actual.length; i++) {
+                  const expectedValue = expected[i];
+                  const actualValue = actual[i];
+
+                  switch (expectedValue) {
+                    case false:
+                      expect(actualValue).toBeFalse();
+                      break;
+
+                    case true:
+                      expect(actualValue).toBeTrue();
+                      break;
+
+                    default:
+                      expect(actualValue).toBeCloseTo(expectedValue, 3);
+                      break;
+                  }
+                }
+              }
             });
 
             it("executes as Javascript", () => {
               const actual = new Function(compileJavascript(expression))();
 
-              expect(actual).toEqual(
-                expected.length === 1 ? expected[0] : expected
-              );
+              if (expected.length === 1) {
+                const scalar = expected[0];
+
+                switch (scalar) {
+                  case false:
+                    expect(actual).toBeFalse();
+                    break;
+
+                  case true:
+                    expect(actual).toBeTrue();
+                    break;
+
+                  default:
+                    expect(actual).toBeCloseTo(scalar, 3);
+                    break;
+                }
+              } else {
+                expect(actual.length).toEqual(expected.length);
+
+                for (let i = 0; i < actual.length; i++) {
+                  const expectedValue = expected[i];
+                  const actualValue = actual[i];
+
+                  switch (expectedValue) {
+                    case false:
+                      expect(actualValue).toBeFalse();
+                      break;
+
+                    case true:
+                      expect(actualValue).toBeTrue();
+                      break;
+
+                    default:
+                      expect(actualValue).toBeCloseTo(expectedValue, 3);
+                      break;
+                  }
+                }
+              }
             });
 
             it("executes as GLSL", () => {

@@ -20,7 +20,7 @@ jobs:
     - run: npm ci
     - run: npm run-script lint
     - run: npm run-script buildTypeScript
-    - run: sudo apt-get install xvfb
+    - run: sudo apt-get install xvfb mesa-utils
       if: matrix.os == 'ubuntu-18.04'
     - run: xvfb-run npm run-script buildNyc
       if: matrix.os == 'ubuntu-18.04'

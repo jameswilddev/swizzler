@@ -259,24 +259,30 @@ if (vertexShader === null) {
                         if (error !== glContext.NO_ERROR) {
                           fail(`GL error ${error}.`);
                         } else {
-                          const expandedExpected = [...expected].map((item) => {
-                            switch (item) {
-                              case true:
-                                return 255;
+                          for (
+                            let index = 0;
+                            index < expected.length;
+                            index++
+                          ) {
+                            const expectedValue = expected[index];
+                            const actualValue = actual[index];
 
+                            switch (expectedValue) {
                               case false:
-                                return 0;
+                                expect(actualValue).toEqual(0);
+                                break;
+
+                              case true:
+                                expect(actualValue).toEqual(255);
+                                break;
 
                               default:
-                                return Math.floor(item * 255);
+                                expect(actualValue).toBeCloseTo(
+                                  expectedValue * 255,
+                                  1
+                                );
                             }
-                          });
-
-                          while (expandedExpected.length < 4) {
-                            expandedExpected.push(0);
                           }
-
-                          expect([...actual]).toEqual(expandedExpected);
                         }
                       }
                     }

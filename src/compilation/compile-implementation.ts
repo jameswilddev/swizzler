@@ -43,6 +43,7 @@ function listReusedImplementations(
 }
 
 export function compileImplementation(
+  returnText: string,
   root: Implementation<AnyPrimitive>,
   getPrefix: (implementation: Implementation<AnyPrimitive>) => string,
   getSuffix: (implementation: Implementation<AnyPrimitive>) => string
@@ -69,7 +70,7 @@ export function compileImplementation(
       return rendered;
     } else {
       for (let i = 0; i < rendered.length; i++) {
-        output += `${getPrefix(implementation)}_${isReused}_${i}${getSuffix(
+        output += `\t${getPrefix(implementation)}_${isReused}_${i}${getSuffix(
           implementation
         )} = ${rendered[i]};\n`;
       }
@@ -81,8 +82,8 @@ export function compileImplementation(
   const final = recurse(root);
 
   if (final.length === 1) {
-    return `${output}return ${final[0]};`;
+    return `${output}\t${returnText}${final[0]};`;
   } else {
-    return `${output}return [${final.join(", ")}];`;
+    return `${output}\t${returnText}[${final.join(", ")}];`;
   }
 }

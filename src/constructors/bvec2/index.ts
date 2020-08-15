@@ -1,7 +1,11 @@
-import { AnyBoolPrimitive, BoolPrimitive, Bvec2Primitive } from "../primitive";
-import { ConcatenateImplementation } from "../implementations/concatenate-implementation";
-import { FunctionImplementation } from "../implementations/function-implementation";
-import { Expression } from "../expression";
+import {
+  AnyBoolPrimitive,
+  BoolPrimitive,
+  Bvec2Primitive,
+} from "../../primitive";
+import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
+import { FunctionImplementation } from "../../implementations/function-implementation";
+import { Expression } from "../../expression";
 
 export function bvec2(a: Expression<BoolPrimitive>): Expression<Bvec2Primitive>;
 

@@ -1,6 +1,6 @@
-import { FloatPrimitive, BoolPrimitive } from "./primitive";
-import { Expression } from "./expression";
-import { LiteralImplementation } from "./implementations/literal-implementation";
+import { FloatPrimitive, BoolPrimitive } from "../primitive";
+import { Expression } from "../expression";
+import { LiteralImplementation } from "../implementations/literal-implementation";
 
 export function bool(value: boolean): Expression<BoolPrimitive> {
   const implementation = new LiteralImplementation("bool", [

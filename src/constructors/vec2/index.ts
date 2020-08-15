@@ -1,7 +1,11 @@
-import { FloatPrimitive, Vec2Primitive, AnyFloatPrimitive } from "../primitive";
-import { ConcatenateImplementation } from "../implementations/concatenate-implementation";
-import { FunctionImplementation } from "../implementations/function-implementation";
-import { Expression } from "../expression";
+import {
+  FloatPrimitive,
+  Vec2Primitive,
+  AnyFloatPrimitive,
+} from "../../primitive";
+import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
+import { FunctionImplementation } from "../../implementations/function-implementation";
+import { Expression } from "../../expression";
 
 export function vec2(a: Expression<FloatPrimitive>): Expression<Vec2Primitive>;
 

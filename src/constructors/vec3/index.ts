@@ -3,10 +3,10 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   AnyFloatPrimitive,
-} from "../primitive";
-import { ConcatenateImplementation } from "../implementations/concatenate-implementation";
-import { FunctionImplementation } from "../implementations/function-implementation";
-import { Expression } from "../expression";
+} from "../../primitive";
+import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
+import { FunctionImplementation } from "../../implementations/function-implementation";
+import { Expression } from "../../expression";
 
 export function vec3(a: Expression<FloatPrimitive>): Expression<Vec3Primitive>;
 

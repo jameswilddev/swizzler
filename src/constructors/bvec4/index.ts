@@ -4,10 +4,10 @@ import {
   Bvec3Primitive,
   Bvec4Primitive,
   AnyBoolPrimitive,
-} from "../primitive";
-import { ConcatenateImplementation } from "../implementations/concatenate-implementation";
-import { FunctionImplementation } from "../implementations/function-implementation";
-import { Expression } from "../expression";
+} from "../../primitive";
+import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
+import { FunctionImplementation } from "../../implementations/function-implementation";
+import { Expression } from "../../expression";
 
 export function bvec4(a: Expression<BoolPrimitive>): Expression<Bvec4Primitive>;
 

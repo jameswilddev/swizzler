@@ -2,309 +2,35 @@ import { transpile } from "typescript";
 import gl = require("gl");
 import {
   float,
-  vec2,
-  vec3,
   vec4,
-  bvec2,
-  bvec3,
-  bvec4,
   Expression,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
   Vec4Primitive,
   compileJavascript,
   compileTypeScript,
   compileGlsl,
-  bool,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
   conditional,
   x,
   y,
   z,
   w,
 } from ".";
-
-type Scenario =
-  | readonly [string, Expression<FloatPrimitive>, readonly [number]]
-  | readonly [string, Expression<Vec2Primitive>, readonly [number, number]]
-  | readonly [
-      string,
-      Expression<Vec3Primitive>,
-      readonly [number, number, number]
-    ]
-  | readonly [
-      string,
-      Expression<Vec4Primitive>,
-      readonly [number, number, number, number]
-    ]
-  | readonly [string, Expression<BoolPrimitive>, readonly [boolean]]
-  | readonly [string, Expression<Bvec2Primitive>, readonly [boolean, boolean]]
-  | readonly [
-      string,
-      Expression<Bvec3Primitive>,
-      readonly [boolean, boolean, boolean]
-    ]
-  | readonly [
-      string,
-      Expression<Bvec4Primitive>,
-      readonly [boolean, boolean, boolean, boolean]
-    ];
+import { Scenario } from "./scenario/unit";
+import { literalsScenarios } from "./literals/unit";
+import { vec2Scenarios } from "./constructors/vec2/unit";
+import { vec3Scenarios } from "./constructors/vec3/unit";
+import { vec4Scenarios } from "./constructors/vec4/unit";
+import { bvec2Scenarios } from "./constructors/bvec2/unit";
+import { bvec3Scenarios } from "./constructors/bvec3/unit";
+import { bvec4Scenarios } from "./constructors/bvec4/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
-  ["float literal", float(0.7), [0.7]],
-  ["vec2 float", vec2(float(0.7)), [0.7, 0.7]],
-  ["vec2 float float", vec2(float(0.7), float(0.3)), [0.7, 0.3]],
-  ["vec3 float", vec3(float(0.7)), [0.7, 0.7, 0.7]],
-  [
-    "vec3 float float float",
-    vec3(float(0.7), float(0.3), float(0.5)),
-    [0.7, 0.3, 0.5],
-  ],
-  [
-    "vec3 vec2 float",
-    vec3(vec2(float(0.7), float(0.3)), float(0.5)),
-    [0.7, 0.3, 0.5],
-  ],
-  [
-    "vec3 float vec2",
-    vec3(float(0.7), vec2(float(0.3), float(0.5))),
-    [0.7, 0.3, 0.5],
-  ],
-  ["vec4 float", vec4(float(0.7)), [0.7, 0.7, 0.7, 0.7]],
-  [
-    "vec4 float float float float",
-    vec4(float(0.7), float(0.3), float(0.5), float(0.2)),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 vec2 float float",
-    vec4(vec2(float(0.7), float(0.3)), float(0.5), float(0.2)),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 float vec2 float",
-    vec4(float(0.7), vec2(float(0.3), float(0.5)), float(0.2)),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 float float vec2",
-    vec4(float(0.7), float(0.3), vec2(float(0.5), float(0.2))),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 vec2 vec2",
-    vec4(vec2(float(0.7), float(0.3)), vec2(float(0.5), float(0.2))),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 vec3 float",
-    vec4(vec3(float(0.7), float(0.3), float(0.5)), float(0.2)),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  [
-    "vec4 float vec3",
-    vec4(float(0.7), vec3(float(0.3), float(0.5), float(0.2))),
-    [0.7, 0.3, 0.5, 0.2],
-  ],
-  ["true", bool(true), [true]],
-  ["false", bool(false), [false]],
-  ["bvec2 false", bvec2(bool(false)), [false, false]],
-  ["bvec2 true", bvec2(bool(true)), [true, true]],
-  ["bvec2 true false", bvec2(bool(true), bool(false)), [true, false]],
-  ["bvec2 false true", bvec2(bool(false), bool(true)), [false, true]],
-  ["bvec3 false", bvec3(bool(false)), [false, false, false]],
-  ["bvec3 true", bvec3(bool(true)), [true, true, true]],
-  [
-    "bvec3 true false false ",
-    bvec3(bool(true), bool(false), bool(false)),
-    [true, false, false],
-  ],
-  [
-    "bvec3 false true false",
-    bvec3(bool(false), bool(true), bool(false)),
-    [false, true, false],
-  ],
-  [
-    "bvec3 false false true",
-    bvec3(bool(false), bool(false), bool(true)),
-    [false, false, true],
-  ],
-  [
-    "bvec3 (true false) false",
-    bvec3(bvec2(bool(true), bool(false)), bool(false)),
-    [true, false, false],
-  ],
-  [
-    "bvec3 (false true) false",
-    bvec3(bvec2(bool(false), bool(true)), bool(false)),
-    [false, true, false],
-  ],
-  [
-    "bvec3 (false false) true",
-    bvec3(bvec2(bool(false), bool(false)), bool(true)),
-    [false, false, true],
-  ],
-  [
-    "bvec3 true (false false)",
-    bvec3(bool(true), bvec2(bool(false), bool(false))),
-    [true, false, false],
-  ],
-  [
-    "bvec3 false (true false)",
-    bvec3(bool(false), bvec2(bool(true), bool(false))),
-    [false, true, false],
-  ],
-  [
-    "bvec3 false (false true)",
-    bvec3(bool(false), bvec2(bool(false), bool(true))),
-    [false, false, true],
-  ],
-  ["bvec4 false", bvec4(bool(false)), [false, false, false, false]],
-  ["bvec4 true", bvec4(bool(true)), [true, true, true, true]],
-  [
-    "bvec4 true false false false",
-    bvec4(bool(true), bool(false), bool(false), bool(false)),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 false true false false",
-    bvec4(bool(false), bool(true), bool(false), bool(false)),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 false false true false",
-    bvec4(bool(false), bool(false), bool(true), bool(false)),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 false false false true",
-    bvec4(bool(false), bool(false), bool(false), bool(true)),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 (true false) false false",
-    bvec4(bvec2(bool(true), bool(false)), bool(false), bool(false)),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 (false true) false false",
-    bvec4(bvec2(bool(false), bool(true)), bool(false), bool(false)),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 (false false) true false",
-    bvec4(bvec2(bool(false), bool(false)), bool(true), bool(false)),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 (false false) false true",
-    bvec4(bvec2(bool(false), bool(false)), bool(false), bool(true)),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 true (false false) false",
-    bvec4(bool(true), bvec2(bool(false), bool(false)), bool(false)),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 false (true false) false",
-    bvec4(bool(false), bvec2(bool(true), bool(false)), bool(false)),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 false (false true) false",
-    bvec4(bool(false), bvec2(bool(false), bool(true)), bool(false)),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 false (false false) true",
-    bvec4(bool(false), bvec2(bool(false), bool(false)), bool(true)),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 true false (false false)",
-    bvec4(bool(true), bool(false), bvec2(bool(false), bool(false))),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 false true (false false)",
-    bvec4(bool(false), bool(true), bvec2(bool(false), bool(false))),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 false false (true false)",
-    bvec4(bool(false), bool(false), bvec2(bool(true), bool(false))),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 false false (false true)",
-    bvec4(bool(false), bool(false), bvec2(bool(false), bool(true))),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 (true false) (false false)",
-    bvec4(bvec2(bool(true), bool(false)), bvec2(bool(false), bool(false))),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 (false true) (false false)",
-    bvec4(bvec2(bool(false), bool(true)), bvec2(bool(false), bool(false))),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 (false false) (true false)",
-    bvec4(bvec2(bool(false), bool(false)), bvec2(bool(true), bool(false))),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 (false false) (false true)",
-    bvec4(bvec2(bool(false), bool(false)), bvec2(bool(false), bool(true))),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 (true false false) false",
-    bvec4(bvec3(bool(true), bool(false), bool(false)), bool(false)),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 (false true false) false",
-    bvec4(bvec3(bool(false), bool(true), bool(false)), bool(false)),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 (false false true) false",
-    bvec4(bvec3(bool(false), bool(false), bool(true)), bool(false)),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 (false false false) true",
-    bvec4(bvec3(bool(false), bool(false), bool(false)), bool(true)),
-    [false, false, false, true],
-  ],
-  [
-    "bvec4 true (false false false)",
-    bvec4(bool(true), bvec3(bool(false), bool(false), bool(false))),
-    [true, false, false, false],
-  ],
-  [
-    "bvec4 false (true false false)",
-    bvec4(bool(false), bvec3(bool(true), bool(false), bool(false))),
-    [false, true, false, false],
-  ],
-  [
-    "bvec4 false (false true false)",
-    bvec4(bool(false), bvec3(bool(false), bool(true), bool(false))),
-    [false, false, true, false],
-  ],
-  [
-    "bvec4 false (false false true)",
-    bvec4(bool(false), bvec3(bool(false), bool(false), bool(true))),
-    [false, false, false, true],
-  ],
+  ...literalsScenarios,
+  ...vec2Scenarios,
+  ...vec3Scenarios,
+  ...vec4Scenarios,
+  ...bvec2Scenarios,
+  ...bvec3Scenarios,
+  ...bvec4Scenarios,
 ];
 
 const glContext = gl(1, 1);

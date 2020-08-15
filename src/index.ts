@@ -397,7 +397,7 @@ export { zzzz, bbbb, pppp } from "./swizzles/zzzz";
 
 export { argument } from "./argument";
 
-export { Expression } from "./expression"
+export { Expression } from "./expression";
 
 export { bool, float } from "./literals";
 

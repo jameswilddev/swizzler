@@ -351,7 +351,7 @@ if (vertexShader === null) {
                               default:
                                 expect(actualValue).toBeCloseTo(
                                   expectedValue * 255,
-                                  1
+                                  0
                                 );
                             }
                           }

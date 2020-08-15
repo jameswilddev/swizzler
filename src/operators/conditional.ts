@@ -1,0 +1,93 @@
+import {
+  AnyBoolPrimitive,
+  FloatPrimitive,
+  Vec2Primitive,
+  Vec3Primitive,
+  Vec4Primitive,
+  AnyPrimitive,
+  combinationOfPrimitives,
+  BoolPrimitive,
+  Bvec2Primitive,
+  Bvec3Primitive,
+  Bvec4Primitive,
+} from "../primitive";
+import { Expression } from "../expression";
+import { TernaryOperatorImplementation } from "../implementations/ternary-operator-implementation";
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<FloatPrimitive>,
+  c: Expression<FloatPrimitive>
+): Expression<FloatPrimitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Vec2Primitive>,
+  c: Expression<Vec2Primitive>
+): Expression<Vec2Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Vec3Primitive>,
+  c: Expression<Vec3Primitive>
+): Expression<Vec3Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Vec4Primitive>,
+  c: Expression<Vec4Primitive>
+): Expression<Vec4Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<BoolPrimitive>,
+  c: Expression<BoolPrimitive>
+): Expression<BoolPrimitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Bvec2Primitive>,
+  c: Expression<Bvec2Primitive>
+): Expression<Bvec2Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Bvec3Primitive>,
+  c: Expression<Bvec3Primitive>
+): Expression<Bvec3Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<Bvec4Primitive>,
+  c: Expression<Bvec4Primitive>
+): Expression<Bvec4Primitive>;
+
+export function conditional(
+  a: Expression<AnyBoolPrimitive>,
+  b: Expression<AnyPrimitive>,
+  c: Expression<AnyPrimitive>
+): Expression<AnyPrimitive> {
+  const primitive = combinationOfPrimitives<AnyPrimitive>(
+    b.primitive,
+    c.primitive
+  );
+
+  return new Expression(
+    new TernaryOperatorImplementation(
+      primitive,
+      a.javascript,
+      "?",
+      b.javascript,
+      ":",
+      c.javascript
+    ),
+    new TernaryOperatorImplementation(
+      primitive,
+      a.glsl,
+      "?",
+      b.glsl,
+      ":",
+      c.glsl
+    )
+  );
+}

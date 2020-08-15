@@ -356,6 +356,7 @@ if (vertexShader === null) {
           const expected = scenario[2];
 
           describe(description, () => {
+            // todo: reuse
             it("executes as TypeScript", () => {
               const compiledTypeScript = compileTypeScript(expression);
               const wrappedInFunctionForTranspilation = `function unusedName() { ${compiledTypeScript} }`;

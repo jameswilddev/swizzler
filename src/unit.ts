@@ -90,7 +90,7 @@ if (vertexShader === null) {
                 wrappedInFunctionForTranspilation
               );
               const unwrappedFunctionBody = (transpiledToJavascript.match(
-                /^function unusedName\(\) { (.*) }\r\n$/
+                /^function unusedName\(\) { (.*) }\s*$/
               ) as RegExpMatchArray)[1];
               const func = new Function(unwrappedFunctionBody);
               const actual = func();

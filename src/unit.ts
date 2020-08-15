@@ -22,6 +22,7 @@ import { vec4Scenarios } from "./constructors/vec4/unit";
 import { bvec2Scenarios } from "./constructors/bvec2/unit";
 import { bvec3Scenarios } from "./constructors/bvec3/unit";
 import { bvec4Scenarios } from "./constructors/bvec4/unit";
+import { addScenarios } from "./operators/add/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -31,6 +32,7 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...bvec2Scenarios,
   ...bvec3Scenarios,
   ...bvec4Scenarios,
+  ...addScenarios,
 ];
 
 const glContext = gl(1, 1);

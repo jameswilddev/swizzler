@@ -4,9 +4,9 @@ import {
   Vec3Primitive,
   Vec4Primitive,
   AnyFloatPrimitive,
-} from "../primitive";
-import { Expression } from "../expression";
-import { binary } from "../helpers";
+} from "../../primitive";
+import { Expression } from "../../expression";
+import { binary } from "../../helpers";
 
 export function add(
   a: Expression<FloatPrimitive>,

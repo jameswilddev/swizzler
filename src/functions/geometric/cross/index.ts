@@ -1,8 +1,8 @@
-import { Vec3Primitive } from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { SwizzleImplementation } from "../../implementations/swizzle-implementation";
+import { Vec3Primitive } from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { SwizzleImplementation } from "../../../implementations/swizzle-implementation";
 
 export function cross(
   x: Expression<Vec3Primitive>,

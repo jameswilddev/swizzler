@@ -4,11 +4,11 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { AggregateImplementation } from "../../implementations/aggregate-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
 
 export function distance(
   p0: Expression<FloatPrimitive>,
@@ -18,22 +18,22 @@ export function distance(
 export function distance(
   p0: Expression<Vec2Primitive>,
   p1: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+): Expression<FloatPrimitive>;
 
 export function distance(
   p0: Expression<Vec3Primitive>,
   p1: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+): Expression<FloatPrimitive>;
 
 export function distance(
   p0: Expression<Vec4Primitive>,
   p1: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+): Expression<FloatPrimitive>;
 
 export function distance(
   p0: Expression<AnyFloatPrimitive>,
   p1: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+): Expression<FloatPrimitive> {
   const primitive = p0.primitive;
 
   const javascriptDifference = new BinaryOperatorImplementation(

@@ -4,11 +4,11 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { AggregateImplementation } from "../../implementations/aggregate-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
 
 export function normalize(
   x: Expression<FloatPrimitive>

@@ -4,13 +4,13 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../implementations/literal-implementation";
-import { TernaryOperatorImplementation } from "../../implementations/ternary-operator-implementation";
-import { AggregateImplementation } from "../../implementations/aggregate-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { LiteralImplementation } from "../../../implementations/literal-implementation";
+import { TernaryOperatorImplementation } from "../../../implementations/ternary-operator-implementation";
+import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
 
 export function refract(
   n: Expression<FloatPrimitive>,
@@ -21,19 +21,19 @@ export function refract(
 export function refract(
   n: Expression<Vec2Primitive>,
   i: Expression<Vec2Primitive>,
-  eta: Expression<Vec2Primitive>
+  eta: Expression<FloatPrimitive>
 ): Expression<Vec2Primitive>;
 
 export function refract(
   n: Expression<Vec3Primitive>,
   i: Expression<Vec3Primitive>,
-  eta: Expression<Vec3Primitive>
+  eta: Expression<FloatPrimitive>
 ): Expression<Vec3Primitive>;
 
 export function refract(
   n: Expression<Vec4Primitive>,
   i: Expression<Vec4Primitive>,
-  eta: Expression<Vec4Primitive>
+  eta: Expression<FloatPrimitive>
 ): Expression<Vec4Primitive>;
 
 export function refract(
@@ -115,6 +115,6 @@ export function refract(
         )
       )
     ),
-    new FunctionImplementation(primitive, "refract", [n.glsl, i.glsl])
+    new FunctionImplementation(primitive, "refract", [i.glsl, n.glsl, eta.glsl])
   );
 }

@@ -33,6 +33,14 @@ import { andScenarios } from "./operators/and/unit";
 import { orScenarios } from "./operators/or/unit";
 import { xorScenarios } from "./operators/xor/unit";
 import { swizzleScenarios } from "./swizzles/unit";
+import { crossScenarios } from "./functions/geometric/cross/unit";
+import { distanceScenarios } from "./functions/geometric/distance/unit";
+import { dotScenarios } from "./functions/geometric/dot/unit";
+import { lengthScenarios } from "./functions/geometric/length/unit";
+import { normalizeScenarios } from "./functions/geometric/normalize/unit";
+import { reflectScenarios } from "./functions/geometric/reflect/unit";
+import { refractScenarios } from "./functions/geometric/refract/unit";
+import { faceforwardScenarios } from "./functions/geometric/faceforward/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -53,6 +61,14 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...orScenarios,
   ...xorScenarios,
   ...swizzleScenarios,
+  ...crossScenarios,
+  ...distanceScenarios,
+  ...dotScenarios,
+  ...lengthScenarios,
+  ...normalizeScenarios,
+  ...reflectScenarios,
+  ...refractScenarios,
+  ...faceforwardScenarios,
 ];
 
 const glContext = gl(1, 1);

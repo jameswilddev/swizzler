@@ -4,14 +4,14 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { AggregateImplementation } from "../../implementations/aggregate-implementation";
-import { TernaryOperatorImplementation } from "../../implementations/ternary-operator-implementation";
-import { LiteralImplementation } from "../../implementations/literal-implementation";
-import { UnaryOperatorImplementation } from "../../implementations/unary-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
+import { TernaryOperatorImplementation } from "../../../implementations/ternary-operator-implementation";
+import { LiteralImplementation } from "../../../implementations/literal-implementation";
+import { UnaryOperatorImplementation } from "../../../implementations/unary-implementation";
 
 export function faceforward(
   n: Expression<FloatPrimitive>,

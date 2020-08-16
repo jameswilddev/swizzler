@@ -53,6 +53,10 @@ export { divide } from "./operators/divide";
 export { multiply } from "./operators/multiply";
 export { subtract } from "./operators/subtract";
 export { negate } from "./operators/negate";
+export { not } from "./operators/not";
+export { and } from "./operators/and";
+export { or } from "./operators/or";
+export { xor } from "./operators/xor";
 
 export { w, a, q } from "./swizzles/w";
 export { ww, aa, qq } from "./swizzles/ww";

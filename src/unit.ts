@@ -23,6 +23,15 @@ import { bvec2Scenarios } from "./constructors/bvec2/unit";
 import { bvec3Scenarios } from "./constructors/bvec3/unit";
 import { bvec4Scenarios } from "./constructors/bvec4/unit";
 import { addScenarios } from "./operators/add/unit";
+import { subtractScenarios } from "./operators/subtract/unit";
+import { multiplyScenarios } from "./operators/multiply/unit";
+import { divideScenarios } from "./operators/divide/unit";
+import { negateScenarios } from "./operators/negate/unit";
+import { conditionalScenarios } from "./operators/conditional/unit";
+import { notScenarios } from "./operators/not/unit";
+import { andScenarios } from "./operators/and/unit";
+import { orScenarios } from "./operators/or/unit";
+import { xorScenarios } from "./operators/xor/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -33,6 +42,15 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...bvec3Scenarios,
   ...bvec4Scenarios,
   ...addScenarios,
+  ...subtractScenarios,
+  ...multiplyScenarios,
+  ...divideScenarios,
+  ...negateScenarios,
+  ...conditionalScenarios,
+  ...notScenarios,
+  ...andScenarios,
+  ...orScenarios,
+  ...xorScenarios,
 ];
 
 const glContext = gl(1, 1);

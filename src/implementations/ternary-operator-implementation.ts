@@ -39,7 +39,7 @@ export class TernaryOperatorImplementation<
       const indexB = Math.min(i, arityB - 1);
       const indexC = Math.min(i, arityC - 1);
       output.push(
-        `${renderedArgs[0][indexA]}${this.symbolAB}(${renderedArgs[1][indexB]})${this.symbolBC}(${renderedArgs[2][indexC]})`
+        `(${renderedArgs[0][indexA]})${this.symbolAB}(${renderedArgs[1][indexB]})${this.symbolBC}(${renderedArgs[2][indexC]})`
       );
     }
 

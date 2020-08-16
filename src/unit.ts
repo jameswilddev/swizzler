@@ -55,6 +55,14 @@ import { degreesScenarios } from "./functions/angle-and-trigonometry/degrees/uni
 import { radiansScenarios } from "./functions/angle-and-trigonometry/radians/unit";
 import { sinScenarios } from "./functions/angle-and-trigonometry/sin/unit";
 import { tanScenarios } from "./functions/angle-and-trigonometry/tan/unit";
+import { absScenarios } from "./functions/common/abs/unit";
+import { ceilScenarios } from "./functions/common/ceil/unit";
+import { floorScenarios } from "./functions/common/floor/unit";
+import { fractScenarios } from "./functions/common/fract/unit";
+import { stepScenarios } from "./functions/common/step/unit";
+import { maxScenarios } from "./functions/common/max/unit";
+import { minScenarios } from "./functions/common/min/unit";
+import { signScenarios } from "./functions/common/sign/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -97,6 +105,14 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...radiansScenarios,
   ...sinScenarios,
   ...tanScenarios,
+  ...absScenarios,
+  ...ceilScenarios,
+  ...floorScenarios,
+  ...fractScenarios,
+  ...stepScenarios,
+  ...maxScenarios,
+  ...minScenarios,
+  ...signScenarios,
 ];
 
 const glContext = gl(1, 1);

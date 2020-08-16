@@ -4,12 +4,12 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { FunctionImplementation } from "../../implementations/function-implementation";
-import { TernaryOperatorImplementation } from "../../implementations/ternary-operator-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../implementations/literal-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
+import { TernaryOperatorImplementation } from "../../../implementations/ternary-operator-implementation";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { LiteralImplementation } from "../../../implementations/literal-implementation";
 
 export function step(
   edge: Expression<FloatPrimitive>,
@@ -50,7 +50,7 @@ export function step(
   edge: Expression<AnyFloatPrimitive>,
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = edge.primitive;
+  const primitive = x.primitive;
 
   return new Expression(
     new TernaryOperatorImplementation(

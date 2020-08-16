@@ -1,8 +1,17 @@
-import { bool, float } from "..";
+import { bool, float, add } from "..";
 import { Scenario } from "../scenario/unit";
 
 export const literalsScenarios: ReadonlyArray<Scenario> = [
-  ["float literal", float(75 / 255), [75 / 255]],
+  ["positive unit interval", float(75 / 255), [75 / 255]],
+  ["zero", add(float(0), float(128 / 255)), [128 / 255]],
+  [
+    "negative unit interval",
+    add(float(-75 / 255), float(128 / 255)),
+    [53 / 255],
+  ],
+  ["positive integer", add(float(2), float(-492 / 255)), [18 / 255]],
+  ["negative integer", add(float(-2), float(532 / 255)), [22 / 255]],
+  ["floats", add(float(650 / 255), float(-410 / 255)), [240 / 255]],
   ["true", bool(true), [true]],
   ["false", bool(false), [false]],
 ];

@@ -58,346 +58,1028 @@ export { and } from "./operators/and";
 export { or } from "./operators/or";
 export { xor } from "./operators/xor";
 
-export { w, a, q } from "./swizzles/w";
-export { ww, aa, qq } from "./swizzles/ww";
-export { www, aaa, qqq } from "./swizzles/www";
-export { wwww, aaaa, qqqq } from "./swizzles/wwww";
-// export { wwwx, aaar, qqqs } from "./swizzles/wwwx";
-// export { wwwy, aaag, qqqt } from "./swizzles/wwwy";
-// export { wwwz, aaab, qqqp } from "./swizzles/wwwz";
-export { wwx, aar, qqs } from "./swizzles/wwx";
-// export { wwxw, aara, qqsq } from "./swizzles/wwxw";
-// export { wwxx, aarr, qqss } from "./swizzles/wwxx";
-// export { wwxy, aarg, qqst } from "./swizzles/wwxy";
-// export { wwxz, aarb, qqsp } from "./swizzles/wwxz";
-// export { wwy, aag, qqt } from "./swizzles/wwy";
-// export { wwyw, aaga, qqtq } from "./swizzles/wwyw";
-// export { wwyx, aagr, qqts } from "./swizzles/wwyx";
-// export { wwyy, aagg, qqtt } from "./swizzles/wwyy";
-// export { wwyz, aagb, qqtp } from "./swizzles/wwyz";
-// export { wwz, aab, qqp } from "./swizzles/wwz";
-// export { wwzw, aaba, qqpq } from "./swizzles/wwzw";
-// export { wwzx, aabr, qqps } from "./swizzles/wwzx";
-// export { wwzy, aabg, qqpt } from "./swizzles/wwzy";
-// export { wwzz, aabb, qqpp } from "./swizzles/wwzz";
-export { wx, ar, qs } from "./swizzles/wx";
-export { wxw, ara, qsq } from "./swizzles/wxw";
-export { wxww, araa, qsqq } from "./swizzles/wxww";
-export { wxwx, arar, qsqs } from "./swizzles/wxwx";
-export { wxwy, arag, qsqt } from "./swizzles/wxwy";
-export { wxwz, arab, qsqp } from "./swizzles/wxwz";
-export { wxx, arr, qss } from "./swizzles/wxx";
-export { wxxw, arra, qssq } from "./swizzles/wxxw";
-export { wxxx, arrr, qsss } from "./swizzles/wxxx";
-export { wxxy, arrg, qsst } from "./swizzles/wxxy";
-export { wxxz, arrb, qssp } from "./swizzles/wxxz";
-export { wxy, arg, qst } from "./swizzles/wxy";
-export { wxyw, arga, qstq } from "./swizzles/wxyw";
-export { wxyx, argr, qsts } from "./swizzles/wxyx";
-export { wxyy, argg, qstt } from "./swizzles/wxyy";
-export { wxyz, argb, qstp } from "./swizzles/wxyz";
-export { wxz, arb, qsp } from "./swizzles/wxz";
-export { wxzw, arba, qspq } from "./swizzles/wxzw";
-export { wxzx, arbr, qsps } from "./swizzles/wxzx";
-export { wxzy, arbg, qspt } from "./swizzles/wxzy";
-export { wxzz, arbb, qspp } from "./swizzles/wxzz";
-export { wy, ag, qt } from "./swizzles/wy";
-export { wyw, aga, qtq } from "./swizzles/wyw";
-// export { wyww, agaa, qtqq } from "./swizzles/wyww";
-// export { wywx, agar, qtqs } from "./swizzles/wywx";
-// export { wywy, agag, qtqt } from "./swizzles/wywy";
-// export { wywz, agab, qtqp } from "./swizzles/wywz";
-export { wyx, agr, qts } from "./swizzles/wyx";
-// export { wyxw, agra, qtsq } from "./swizzles/wyxw";
-// export { wyxx, agrr, qtss } from "./swizzles/wyxx";
-// export { wyxy, agrg, qtst } from "./swizzles/wyxy";
-// export { wyxz, agrb, qtsp } from "./swizzles/wyxz";
-export { wyy, agg, qtt } from "./swizzles/wyy";
-// export { wyyw, agga, qttq } from "./swizzles/wyyw";
-// export { wyyx, aggr, qtts } from "./swizzles/wyyx";
-// export { wyyy, aggg, qttt } from "./swizzles/wyyy";
-// export { wyyz, aggb, qttp } from "./swizzles/wyyz";
-export { wyz, agb, qtp } from "./swizzles/wyz";
-// export { wyzw, agba, qtpq } from "./swizzles/wyzw";
-// export { wyzx, agbr, qtps } from "./swizzles/wyzx";
-// export { wyzy, agbg, qtpt } from "./swizzles/wyzy";
-// export { wyzz, agbb, qtpp } from "./swizzles/wyzz";
-export { wz, ab, qp } from "./swizzles/wz";
-export { wzw, aba, qpq } from "./swizzles/wzw";
-// export { wzww, abaa, qpqq } from "./swizzles/wzww";
-// export { wzwx, abar, qpqs } from "./swizzles/wzwx";
-// export { wzwy, abag, qpqt } from "./swizzles/wzwy";
-// export { wzwz, abab, qpqp } from "./swizzles/wzwz";
-export { wzx, abr, qps } from "./swizzles/wzx";
-// export { wzxw, abra, qpsq } from "./swizzles/wzxw";
-// export { wzxx, abrr, qpss } from "./swizzles/wzxx";
-// export { wzxy, abrg, qpst } from "./swizzles/wzxy";
-// export { wzxz, abrb, qpsp } from "./swizzles/wzxz";
-export { wzy, abg, qpt } from "./swizzles/wzy";
-// export { wzyw, abga, qptq } from "./swizzles/wzyw";
-// export { wzyx, abgr, qpts } from "./swizzles/wzyx";
-// export { wzyy, abgg, qptt } from "./swizzles/wzyy";
-// export { wzyz, abgb, qptp } from "./swizzles/wzyz";
-export { wzz, abb, qpp } from "./swizzles/wzz";
-// export { wzzw, abba, qppq } from "./swizzles/wzzw";
-// export { wzzx, abbr, qpps } from "./swizzles/wzzx";
-// export { wzzy, abbg, qppt } from "./swizzles/wzzy";
-// export { wzzz, abbb, qppp } from "./swizzles/wzzz";
-export { x, r, s } from "./swizzles/x";
-// export { xw, ra, sq } from "./swizzles/xw";
-// export { xww, raa, sqq } from "./swizzles/xww";
-// export { xwww, raaa, sqqq } from "./swizzles/xwww";
-// export { xwwx, raar, sqqs } from "./swizzles/xwwx";
-// export { xwwy, raag, sqqt } from "./swizzles/xwwy";
-// export { xwwz, raab, sqqp } from "./swizzles/xwwz";
-// export { xwx, rar, sqs } from "./swizzles/xwx";
-// export { xwxw, rara, sqsq } from "./swizzles/xwxw";
-// export { xwxx, rarr, sqss } from "./swizzles/xwxx";
-// export { xwxy, rarg, sqst } from "./swizzles/xwxy";
-// export { xwxz, rarb, sqsp } from "./swizzles/xwxz";
-// export { xwy, rag, sqt } from "./swizzles/xwy";
-// export { xwyw, raga, sqtq } from "./swizzles/xwyw";
-// export { xwyx, ragr, sqts } from "./swizzles/xwyx";
-// export { xwyy, ragg, sqtt } from "./swizzles/xwyy";
-// export { xwyz, ragb, sqtp } from "./swizzles/xwyz";
-// export { xwz, rab, sqp } from "./swizzles/xwz";
-// export { xwzw, raba, sqpq } from "./swizzles/xwzw";
-// export { xwzx, rabr, sqps } from "./swizzles/xwzx";
-// export { xwzy, rabg, sqpt } from "./swizzles/xwzy";
-// export { xwzz, rabb, sqpp } from "./swizzles/xwzz";
-export { xx, rr, ss } from "./swizzles/xx";
-// export { xxw, rra, ssq } from "./swizzles/xxw";
-// export { xxww, rraa, ssqq } from "./swizzles/xxww";
-// export { xxwx, rrar, ssqs } from "./swizzles/xxwx";
-// export { xxwy, rrag, ssqt } from "./swizzles/xxwy";
-// export { xxwz, rrab, ssqp } from "./swizzles/xxwz";
-export { xxx, rrr, sss } from "./swizzles/xxx";
-// export { xxxw, rrra, sssq } from "./swizzles/xxxw";
-export { xxxx, rrrr, ssss } from "./swizzles/xxxx";
-export { xxxy, rrrg, ssst } from "./swizzles/xxxy";
-export { xxxz, rrrb, sssp } from "./swizzles/xxxz";
-export { xxy, rrg, sst } from "./swizzles/xxy";
-// export { xxyw, rrga, sstq } from "./swizzles/xxyw";
-export { xxyx, rrgr, ssts } from "./swizzles/xxyx";
-export { xxyy, rrgg, sstt } from "./swizzles/xxyy";
-export { xxyz, rrgb, sstp } from "./swizzles/xxyz";
-// export { xxz, rrb, ssp } from "./swizzles/xxz";
-// export { xxzw, rrba, sspq } from "./swizzles/xxzw";
-export { xxzx, rrbr, ssps } from "./swizzles/xxzx";
-export { xxzy, rrbg, sspt } from "./swizzles/xxzy";
-export { xxzz, rrbb, sspp } from "./swizzles/xxzz";
-export { xy, rg, st } from "./swizzles/xy";
-// export { xyw, rga, stq } from "./swizzles/xyw";
-// export { xyww, rgaa, stqq } from "./swizzles/xyww";
-// export { xywx, rgar, stqs } from "./swizzles/xywx";
-// export { xywy, rgag, stqt } from "./swizzles/xywy";
-// export { xywz, rgab, stqp } from "./swizzles/xywz";
-export { xyx, rgr, sts } from "./swizzles/xyx";
-// export { xyxw, rgra, stsq } from "./swizzles/xyxw";
-export { xyxx, rgrr, stss } from "./swizzles/xyxx";
-export { xyxy, rgrg, stst } from "./swizzles/xyxy";
-export { xyxz, rgrb, stsp } from "./swizzles/xyxz";
-export { xyy, rgg, stt } from "./swizzles/xyy";
-// export { xyyw, rgga, sttq } from "./swizzles/xyyw";
-export { xyyx, rggr, stts } from "./swizzles/xyyx";
-export { xyyy, rggg, sttt } from "./swizzles/xyyy";
-export { xyyz, rggb, sttp } from "./swizzles/xyyz";
-// export { xyz, rgb, stp } from "./swizzles/xyz";
-// export { xyzw, rgba, stpq } from "./swizzles/xyzw";
-export { xyzx, rgbr, stps } from "./swizzles/xyzx";
-export { xyzy, rgbg, stpt } from "./swizzles/xyzy";
-export { xyzz, rgbb, stpp } from "./swizzles/xyzz";
-// export { xz, rb, sp } from "./swizzles/xz";
-// export { xzw, rba, spq } from "./swizzles/xzw";
-// export { xzww, rbaa, spqq } from "./swizzles/xzww";
-// export { xzwx, rbar, spqs } from "./swizzles/xzwx";
-// export { xzwy, rbag, spqt } from "./swizzles/xzwy";
-// export { xzwz, rbab, spqp } from "./swizzles/xzwz";
-// export { xzx, rbr, sps } from "./swizzles/xzx";
-// export { xzxw, rbra, spsq } from "./swizzles/xzxw";
-export { xzxx, rbrr, spss } from "./swizzles/xzxx";
-export { xzxy, rbrg, spst } from "./swizzles/xzxy";
-export { xzxz, rbrb, spsp } from "./swizzles/xzxz";
-// export { xzy, rbg, spt } from "./swizzles/xzy";
-// export { xzyw, rbga, sptq } from "./swizzles/xzyw";
-export { xzyx, rbgr, spts } from "./swizzles/xzyx";
-export { xzyy, rbgg, sptt } from "./swizzles/xzyy";
-export { xzyz, rbgb, sptp } from "./swizzles/xzyz";
-// export { xzz, rbb, spp } from "./swizzles/xzz";
-// export { xzzw, rbba, sppq } from "./swizzles/xzzw";
-export { xzzx, rbbr, spps } from "./swizzles/xzzx";
-export { xzzy, rbbg, sppt } from "./swizzles/xzzy";
-export { xzzz, rbbb, sppp } from "./swizzles/xzzz";
-export { y, g, t } from "./swizzles/y";
-// export { yw, ga, tq } from "./swizzles/yw";
-// export { yww, gaa, tqq } from "./swizzles/yww";
-// export { ywww, gaaa, tqqq } from "./swizzles/ywww";
-// export { ywwx, gaar, tqqs } from "./swizzles/ywwx";
-// export { ywwy, gaag, tqqt } from "./swizzles/ywwy";
-// export { ywwz, gaab, tqqp } from "./swizzles/ywwz";
-// export { ywx, gar, tqs } from "./swizzles/ywx";
-// export { ywxw, gara, tqsq } from "./swizzles/ywxw";
-// export { ywxx, garr, tqss } from "./swizzles/ywxx";
-// export { ywxy, garg, tqst } from "./swizzles/ywxy";
-// export { ywxz, garb, tqsp } from "./swizzles/ywxz";
-// export { ywy, gag, tqt } from "./swizzles/ywy";
-// export { ywyw, gaga, tqtq } from "./swizzles/ywyw";
-// export { ywyx, gagr, tqts } from "./swizzles/ywyx";
-// export { ywyy, gagg, tqtt } from "./swizzles/ywyy";
-// export { ywyz, gagb, tqtp } from "./swizzles/ywyz";
-// export { ywz, gab, tqp } from "./swizzles/ywz";
-// export { ywzw, gaba, tqpq } from "./swizzles/ywzw";
-// export { ywzx, gabr, tqps } from "./swizzles/ywzx";
-// export { ywzy, gabg, tqpt } from "./swizzles/ywzy";
-// export { ywzz, gabb, tqpp } from "./swizzles/ywzz";
-export { yx, gr, ts } from "./swizzles/yx";
-// export { yxw, gra, tsq } from "./swizzles/yxw";
-// export { yxww, graa, tsqq } from "./swizzles/yxww";
-// export { yxwx, grar, tsqs } from "./swizzles/yxwx";
-// export { yxwy, grag, tsqt } from "./swizzles/yxwy";
-// export { yxwz, grab, tsqp } from "./swizzles/yxwz";
-export { yxx, grr, tss } from "./swizzles/yxx";
-// export { yxxw, grra, tssq } from "./swizzles/yxxw";
-export { yxxx, grrr, tsss } from "./swizzles/yxxx";
-export { yxxy, grrg, tsst } from "./swizzles/yxxy";
-export { yxxz, grrb, tssp } from "./swizzles/yxxz";
-export { yxy, grg, tst } from "./swizzles/yxy";
-// export { yxyw, grga, tstq } from "./swizzles/yxyw";
-export { yxyx, grgr, tsts } from "./swizzles/yxyx";
-export { yxyy, grgg, tstt } from "./swizzles/yxyy";
-export { yxyz, grgb, tstp } from "./swizzles/yxyz";
-// export { yxz, grb, tsp } from "./swizzles/yxz";
-// export { yxzw, grba, tspq } from "./swizzles/yxzw";
-export { yxzx, grbr, tsps } from "./swizzles/yxzx";
-export { yxzy, grbg, tspt } from "./swizzles/yxzy";
-export { yxzz, grbb, tspp } from "./swizzles/yxzz";
-export { yy, gg, tt } from "./swizzles/yy";
-// export { yyw, gga, ttq } from "./swizzles/yyw";
-// export { yyww, ggaa, ttqq } from "./swizzles/yyww";
-// export { yywx, ggar, ttqs } from "./swizzles/yywx";
-// export { yywy, ggag, ttqt } from "./swizzles/yywy";
-// export { yywz, ggab, ttqp } from "./swizzles/yywz";
-export { yyx, ggr, tts } from "./swizzles/yyx";
-// export { yyxw, ggra, ttsq } from "./swizzles/yyxw";
-export { yyxx, ggrr, ttss } from "./swizzles/yyxx";
-export { yyxy, ggrg, ttst } from "./swizzles/yyxy";
-export { yyxz, ggrb, ttsp } from "./swizzles/yyxz";
-export { yyy, ggg, ttt } from "./swizzles/yyy";
-// export { yyyw, ggga, tttq } from "./swizzles/yyyw";
-export { yyyx, gggr, ttts } from "./swizzles/yyyx";
-export { yyyy, gggg, tttt } from "./swizzles/yyyy";
-export { yyyz, gggb, tttp } from "./swizzles/yyyz";
-// export { yyz, ggb, ttp } from "./swizzles/yyz";
-// export { yyzw, ggba, ttpq } from "./swizzles/yyzw";
-export { yyzx, ggbr, ttps } from "./swizzles/yyzx";
-export { yyzy, ggbg, ttpt } from "./swizzles/yyzy";
-export { yyzz, ggbb, ttpp } from "./swizzles/yyzz";
-// export { yz, gb, tp } from "./swizzles/yz";
-// export { yzw, gba, tpq } from "./swizzles/yzw";
-// export { yzww, gbaa, tpqq } from "./swizzles/yzww";
-// export { yzwx, gbar, tpqs } from "./swizzles/yzwx";
-// export { yzwy, gbag, tpqt } from "./swizzles/yzwy";
-// export { yzwz, gbab, tpqp } from "./swizzles/yzwz";
-// export { yzx, gbr, tps } from "./swizzles/yzx";
-// export { yzxw, gbra, tpsq } from "./swizzles/yzxw";
-export { yzxx, gbrr, tpss } from "./swizzles/yzxx";
-export { yzxy, gbrg, tpst } from "./swizzles/yzxy";
-export { yzxz, gbrb, tpsp } from "./swizzles/yzxz";
-// export { yzy, gbg, tpt } from "./swizzles/yzy";
-// export { yzyw, gbga, tptq } from "./swizzles/yzyw";
-export { yzyx, gbgr, tpts } from "./swizzles/yzyx";
-export { yzyy, gbgg, tptt } from "./swizzles/yzyy";
-export { yzyz, gbgb, tptp } from "./swizzles/yzyz";
-// export { yzz, gbb, tpp } from "./swizzles/yzz";
-// export { yzzw, gbba, tppq } from "./swizzles/yzzw";
-export { yzzx, gbbr, tpps } from "./swizzles/yzzx";
-export { yzzy, gbbg, tppt } from "./swizzles/yzzy";
-export { yzzz, gbbb, tppp } from "./swizzles/yzzz";
-export { z, b, p } from "./swizzles/z";
-// export { zw, ba, pq } from "./swizzles/zw";
-// export { zww, baa, pqq } from "./swizzles/zww";
-// export { zwww, baaa, pqqq } from "./swizzles/zwww";
-// export { zwwx, baar, pqqs } from "./swizzles/zwwx";
-// export { zwwy, baag, pqqt } from "./swizzles/zwwy";
-// export { zwwz, baab, pqqp } from "./swizzles/zwwz";
-// export { zwx, bar, pqs } from "./swizzles/zwx";
-// export { zwxw, bara, pqsq } from "./swizzles/zwxw";
-// export { zwxx, barr, pqss } from "./swizzles/zwxx";
-// export { zwxy, barg, pqst } from "./swizzles/zwxy";
-// export { zwxz, barb, pqsp } from "./swizzles/zwxz";
-// export { zwy, bag, pqt } from "./swizzles/zwy";
-// export { zwyw, baga, pqtq } from "./swizzles/zwyw";
-// export { zwyx, bagr, pqts } from "./swizzles/zwyx";
-// export { zwyy, bagg, pqtt } from "./swizzles/zwyy";
-// export { zwyz, bagb, pqtp } from "./swizzles/zwyz";
-// export { zwz, bab, pqp } from "./swizzles/zwz";
-// export { zwzw, baba, pqpq } from "./swizzles/zwzw";
-// export { zwzx, babr, pqps } from "./swizzles/zwzx";
-// export { zwzy, babg, pqpt } from "./swizzles/zwzy";
-// export { zwzz, babb, pqpp } from "./swizzles/zwzz";
-// export { zx, br, ps } from "./swizzles/zx";
-// export { zxw, bra, psq } from "./swizzles/zxw";
-// export { zxww, braa, psqq } from "./swizzles/zxww";
-// export { zxwx, brar, psqs } from "./swizzles/zxwx";
-// export { zxwy, brag, psqt } from "./swizzles/zxwy";
-// export { zxwz, brab, psqp } from "./swizzles/zxwz";
-// export { zxx, brr, pss } from "./swizzles/zxx";
-// export { zxxw, brra, pssq } from "./swizzles/zxxw";
-export { zxxx, brrr, psss } from "./swizzles/zxxx";
-export { zxxy, brrg, psst } from "./swizzles/zxxy";
-export { zxxz, brrb, pssp } from "./swizzles/zxxz";
-// export { zxy, brg, pst } from "./swizzles/zxy";
-// export { zxyw, brga, pstq } from "./swizzles/zxyw";
-export { zxyx, brgr, psts } from "./swizzles/zxyx";
-export { zxyy, brgg, pstt } from "./swizzles/zxyy";
-export { zxyz, brgb, pstp } from "./swizzles/zxyz";
-// export { zxz, brb, psp } from "./swizzles/zxz";
-// export { zxzw, brba, pspq } from "./swizzles/zxzw";
-export { zxzx, brbr, psps } from "./swizzles/zxzx";
-export { zxzy, brbg, pspt } from "./swizzles/zxzy";
-export { zxzz, brbb, pspp } from "./swizzles/zxzz";
-// export { zy, bg, pt } from "./swizzles/zy";
-// export { zyw, bga, ptq } from "./swizzles/zyw";
-// export { zyww, bgaa, ptqq } from "./swizzles/zyww";
-// export { zywx, bgar, ptqs } from "./swizzles/zywx";
-// export { zywy, bgag, ptqt } from "./swizzles/zywy";
-// export { zywz, bgab, ptqp } from "./swizzles/zywz";
-// export { zyx, bgr, pts } from "./swizzles/zyx";
-// export { zyxw, bgra, ptsq } from "./swizzles/zyxw";
-export { zyxx, bgrr, ptss } from "./swizzles/zyxx";
-export { zyxy, bgrg, ptst } from "./swizzles/zyxy";
-export { zyxz, bgrb, ptsp } from "./swizzles/zyxz";
-// export { zyy, bgg, ptt } from "./swizzles/zyy";
-// export { zyyw, bgga, pttq } from "./swizzles/zyyw";
-export { zyyx, bggr, ptts } from "./swizzles/zyyx";
-export { zyyy, bggg, pttt } from "./swizzles/zyyy";
-export { zyyz, bggb, pttp } from "./swizzles/zyyz";
-// export { zyz, bgb, ptp } from "./swizzles/zyz";
-// export { zyzw, bgba, ptpq } from "./swizzles/zyzw";
-export { zyzx, bgbr, ptps } from "./swizzles/zyzx";
-export { zyzy, bgbg, ptpt } from "./swizzles/zyzy";
-export { zyzz, bgbb, ptpp } from "./swizzles/zyzz";
-// export { zz, bb, pp } from "./swizzles/zz";
-// export { zzw, bba, ppq } from "./swizzles/zzw";
-// export { zzww, bbaa, ppqq } from "./swizzles/zzww";
-// export { zzwx, bbar, ppqs } from "./swizzles/zzwx";
-// export { zzwy, bbag, ppqt } from "./swizzles/zzwy";
-// export { zzwz, bbab, ppqp } from "./swizzles/zzwz";
-// export { zzx, bbr, pps } from "./swizzles/zzx";
-// export { zzxw, bbra, ppsq } from "./swizzles/zzxw";
-export { zzxx, bbrr, ppss } from "./swizzles/zzxx";
-export { zzxy, bbrg, ppst } from "./swizzles/zzxy";
-export { zzxz, bbrb, ppsp } from "./swizzles/zzxz";
-// export { zzy, bbg, ppt } from "./swizzles/zzy";
-// export { zzyw, bbga, pptq } from "./swizzles/zzyw";
-export { zzyx, bbgr, ppts } from "./swizzles/zzyx";
-export { zzyy, bbgg, pptt } from "./swizzles/zzyy";
-export { zzyz, bbgb, pptp } from "./swizzles/zzyz";
-// export { zzz, bbb, ppp } from "./swizzles/zzz";
-// export { zzzw, bbba, pppq } from "./swizzles/zzzw";
-export { zzzx, bbbr, ppps } from "./swizzles/zzzx";
-export { zzzy, bbbg, pppt } from "./swizzles/zzzy";
-export { zzzz, bbbb, pppp } from "./swizzles/zzzz";
+export {
+  x,
+  y,
+  z,
+  w,
+  xx,
+  xy,
+  xz,
+  xw,
+  yx,
+  yy,
+  yz,
+  yw,
+  zx,
+  zy,
+  zz,
+  zw,
+  wx,
+  wy,
+  wz,
+  ww,
+  xxx,
+  xxy,
+  xxz,
+  xxw,
+  xyx,
+  xyy,
+  xyz,
+  xyw,
+  xzx,
+  xzy,
+  xzz,
+  xzw,
+  xwx,
+  xwy,
+  xwz,
+  xww,
+  yxx,
+  yxy,
+  yxz,
+  yxw,
+  yyx,
+  yyy,
+  yyz,
+  yyw,
+  yzx,
+  yzy,
+  yzz,
+  yzw,
+  ywx,
+  ywy,
+  ywz,
+  yww,
+  zxx,
+  zxy,
+  zxz,
+  zxw,
+  zyx,
+  zyy,
+  zyz,
+  zyw,
+  zzx,
+  zzy,
+  zzz,
+  zzw,
+  zwx,
+  zwy,
+  zwz,
+  zww,
+  wxx,
+  wxy,
+  wxz,
+  wxw,
+  wyx,
+  wyy,
+  wyz,
+  wyw,
+  wzx,
+  wzy,
+  wzz,
+  wzw,
+  wwx,
+  wwy,
+  wwz,
+  www,
+  xxxx,
+  xxxy,
+  xxxz,
+  xxxw,
+  xxyx,
+  xxyy,
+  xxyz,
+  xxyw,
+  xxzx,
+  xxzy,
+  xxzz,
+  xxzw,
+  xxwx,
+  xxwy,
+  xxwz,
+  xxww,
+  xyxx,
+  xyxy,
+  xyxz,
+  xyxw,
+  xyyx,
+  xyyy,
+  xyyz,
+  xyyw,
+  xyzx,
+  xyzy,
+  xyzz,
+  xyzw,
+  xywx,
+  xywy,
+  xywz,
+  xyww,
+  xzxx,
+  xzxy,
+  xzxz,
+  xzxw,
+  xzyx,
+  xzyy,
+  xzyz,
+  xzyw,
+  xzzx,
+  xzzy,
+  xzzz,
+  xzzw,
+  xzwx,
+  xzwy,
+  xzwz,
+  xzww,
+  xwxx,
+  xwxy,
+  xwxz,
+  xwxw,
+  xwyx,
+  xwyy,
+  xwyz,
+  xwyw,
+  xwzx,
+  xwzy,
+  xwzz,
+  xwzw,
+  xwwx,
+  xwwy,
+  xwwz,
+  xwww,
+  yxxx,
+  yxxy,
+  yxxz,
+  yxxw,
+  yxyx,
+  yxyy,
+  yxyz,
+  yxyw,
+  yxzx,
+  yxzy,
+  yxzz,
+  yxzw,
+  yxwx,
+  yxwy,
+  yxwz,
+  yxww,
+  yyxx,
+  yyxy,
+  yyxz,
+  yyxw,
+  yyyx,
+  yyyy,
+  yyyz,
+  yyyw,
+  yyzx,
+  yyzy,
+  yyzz,
+  yyzw,
+  yywx,
+  yywy,
+  yywz,
+  yyww,
+  yzxx,
+  yzxy,
+  yzxz,
+  yzxw,
+  yzyx,
+  yzyy,
+  yzyz,
+  yzyw,
+  yzzx,
+  yzzy,
+  yzzz,
+  yzzw,
+  yzwx,
+  yzwy,
+  yzwz,
+  yzww,
+  ywxx,
+  ywxy,
+  ywxz,
+  ywxw,
+  ywyx,
+  ywyy,
+  ywyz,
+  ywyw,
+  ywzx,
+  ywzy,
+  ywzz,
+  ywzw,
+  ywwx,
+  ywwy,
+  ywwz,
+  ywww,
+  zxxx,
+  zxxy,
+  zxxz,
+  zxxw,
+  zxyx,
+  zxyy,
+  zxyz,
+  zxyw,
+  zxzx,
+  zxzy,
+  zxzz,
+  zxzw,
+  zxwx,
+  zxwy,
+  zxwz,
+  zxww,
+  zyxx,
+  zyxy,
+  zyxz,
+  zyxw,
+  zyyx,
+  zyyy,
+  zyyz,
+  zyyw,
+  zyzx,
+  zyzy,
+  zyzz,
+  zyzw,
+  zywx,
+  zywy,
+  zywz,
+  zyww,
+  zzxx,
+  zzxy,
+  zzxz,
+  zzxw,
+  zzyx,
+  zzyy,
+  zzyz,
+  zzyw,
+  zzzx,
+  zzzy,
+  zzzz,
+  zzzw,
+  zzwx,
+  zzwy,
+  zzwz,
+  zzww,
+  zwxx,
+  zwxy,
+  zwxz,
+  zwxw,
+  zwyx,
+  zwyy,
+  zwyz,
+  zwyw,
+  zwzx,
+  zwzy,
+  zwzz,
+  zwzw,
+  zwwx,
+  zwwy,
+  zwwz,
+  zwww,
+  wxxx,
+  wxxy,
+  wxxz,
+  wxxw,
+  wxyx,
+  wxyy,
+  wxyz,
+  wxyw,
+  wxzx,
+  wxzy,
+  wxzz,
+  wxzw,
+  wxwx,
+  wxwy,
+  wxwz,
+  wxww,
+  wyxx,
+  wyxy,
+  wyxz,
+  wyxw,
+  wyyx,
+  wyyy,
+  wyyz,
+  wyyw,
+  wyzx,
+  wyzy,
+  wyzz,
+  wyzw,
+  wywx,
+  wywy,
+  wywz,
+  wyww,
+  wzxx,
+  wzxy,
+  wzxz,
+  wzxw,
+  wzyx,
+  wzyy,
+  wzyz,
+  wzyw,
+  wzzx,
+  wzzy,
+  wzzz,
+  wzzw,
+  wzwx,
+  wzwy,
+  wzwz,
+  wzww,
+  wwxx,
+  wwxy,
+  wwxz,
+  wwxw,
+  wwyx,
+  wwyy,
+  wwyz,
+  wwyw,
+  wwzx,
+  wwzy,
+  wwzz,
+  wwzw,
+  wwwx,
+  wwwy,
+  wwwz,
+  wwww,
+  r,
+  g,
+  b,
+  a,
+  rr,
+  rg,
+  rb,
+  ra,
+  gr,
+  gg,
+  gb,
+  ga,
+  br,
+  bg,
+  bb,
+  ba,
+  ar,
+  ag,
+  ab,
+  aa,
+  rrr,
+  rrg,
+  rrb,
+  rra,
+  rgr,
+  rgg,
+  rgb,
+  rga,
+  rbr,
+  rbg,
+  rbb,
+  rba,
+  rar,
+  rag,
+  rab,
+  raa,
+  grr,
+  grg,
+  grb,
+  gra,
+  ggr,
+  ggg,
+  ggb,
+  gga,
+  gbr,
+  gbg,
+  gbb,
+  gba,
+  gar,
+  gag,
+  gab,
+  gaa,
+  brr,
+  brg,
+  brb,
+  bra,
+  bgr,
+  bgg,
+  bgb,
+  bga,
+  bbr,
+  bbg,
+  bbb,
+  bba,
+  bar,
+  bag,
+  bab,
+  baa,
+  arr,
+  arg,
+  arb,
+  ara,
+  agr,
+  agg,
+  agb,
+  aga,
+  abr,
+  abg,
+  abb,
+  aba,
+  aar,
+  aag,
+  aab,
+  aaa,
+  rrrr,
+  rrrg,
+  rrrb,
+  rrra,
+  rrgr,
+  rrgg,
+  rrgb,
+  rrga,
+  rrbr,
+  rrbg,
+  rrbb,
+  rrba,
+  rrar,
+  rrag,
+  rrab,
+  rraa,
+  rgrr,
+  rgrg,
+  rgrb,
+  rgra,
+  rggr,
+  rggg,
+  rggb,
+  rgga,
+  rgbr,
+  rgbg,
+  rgbb,
+  rgba,
+  rgar,
+  rgag,
+  rgab,
+  rgaa,
+  rbrr,
+  rbrg,
+  rbrb,
+  rbra,
+  rbgr,
+  rbgg,
+  rbgb,
+  rbga,
+  rbbr,
+  rbbg,
+  rbbb,
+  rbba,
+  rbar,
+  rbag,
+  rbab,
+  rbaa,
+  rarr,
+  rarg,
+  rarb,
+  rara,
+  ragr,
+  ragg,
+  ragb,
+  raga,
+  rabr,
+  rabg,
+  rabb,
+  raba,
+  raar,
+  raag,
+  raab,
+  raaa,
+  grrr,
+  grrg,
+  grrb,
+  grra,
+  grgr,
+  grgg,
+  grgb,
+  grga,
+  grbr,
+  grbg,
+  grbb,
+  grba,
+  grar,
+  grag,
+  grab,
+  graa,
+  ggrr,
+  ggrg,
+  ggrb,
+  ggra,
+  gggr,
+  gggg,
+  gggb,
+  ggga,
+  ggbr,
+  ggbg,
+  ggbb,
+  ggba,
+  ggar,
+  ggag,
+  ggab,
+  ggaa,
+  gbrr,
+  gbrg,
+  gbrb,
+  gbra,
+  gbgr,
+  gbgg,
+  gbgb,
+  gbga,
+  gbbr,
+  gbbg,
+  gbbb,
+  gbba,
+  gbar,
+  gbag,
+  gbab,
+  gbaa,
+  garr,
+  garg,
+  garb,
+  gara,
+  gagr,
+  gagg,
+  gagb,
+  gaga,
+  gabr,
+  gabg,
+  gabb,
+  gaba,
+  gaar,
+  gaag,
+  gaab,
+  gaaa,
+  brrr,
+  brrg,
+  brrb,
+  brra,
+  brgr,
+  brgg,
+  brgb,
+  brga,
+  brbr,
+  brbg,
+  brbb,
+  brba,
+  brar,
+  brag,
+  brab,
+  braa,
+  bgrr,
+  bgrg,
+  bgrb,
+  bgra,
+  bggr,
+  bggg,
+  bggb,
+  bgga,
+  bgbr,
+  bgbg,
+  bgbb,
+  bgba,
+  bgar,
+  bgag,
+  bgab,
+  bgaa,
+  bbrr,
+  bbrg,
+  bbrb,
+  bbra,
+  bbgr,
+  bbgg,
+  bbgb,
+  bbga,
+  bbbr,
+  bbbg,
+  bbbb,
+  bbba,
+  bbar,
+  bbag,
+  bbab,
+  bbaa,
+  barr,
+  barg,
+  barb,
+  bara,
+  bagr,
+  bagg,
+  bagb,
+  baga,
+  babr,
+  babg,
+  babb,
+  baba,
+  baar,
+  baag,
+  baab,
+  baaa,
+  arrr,
+  arrg,
+  arrb,
+  arra,
+  argr,
+  argg,
+  argb,
+  arga,
+  arbr,
+  arbg,
+  arbb,
+  arba,
+  arar,
+  arag,
+  arab,
+  araa,
+  agrr,
+  agrg,
+  agrb,
+  agra,
+  aggr,
+  aggg,
+  aggb,
+  agga,
+  agbr,
+  agbg,
+  agbb,
+  agba,
+  agar,
+  agag,
+  agab,
+  agaa,
+  abrr,
+  abrg,
+  abrb,
+  abra,
+  abgr,
+  abgg,
+  abgb,
+  abga,
+  abbr,
+  abbg,
+  abbb,
+  abba,
+  abar,
+  abag,
+  abab,
+  abaa,
+  aarr,
+  aarg,
+  aarb,
+  aara,
+  aagr,
+  aagg,
+  aagb,
+  aaga,
+  aabr,
+  aabg,
+  aabb,
+  aaba,
+  aaar,
+  aaag,
+  aaab,
+  aaaa,
+  s,
+  t,
+  p,
+  q,
+  ss,
+  st,
+  sp,
+  sq,
+  ts,
+  tt,
+  tp,
+  tq,
+  ps,
+  pt,
+  pp,
+  pq,
+  qs,
+  qt,
+  qp,
+  qq,
+  sss,
+  sst,
+  ssp,
+  ssq,
+  sts,
+  stt,
+  stp,
+  stq,
+  sps,
+  spt,
+  spp,
+  spq,
+  sqs,
+  sqt,
+  sqp,
+  sqq,
+  tss,
+  tst,
+  tsp,
+  tsq,
+  tts,
+  ttt,
+  ttp,
+  ttq,
+  tps,
+  tpt,
+  tpp,
+  tpq,
+  tqs,
+  tqt,
+  tqp,
+  tqq,
+  pss,
+  pst,
+  psp,
+  psq,
+  pts,
+  ptt,
+  ptp,
+  ptq,
+  pps,
+  ppt,
+  ppp,
+  ppq,
+  pqs,
+  pqt,
+  pqp,
+  pqq,
+  qss,
+  qst,
+  qsp,
+  qsq,
+  qts,
+  qtt,
+  qtp,
+  qtq,
+  qps,
+  qpt,
+  qpp,
+  qpq,
+  qqs,
+  qqt,
+  qqp,
+  qqq,
+  ssss,
+  ssst,
+  sssp,
+  sssq,
+  ssts,
+  sstt,
+  sstp,
+  sstq,
+  ssps,
+  sspt,
+  sspp,
+  sspq,
+  ssqs,
+  ssqt,
+  ssqp,
+  ssqq,
+  stss,
+  stst,
+  stsp,
+  stsq,
+  stts,
+  sttt,
+  sttp,
+  sttq,
+  stps,
+  stpt,
+  stpp,
+  stpq,
+  stqs,
+  stqt,
+  stqp,
+  stqq,
+  spss,
+  spst,
+  spsp,
+  spsq,
+  spts,
+  sptt,
+  sptp,
+  sptq,
+  spps,
+  sppt,
+  sppp,
+  sppq,
+  spqs,
+  spqt,
+  spqp,
+  spqq,
+  sqss,
+  sqst,
+  sqsp,
+  sqsq,
+  sqts,
+  sqtt,
+  sqtp,
+  sqtq,
+  sqps,
+  sqpt,
+  sqpp,
+  sqpq,
+  sqqs,
+  sqqt,
+  sqqp,
+  sqqq,
+  tsss,
+  tsst,
+  tssp,
+  tssq,
+  tsts,
+  tstt,
+  tstp,
+  tstq,
+  tsps,
+  tspt,
+  tspp,
+  tspq,
+  tsqs,
+  tsqt,
+  tsqp,
+  tsqq,
+  ttss,
+  ttst,
+  ttsp,
+  ttsq,
+  ttts,
+  tttt,
+  tttp,
+  tttq,
+  ttps,
+  ttpt,
+  ttpp,
+  ttpq,
+  ttqs,
+  ttqt,
+  ttqp,
+  ttqq,
+  tpss,
+  tpst,
+  tpsp,
+  tpsq,
+  tpts,
+  tptt,
+  tptp,
+  tptq,
+  tpps,
+  tppt,
+  tppp,
+  tppq,
+  tpqs,
+  tpqt,
+  tpqp,
+  tpqq,
+  tqss,
+  tqst,
+  tqsp,
+  tqsq,
+  tqts,
+  tqtt,
+  tqtp,
+  tqtq,
+  tqps,
+  tqpt,
+  tqpp,
+  tqpq,
+  tqqs,
+  tqqt,
+  tqqp,
+  tqqq,
+  psss,
+  psst,
+  pssp,
+  pssq,
+  psts,
+  pstt,
+  pstp,
+  pstq,
+  psps,
+  pspt,
+  pspp,
+  pspq,
+  psqs,
+  psqt,
+  psqp,
+  psqq,
+  ptss,
+  ptst,
+  ptsp,
+  ptsq,
+  ptts,
+  pttt,
+  pttp,
+  pttq,
+  ptps,
+  ptpt,
+  ptpp,
+  ptpq,
+  ptqs,
+  ptqt,
+  ptqp,
+  ptqq,
+  ppss,
+  ppst,
+  ppsp,
+  ppsq,
+  ppts,
+  pptt,
+  pptp,
+  pptq,
+  ppps,
+  pppt,
+  pppp,
+  pppq,
+  ppqs,
+  ppqt,
+  ppqp,
+  ppqq,
+  pqss,
+  pqst,
+  pqsp,
+  pqsq,
+  pqts,
+  pqtt,
+  pqtp,
+  pqtq,
+  pqps,
+  pqpt,
+  pqpp,
+  pqpq,
+  pqqs,
+  pqqt,
+  pqqp,
+  pqqq,
+  qsss,
+  qsst,
+  qssp,
+  qssq,
+  qsts,
+  qstt,
+  qstp,
+  qstq,
+  qsps,
+  qspt,
+  qspp,
+  qspq,
+  qsqs,
+  qsqt,
+  qsqp,
+  qsqq,
+  qtss,
+  qtst,
+  qtsp,
+  qtsq,
+  qtts,
+  qttt,
+  qttp,
+  qttq,
+  qtps,
+  qtpt,
+  qtpp,
+  qtpq,
+  qtqs,
+  qtqt,
+  qtqp,
+  qtqq,
+  qpss,
+  qpst,
+  qpsp,
+  qpsq,
+  qpts,
+  qptt,
+  qptp,
+  qptq,
+  qpps,
+  qppt,
+  qppp,
+  qppq,
+  qpqs,
+  qpqt,
+  qpqp,
+  qpqq,
+  qqss,
+  qqst,
+  qqsp,
+  qqsq,
+  qqts,
+  qqtt,
+  qqtp,
+  qqtq,
+  qqps,
+  qqpt,
+  qqpp,
+  qqpq,
+  qqqs,
+  qqqt,
+  qqqp,
+  qqqq,
+} from "./swizzles";
 
 export { argument } from "./argument";
 

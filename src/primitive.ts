@@ -36,6 +36,60 @@ export const primitiveBases: {
   bvec4: "bool",
 };
 
+export type PairPrimitive = Vec2Primitive | Bvec2Primitive;
+export const pairPrimitives: ReadonlyArray<PairPrimitive> = ["vec2", "bvec2"];
+
+export const primitivePairs: {
+  readonly [primitive in AnyPrimitive]: PairPrimitive;
+} = {
+  float: "vec2",
+  vec2: "vec2",
+  vec3: "vec2",
+  vec4: "vec2",
+  bool: "bvec2",
+  bvec2: "bvec2",
+  bvec3: "bvec2",
+  bvec4: "bvec2",
+};
+
+export type TripletPrimitive = Vec3Primitive | Bvec3Primitive;
+export const tripletPrimitives: ReadonlyArray<TripletPrimitive> = [
+  "vec3",
+  "bvec3",
+];
+
+export const primitiveTriplets: {
+  readonly [primitive in AnyPrimitive]: TripletPrimitive;
+} = {
+  float: "vec3",
+  vec2: "vec3",
+  vec3: "vec3",
+  vec4: "vec3",
+  bool: "bvec3",
+  bvec2: "bvec3",
+  bvec3: "bvec3",
+  bvec4: "bvec3",
+};
+
+export type QuartetPrimitive = Vec4Primitive | Bvec4Primitive;
+export const quartetPrimitives: ReadonlyArray<QuartetPrimitive> = [
+  "vec4",
+  "bvec4",
+];
+
+export const primitiveQuartets: {
+  readonly [primitive in AnyPrimitive]: QuartetPrimitive;
+} = {
+  float: "vec4",
+  vec2: "vec4",
+  vec3: "vec4",
+  vec4: "vec4",
+  bool: "bvec4",
+  bvec2: "bvec4",
+  bvec3: "bvec4",
+  bvec4: "bvec4",
+};
+
 export const primitiveArities: {
   readonly [primitive in AnyPrimitive]: number;
 } = {

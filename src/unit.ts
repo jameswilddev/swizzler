@@ -32,6 +32,7 @@ import { notScenarios } from "./operators/not/unit";
 import { andScenarios } from "./operators/and/unit";
 import { orScenarios } from "./operators/or/unit";
 import { xorScenarios } from "./operators/xor/unit";
+import { swizzleScenarios } from "./swizzles/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -51,6 +52,7 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...andScenarios,
   ...orScenarios,
   ...xorScenarios,
+  ...swizzleScenarios,
 ];
 
 const glContext = gl(1, 1);
@@ -127,6 +129,9 @@ if (vertexShader === null) {
                     expect(actual).toBeTrue();
                     break;
 
+                  case null:
+                    break;
+
                   default:
                     expect(actual).toBeCloseTo(scalar, 3);
                     break;
@@ -145,6 +150,9 @@ if (vertexShader === null) {
 
                     case true:
                       expect(actualValue).toBeTrue();
+                      break;
+
+                    case null:
                       break;
 
                     default:
@@ -170,6 +178,9 @@ if (vertexShader === null) {
                     expect(actual).toBeTrue();
                     break;
 
+                  case null:
+                    break;
+
                   default:
                     expect(actual).toBeCloseTo(scalar, 3);
                     break;
@@ -188,6 +199,9 @@ if (vertexShader === null) {
 
                     case true:
                       expect(actualValue).toBeTrue();
+                      break;
+
+                    case null:
                       break;
 
                     default:
@@ -364,6 +378,9 @@ if (vertexShader === null) {
 
                               case true:
                                 expect(actualValue).toEqual(255);
+                                break;
+
+                              case null:
                                 break;
 
                               default:

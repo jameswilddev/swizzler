@@ -4,11 +4,11 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../implementations/literal-implementation";
-import { FunctionImplementation } from "../../implementations/function-implementation";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { LiteralImplementation } from "../../../implementations/literal-implementation";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function degrees(
   degrees: Expression<FloatPrimitive>

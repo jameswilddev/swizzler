@@ -47,6 +47,14 @@ import { inversesqrtScenarios } from "./functions/exponential/inversesqrt/unit";
 import { sqrtScenarios } from "./functions/exponential/sqrt/unit";
 import { logScenarios } from "./functions/exponential/log/unit";
 import { log2Scenarios } from "./functions/exponential/log2/unit";
+import { acosScenarios } from "./functions/angle-and-trigonometry/acos/unit";
+import { asinScenarios } from "./functions/angle-and-trigonometry/asin/unit";
+import { atanScenarios } from "./functions/angle-and-trigonometry/atan/unit";
+import { cosScenarios } from "./functions/angle-and-trigonometry/cos/unit";
+import { degreesScenarios } from "./functions/angle-and-trigonometry/degrees/unit";
+import { radiansScenarios } from "./functions/angle-and-trigonometry/radians/unit";
+import { sinScenarios } from "./functions/angle-and-trigonometry/sin/unit";
+import { tanScenarios } from "./functions/angle-and-trigonometry/tan/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -81,6 +89,14 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...sqrtScenarios,
   ...logScenarios,
   ...log2Scenarios,
+  ...acosScenarios,
+  ...asinScenarios,
+  ...atanScenarios,
+  ...cosScenarios,
+  ...degreesScenarios,
+  ...radiansScenarios,
+  ...sinScenarios,
+  ...tanScenarios,
 ];
 
 const glContext = gl(1, 1);

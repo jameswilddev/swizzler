@@ -4,28 +4,28 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { func } from "../../helpers";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { func } from "../../../helpers";
 
-export function tan(
+export function cos(
   angle: Expression<FloatPrimitive>
 ): Expression<FloatPrimitive>;
 
-export function tan(
+export function cos(
   angle: Expression<Vec2Primitive>
 ): Expression<Vec2Primitive>;
 
-export function tan(
+export function cos(
   angle: Expression<Vec3Primitive>
 ): Expression<Vec3Primitive>;
 
-export function tan(
+export function cos(
   angle: Expression<Vec4Primitive>
 ): Expression<Vec4Primitive>;
 
-export function tan(
+export function cos(
   angle: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.tan", "tan", angle);
+  return func("Math.cos", "cos", angle);
 }

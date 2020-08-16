@@ -41,6 +41,12 @@ import { normalizeScenarios } from "./functions/geometric/normalize/unit";
 import { reflectScenarios } from "./functions/geometric/reflect/unit";
 import { refractScenarios } from "./functions/geometric/refract/unit";
 import { faceforwardScenarios } from "./functions/geometric/faceforward/unit";
+import { expScenarios } from "./functions/exponential/exp/unit";
+import { exp2Scenarios } from "./functions/exponential/exp2/unit";
+import { inversesqrtScenarios } from "./functions/exponential/inversesqrt/unit";
+import { sqrtScenarios } from "./functions/exponential/sqrt/unit";
+import { logScenarios } from "./functions/exponential/log/unit";
+import { log2Scenarios } from "./functions/exponential/log2/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -69,6 +75,12 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...reflectScenarios,
   ...refractScenarios,
   ...faceforwardScenarios,
+  ...expScenarios,
+  ...exp2Scenarios,
+  ...inversesqrtScenarios,
+  ...sqrtScenarios,
+  ...logScenarios,
+  ...log2Scenarios,
 ];
 
 const glContext = gl(1, 1);

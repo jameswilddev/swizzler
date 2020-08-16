@@ -4,9 +4,9 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
-import { func } from "../../helpers";
+} from "../../../primitive";
+import { Expression } from "../../../expression";
+import { func } from "../../../helpers";
 
 export function log(x: Expression<FloatPrimitive>): Expression<FloatPrimitive>;
 

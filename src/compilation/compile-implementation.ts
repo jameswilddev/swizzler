@@ -3,13 +3,8 @@ import { AnyPrimitive } from "../primitive";
 
 export function compileImplementation(
   returnText: string,
-  root: Implementation<AnyPrimitive>,
-  getPrefix: (implementation: Implementation<AnyPrimitive>) => string,
-  getSuffix: (implementation: Implementation<AnyPrimitive>) => string
+  root: Implementation<AnyPrimitive>
 ): string {
-  getPrefix;
-  getSuffix;
-
   const output = "";
 
   function recurse(

@@ -5,10 +5,5 @@ import { Expression } from "../expression";
 export function compileJavascript(
   expression: Expression<AnyPrimitive>
 ): string {
-  return compileImplementation(
-    "return ",
-    expression.javascript,
-    () => `const `,
-    () => ""
-  );
+  return compileImplementation("return ", expression.javascript);
 }

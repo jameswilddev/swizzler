@@ -96,16 +96,16 @@ export function smoothstep(
           new BinaryOperatorImplementation(
             x.primitive,
             new LiteralImplementation("float", ["2"]),
-            "-",
+            "*",
             javascriptA
           )
         )
       )
     ),
     new FunctionImplementation(x.primitive, "smoothstep", [
-      x.glsl,
       edge0.glsl,
       edge1.glsl,
+      x.glsl,
     ])
   );
 }

@@ -63,6 +63,9 @@ import { stepScenarios } from "./functions/common/step/unit";
 import { maxScenarios } from "./functions/common/max/unit";
 import { minScenarios } from "./functions/common/min/unit";
 import { signScenarios } from "./functions/common/sign/unit";
+import { clampScenarios } from "./functions/common/clamp/unit";
+import { mixScenarios } from "./functions/common/mix/unit";
+import { smoothstepScenarios } from "./functions/common/smoothstep/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -113,6 +116,9 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...maxScenarios,
   ...minScenarios,
   ...signScenarios,
+  ...clampScenarios,
+  ...mixScenarios,
+  ...smoothstepScenarios,
 ];
 
 const glContext = gl(1, 1);

@@ -25,6 +25,7 @@ export { floor } from "./functions/common/floor";
 export { fract } from "./functions/common/fract";
 export { max } from "./functions/common/max";
 export { min } from "./functions/common/min";
+export { mix } from "./functions/common/mix";
 export { mod } from "./functions/common/mod";
 export { sign } from "./functions/common/sign";
 export { smoothstep } from "./functions/common/smoothstep";

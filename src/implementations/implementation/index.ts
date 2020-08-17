@@ -1,4 +1,4 @@
-import { AnyPrimitive } from "../primitive";
+import { AnyPrimitive } from "../../primitive";
 
 export interface Implementation<TPrimitive extends AnyPrimitive> {
   readonly primitive: TPrimitive;

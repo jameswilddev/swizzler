@@ -6,7 +6,8 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
+import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
+import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function mod(
   x: Expression<FloatPrimitive>,
@@ -47,5 +48,25 @@ export function mod(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.mod", "mod", x, y);
+  return new Expression(
+    new BinaryOperatorImplementation(
+      x.primitive,
+      x.javascript,
+      "-",
+      new BinaryOperatorImplementation(
+        x.primitive,
+        y.javascript,
+        "*",
+        new FunctionImplementation(x.primitive, "Math.floor", [
+          new BinaryOperatorImplementation(
+            x.primitive,
+            x.javascript,
+            "/",
+            y.javascript
+          ),
+        ])
+      )
+    ),
+    new FunctionImplementation(x.primitive, "mod", [x.glsl, y.glsl])
+  );
 }

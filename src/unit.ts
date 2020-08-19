@@ -66,6 +66,8 @@ import { signScenarios } from "./functions/common/sign/unit";
 import { clampScenarios } from "./functions/common/clamp/unit";
 import { mixScenarios } from "./functions/common/mix/unit";
 import { smoothstepScenarios } from "./functions/common/smoothstep/unit";
+import { modScenarios } from "./functions/common/mod/unit";
+import { powScenarios } from "./functions/exponential/pow/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -119,6 +121,8 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...clampScenarios,
   ...mixScenarios,
   ...smoothstepScenarios,
+  ...modScenarios,
+  ...powScenarios,
 ];
 
 const glContext = gl(1, 1);

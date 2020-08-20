@@ -4,6 +4,7 @@ import {
   Vec3Primitive,
   Vec4Primitive,
   AnyFloatPrimitive,
+  Mat2Primitive,
 } from "../../primitive";
 import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
 import { FunctionImplementation } from "../../implementations/function-implementation";
@@ -50,6 +51,8 @@ export function vec4(
   a: Expression<FloatPrimitive>,
   b: Expression<Vec3Primitive>
 ): Expression<Vec4Primitive>;
+
+export function vec4(a: Expression<Mat2Primitive>): Expression<Vec4Primitive>;
 
 export function vec4(
   ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>

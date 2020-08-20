@@ -1,21 +1,16 @@
-import { vec2, vec3, vec4, float } from "../..";
+import { vec2, vec3, mat2, float } from "../..";
 import { Scenario } from "../../scenario/unit";
-import { mat2 } from "../mat2";
 
-export const vec4Scenarios: ReadonlyArray<Scenario> = [
+export const mat2Scenarios: ReadonlyArray<Scenario> = [
+  ["mat2 float", mat2(float(75 / 255)), [75 / 255, 0, 0, 75 / 255]],
   [
-    "vec4 float",
-    vec4(float(75 / 255)),
-    [75 / 255, 75 / 255, 75 / 255, 75 / 255],
-  ],
-  [
-    "vec4 float float float float",
-    vec4(float(75 / 255), float(201 / 255), float(100 / 255), float(240 / 255)),
+    "mat2 float float float float",
+    mat2(float(75 / 255), float(201 / 255), float(100 / 255), float(240 / 255)),
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 vec2 float float",
-    vec4(
+    "mat2 vec2 float float",
+    mat2(
       vec2(float(75 / 255), float(201 / 255)),
       float(100 / 255),
       float(240 / 255)
@@ -23,8 +18,8 @@ export const vec4Scenarios: ReadonlyArray<Scenario> = [
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 float vec2 float",
-    vec4(
+    "mat2 float vec2 float",
+    mat2(
       float(75 / 255),
       vec2(float(201 / 255), float(100 / 255)),
       float(240 / 255)
@@ -32,8 +27,8 @@ export const vec4Scenarios: ReadonlyArray<Scenario> = [
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 float float vec2",
-    vec4(
+    "mat2 float float vec2",
+    mat2(
       float(75 / 255),
       float(201 / 255),
       vec2(float(100 / 255), float(240 / 255))
@@ -41,38 +36,26 @@ export const vec4Scenarios: ReadonlyArray<Scenario> = [
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 vec2 vec2",
-    vec4(
+    "mat2 vec2 vec2",
+    mat2(
       vec2(float(75 / 255), float(201 / 255)),
       vec2(float(100 / 255), float(240 / 255))
     ),
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 vec3 float",
-    vec4(
+    "mat2 vec3 float",
+    mat2(
       vec3(float(75 / 255), float(201 / 255), float(100 / 255)),
       float(240 / 255)
     ),
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],
   [
-    "vec4 float vec3",
-    vec4(
+    "mat2 float vec3",
+    mat2(
       float(75 / 255),
       vec3(float(201 / 255), float(100 / 255), float(240 / 255))
-    ),
-    [75 / 255, 201 / 255, 100 / 255, 240 / 255],
-  ],
-  [
-    "vec4 mat2",
-    vec4(
-      mat2(
-        float(75 / 255),
-        float(201 / 255),
-        float(100 / 255),
-        float(240 / 255)
-      )
     ),
     [75 / 255, 201 / 255, 100 / 255, 240 / 255],
   ],

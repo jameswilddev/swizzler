@@ -344,6 +344,10 @@ if (vertexShader === null) {
                     conditional(w(expression), float(1), float(0))
                   );
                   break;
+
+                case "mat2":
+                  expandedExpression = vec4(expression);
+                  break;
               }
 
               const compiledGlsl = compileGlsl(expandedExpression);

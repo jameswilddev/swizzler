@@ -172,8 +172,8 @@ if (vertexShader === null) {
       } else {
         for (const scenario of scenarios) {
           const description = scenario[0];
-          const expression = scenario[1];
-          const expected = scenario[2];
+          const expression = scenario[2];
+          const expected = scenario[3];
 
           describe(description, () => {
             // todo: reuse
@@ -285,195 +285,294 @@ if (vertexShader === null) {
             });
 
             it("executes as GLSL", () => {
-              let expandedExpression: Expression<Vec4Primitive>;
+              let expandedExpressions: ReadonlyArray<{
+                readonly expression: Expression<Vec4Primitive>;
+                readonly result: readonly [
+                  null | number,
+                  null | number,
+                  null | number,
+                  null | number
+                ];
+              }>;
 
-              switch (expression.primitive) {
+              const mapTriStateBooleanToNumber = (
+                value: null | boolean
+              ): null | number => {
+                switch (value) {
+                  case null:
+                    return null;
+
+                  case false:
+                    return 0;
+
+                  case true:
+                    return 255;
+                }
+              };
+
+              switch (scenario[1]) {
                 case "float":
-                  expandedExpression = vec4(
-                    expression,
-                    float(0),
-                    float(0),
-                    float(0)
-                  );
+                  expandedExpressions = [
+                    {
+                      expression: vec4(
+                        scenario[2],
+                        float(0),
+                        float(0),
+                        float(0)
+                      ),
+                      result: [scenario[3][0] * 255, null, null, null],
+                    },
+                  ];
                   break;
 
                 case "vec2":
-                  expandedExpression = vec4(expression, float(0), float(0));
+                  expandedExpressions = [
+                    {
+                      expression: vec4(scenario[2], float(0), float(0)),
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        null,
+                        null,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "vec3":
-                  expandedExpression = vec4(expression, float(0));
+                  expandedExpressions = [
+                    {
+                      expression: vec4(scenario[2], float(0)),
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        scenario[3][2] * 255,
+                        null,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "vec4":
-                  expandedExpression = expression;
+                  expandedExpressions = [
+                    {
+                      expression: scenario[2],
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        scenario[3][2] * 255,
+                        scenario[3][3] * 255,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "bool":
-                  expandedExpression = vec4(
-                    conditional(expression, float(1), float(0)),
-                    float(0),
-                    float(0),
-                    float(0)
-                  );
+                  expandedExpressions = [
+                    {
+                      expression: vec4(
+                        conditional(scenario[2], float(1), float(0)),
+                        float(0),
+                        float(0),
+                        float(0)
+                      ),
+                      result: [
+                        mapTriStateBooleanToNumber(scenario[3][0]),
+                        null,
+                        null,
+                        null,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "bvec2":
-                  expandedExpression = vec4(
-                    conditional(x(expression), float(1), float(0)),
-                    conditional(y(expression), float(1), float(0)),
-                    float(0),
-                    float(0)
-                  );
+                  expandedExpressions = [
+                    {
+                      expression: vec4(
+                        conditional(x(scenario[2]), float(1), float(0)),
+                        conditional(y(scenario[2]), float(1), float(0)),
+                        float(0),
+                        float(0)
+                      ),
+                      result: [
+                        mapTriStateBooleanToNumber(scenario[3][0]),
+                        mapTriStateBooleanToNumber(scenario[3][1]),
+                        null,
+                        null,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "bvec3":
-                  expandedExpression = vec4(
-                    conditional(x(expression), float(1), float(0)),
-                    conditional(y(expression), float(1), float(0)),
-                    conditional(z(expression), float(1), float(0)),
-                    float(0)
-                  );
+                  expandedExpressions = [
+                    {
+                      expression: vec4(
+                        conditional(x(scenario[2]), float(1), float(0)),
+                        conditional(y(scenario[2]), float(1), float(0)),
+                        conditional(z(scenario[2]), float(1), float(0)),
+                        float(0)
+                      ),
+                      result: [
+                        mapTriStateBooleanToNumber(scenario[3][0]),
+                        mapTriStateBooleanToNumber(scenario[3][1]),
+                        mapTriStateBooleanToNumber(scenario[3][2]),
+                        null,
+                      ],
+                    },
+                  ];
                   break;
 
                 case "bvec4":
-                  expandedExpression = vec4(
-                    conditional(x(expression), float(1), float(0)),
-                    conditional(y(expression), float(1), float(0)),
-                    conditional(z(expression), float(1), float(0)),
-                    conditional(w(expression), float(1), float(0))
-                  );
+                  expandedExpressions = [
+                    {
+                      expression: vec4(
+                        conditional(x(scenario[2]), float(1), float(0)),
+                        conditional(y(scenario[2]), float(1), float(0)),
+                        conditional(z(scenario[2]), float(1), float(0)),
+                        conditional(w(scenario[2]), float(1), float(0))
+                      ),
+                      result: [
+                        mapTriStateBooleanToNumber(scenario[3][0]),
+                        mapTriStateBooleanToNumber(scenario[3][1]),
+                        mapTriStateBooleanToNumber(scenario[3][2]),
+                        mapTriStateBooleanToNumber(scenario[3][3]),
+                      ],
+                    },
+                  ];
                   break;
 
                 case "mat2":
-                  expandedExpression = vec4(expression);
+                  expandedExpressions = [
+                    {
+                      expression: vec4(scenario[2]),
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        scenario[3][2] * 255,
+                        scenario[3][3] * 255,
+                      ],
+                    },
+                  ];
                   break;
               }
 
-              const compiledGlsl = compileGlsl(expandedExpression);
-              let fragmentShader: null | WebGLShader = null;
-              let program: null | WebGLProgram = null;
-              try {
-                fragmentShader = glContext.createShader(
-                  glContext.FRAGMENT_SHADER
-                );
-                if (fragmentShader === null) {
-                  fail("Failed to create a fragment shader.");
-                } else {
-                  glContext.shaderSource(fragmentShader, compiledGlsl);
-                  glContext.compileShader(fragmentShader);
-
-                  if (
-                    !glContext.getShaderParameter(
-                      fragmentShader,
-                      glContext.COMPILE_STATUS
-                    )
-                  ) {
-                    fail(
-                      `Failed to compile the fragment shader; ${glContext.getShaderInfoLog(
-                        fragmentShader
-                      )}`
-                    );
+              for (const expandedExpression of expandedExpressions) {
+                const compiledGlsl = compileGlsl(expandedExpression.expression);
+                let fragmentShader: null | WebGLShader = null;
+                let program: null | WebGLProgram = null;
+                try {
+                  fragmentShader = glContext.createShader(
+                    glContext.FRAGMENT_SHADER
+                  );
+                  if (fragmentShader === null) {
+                    fail("Failed to create a fragment shader.");
                   } else {
-                    program = glContext.createProgram();
+                    glContext.shaderSource(fragmentShader, compiledGlsl);
+                    glContext.compileShader(fragmentShader);
 
-                    if (program === null) {
-                      fail("Failed to create a program.");
+                    if (
+                      !glContext.getShaderParameter(
+                        fragmentShader,
+                        glContext.COMPILE_STATUS
+                      )
+                    ) {
+                      fail(
+                        `Failed to compile the fragment shader; ${glContext.getShaderInfoLog(
+                          fragmentShader
+                        )}`
+                      );
                     } else {
-                      glContext.attachShader(program, vertexShader);
-                      glContext.attachShader(program, fragmentShader);
+                      program = glContext.createProgram();
 
-                      glContext.linkProgram(program);
-
-                      if (
-                        !glContext.getProgramParameter(
-                          program,
-                          glContext.LINK_STATUS
-                        )
-                      ) {
-                        fail(
-                          `Failed to link the program; ${glContext.getProgramInfoLog(
-                            program
-                          )}`
-                        );
+                      if (program === null) {
+                        fail("Failed to create a program.");
                       } else {
-                        glContext.useProgram(program);
+                        glContext.attachShader(program, vertexShader);
+                        glContext.attachShader(program, fragmentShader);
 
-                        const position = glContext.getAttribLocation(
-                          program,
-                          "position"
-                        );
+                        glContext.linkProgram(program);
 
-                        glContext.enableVertexAttribArray(position);
-
-                        glContext.vertexAttribPointer(
-                          position,
-                          4,
-                          glContext.FLOAT,
-                          false,
-                          0,
-                          0
-                        );
-
-                        glContext.drawElements(
-                          glContext.TRIANGLES,
-                          6,
-                          glContext.UNSIGNED_BYTE,
-                          0
-                        );
-
-                        const actual = new Uint8Array(4);
-
-                        glContext.readPixels(
-                          0,
-                          0,
-                          1,
-                          1,
-                          glContext.RGBA,
-                          glContext.UNSIGNED_BYTE,
-                          actual
-                        );
-
-                        const error = glContext.getError();
-
-                        if (error !== glContext.NO_ERROR) {
-                          fail(`GL error ${error}.`);
+                        if (
+                          !glContext.getProgramParameter(
+                            program,
+                            glContext.LINK_STATUS
+                          )
+                        ) {
+                          fail(
+                            `Failed to link the program; ${glContext.getProgramInfoLog(
+                              program
+                            )}`
+                          );
                         } else {
-                          for (
-                            let index = 0;
-                            index < expected.length;
-                            index++
-                          ) {
-                            const expectedValue = expected[index];
-                            const actualValue = actual[index];
+                          glContext.useProgram(program);
 
-                            switch (expectedValue) {
-                              case false:
-                                expect(actualValue).toEqual(0);
-                                break;
+                          const position = glContext.getAttribLocation(
+                            program,
+                            "position"
+                          );
 
-                              case true:
-                                expect(actualValue).toEqual(255);
-                                break;
+                          glContext.enableVertexAttribArray(position);
 
-                              case null:
-                                break;
+                          glContext.vertexAttribPointer(
+                            position,
+                            4,
+                            glContext.FLOAT,
+                            false,
+                            0,
+                            0
+                          );
 
-                              default:
+                          glContext.drawElements(
+                            glContext.TRIANGLES,
+                            6,
+                            glContext.UNSIGNED_BYTE,
+                            0
+                          );
+
+                          const actual = new Uint8Array(4);
+
+                          glContext.readPixels(
+                            0,
+                            0,
+                            1,
+                            1,
+                            glContext.RGBA,
+                            glContext.UNSIGNED_BYTE,
+                            actual
+                          );
+
+                          const error = glContext.getError();
+
+                          if (error !== glContext.NO_ERROR) {
+                            fail(`GL error ${error}.`);
+                          } else {
+                            for (
+                              let index = 0;
+                              index < expected.length;
+                              index++
+                            ) {
+                              const expectedValue =
+                                expandedExpression.result[index];
+                              const actualValue = actual[index];
+
+                              if (expectedValue !== null) {
                                 expect(actualValue).toBeCloseTo(
-                                  expectedValue * 255,
+                                  expectedValue,
                                   0
                                 );
+                              }
                             }
                           }
                         }
                       }
                     }
                   }
+                } finally {
+                  glContext.deleteProgram(program);
+                  glContext.deleteShader(fragmentShader);
                 }
-              } finally {
-                glContext.deleteProgram(program);
-                glContext.deleteShader(fragmentShader);
               }
             });
           });

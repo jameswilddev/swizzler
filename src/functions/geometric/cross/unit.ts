@@ -4,6 +4,7 @@ import { float, vec3, add, cross } from "../../..";
 export const crossScenarios: ReadonlyArray<Scenario> = [
   [
     "cross",
+    "vec3",
     add(
       cross(
         vec3(float(0.17647), float(0.5098), float(0.94117)),

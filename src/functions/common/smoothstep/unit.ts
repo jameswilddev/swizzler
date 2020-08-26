@@ -4,21 +4,25 @@ import { float, vec2, vec3, vec4, smoothstep } from "../../..";
 export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   [
     "smoothstep float float float less than lower",
+    "float",
     smoothstep(float(0.3), float(0.7), float(0.2)),
     [0],
   ],
   [
     "smoothstep float float float between",
+    "float",
     smoothstep(float(0.3), float(0.7), float(0.6)),
     [0.84375],
   ],
   [
     "smoothstep float float float greater than upper",
+    "float",
     smoothstep(float(0.3), float(0.7), float(0.8)),
     [1],
   ],
   [
     "smoothstep vec2 vec2 vec2 a",
+    "vec2",
     smoothstep(
       vec2(float(0.3), float(12.4)),
       vec2(float(0.7), float(20.1)),
@@ -28,6 +32,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec2 vec2 vec2 b",
+    "vec2",
     smoothstep(
       vec2(float(0.3), float(12.4)),
       vec2(float(0.7), float(20.1)),
@@ -37,6 +42,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec2 vec2 vec2 c",
+    "vec2",
     smoothstep(
       vec2(float(0.3), float(12.4)),
       vec2(float(0.7), float(20.1)),
@@ -46,21 +52,25 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec2 a",
+    "vec2",
     smoothstep(float(0.3), float(0.7), vec2(float(0.9), float(0.4))),
     [1, 0.15625000000000014],
   ],
   [
     "smoothstep float float vec2 b",
+    "vec2",
     smoothstep(float(0.3), float(0.7), vec2(float(0.2), float(0.9))),
     [0, 1],
   ],
   [
     "smoothstep float float vec2 c",
+    "vec2",
     smoothstep(float(0.3), float(0.7), vec2(float(0.6), float(0.1))),
     [0.84375, 0],
   ],
   [
     "smoothstep vec3 vec3 vec3 a",
+    "vec3",
     smoothstep(
       vec3(float(0.3), float(12.4), float(1.2)),
       vec3(float(0.7), float(20.1), float(8.9)),
@@ -70,6 +80,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec3 vec3 vec3 b",
+    "vec3",
     smoothstep(
       vec3(float(0.3), float(12.4), float(1.2)),
       vec3(float(0.7), float(20.1), float(8.9)),
@@ -79,6 +90,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec3 vec3 vec3 c",
+    "vec3",
     smoothstep(
       vec3(float(0.3), float(12.4), float(1.2)),
       vec3(float(0.7), float(20.1), float(8.9)),
@@ -88,6 +100,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec3 a",
+    "vec3",
     smoothstep(
       float(0.3),
       float(0.7),
@@ -97,6 +110,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec3 b",
+    "vec3",
     smoothstep(
       float(0.3),
       float(0.7),
@@ -106,6 +120,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec3 c",
+    "vec3",
     smoothstep(
       float(0.3),
       float(0.7),
@@ -115,6 +130,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec4 vec4 vec4 a",
+    "vec4",
     smoothstep(
       vec4(float(0.3), float(12.4), float(1.2), float(-45.3)),
       vec4(float(0.7), float(20.1), float(8.9), float(-33.2)),
@@ -124,6 +140,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec4 vec4 vec4 b",
+    "vec4",
     smoothstep(
       vec4(float(0.3), float(12.4), float(1.2), float(-45.3)),
       vec4(float(0.7), float(20.1), float(8.9), float(-33.2)),
@@ -133,6 +150,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep vec4 vec4 vec4 c",
+    "vec4",
     smoothstep(
       vec4(float(0.3), float(12.4), float(1.2), float(-45.3)),
       vec4(float(0.7), float(20.1), float(8.9), float(-33.2)),
@@ -142,6 +160,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec4 a",
+    "vec4",
     smoothstep(
       float(0.3),
       float(0.7),
@@ -151,6 +170,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec4 b",
+    "vec4",
     smoothstep(
       float(0.3),
       float(0.7),
@@ -160,6 +180,7 @@ export const smoothstepScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "smoothstep float float vec4 c",
+    "vec4",
     smoothstep(
       float(0.3),
       float(0.7),

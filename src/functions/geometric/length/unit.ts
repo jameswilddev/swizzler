@@ -2,10 +2,11 @@ import { Scenario } from "../../../scenario/unit";
 import { float, vec2, vec3, vec4, length } from "../../..";
 
 export const lengthScenarios: ReadonlyArray<Scenario> = [
-  ["length float positive", length(float(75 / 255)), [75 / 255]],
-  ["length float negative", length(float(-75 / 255)), [75 / 255]],
+  ["length float positive", "float", length(float(75 / 255)), [75 / 255]],
+  ["length float negative", "float", length(float(-75 / 255)), [75 / 255]],
   [
     "length vec2",
+    "float",
     length(vec2(float(108 / 255), float(80 / 255))),
     [
       0.5270681605148687877124407759915551544836531982852138840417133730862653663677860901135743434324634371,
@@ -13,6 +14,7 @@ export const lengthScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "length vec3",
+    "float",
     length(vec3(float(108 / 255), float(80 / 255), float(21 / 255))),
     [
       0.5334630753378744529098654767638801605534094872763101837831363418754337091401979677420684445893064449,
@@ -20,6 +22,7 @@ export const lengthScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "length vec4",
+    "float",
     length(
       vec4(float(108 / 255), float(80 / 255), float(21 / 255), float(50 / 255))
     ),

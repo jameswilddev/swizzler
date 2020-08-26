@@ -4,16 +4,19 @@ import { float, vec2, vec3, vec4, distance } from "../../..";
 export const distanceScenarios: ReadonlyArray<Scenario> = [
   [
     "distance float lesser greater",
+    "float",
     distance(float(75 / 255), float(108 / 255)),
     [33 / 255],
   ],
   [
     "distance float greater lesser",
+    "float",
     distance(float(108 / 255), float(75 / 255)),
     [33 / 255],
   ],
   [
     "distance vec2",
+    "float",
     distance(
       vec2(float(108 / 255), float(240 / 255)),
       vec2(float(75 / 255), float(33 / 255))
@@ -22,6 +25,7 @@ export const distanceScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "distance vec3",
+    "float",
     distance(
       vec3(float(108 / 255), float(240 / 255), float(55 / 255)),
       vec3(float(75 / 255), float(33 / 255), float(40 / 255))
@@ -30,6 +34,7 @@ export const distanceScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "distance vec4",
+    "float",
     distance(
       vec4(
         float(108 / 255),

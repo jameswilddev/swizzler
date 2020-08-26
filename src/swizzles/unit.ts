@@ -1064,16 +1064,19 @@ function forVec12(
     return [
       [
         `${name} vec2`,
+        "float",
         factory(vec2(float(47 / 255), float(148 / 255))),
         [[47, 148][indexA] / 255],
       ],
       [
         `${name} bvec2 true`,
+        "bool",
         factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
         [true],
       ],
       [
         `${name} bvec2 false`,
+        "bool",
         factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
         [false],
       ],
@@ -1117,11 +1120,13 @@ function forVec13(
     return [
       [
         `${name} vec3`,
+        "float",
         factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
         [[47, 148, 104][indexA] / 255],
       ],
       [
         `${name} bvec3 true`,
+        "bool",
         factory(
           bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
         ),
@@ -1129,6 +1134,7 @@ function forVec13(
       ],
       [
         `${name} bvec3 false`,
+        "bool",
         factory(
           bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
         ),
@@ -1174,6 +1180,7 @@ function forVec14(
     return [
       [
         `${name} vec4`,
+        "float",
         factory(
           vec4(
             float(47 / 255),
@@ -1186,6 +1193,7 @@ function forVec14(
       ],
       [
         `${name} bvec4 true`,
+        "bool",
         factory(
           bvec4(
             bool(indexA === 0),
@@ -1198,6 +1206,7 @@ function forVec14(
       ],
       [
         `${name} bvec4 false`,
+        "bool",
         factory(
           bvec4(
             bool(indexA !== 0),
@@ -1244,26 +1253,31 @@ function forVec22(
     return [
       [
         `${name} vec2`,
+        "vec2",
         factory(vec2(float(47 / 255), float(148 / 255))),
         [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255],
       ],
       [
         `${name} bvec2 true ?`,
+        "bvec2",
         factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
         [true, null],
       ],
       [
         `${name} bvec2 false ?`,
+        "bvec2",
         factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
         [false, null],
       ],
       [
         `${name} bvec2 ? true`,
+        "bvec2",
         factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
         [null, true],
       ],
       [
         `${name} bvec2 ? false`,
+        "bvec2",
         factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
         [null, false],
       ],
@@ -1309,11 +1323,13 @@ function forVec23(
     return [
       [
         `${name} vec3`,
+        "vec2",
         factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
         [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255],
       ],
       [
         `${name} bvec3 true ?`,
+        "bvec2",
         factory(
           bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
         ),
@@ -1321,6 +1337,7 @@ function forVec23(
       ],
       [
         `${name} bvec3 false ?`,
+        "bvec2",
         factory(
           bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
         ),
@@ -1328,6 +1345,7 @@ function forVec23(
       ],
       [
         `${name} bvec3 ? true`,
+        "bvec2",
         factory(
           bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
         ),
@@ -1335,6 +1353,7 @@ function forVec23(
       ],
       [
         `${name} bvec3 ? false`,
+        "bvec2",
         factory(
           bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
         ),
@@ -1382,6 +1401,7 @@ function forVec24(
     return [
       [
         `${name} vec4`,
+        "vec2",
         factory(
           vec4(
             float(47 / 255),
@@ -1394,6 +1414,7 @@ function forVec24(
       ],
       [
         `${name} bvec4 true ?`,
+        "bvec2",
         factory(
           bvec4(
             bool(indexA === 0),
@@ -1406,6 +1427,7 @@ function forVec24(
       ],
       [
         `${name} bvec4 false ?`,
+        "bvec2",
         factory(
           bvec4(
             bool(indexA !== 0),
@@ -1418,6 +1440,7 @@ function forVec24(
       ],
       [
         `${name} bvec4 ? true`,
+        "bvec2",
         factory(
           bvec4(
             bool(indexB === 0),
@@ -1430,6 +1453,7 @@ function forVec24(
       ],
       [
         `${name} bvec4 ? false`,
+        "bvec2",
         factory(
           bvec4(
             bool(indexB !== 0),
@@ -1539,6 +1563,7 @@ function forVec34(
     return [
       [
         `${name} vec4`,
+        "vec3",
         factory(
           vec4(
             float(47 / 255),
@@ -1555,6 +1580,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 true ? ?`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexA === 0),
@@ -1567,6 +1593,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 false ? ?`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexA !== 0),
@@ -1579,6 +1606,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 ? true ?`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexB === 0),
@@ -1591,6 +1619,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 ? false ?`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexB !== 0),
@@ -1603,6 +1632,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 ? ? true`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexC === 0),
@@ -1615,6 +1645,7 @@ function forVec34(
       ],
       [
         `${name} bvec4 ? ? false`,
+        "bvec3",
         factory(
           bvec4(
             bool(indexC !== 0),
@@ -1663,6 +1694,7 @@ function forVec42(
     return [
       [
         `${name} vec2`,
+        "vec4",
         factory(vec2(float(47 / 255), float(148 / 255))),
         [
           [47, 148][indexA] / 255,
@@ -1673,41 +1705,49 @@ function forVec42(
       ],
       [
         `${name} bvec2 true ? ? ?`,
+        "bvec4",
         factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
         [true, null, null, null],
       ],
       [
         `${name} bvec2 false ? ? ?`,
+        "bvec4",
         factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
         [false, null, null, null],
       ],
       [
         `${name} bvec2 ? true ? ?`,
+        "bvec4",
         factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
         [null, true, null, null],
       ],
       [
         `${name} bvec2 ? false ? ?`,
+        "bvec4",
         factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
         [null, false, null, null],
       ],
       [
         `${name} bvec2 ? ? true ?`,
+        "bvec4",
         factory(bvec2(bool(indexC === 0), bool(indexC === 1))),
         [null, null, true, null],
       ],
       [
         `${name} bvec2 ? ? false ?`,
+        "bvec4",
         factory(bvec2(bool(indexC !== 0), bool(indexC !== 1))),
         [null, null, false, null],
       ],
       [
         `${name} bvec2 ? ? ? true`,
+        "bvec4",
         factory(bvec2(bool(indexD === 0), bool(indexD === 1))),
         [null, null, null, true],
       ],
       [
         `${name} bvec2 ? ? ? false`,
+        "bvec4",
         factory(bvec2(bool(indexD !== 0), bool(indexD !== 1))),
         [null, null, null, false],
       ],
@@ -1757,6 +1797,7 @@ function forVec43(
     return [
       [
         `${name} vec3`,
+        "vec4",
         factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
         [
           [47, 148, 104][indexA] / 255,
@@ -1767,6 +1808,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 true ? ? ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
         ),
@@ -1774,6 +1816,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 false ? ? ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
         ),
@@ -1781,6 +1824,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? true ? ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
         ),
@@ -1788,6 +1832,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? false ? ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
         ),
@@ -1795,6 +1840,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? ? true ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexC === 0), bool(indexC === 1), bool(indexC === 2))
         ),
@@ -1802,6 +1848,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? ? false ?`,
+        "bvec4",
         factory(
           bvec3(bool(indexC !== 0), bool(indexC !== 1), bool(indexC !== 2))
         ),
@@ -1809,6 +1856,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? ? ? true`,
+        "bvec4",
         factory(
           bvec3(bool(indexD === 0), bool(indexD === 1), bool(indexD === 2))
         ),
@@ -1816,6 +1864,7 @@ function forVec43(
       ],
       [
         `${name} bvec3 ? ? ? false`,
+        "bvec4",
         factory(
           bvec3(bool(indexD !== 0), bool(indexD !== 1), bool(indexD !== 2))
         ),
@@ -1867,6 +1916,7 @@ function forVec44(
     return [
       [
         `${name} vec4`,
+        "vec4",
         factory(
           vec4(
             float(47 / 255),
@@ -1884,6 +1934,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 true ? ? ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexA === 0),
@@ -1896,6 +1947,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 false ? ? ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexA !== 0),
@@ -1908,6 +1960,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? true ? ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexB === 0),
@@ -1920,6 +1973,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? false ? ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexB !== 0),
@@ -1932,6 +1986,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? ? true ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexC === 0),
@@ -1944,6 +1999,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? ? false ?`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexC !== 0),
@@ -1956,6 +2012,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? ? ? true`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexD === 0),
@@ -1968,6 +2025,7 @@ function forVec44(
       ],
       [
         `${name} bvec4 ? ? ? false`,
+        "bvec4",
         factory(
           bvec4(
             bool(indexD !== 0),

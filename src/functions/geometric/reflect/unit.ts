@@ -4,16 +4,19 @@ import { float, vec2, vec3, vec4, add, multiply, reflect } from "../../..";
 export const reflectScenarios: ReadonlyArray<Scenario> = [
   [
     "reflect float positive",
+    "float",
     add(multiply(reflect(float(0.3), float(-1)), float(0.5)), float(0.5)),
     [0.35],
   ],
   [
     "reflect float negative",
+    "float",
     add(multiply(reflect(float(-0.3), float(1)), float(0.5)), float(0.5)),
     [0.65],
   ],
   [
     "reflect vec2",
+    "vec2",
     add(
       multiply(
         reflect(
@@ -28,6 +31,7 @@ export const reflectScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "reflect vec3",
+    "vec3",
     add(
       multiply(
         reflect(
@@ -42,6 +46,7 @@ export const reflectScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "reflect vec4",
+    "vec4",
     add(
       multiply(
         reflect(

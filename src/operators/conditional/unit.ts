@@ -14,16 +14,19 @@ import { Scenario } from "../../scenario/unit";
 export const conditionalScenarios: ReadonlyArray<Scenario> = [
   [
     "conditional false float float",
+    "float",
     conditional(bool(false), float(48 / 255), float(76 / 255)),
     [76 / 255],
   ],
   [
     "conditional true float float",
+    "float",
     conditional(bool(true), float(48 / 255), float(76 / 255)),
     [48 / 255],
   ],
   [
     "conditional false vec2 vec2",
+    "vec2",
     conditional(
       bool(false),
       vec2(float(48 / 255), float(105 / 255)),
@@ -33,6 +36,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional true vec2 vec2",
+    "vec2",
     conditional(
       bool(true),
       vec2(float(48 / 255), float(105 / 255)),
@@ -42,6 +46,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional false vec3 vec3",
+    "vec3",
     conditional(
       bool(false),
       vec3(float(48 / 255), float(105 / 255), float(240 / 255)),
@@ -51,6 +56,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional true vec3 vec3",
+    "vec3",
     conditional(
       bool(true),
       vec3(float(48 / 255), float(105 / 255), float(240 / 255)),
@@ -60,6 +66,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional false vec4 vec4",
+    "vec4",
     conditional(
       bool(false),
       vec4(
@@ -74,6 +81,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional true vec4 vec4",
+    "vec4",
     conditional(
       bool(true),
       vec4(
@@ -88,46 +96,55 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional false false false",
+    "bool",
     conditional(bool(false), bool(false), bool(false)),
     [false],
   ],
   [
     "conditional false false true",
+    "bool",
     conditional(bool(false), bool(false), bool(true)),
     [true],
   ],
   [
     "conditional false true false",
+    "bool",
     conditional(bool(false), bool(true), bool(false)),
     [false],
   ],
   [
     "conditional false true true",
+    "bool",
     conditional(bool(false), bool(true), bool(true)),
     [true],
   ],
   [
     "conditional true false false",
+    "bool",
     conditional(bool(true), bool(false), bool(false)),
     [false],
   ],
   [
     "conditional true false true",
+    "bool",
     conditional(bool(true), bool(false), bool(true)),
     [false],
   ],
   [
     "conditional true true false",
+    "bool",
     conditional(bool(true), bool(true), bool(false)),
     [true],
   ],
   [
     "conditional true true true",
+    "bool",
     conditional(bool(true), bool(true), bool(true)),
     [true],
   ],
   [
     "conditional false bvec2 bvec2",
+    "bvec2",
     conditional(
       bool(false),
       bvec2(bool(true), bool(false)),
@@ -137,6 +154,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional true bvec2 bvec2",
+    "bvec2",
     conditional(
       bool(true),
       bvec2(bool(true), bool(false)),
@@ -146,6 +164,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional false bvec3 bvec3",
+    "bvec3",
     conditional(
       bool(false),
       bvec3(bool(true), bool(true), bool(false)),
@@ -155,6 +174,7 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "conditional true bvec3 bvec3",
+    "bvec3",
     conditional(
       bool(true),
       bvec3(bool(true), bool(true), bool(false)),
@@ -163,7 +183,8 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
     [true, true, false],
   ],
   [
-    "conditional false bvec3 bvec3",
+    "conditional false bvec4 bvec4",
+    "bvec4",
     conditional(
       bool(false),
       bvec4(bool(true), bool(true), bool(false), bool(true)),
@@ -172,7 +193,8 @@ export const conditionalScenarios: ReadonlyArray<Scenario> = [
     [false, true, false, true],
   ],
   [
-    "conditional true bvec3 bvec3",
+    "conditional true bvec4 bvec4",
+    "bvec4",
     conditional(
       bool(true),
       bvec4(bool(true), bool(true), bool(false), bool(true)),

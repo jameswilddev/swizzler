@@ -4,6 +4,7 @@ import { float, vec2, vec3, vec4, add, multiply, refract } from "../../..";
 export const refractScenarios: ReadonlyArray<Scenario> = [
   [
     "refract float positive negative",
+    "float",
     add(
       multiply(refract(float(1), float(-1), float(0.9)), float(0.25)),
       float(0.5)
@@ -12,6 +13,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract float positive positive",
+    "float",
     add(
       multiply(refract(float(1), float(1), float(0.9)), float(0.25)),
       float(0.5)
@@ -20,6 +22,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract float negative positive",
+    "float",
     add(
       multiply(refract(float(-1), float(1), float(0.9)), float(0.25)),
       float(0.5)
@@ -28,6 +31,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract float negative negative",
+    "float",
     add(
       multiply(refract(float(-1), float(-1), float(0.9)), float(0.25)),
       float(0.5)
@@ -36,6 +40,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract vec2",
+    "vec2",
     add(
       multiply(
         refract(
@@ -51,6 +56,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract vec3",
+    "vec3",
     add(
       multiply(
         refract(
@@ -66,6 +72,7 @@ export const refractScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "refract vec4",
+    "vec4",
     add(
       multiply(
         refract(

@@ -9,39 +9,94 @@ import {
   Bvec3Primitive,
   Bvec4Primitive,
 } from "..";
-import { Mat2Primitive } from "../primitive";
+import { Mat2Primitive, Mat3Primitive, Mat4Primitive } from "../primitive";
 
 export type Scenario =
-  | readonly [string, Expression<FloatPrimitive>, readonly [number]]
-  | readonly [string, Expression<Vec2Primitive>, readonly [number, number]]
+  | readonly [string, "float", Expression<FloatPrimitive>, readonly [number]]
   | readonly [
       string,
+      "vec2",
+      Expression<Vec2Primitive>,
+      readonly [number, number]
+    ]
+  | readonly [
+      string,
+      "vec3",
       Expression<Vec3Primitive>,
       readonly [number, number, number]
     ]
   | readonly [
       string,
+      "vec4",
       Expression<Vec4Primitive>,
       readonly [number, number, number, number]
     ]
-  | readonly [string, Expression<BoolPrimitive>, readonly [boolean | null]]
   | readonly [
       string,
+      "bool",
+      Expression<BoolPrimitive>,
+      readonly [boolean | null]
+    ]
+  | readonly [
+      string,
+      "bvec2",
       Expression<Bvec2Primitive>,
       readonly [boolean | null, boolean | null]
     ]
   | readonly [
       string,
+      "bvec3",
       Expression<Bvec3Primitive>,
       readonly [boolean | null, boolean | null, boolean | null]
     ]
   | readonly [
       string,
+      "bvec4",
       Expression<Bvec4Primitive>,
       readonly [boolean | null, boolean | null, boolean | null, boolean | null]
     ]
   | readonly [
       string,
+      "mat2",
       Expression<Mat2Primitive>,
       readonly [number, number, number, number]
+    ]
+  | readonly [
+      string,
+      "mat3",
+      Expression<Mat3Primitive>,
+      readonly [
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number
+      ]
+    ]
+  | readonly [
+      string,
+      "mat4",
+      Expression<Mat4Primitive>,
+      readonly [
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number,
+        number
+      ]
     ];

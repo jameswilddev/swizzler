@@ -4,16 +4,19 @@ import { float, vec2, vec3, vec4, add, multiply, normalize } from "../../..";
 export const normalizeScenarios: ReadonlyArray<Scenario> = [
   [
     "normalize float positive",
+    "float",
     add(multiply(normalize(float(75)), float(0.25)), float(0.5)),
     [0.75],
   ],
   [
     "normalize float negative",
+    "float",
     add(multiply(normalize(float(-75)), float(0.25)), float(0.5)),
     [0.25],
   ],
   [
     "normalize vec2",
+    "vec2",
     add(
       multiply(normalize(vec2(float(-108), float(80))), float(0.5)),
       float(0.5)
@@ -22,6 +25,7 @@ export const normalizeScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "normalize vec3",
+    "vec3",
     add(
       multiply(normalize(vec3(float(-108), float(-80), float(21))), float(0.5)),
       float(0.5)
@@ -30,6 +34,7 @@ export const normalizeScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "normalize vec4",
+    "vec4",
     add(
       multiply(
         normalize(vec4(float(-108), float(-80), float(21), float(-50))),

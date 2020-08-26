@@ -2,9 +2,15 @@ import { Scenario } from "../../../scenario/unit";
 import { float, vec2, vec3, vec4, dot } from "../../..";
 
 export const dotScenarios: ReadonlyArray<Scenario> = [
-  ["dot float", dot(float(75 / 255), float(108 / 255)), [8100 / 65025]],
+  [
+    "dot float",
+    "float",
+    dot(float(75 / 255), float(108 / 255)),
+    [8100 / 65025],
+  ],
   [
     "dot vec2",
+    "float",
     dot(
       vec2(float(108 / 255), float(240 / 255)),
       vec2(float(75 / 255), float(33 / 255))
@@ -13,6 +19,7 @@ export const dotScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "dot vec3",
+    "float",
     dot(
       vec3(float(108 / 255), float(240 / 255), float(55 / 255)),
       vec3(float(75 / 255), float(33 / 255), float(40 / 255))
@@ -21,6 +28,7 @@ export const dotScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "dot vec4",
+    "float",
     dot(
       vec4(
         float(108 / 255),

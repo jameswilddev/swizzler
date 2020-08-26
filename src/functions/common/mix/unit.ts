@@ -2,9 +2,15 @@ import { Scenario } from "../../../scenario/unit";
 import { float, vec2, vec3, vec4, mix } from "../../..";
 
 export const mixScenarios: ReadonlyArray<Scenario> = [
-  ["mix float float float", mix(float(0.4), float(0.9), float(0.7)), [0.75]],
+  [
+    "mix float float float",
+    "float",
+    mix(float(0.4), float(0.9), float(0.7)),
+    [0.75],
+  ],
   [
     "mix vec2 vec2 vec2",
+    "vec2",
     mix(
       vec2(float(0.4), float(0.1)),
       vec2(float(0.9), float(0.4)),
@@ -14,11 +20,13 @@ export const mixScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "mix vec2 vec2 float",
+    "vec2",
     mix(vec2(float(0.4), float(0.1)), vec2(float(0.9), float(0.4)), float(0.7)),
     [0.75, 0.31],
   ],
   [
     "mix vec3 vec3 vec3",
+    "vec3",
     mix(
       vec3(float(0.4), float(0.1), float(0.4)),
       vec3(float(0.9), float(0.4), float(0.6)),
@@ -28,6 +36,7 @@ export const mixScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "mix vec3 vec3 float",
+    "vec3",
     mix(
       vec3(float(0.4), float(0.1), float(0.4)),
       vec3(float(0.9), float(0.4), float(0.6)),
@@ -37,6 +46,7 @@ export const mixScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "mix vec4 vec4 vec4",
+    "vec4",
     mix(
       vec4(float(0.4), float(0.1), float(0.4), float(0.8)),
       vec4(float(0.9), float(0.4), float(0.6), float(0.9)),
@@ -46,6 +56,7 @@ export const mixScenarios: ReadonlyArray<Scenario> = [
   ],
   [
     "mix vec4 vec4 float",
+    "vec4",
     mix(
       vec4(float(0.4), float(0.1), float(0.4), float(0.8)),
       vec4(float(0.9), float(0.4), float(0.6), float(0.9)),

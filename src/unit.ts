@@ -69,6 +69,7 @@ import { smoothstepScenarios } from "./functions/common/smoothstep/unit";
 import { modScenarios } from "./functions/common/mod/unit";
 import { powScenarios } from "./functions/exponential/pow/unit";
 import { mat2Scenarios } from "./constructors/mat2/unit";
+import { matrixSwizzleScenarios } from "./matrix-swizzles/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
   ...literalsScenarios,
@@ -125,6 +126,7 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...modScenarios,
   ...powScenarios,
   ...mat2Scenarios,
+  ...matrixSwizzleScenarios,
 ];
 
 const glContext = gl(1, 1);

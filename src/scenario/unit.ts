@@ -9,7 +9,7 @@ import {
   Bvec3Primitive,
   Bvec4Primitive,
 } from "..";
-import { Mat2Primitive, Mat3Primitive, Mat4Primitive } from "../primitive";
+import { Mat2Primitive } from "../primitive";
 
 export type Scenario =
   | readonly [string, "float", Expression<FloatPrimitive>, readonly [number]]
@@ -60,43 +60,4 @@ export type Scenario =
       "mat2",
       Expression<Mat2Primitive>,
       readonly [number, number, number, number]
-    ]
-  | readonly [
-      string,
-      "mat3",
-      Expression<Mat3Primitive>,
-      readonly [
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-      ]
-    ]
-  | readonly [
-      string,
-      "mat4",
-      Expression<Mat4Primitive>,
-      readonly [
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number,
-        number
-      ]
     ];

@@ -1089,6 +1089,8 @@ export { Expression } from "./expression";
 
 export { bool, float } from "./literals";
 
+export { getColumn } from "./matrix-swizzles";
+
 export {
   FloatPrimitive,
   Vec2Primitive,

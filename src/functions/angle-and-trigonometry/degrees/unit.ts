@@ -6,7 +6,7 @@ import {
   vec4Scenario,
 } from "../../../unit";
 
-floatScenario("degrees float", "float", degrees(float(0.015)), 0.859);
+floatScenario("degrees float", degrees(float(0.015)), 0.859);
 
 vec2Scenario("degrees vec2", degrees(vec2(float(0.015), float(0.011))), [
   0.859,

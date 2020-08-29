@@ -20,7 +20,6 @@ floatScenario(
 
 floatScenario(
   "step float greater than edge",
-  "float",
   add(multiply(step(float(0.7), float(0.3)), float(0.25)), float(0.5)),
   0.5
 );

@@ -6,7 +6,7 @@ import {
   vec4Scenario,
 } from "../../../unit";
 
-floatScenario("radians float", "float", radians(float(0.859)), 0.015);
+floatScenario("radians float", radians(float(0.859)), 0.015);
 
 vec2Scenario("radians vec2", radians(vec2(float(0.859), float(0.63))), [
   0.015,

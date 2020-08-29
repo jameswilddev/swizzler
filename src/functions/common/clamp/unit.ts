@@ -21,7 +21,7 @@ floatScenario(
 floatScenario(
   "clamp float between minimum and maximum",
   clamp(float(0.6), float(0.5), float(0.7)),
-  [0.6]
+  0.6
 );
 
 floatScenario(

@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "src/constructors/mat4/scenarios-*/*.ts"
+  ]
+}

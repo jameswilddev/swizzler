@@ -13,6 +13,7 @@ import {
   y,
   z,
   w,
+  getColumn,
 } from ".";
 import { Scenario } from "./scenario/unit";
 import { literalsScenarios } from "./literals/unit";
@@ -69,6 +70,8 @@ import { smoothstepScenarios } from "./functions/common/smoothstep/unit";
 import { modScenarios } from "./functions/common/mod/unit";
 import { powScenarios } from "./functions/exponential/pow/unit";
 import { mat2Scenarios } from "./constructors/mat2/unit";
+import { mat3Scenarios } from "./constructors/mat3/unit";
+import { mat4Scenarios } from "./constructors/mat4/unit";
 import { matrixSwizzleScenarios } from "./matrix-swizzles/unit";
 
 const scenarios: ReadonlyArray<Scenario> = [
@@ -126,6 +129,8 @@ const scenarios: ReadonlyArray<Scenario> = [
   ...modScenarios,
   ...powScenarios,
   ...mat2Scenarios,
+  ...mat3Scenarios,
+  ...mat4Scenarios,
   ...matrixSwizzleScenarios,
 ];
 
@@ -454,6 +459,79 @@ if (vertexShader === null) {
                         scenario[3][1] * 255,
                         scenario[3][2] * 255,
                         scenario[3][3] * 255,
+                      ],
+                    },
+                  ];
+                  break;
+
+                case "mat3":
+                  expandedExpressions = [
+                    {
+                      expression: vec4(getColumn(scenario[2], 0), float(0)),
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        scenario[3][2] * 255,
+                        null,
+                      ],
+                    },
+                    {
+                      expression: vec4(getColumn(scenario[2], 1), float(1)),
+                      result: [
+                        scenario[3][3] * 255,
+                        scenario[3][4] * 255,
+                        scenario[3][5] * 255,
+                        null,
+                      ],
+                    },
+                    {
+                      expression: vec4(getColumn(scenario[2], 2), float(2)),
+                      result: [
+                        scenario[3][6] * 255,
+                        scenario[3][7] * 255,
+                        scenario[3][8] * 255,
+                        null,
+                      ],
+                    },
+                  ];
+                  break;
+
+                case "mat4":
+                  expandedExpressions = [
+                    {
+                      expression: getColumn(scenario[2], 0),
+                      result: [
+                        scenario[3][0] * 255,
+                        scenario[3][1] * 255,
+                        scenario[3][2] * 255,
+                        scenario[3][3] * 255,
+                      ],
+                    },
+                    {
+                      expression: getColumn(scenario[2], 1),
+                      result: [
+                        scenario[3][4] * 255,
+                        scenario[3][5] * 255,
+                        scenario[3][6] * 255,
+                        scenario[3][7] * 255,
+                      ],
+                    },
+                    {
+                      expression: getColumn(scenario[2], 2),
+                      result: [
+                        scenario[3][8] * 255,
+                        scenario[3][9] * 255,
+                        scenario[3][10] * 255,
+                        scenario[3][11] * 255,
+                      ],
+                    },
+                    {
+                      expression: getColumn(scenario[2], 3),
+                      result: [
+                        scenario[3][12] * 255,
+                        scenario[3][13] * 255,
+                        scenario[3][14] * 255,
+                        scenario[3][15] * 255,
                       ],
                     },
                   ];

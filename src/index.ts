@@ -9,6 +9,8 @@ export { bvec3 } from "./constructors/bvec3";
 export { vec4 } from "./constructors/vec4";
 export { bvec4 } from "./constructors/bvec4";
 export { mat2 } from "./constructors/mat2";
+export { mat3 } from "./constructors/mat3";
+export { mat4 } from "./constructors/mat4";
 
 export { acos } from "./functions/angle-and-trigonometry/acos";
 export { asin } from "./functions/angle-and-trigonometry/asin";
@@ -1101,4 +1103,6 @@ export {
   Bvec3Primitive,
   Bvec4Primitive,
   Mat2Primitive,
+  Mat3Primitive,
+  Mat4Primitive,
 } from "./primitive";

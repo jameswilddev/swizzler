@@ -3,12 +3,16 @@ export type Vec2Primitive = "vec2";
 export type Vec3Primitive = "vec3";
 export type Vec4Primitive = "vec4";
 export type Mat2Primitive = "mat2";
+export type Mat3Primitive = "mat3";
+export type Mat4Primitive = "mat4";
 export type AnyFloatPrimitive =
   | FloatPrimitive
   | Vec2Primitive
   | Vec3Primitive
   | Vec4Primitive
-  | Mat2Primitive;
+  | Mat2Primitive
+  | Mat3Primitive
+  | Mat4Primitive;
 
 export type BoolPrimitive = "bool";
 export type Bvec2Primitive = "bvec2";
@@ -33,6 +37,8 @@ export const primitiveBases: {
   vec3: "float",
   vec4: "float",
   mat2: "float",
+  mat3: "float",
+  mat4: "float",
   bool: "bool",
   bvec2: "bool",
   bvec3: "bool",
@@ -50,6 +56,8 @@ export const primitivePairs: {
   vec3: "vec2",
   vec4: "vec2",
   mat2: "vec2",
+  mat3: "vec2",
+  mat4: "vec2",
   bool: "bvec2",
   bvec2: "bvec2",
   bvec3: "bvec2",
@@ -70,6 +78,8 @@ export const primitiveTriplets: {
   vec3: "vec3",
   vec4: "vec3",
   mat2: "vec3",
+  mat3: "vec3",
+  mat4: "vec3",
   bool: "bvec3",
   bvec2: "bvec3",
   bvec3: "bvec3",
@@ -90,6 +100,8 @@ export const primitiveQuartets: {
   vec3: "vec4",
   vec4: "vec4",
   mat2: "vec4",
+  mat3: "vec4",
+  mat4: "vec4",
   bool: "bvec4",
   bvec2: "bvec4",
   bvec3: "bvec4",
@@ -104,6 +116,8 @@ export const primitiveArities: {
   vec3: 3,
   vec4: 4,
   mat2: 4,
+  mat3: 9,
+  mat4: 16,
   bool: 1,
   bvec2: 2,
   bvec3: 3,

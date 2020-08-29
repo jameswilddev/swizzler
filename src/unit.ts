@@ -552,7 +552,7 @@ if (vertexShader === null) {
                           } else {
                             for (
                               let index = 0;
-                              index < expected.length;
+                              index < expandedExpression.result.length;
                               index++
                             ) {
                               const expectedValue =

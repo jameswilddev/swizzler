@@ -1,9 +1,10 @@
 import { bool, or } from "../..";
-import { Scenario } from "../../scenario/unit";
+import { boolScenario } from "../../unit";
 
-export const orScenarios: ReadonlyArray<Scenario> = [
-  ["or false false", "bool", or(bool(false), bool(false)), [false]],
-  ["or false true", "bool", or(bool(false), bool(true)), [true]],
-  ["or true false", "bool", or(bool(true), bool(false)), [true]],
-  ["or true true", "bool", or(bool(true), bool(true)), [true]],
-];
+boolScenario("or false false", or(bool(false), bool(false)), false);
+
+boolScenario("or false true", or(bool(false), bool(true)), true);
+
+boolScenario("or true false", or(bool(true), bool(false)), true);
+
+boolScenario("or true true", or(bool(true), bool(true)), true);

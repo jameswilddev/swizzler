@@ -1037,7 +1037,16 @@ import {
   qqqq,
   Expression,
 } from "..";
-import { Scenario } from "../scenario/unit";
+import {
+  boolScenario,
+  bvec2Scenario,
+  bvec3Scenario,
+  bvec4Scenario,
+  floatScenario,
+  vec2Scenario,
+  vec3Scenario,
+  vec4Scenario,
+} from "../unit";
 
 interface Callback12 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
@@ -1056,47 +1065,39 @@ function forVec12(
   stpqFactory: Callback12,
   stpqName: string,
   indexA: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback12,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec2`,
-        "float",
-        factory(vec2(float(47 / 255), float(148 / 255))),
-        [[47, 148][indexA] / 255],
-      ],
-      [
-        `${name} bvec2 true`,
-        "bool",
-        factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
-        [true],
-      ],
-      [
-        `${name} bvec2 false`,
-        "bool",
-        factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
-        [false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback12, name: string): void {
+    floatScenario(
+      `${name} vec2`,
+      factory(vec2(float(47 / 255), float(148 / 255))),
+      [47, 148][indexA] / 255
+    );
+
+    boolScenario(
+      `${name} bvec2 true`,
+      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      true
+    );
+
+    boolScenario(
+      `${name} bvec2 false`,
+      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      false
+    );
   }
 
-  return [
-    ...forVec13(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec13(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA
+  );
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback13 {
@@ -1112,51 +1113,43 @@ function forVec13(
   stpqFactory: Callback13,
   stpqName: string,
   indexA: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback13,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec3`,
-        "float",
-        factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
-        [[47, 148, 104][indexA] / 255],
-      ],
-      [
-        `${name} bvec3 true`,
-        "bool",
-        factory(
-          bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-        ),
-        [true],
-      ],
-      [
-        `${name} bvec3 false`,
-        "bool",
-        factory(
-          bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-        ),
-        [false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback13, name: string): void {
+    floatScenario(
+      `${name} vec3`,
+      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
+      [47, 148, 104][indexA] / 255
+    );
+
+    boolScenario(
+      `${name} bvec3 true`,
+      factory(
+        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
+      ),
+      true
+    );
+
+    boolScenario(
+      `${name} bvec3 false`,
+      factory(
+        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
+      ),
+      false
+    );
   }
 
-  return [
-    ...forVec14(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec14(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA
+  );
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback14 {
@@ -1172,59 +1165,51 @@ function forVec14(
   stpqFactory: Callback14,
   stpqName: string,
   indexA: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback14,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec4`,
-        "float",
-        factory(
-          vec4(
-            float(47 / 255),
-            float(148 / 255),
-            float(104 / 255),
-            float(201 / 255)
-          )
-        ),
-        [[47, 148, 104, 201][indexA] / 255],
-      ],
-      [
-        `${name} bvec4 true`,
-        "bool",
-        factory(
-          bvec4(
-            bool(indexA === 0),
-            bool(indexA === 1),
-            bool(indexA === 2),
-            bool(indexA === 3)
-          )
-        ),
-        [true],
-      ],
-      [
-        `${name} bvec4 false`,
-        "bool",
-        factory(
-          bvec4(
-            bool(indexA !== 0),
-            bool(indexA !== 1),
-            bool(indexA !== 2),
-            bool(indexA !== 3)
-          )
-        ),
-        [false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback14, name: string): void {
+    floatScenario(
+      `${name} vec4`,
+      factory(
+        vec4(
+          float(47 / 255),
+          float(148 / 255),
+          float(104 / 255),
+          float(201 / 255)
+        )
+      ),
+      [47, 148, 104, 201][indexA] / 255
+    );
+
+    boolScenario(
+      `${name} bvec4 true`,
+      factory(
+        bvec4(
+          bool(indexA === 0),
+          bool(indexA === 1),
+          bool(indexA === 2),
+          bool(indexA === 3)
+        )
+      ),
+      true
+    );
+
+    boolScenario(
+      `${name} bvec4 false`,
+      factory(
+        bvec4(
+          bool(indexA !== 0),
+          bool(indexA !== 1),
+          bool(indexA !== 2),
+          bool(indexA !== 3)
+        )
+      ),
+      false
+    );
   }
 
-  return [
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback22 {
@@ -1245,60 +1230,53 @@ function forVec22(
   stpqName: string,
   indexA: number,
   indexB: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback22,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec2`,
-        "vec2",
-        factory(vec2(float(47 / 255), float(148 / 255))),
-        [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255],
-      ],
-      [
-        `${name} bvec2 true ?`,
-        "bvec2",
-        factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
-        [true, null],
-      ],
-      [
-        `${name} bvec2 false ?`,
-        "bvec2",
-        factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
-        [false, null],
-      ],
-      [
-        `${name} bvec2 ? true`,
-        "bvec2",
-        factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
-        [null, true],
-      ],
-      [
-        `${name} bvec2 ? false`,
-        "bvec2",
-        factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
-        [null, false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback22, name: string): void {
+    vec2Scenario(
+      `${name} vec2`,
+      factory(vec2(float(47 / 255), float(148 / 255))),
+      [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
+    );
+
+    bvec2Scenario(
+      `${name} bvec2 true ?`,
+      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      [true, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec2 false ?`,
+      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      [false, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec2 ? true`,
+      factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
+      [null, true]
+    );
+
+    bvec2Scenario(
+      `${name} bvec2 ? false`,
+      factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
+      [null, false]
+    );
   }
 
-  return [
-    ...forVec23(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec23(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB
+  );
+
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback23 {
@@ -1315,68 +1293,60 @@ function forVec23(
   stpqName: string,
   indexA: number,
   indexB: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback23,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec3`,
-        "vec2",
-        factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
-        [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255],
-      ],
-      [
-        `${name} bvec3 true ?`,
-        "bvec2",
-        factory(
-          bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-        ),
-        [true, null],
-      ],
-      [
-        `${name} bvec3 false ?`,
-        "bvec2",
-        factory(
-          bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-        ),
-        [false, null],
-      ],
-      [
-        `${name} bvec3 ? true`,
-        "bvec2",
-        factory(
-          bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
-        ),
-        [null, true],
-      ],
-      [
-        `${name} bvec3 ? false`,
-        "bvec2",
-        factory(
-          bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
-        ),
-        [null, false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback23, name: string): void {
+    vec2Scenario(
+      `${name} vec3`,
+      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
+      [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
+    );
+
+    bvec2Scenario(
+      `${name} bvec3 true ?`,
+      factory(
+        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
+      ),
+      [true, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec3 false ?`,
+      factory(
+        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
+      ),
+      [false, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec3 ? true`,
+      factory(
+        bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
+      ),
+      [null, true]
+    );
+
+    bvec2Scenario(
+      `${name} bvec3 ? false`,
+      factory(
+        bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
+      ),
+      [null, false]
+    );
   }
 
-  return [
-    ...forVec24(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec24(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB
+  );
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback24 {
@@ -1393,85 +1363,77 @@ function forVec24(
   stpqName: string,
   indexA: number,
   indexB: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback24,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
-      [
-        `${name} vec4`,
-        "vec2",
-        factory(
-          vec4(
-            float(47 / 255),
-            float(148 / 255),
-            float(104 / 255),
-            float(201 / 255)
-          )
-        ),
-        [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255],
-      ],
-      [
-        `${name} bvec4 true ?`,
-        "bvec2",
-        factory(
-          bvec4(
-            bool(indexA === 0),
-            bool(indexA === 1),
-            bool(indexA === 2),
-            bool(indexA === 3)
-          )
-        ),
-        [true, null],
-      ],
-      [
-        `${name} bvec4 false ?`,
-        "bvec2",
-        factory(
-          bvec4(
-            bool(indexA !== 0),
-            bool(indexA !== 1),
-            bool(indexA !== 2),
-            bool(indexA !== 3)
-          )
-        ),
-        [false, null],
-      ],
-      [
-        `${name} bvec4 ? true`,
-        "bvec2",
-        factory(
-          bvec4(
-            bool(indexB === 0),
-            bool(indexB === 1),
-            bool(indexB === 2),
-            bool(indexB === 3)
-          )
-        ),
-        [null, true],
-      ],
-      [
-        `${name} bvec4 ? false`,
-        "bvec2",
-        factory(
-          bvec4(
-            bool(indexB !== 0),
-            bool(indexB !== 1),
-            bool(indexB !== 2),
-            bool(indexB !== 3)
-          )
-        ),
-        [null, false],
-      ],
-    ];
+): void {
+  function overload(factory: Callback24, name: string): void {
+    vec2Scenario(
+      `${name} vec4`,
+      factory(
+        vec4(
+          float(47 / 255),
+          float(148 / 255),
+          float(104 / 255),
+          float(201 / 255)
+        )
+      ),
+      [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
+    );
+
+    bvec2Scenario(
+      `${name} bvec4 true ?`,
+      factory(
+        bvec4(
+          bool(indexA === 0),
+          bool(indexA === 1),
+          bool(indexA === 2),
+          bool(indexA === 3)
+        )
+      ),
+      [true, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec4 false ?`,
+      factory(
+        bvec4(
+          bool(indexA !== 0),
+          bool(indexA !== 1),
+          bool(indexA !== 2),
+          bool(indexA !== 3)
+        )
+      ),
+      [false, null]
+    );
+
+    bvec2Scenario(
+      `${name} bvec4 ? true`,
+      factory(
+        bvec4(
+          bool(indexB === 0),
+          bool(indexB === 1),
+          bool(indexB === 2),
+          bool(indexB === 3)
+        )
+      ),
+      [null, true]
+    );
+
+    bvec2Scenario(
+      `${name} bvec4 ? false`,
+      factory(
+        bvec4(
+          bool(indexB !== 0),
+          bool(indexB !== 1),
+          bool(indexB !== 2),
+          bool(indexB !== 3)
+        )
+      ),
+      [null, false]
+    );
   }
 
-  return [
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback32 {
@@ -1493,20 +1455,19 @@ function forVec32(
   indexA: number,
   indexB: number,
   indexC: number
-): ReadonlyArray<Scenario> {
-  return [
-    ...forVec33(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB,
-      indexC
-    ),
-  ];
+): void {
+  // todo: is this missing something?
+  forVec33(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB,
+    indexC
+  );
 }
 
 interface Callback33 {
@@ -1524,20 +1485,19 @@ function forVec33(
   indexA: number,
   indexB: number,
   indexC: number
-): ReadonlyArray<Scenario> {
-  return [
-    ...forVec34(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB,
-      indexC
-    ),
-  ];
+): void {
+  // todo: is this missing something?
+  forVec34(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB,
+    indexC
+  );
 }
 
 interface Callback34 {
@@ -1555,115 +1515,107 @@ function forVec34(
   indexA: number,
   indexB: number,
   indexC: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback34,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
+): void {
+  function overload(factory: Callback34, name: string): void {
+    vec3Scenario(
+      `${name} vec4`,
+      factory(
+        vec4(
+          float(47 / 255),
+          float(148 / 255),
+          float(104 / 255),
+          float(201 / 255)
+        )
+      ),
       [
-        `${name} vec4`,
-        "vec3",
-        factory(
-          vec4(
-            float(47 / 255),
-            float(148 / 255),
-            float(104 / 255),
-            float(201 / 255)
-          )
-        ),
-        [
-          [47, 148, 104, 201][indexA] / 255,
-          [47, 148, 104, 201][indexB] / 255,
-          [47, 148, 104, 201][indexC] / 255,
-        ],
-      ],
-      [
-        `${name} bvec4 true ? ?`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexA === 0),
-            bool(indexA === 1),
-            bool(indexA === 2),
-            bool(indexA === 3)
-          )
-        ),
-        [true, null, null],
-      ],
-      [
-        `${name} bvec4 false ? ?`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexA !== 0),
-            bool(indexA !== 1),
-            bool(indexA !== 2),
-            bool(indexA !== 3)
-          )
-        ),
-        [false, null, null],
-      ],
-      [
-        `${name} bvec4 ? true ?`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexB === 0),
-            bool(indexB === 1),
-            bool(indexB === 2),
-            bool(indexB === 3)
-          )
-        ),
-        [null, true, null],
-      ],
-      [
-        `${name} bvec4 ? false ?`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexB !== 0),
-            bool(indexB !== 1),
-            bool(indexB !== 2),
-            bool(indexB !== 3)
-          )
-        ),
-        [null, false, null],
-      ],
-      [
-        `${name} bvec4 ? ? true`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexC === 0),
-            bool(indexC === 1),
-            bool(indexC === 2),
-            bool(indexC === 3)
-          )
-        ),
-        [null, null, true],
-      ],
-      [
-        `${name} bvec4 ? ? false`,
-        "bvec3",
-        factory(
-          bvec4(
-            bool(indexC !== 0),
-            bool(indexC !== 1),
-            bool(indexC !== 2),
-            bool(indexC !== 3)
-          )
-        ),
-        [null, null, false],
-      ],
-    ];
+        [47, 148, 104, 201][indexA] / 255,
+        [47, 148, 104, 201][indexB] / 255,
+        [47, 148, 104, 201][indexC] / 255,
+      ]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 true ? ?`,
+      factory(
+        bvec4(
+          bool(indexA === 0),
+          bool(indexA === 1),
+          bool(indexA === 2),
+          bool(indexA === 3)
+        )
+      ),
+      [true, null, null]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 false ? ?`,
+      factory(
+        bvec4(
+          bool(indexA !== 0),
+          bool(indexA !== 1),
+          bool(indexA !== 2),
+          bool(indexA !== 3)
+        )
+      ),
+      [false, null, null]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 ? true ?`,
+      factory(
+        bvec4(
+          bool(indexB === 0),
+          bool(indexB === 1),
+          bool(indexB === 2),
+          bool(indexB === 3)
+        )
+      ),
+      [null, true, null]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 ? false ?`,
+      factory(
+        bvec4(
+          bool(indexB !== 0),
+          bool(indexB !== 1),
+          bool(indexB !== 2),
+          bool(indexB !== 3)
+        )
+      ),
+      [null, false, null]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 ? ? true`,
+      factory(
+        bvec4(
+          bool(indexC === 0),
+          bool(indexC === 1),
+          bool(indexC === 2),
+          bool(indexC === 3)
+        )
+      ),
+      [null, null, true]
+    );
+
+    bvec3Scenario(
+      `${name} bvec4 ? ? false`,
+      factory(
+        bvec4(
+          bool(indexC !== 0),
+          bool(indexC !== 1),
+          bool(indexC !== 2),
+          bool(indexC !== 3)
+        )
+      ),
+      [null, null, false]
+    );
   }
 
-  return [
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback42 {
@@ -1686,91 +1638,84 @@ function forVec42(
   indexB: number,
   indexC: number,
   indexD: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback42,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
+): void {
+  function overload(factory: Callback42, name: string): void {
+    vec4Scenario(
+      `${name} vec2`,
+      factory(vec2(float(47 / 255), float(148 / 255))),
       [
-        `${name} vec2`,
-        "vec4",
-        factory(vec2(float(47 / 255), float(148 / 255))),
-        [
-          [47, 148][indexA] / 255,
-          [47, 148][indexB] / 255,
-          [47, 148][indexC] / 255,
-          [47, 148][indexD] / 255,
-        ],
-      ],
-      [
-        `${name} bvec2 true ? ? ?`,
-        "bvec4",
-        factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
-        [true, null, null, null],
-      ],
-      [
-        `${name} bvec2 false ? ? ?`,
-        "bvec4",
-        factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
-        [false, null, null, null],
-      ],
-      [
-        `${name} bvec2 ? true ? ?`,
-        "bvec4",
-        factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
-        [null, true, null, null],
-      ],
-      [
-        `${name} bvec2 ? false ? ?`,
-        "bvec4",
-        factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
-        [null, false, null, null],
-      ],
-      [
-        `${name} bvec2 ? ? true ?`,
-        "bvec4",
-        factory(bvec2(bool(indexC === 0), bool(indexC === 1))),
-        [null, null, true, null],
-      ],
-      [
-        `${name} bvec2 ? ? false ?`,
-        "bvec4",
-        factory(bvec2(bool(indexC !== 0), bool(indexC !== 1))),
-        [null, null, false, null],
-      ],
-      [
-        `${name} bvec2 ? ? ? true`,
-        "bvec4",
-        factory(bvec2(bool(indexD === 0), bool(indexD === 1))),
-        [null, null, null, true],
-      ],
-      [
-        `${name} bvec2 ? ? ? false`,
-        "bvec4",
-        factory(bvec2(bool(indexD !== 0), bool(indexD !== 1))),
-        [null, null, null, false],
-      ],
-    ];
+        [47, 148][indexA] / 255,
+        [47, 148][indexB] / 255,
+        [47, 148][indexC] / 255,
+        [47, 148][indexD] / 255,
+      ]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 true ? ? ?`,
+      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      [true, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 false ? ? ?`,
+      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      [false, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? true ? ?`,
+      factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
+      [null, true, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? false ? ?`,
+      factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
+      [null, false, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? ? true ?`,
+      factory(bvec2(bool(indexC === 0), bool(indexC === 1))),
+      [null, null, true, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? ? false ?`,
+      factory(bvec2(bool(indexC !== 0), bool(indexC !== 1))),
+      [null, null, false, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? ? ? true`,
+      factory(bvec2(bool(indexD === 0), bool(indexD === 1))),
+      [null, null, null, true]
+    );
+
+    bvec4Scenario(
+      `${name} bvec2 ? ? ? false`,
+      factory(bvec2(bool(indexD !== 0), bool(indexD !== 1))),
+      [null, null, null, false]
+    );
   }
 
-  return [
-    ...forVec43(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB,
-      indexC,
-      indexD
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec43(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB,
+    indexC,
+    indexD
+  );
+
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback43 {
@@ -1789,107 +1734,98 @@ function forVec43(
   indexB: number,
   indexC: number,
   indexD: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback43,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
+): void {
+  function overload(factory: Callback43, name: string): void {
+    vec4Scenario(
+      `${name} vec3`,
+      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
       [
-        `${name} vec3`,
-        "vec4",
-        factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
-        [
-          [47, 148, 104][indexA] / 255,
-          [47, 148, 104][indexB] / 255,
-          [47, 148, 104][indexC] / 255,
-          [47, 148, 104][indexD] / 255,
-        ],
-      ],
-      [
-        `${name} bvec3 true ? ? ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-        ),
-        [true, null, null, null],
-      ],
-      [
-        `${name} bvec3 false ? ? ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-        ),
-        [false, null, null, null],
-      ],
-      [
-        `${name} bvec3 ? true ? ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
-        ),
-        [null, true, null, null],
-      ],
-      [
-        `${name} bvec3 ? false ? ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
-        ),
-        [null, false, null, null],
-      ],
-      [
-        `${name} bvec3 ? ? true ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexC === 0), bool(indexC === 1), bool(indexC === 2))
-        ),
-        [null, null, true, null],
-      ],
-      [
-        `${name} bvec3 ? ? false ?`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexC !== 0), bool(indexC !== 1), bool(indexC !== 2))
-        ),
-        [null, null, false, null],
-      ],
-      [
-        `${name} bvec3 ? ? ? true`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexD === 0), bool(indexD === 1), bool(indexD === 2))
-        ),
-        [null, null, null, true],
-      ],
-      [
-        `${name} bvec3 ? ? ? false`,
-        "bvec4",
-        factory(
-          bvec3(bool(indexD !== 0), bool(indexD !== 1), bool(indexD !== 2))
-        ),
-        [null, null, null, false],
-      ],
-    ];
+        [47, 148, 104][indexA] / 255,
+        [47, 148, 104][indexB] / 255,
+        [47, 148, 104][indexC] / 255,
+        [47, 148, 104][indexD] / 255,
+      ]
+    );
+    bvec4Scenario(
+      `${name} bvec3 true ? ? ?`,
+      factory(
+        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
+      ),
+      [true, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 false ? ? ?`,
+      factory(
+        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
+      ),
+      [false, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? true ? ?`,
+      factory(
+        bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
+      ),
+      [null, true, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? false ? ?`,
+      factory(
+        bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
+      ),
+      [null, false, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? ? true ?`,
+      factory(
+        bvec3(bool(indexC === 0), bool(indexC === 1), bool(indexC === 2))
+      ),
+      [null, null, true, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? ? false ?`,
+      factory(
+        bvec3(bool(indexC !== 0), bool(indexC !== 1), bool(indexC !== 2))
+      ),
+      [null, null, false, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? ? ? true`,
+      factory(
+        bvec3(bool(indexD === 0), bool(indexD === 1), bool(indexD === 2))
+      ),
+      [null, null, null, true]
+    );
+
+    bvec4Scenario(
+      `${name} bvec3 ? ? ? false`,
+      factory(
+        bvec3(bool(indexD !== 0), bool(indexD !== 1), bool(indexD !== 2))
+      ),
+      [null, null, null, false]
+    );
   }
 
-  return [
-    ...forVec44(
-      xyzwFactory,
-      xyzwName,
-      rgbaFactory,
-      rgbaName,
-      stpqFactory,
-      stpqName,
-      indexA,
-      indexB,
-      indexC,
-      indexD
-    ),
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  forVec44(
+    xyzwFactory,
+    xyzwName,
+    rgbaFactory,
+    rgbaName,
+    stpqFactory,
+    stpqName,
+    indexA,
+    indexB,
+    indexC,
+    indexD
+  );
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
 interface Callback44 {
@@ -1908,483 +1844,473 @@ function forVec44(
   indexB: number,
   indexC: number,
   indexD: number
-): ReadonlyArray<Scenario> {
-  function overload(
-    factory: Callback44,
-    name: string
-  ): ReadonlyArray<Scenario> {
-    return [
+): void {
+  function overload(factory: Callback44, name: string): void {
+    vec4Scenario(
+      `${name} vec4`,
+      factory(
+        vec4(
+          float(47 / 255),
+          float(148 / 255),
+          float(104 / 255),
+          float(201 / 255)
+        )
+      ),
       [
-        `${name} vec4`,
-        "vec4",
-        factory(
-          vec4(
-            float(47 / 255),
-            float(148 / 255),
-            float(104 / 255),
-            float(201 / 255)
-          )
-        ),
-        [
-          [47, 148, 104, 201][indexA] / 255,
-          [47, 148, 104, 201][indexB] / 255,
-          [47, 148, 104, 201][indexC] / 255,
-          [47, 148, 104, 201][indexD] / 255,
-        ],
-      ],
-      [
-        `${name} bvec4 true ? ? ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexA === 0),
-            bool(indexA === 1),
-            bool(indexA === 2),
-            bool(indexA === 3)
-          )
-        ),
-        [true, null, null, null],
-      ],
-      [
-        `${name} bvec4 false ? ? ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexA !== 0),
-            bool(indexA !== 1),
-            bool(indexA !== 2),
-            bool(indexA !== 3)
-          )
-        ),
-        [false, null, null, null],
-      ],
-      [
-        `${name} bvec4 ? true ? ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexB === 0),
-            bool(indexB === 1),
-            bool(indexB === 2),
-            bool(indexB === 3)
-          )
-        ),
-        [null, true, null, null],
-      ],
-      [
-        `${name} bvec4 ? false ? ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexB !== 0),
-            bool(indexB !== 1),
-            bool(indexB !== 2),
-            bool(indexB !== 3)
-          )
-        ),
-        [null, false, null, null],
-      ],
-      [
-        `${name} bvec4 ? ? true ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexC === 0),
-            bool(indexC === 1),
-            bool(indexC === 2),
-            bool(indexC === 3)
-          )
-        ),
-        [null, null, true, null],
-      ],
-      [
-        `${name} bvec4 ? ? false ?`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexC !== 0),
-            bool(indexC !== 1),
-            bool(indexC !== 2),
-            bool(indexC !== 3)
-          )
-        ),
-        [null, null, false, null],
-      ],
-      [
-        `${name} bvec4 ? ? ? true`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexD === 0),
-            bool(indexD === 1),
-            bool(indexD === 2),
-            bool(indexD === 3)
-          )
-        ),
-        [null, null, null, true],
-      ],
-      [
-        `${name} bvec4 ? ? ? false`,
-        "bvec4",
-        factory(
-          bvec4(
-            bool(indexD !== 0),
-            bool(indexD !== 1),
-            bool(indexD !== 2),
-            bool(indexD !== 3)
-          )
-        ),
-        [null, null, null, false],
-      ],
-    ];
+        [47, 148, 104, 201][indexA] / 255,
+        [47, 148, 104, 201][indexB] / 255,
+        [47, 148, 104, 201][indexC] / 255,
+        [47, 148, 104, 201][indexD] / 255,
+      ]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 true ? ? ?`,
+      factory(
+        bvec4(
+          bool(indexA === 0),
+          bool(indexA === 1),
+          bool(indexA === 2),
+          bool(indexA === 3)
+        )
+      ),
+      [true, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 false ? ? ?`,
+      factory(
+        bvec4(
+          bool(indexA !== 0),
+          bool(indexA !== 1),
+          bool(indexA !== 2),
+          bool(indexA !== 3)
+        )
+      ),
+      [false, null, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? true ? ?`,
+      factory(
+        bvec4(
+          bool(indexB === 0),
+          bool(indexB === 1),
+          bool(indexB === 2),
+          bool(indexB === 3)
+        )
+      ),
+      [null, true, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? false ? ?`,
+      factory(
+        bvec4(
+          bool(indexB !== 0),
+          bool(indexB !== 1),
+          bool(indexB !== 2),
+          bool(indexB !== 3)
+        )
+      ),
+      [null, false, null, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? ? true ?`,
+      factory(
+        bvec4(
+          bool(indexC === 0),
+          bool(indexC === 1),
+          bool(indexC === 2),
+          bool(indexC === 3)
+        )
+      ),
+      [null, null, true, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? ? false ?`,
+      factory(
+        bvec4(
+          bool(indexC !== 0),
+          bool(indexC !== 1),
+          bool(indexC !== 2),
+          bool(indexC !== 3)
+        )
+      ),
+      [null, null, false, null]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? ? ? true`,
+      factory(
+        bvec4(
+          bool(indexD === 0),
+          bool(indexD === 1),
+          bool(indexD === 2),
+          bool(indexD === 3)
+        )
+      ),
+      [null, null, null, true]
+    );
+
+    bvec4Scenario(
+      `${name} bvec4 ? ? ? false`,
+      factory(
+        bvec4(
+          bool(indexD !== 0),
+          bool(indexD !== 1),
+          bool(indexD !== 2),
+          bool(indexD !== 3)
+        )
+      ),
+      [null, null, null, false]
+    );
   }
 
-  return [
-    ...overload(xyzwFactory, xyzwName),
-    ...overload(rgbaFactory, rgbaName),
-    ...overload(stpqFactory, stpqName),
-  ];
+  overload(xyzwFactory, xyzwName);
+  overload(rgbaFactory, rgbaName);
+  overload(stpqFactory, stpqName);
 }
 
-export const swizzleScenarios: ReadonlyArray<Scenario> = [
-  ...forVec12(x, "x", r, "r", s, "s", 0),
-  ...forVec12(y, "y", g, "g", t, "t", 1),
-  ...forVec13(z, "z", b, "b", p, "p", 2),
-  ...forVec14(w, "w", a, "a", q, "q", 3),
-  ...forVec22(xx, "xx", rr, "rr", ss, "ss", 0, 0),
-  ...forVec22(xy, "xy", rg, "rg", st, "st", 0, 1),
-  ...forVec23(xz, "xz", rb, "rb", sp, "sp", 0, 2),
-  ...forVec24(xw, "xw", ra, "ra", sq, "sq", 0, 3),
-  ...forVec22(yx, "yx", gr, "gr", ts, "ts", 1, 0),
-  ...forVec22(yy, "yy", gg, "gg", tt, "tt", 1, 1),
-  ...forVec23(yz, "yz", gb, "gb", tp, "tp", 1, 2),
-  ...forVec24(yw, "yw", ga, "ga", tq, "tq", 1, 3),
-  ...forVec23(zx, "zx", br, "br", ps, "ps", 2, 0),
-  ...forVec23(zy, "zy", bg, "bg", pt, "pt", 2, 1),
-  ...forVec23(zz, "zz", bb, "bb", pp, "pp", 2, 2),
-  ...forVec24(zw, "zw", ba, "ba", pq, "pq", 2, 3),
-  ...forVec24(wx, "wx", ar, "ar", qs, "qs", 3, 0),
-  ...forVec24(wy, "wy", ag, "ag", qt, "qt", 3, 1),
-  ...forVec24(wz, "wz", ab, "ab", qp, "qp", 3, 2),
-  ...forVec24(ww, "ww", aa, "aa", qq, "qq", 3, 3),
-  ...forVec32(xxx, "xxx", rrr, "rrr", sss, "sss", 0, 0, 0),
-  ...forVec32(xxy, "xxy", rrg, "rrg", sst, "sst", 0, 0, 1),
-  ...forVec33(xxz, "xxz", rrb, "rrb", ssp, "ssp", 0, 0, 2),
-  ...forVec34(xxw, "xxw", rra, "rra", ssq, "ssq", 0, 0, 3),
-  ...forVec32(xyx, "xyx", rgr, "rgr", sts, "sts", 0, 1, 0),
-  ...forVec32(xyy, "xyy", rgg, "rgg", stt, "stt", 0, 1, 1),
-  ...forVec33(xyz, "xyz", rgb, "rgb", stp, "stp", 0, 1, 2),
-  ...forVec34(xyw, "xyw", rga, "rga", stq, "stq", 0, 1, 3),
-  ...forVec33(xzx, "xzx", rbr, "rbr", sps, "sps", 0, 2, 0),
-  ...forVec33(xzy, "xzy", rbg, "rbg", spt, "spt", 0, 2, 1),
-  ...forVec33(xzz, "xzz", rbb, "rbb", spp, "spp", 0, 2, 2),
-  ...forVec34(xzw, "xzw", rba, "rba", spq, "spq", 0, 2, 3),
-  ...forVec34(xwx, "xwx", rar, "rar", sqs, "sqs", 0, 3, 0),
-  ...forVec34(xwy, "xwy", rag, "rag", sqt, "sqt", 0, 3, 1),
-  ...forVec34(xwz, "xwz", rab, "rab", sqp, "sqp", 0, 3, 2),
-  ...forVec34(xww, "xww", raa, "raa", sqq, "sqq", 0, 3, 3),
-  ...forVec32(yxx, "yxx", grr, "grr", tss, "tss", 1, 0, 0),
-  ...forVec32(yxy, "yxy", grg, "grg", tst, "tst", 1, 0, 1),
-  ...forVec33(yxz, "yxz", grb, "grb", tsp, "tsp", 1, 0, 2),
-  ...forVec34(yxw, "yxw", gra, "gra", tsq, "tsq", 1, 0, 3),
-  ...forVec32(yyx, "yyx", ggr, "ggr", tts, "tts", 1, 1, 0),
-  ...forVec32(yyy, "yyy", ggg, "ggg", ttt, "ttt", 1, 1, 1),
-  ...forVec33(yyz, "yyz", ggb, "ggb", ttp, "ttp", 1, 1, 2),
-  ...forVec34(yyw, "yyw", gga, "gga", ttq, "ttq", 1, 1, 3),
-  ...forVec33(yzx, "yzx", gbr, "gbr", tps, "tps", 1, 2, 0),
-  ...forVec33(yzy, "yzy", gbg, "gbg", tpt, "tpt", 1, 2, 1),
-  ...forVec33(yzz, "yzz", gbb, "gbb", tpp, "tpp", 1, 2, 2),
-  ...forVec34(yzw, "yzw", gba, "gba", tpq, "tpq", 1, 2, 3),
-  ...forVec34(ywx, "ywx", gar, "gar", tqs, "tqs", 1, 3, 0),
-  ...forVec34(ywy, "ywy", gag, "gag", tqt, "tqt", 1, 3, 1),
-  ...forVec34(ywz, "ywz", gab, "gab", tqp, "tqp", 1, 3, 2),
-  ...forVec34(yww, "yww", gaa, "gaa", tqq, "tqq", 1, 3, 3),
-  ...forVec33(zxx, "zxx", brr, "brr", pss, "pss", 2, 0, 0),
-  ...forVec33(zxy, "zxy", brg, "brg", pst, "pst", 2, 0, 1),
-  ...forVec33(zxz, "zxz", brb, "brb", psp, "psp", 2, 0, 2),
-  ...forVec34(zxw, "zxw", bra, "bra", psq, "psq", 2, 0, 3),
-  ...forVec33(zyx, "zyx", bgr, "bgr", pts, "pts", 2, 1, 0),
-  ...forVec33(zyy, "zyy", bgg, "bgg", ptt, "ptt", 2, 1, 1),
-  ...forVec33(zyz, "zyz", bgb, "bgb", ptp, "ptp", 2, 1, 2),
-  ...forVec34(zyw, "zyw", bga, "bga", ptq, "ptq", 2, 1, 3),
-  ...forVec33(zzx, "zzx", bbr, "bbr", pps, "pps", 2, 2, 0),
-  ...forVec33(zzy, "zzy", bbg, "bbg", ppt, "ppt", 2, 2, 1),
-  ...forVec33(zzz, "zzz", bbb, "bbb", ppp, "ppp", 2, 2, 2),
-  ...forVec34(zzw, "zzw", bba, "bba", ppq, "ppq", 2, 2, 3),
-  ...forVec34(zwx, "zwx", bar, "bar", pqs, "pqs", 2, 3, 0),
-  ...forVec34(zwy, "zwy", bag, "bag", pqt, "pqt", 2, 3, 1),
-  ...forVec34(zwz, "zwz", bab, "bab", pqp, "pqp", 2, 3, 2),
-  ...forVec34(zww, "zww", baa, "baa", pqq, "pqq", 2, 3, 3),
-  ...forVec34(wxx, "wxx", arr, "arr", qss, "qss", 3, 0, 0),
-  ...forVec34(wxy, "wxy", arg, "arg", qst, "qst", 3, 0, 1),
-  ...forVec34(wxz, "wxz", arb, "arb", qsp, "qsp", 3, 0, 2),
-  ...forVec34(wxw, "wxw", ara, "ara", qsq, "qsq", 3, 0, 3),
-  ...forVec34(wyx, "wyx", agr, "agr", qts, "qts", 3, 1, 0),
-  ...forVec34(wyy, "wyy", agg, "agg", qtt, "qtt", 3, 1, 1),
-  ...forVec34(wyz, "wyz", agb, "agb", qtp, "qtp", 3, 1, 2),
-  ...forVec34(wyw, "wyw", aga, "aga", qtq, "qtq", 3, 1, 3),
-  ...forVec34(wzx, "wzx", abr, "abr", qps, "qps", 3, 2, 0),
-  ...forVec34(wzy, "wzy", abg, "abg", qpt, "qpt", 3, 2, 1),
-  ...forVec34(wzz, "wzz", abb, "abb", qpp, "qpp", 3, 2, 2),
-  ...forVec34(wzw, "wzw", aba, "aba", qpq, "qpq", 3, 2, 3),
-  ...forVec34(wwx, "wwx", aar, "aar", qqs, "qqs", 3, 3, 0),
-  ...forVec34(wwy, "wwy", aag, "aag", qqt, "qqt", 3, 3, 1),
-  ...forVec34(wwz, "wwz", aab, "aab", qqp, "qqp", 3, 3, 2),
-  ...forVec34(www, "www", aaa, "aaa", qqq, "qqq", 3, 3, 3),
-  ...forVec42(xxxx, "xxxx", rrrr, "rrrr", ssss, "ssss", 0, 0, 0, 0),
-  ...forVec42(xxxy, "xxxy", rrrg, "rrrg", ssst, "ssst", 0, 0, 0, 1),
-  ...forVec43(xxxz, "xxxz", rrrb, "rrrb", sssp, "sssp", 0, 0, 0, 2),
-  ...forVec44(xxxw, "xxxw", rrra, "rrra", sssq, "sssq", 0, 0, 0, 3),
-  ...forVec42(xxyx, "xxyx", rrgr, "rrgr", ssts, "ssts", 0, 0, 1, 0),
-  ...forVec42(xxyy, "xxyy", rrgg, "rrgg", sstt, "sstt", 0, 0, 1, 1),
-  ...forVec43(xxyz, "xxyz", rrgb, "rrgb", sstp, "sstp", 0, 0, 1, 2),
-  ...forVec44(xxyw, "xxyw", rrga, "rrga", sstq, "sstq", 0, 0, 1, 3),
-  ...forVec43(xxzx, "xxzx", rrbr, "rrbr", ssps, "ssps", 0, 0, 2, 0),
-  ...forVec43(xxzy, "xxzy", rrbg, "rrbg", sspt, "sspt", 0, 0, 2, 1),
-  ...forVec43(xxzz, "xxzz", rrbb, "rrbb", sspp, "sspp", 0, 0, 2, 2),
-  ...forVec44(xxzw, "xxzw", rrba, "rrba", sspq, "sspq", 0, 0, 2, 3),
-  ...forVec44(xxwx, "xxwx", rrar, "rrar", ssqs, "ssqs", 0, 0, 3, 0),
-  ...forVec44(xxwy, "xxwy", rrag, "rrag", ssqt, "ssqt", 0, 0, 3, 1),
-  ...forVec44(xxwz, "xxwz", rrab, "rrab", ssqp, "ssqp", 0, 0, 3, 2),
-  ...forVec44(xxww, "xxww", rraa, "rraa", ssqq, "ssqq", 0, 0, 3, 3),
-  ...forVec42(xyxx, "xyxx", rgrr, "rgrr", stss, "stss", 0, 1, 0, 0),
-  ...forVec42(xyxy, "xyxy", rgrg, "rgrg", stst, "stst", 0, 1, 0, 1),
-  ...forVec43(xyxz, "xyxz", rgrb, "rgrb", stsp, "stsp", 0, 1, 0, 2),
-  ...forVec44(xyxw, "xyxw", rgra, "rgra", stsq, "stsq", 0, 1, 0, 3),
-  ...forVec42(xyyx, "xyyx", rggr, "rggr", stts, "stts", 0, 1, 1, 0),
-  ...forVec42(xyyy, "xyyy", rggg, "rggg", sttt, "sttt", 0, 1, 1, 1),
-  ...forVec43(xyyz, "xyyz", rggb, "rggb", sttp, "sttp", 0, 1, 1, 2),
-  ...forVec44(xyyw, "xyyw", rgga, "rgga", sttq, "sttq", 0, 1, 1, 3),
-  ...forVec43(xyzx, "xyzx", rgbr, "rgbr", stps, "stps", 0, 1, 2, 0),
-  ...forVec43(xyzy, "xyzy", rgbg, "rgbg", stpt, "stpt", 0, 1, 2, 1),
-  ...forVec43(xyzz, "xyzz", rgbb, "rgbb", stpp, "stpp", 0, 1, 2, 2),
-  ...forVec44(xyzw, "xyzw", rgba, "rgba", stpq, "stpq", 0, 1, 2, 3),
-  ...forVec44(xywx, "xywx", rgar, "rgar", stqs, "stqs", 0, 1, 3, 0),
-  ...forVec44(xywy, "xywy", rgag, "rgag", stqt, "stqt", 0, 1, 3, 1),
-  ...forVec44(xywz, "xywz", rgab, "rgab", stqp, "stqp", 0, 1, 3, 2),
-  ...forVec44(xyww, "xyww", rgaa, "rgaa", stqq, "stqq", 0, 1, 3, 3),
-  ...forVec43(xzxx, "xzxx", rbrr, "rbrr", spss, "spss", 0, 2, 0, 0),
-  ...forVec43(xzxy, "xzxy", rbrg, "rbrg", spst, "spst", 0, 2, 0, 1),
-  ...forVec43(xzxz, "xzxz", rbrb, "rbrb", spsp, "spsp", 0, 2, 0, 2),
-  ...forVec44(xzxw, "xzxw", rbra, "rbra", spsq, "spsq", 0, 2, 0, 3),
-  ...forVec43(xzyx, "xzyx", rbgr, "rbgr", spts, "spts", 0, 2, 1, 0),
-  ...forVec43(xzyy, "xzyy", rbgg, "rbgg", sptt, "sptt", 0, 2, 1, 1),
-  ...forVec43(xzyz, "xzyz", rbgb, "rbgb", sptp, "sptp", 0, 2, 1, 2),
-  ...forVec44(xzyw, "xzyw", rbga, "rbga", sptq, "sptq", 0, 2, 1, 3),
-  ...forVec43(xzzx, "xzzx", rbbr, "rbbr", spps, "spps", 0, 2, 2, 0),
-  ...forVec43(xzzy, "xzzy", rbbg, "rbbg", sppt, "sppt", 0, 2, 2, 1),
-  ...forVec43(xzzz, "xzzz", rbbb, "rbbb", sppp, "sppp", 0, 2, 2, 2),
-  ...forVec44(xzzw, "xzzw", rbba, "rbba", sppq, "sppq", 0, 2, 2, 3),
-  ...forVec44(xzwx, "xzwx", rbar, "rbar", spqs, "spqs", 0, 2, 3, 0),
-  ...forVec44(xzwy, "xzwy", rbag, "rbag", spqt, "spqt", 0, 2, 3, 1),
-  ...forVec44(xzwz, "xzwz", rbab, "rbab", spqp, "spqp", 0, 2, 3, 2),
-  ...forVec44(xzww, "xzww", rbaa, "rbaa", spqq, "spqq", 0, 2, 3, 3),
-  ...forVec44(xwxx, "xwxx", rarr, "rarr", sqss, "sqss", 0, 3, 0, 0),
-  ...forVec44(xwxy, "xwxy", rarg, "rarg", sqst, "sqst", 0, 3, 0, 1),
-  ...forVec44(xwxz, "xwxz", rarb, "rarb", sqsp, "sqsp", 0, 3, 0, 2),
-  ...forVec44(xwxw, "xwxw", rara, "rara", sqsq, "sqsq", 0, 3, 0, 3),
-  ...forVec44(xwyx, "xwyx", ragr, "ragr", sqts, "sqts", 0, 3, 1, 0),
-  ...forVec44(xwyy, "xwyy", ragg, "ragg", sqtt, "sqtt", 0, 3, 1, 1),
-  ...forVec44(xwyz, "xwyz", ragb, "ragb", sqtp, "sqtp", 0, 3, 1, 2),
-  ...forVec44(xwyw, "xwyw", raga, "raga", sqtq, "sqtq", 0, 3, 1, 3),
-  ...forVec44(xwzx, "xwzx", rabr, "rabr", sqps, "sqps", 0, 3, 2, 0),
-  ...forVec44(xwzy, "xwzy", rabg, "rabg", sqpt, "sqpt", 0, 3, 2, 1),
-  ...forVec44(xwzz, "xwzz", rabb, "rabb", sqpp, "sqpp", 0, 3, 2, 2),
-  ...forVec44(xwzw, "xwzw", raba, "raba", sqpq, "sqpq", 0, 3, 2, 3),
-  ...forVec44(xwwx, "xwwx", raar, "raar", sqqs, "sqqs", 0, 3, 3, 0),
-  ...forVec44(xwwy, "xwwy", raag, "raag", sqqt, "sqqt", 0, 3, 3, 1),
-  ...forVec44(xwwz, "xwwz", raab, "raab", sqqp, "sqqp", 0, 3, 3, 2),
-  ...forVec44(xwww, "xwww", raaa, "raaa", sqqq, "sqqq", 0, 3, 3, 3),
-  ...forVec42(yxxx, "yxxx", grrr, "grrr", tsss, "tsss", 1, 0, 0, 0),
-  ...forVec42(yxxy, "yxxy", grrg, "grrg", tsst, "tsst", 1, 0, 0, 1),
-  ...forVec43(yxxz, "yxxz", grrb, "grrb", tssp, "tssp", 1, 0, 0, 2),
-  ...forVec44(yxxw, "yxxw", grra, "grra", tssq, "tssq", 1, 0, 0, 3),
-  ...forVec42(yxyx, "yxyx", grgr, "grgr", tsts, "tsts", 1, 0, 1, 0),
-  ...forVec42(yxyy, "yxyy", grgg, "grgg", tstt, "tstt", 1, 0, 1, 1),
-  ...forVec43(yxyz, "yxyz", grgb, "grgb", tstp, "tstp", 1, 0, 1, 2),
-  ...forVec44(yxyw, "yxyw", grga, "grga", tstq, "tstq", 1, 0, 1, 3),
-  ...forVec43(yxzx, "yxzx", grbr, "grbr", tsps, "tsps", 1, 0, 2, 0),
-  ...forVec43(yxzy, "yxzy", grbg, "grbg", tspt, "tspt", 1, 0, 2, 1),
-  ...forVec43(yxzz, "yxzz", grbb, "grbb", tspp, "tspp", 1, 0, 2, 2),
-  ...forVec44(yxzw, "yxzw", grba, "grba", tspq, "tspq", 1, 0, 2, 3),
-  ...forVec44(yxwx, "yxwx", grar, "grar", tsqs, "tsqs", 1, 0, 3, 0),
-  ...forVec44(yxwy, "yxwy", grag, "grag", tsqt, "tsqt", 1, 0, 3, 1),
-  ...forVec44(yxwz, "yxwz", grab, "grab", tsqp, "tsqp", 1, 0, 3, 2),
-  ...forVec44(yxww, "yxww", graa, "graa", tsqq, "tsqq", 1, 0, 3, 3),
-  ...forVec42(yyxx, "yyxx", ggrr, "ggrr", ttss, "ttss", 1, 1, 0, 0),
-  ...forVec42(yyxy, "yyxy", ggrg, "ggrg", ttst, "ttst", 1, 1, 0, 1),
-  ...forVec43(yyxz, "yyxz", ggrb, "ggrb", ttsp, "ttsp", 1, 1, 0, 2),
-  ...forVec44(yyxw, "yyxw", ggra, "ggra", ttsq, "ttsq", 1, 1, 0, 3),
-  ...forVec42(yyyx, "yyyx", gggr, "gggr", ttts, "ttts", 1, 1, 1, 0),
-  ...forVec42(yyyy, "yyyy", gggg, "gggg", tttt, "tttt", 1, 1, 1, 1),
-  ...forVec43(yyyz, "yyyz", gggb, "gggb", tttp, "tttp", 1, 1, 1, 2),
-  ...forVec44(yyyw, "yyyw", ggga, "ggga", tttq, "tttq", 1, 1, 1, 3),
-  ...forVec43(yyzx, "yyzx", ggbr, "ggbr", ttps, "ttps", 1, 1, 2, 0),
-  ...forVec43(yyzy, "yyzy", ggbg, "ggbg", ttpt, "ttpt", 1, 1, 2, 1),
-  ...forVec43(yyzz, "yyzz", ggbb, "ggbb", ttpp, "ttpp", 1, 1, 2, 2),
-  ...forVec44(yyzw, "yyzw", ggba, "ggba", ttpq, "ttpq", 1, 1, 2, 3),
-  ...forVec44(yywx, "yywx", ggar, "ggar", ttqs, "ttqs", 1, 1, 3, 0),
-  ...forVec44(yywy, "yywy", ggag, "ggag", ttqt, "ttqt", 1, 1, 3, 1),
-  ...forVec44(yywz, "yywz", ggab, "ggab", ttqp, "ttqp", 1, 1, 3, 2),
-  ...forVec44(yyww, "yyww", ggaa, "ggaa", ttqq, "ttqq", 1, 1, 3, 3),
-  ...forVec43(yzxx, "yzxx", gbrr, "gbrr", tpss, "tpss", 1, 2, 0, 0),
-  ...forVec43(yzxy, "yzxy", gbrg, "gbrg", tpst, "tpst", 1, 2, 0, 1),
-  ...forVec43(yzxz, "yzxz", gbrb, "gbrb", tpsp, "tpsp", 1, 2, 0, 2),
-  ...forVec44(yzxw, "yzxw", gbra, "gbra", tpsq, "tpsq", 1, 2, 0, 3),
-  ...forVec43(yzyx, "yzyx", gbgr, "gbgr", tpts, "tpts", 1, 2, 1, 0),
-  ...forVec43(yzyy, "yzyy", gbgg, "gbgg", tptt, "tptt", 1, 2, 1, 1),
-  ...forVec43(yzyz, "yzyz", gbgb, "gbgb", tptp, "tptp", 1, 2, 1, 2),
-  ...forVec44(yzyw, "yzyw", gbga, "gbga", tptq, "tptq", 1, 2, 1, 3),
-  ...forVec43(yzzx, "yzzx", gbbr, "gbbr", tpps, "tpps", 1, 2, 2, 0),
-  ...forVec43(yzzy, "yzzy", gbbg, "gbbg", tppt, "tppt", 1, 2, 2, 1),
-  ...forVec43(yzzz, "yzzz", gbbb, "gbbb", tppp, "tppp", 1, 2, 2, 2),
-  ...forVec44(yzzw, "yzzw", gbba, "gbba", tppq, "tppq", 1, 2, 2, 3),
-  ...forVec44(yzwx, "yzwx", gbar, "gbar", tpqs, "tpqs", 1, 2, 3, 0),
-  ...forVec44(yzwy, "yzwy", gbag, "gbag", tpqt, "tpqt", 1, 2, 3, 1),
-  ...forVec44(yzwz, "yzwz", gbab, "gbab", tpqp, "tpqp", 1, 2, 3, 2),
-  ...forVec44(yzww, "yzww", gbaa, "gbaa", tpqq, "tpqq", 1, 2, 3, 3),
-  ...forVec44(ywxx, "ywxx", garr, "garr", tqss, "tqss", 1, 3, 0, 0),
-  ...forVec44(ywxy, "ywxy", garg, "garg", tqst, "tqst", 1, 3, 0, 1),
-  ...forVec44(ywxz, "ywxz", garb, "garb", tqsp, "tqsp", 1, 3, 0, 2),
-  ...forVec44(ywxw, "ywxw", gara, "gara", tqsq, "tqsq", 1, 3, 0, 3),
-  ...forVec44(ywyx, "ywyx", gagr, "gagr", tqts, "tqts", 1, 3, 1, 0),
-  ...forVec44(ywyy, "ywyy", gagg, "gagg", tqtt, "tqtt", 1, 3, 1, 1),
-  ...forVec44(ywyz, "ywyz", gagb, "gagb", tqtp, "tqtp", 1, 3, 1, 2),
-  ...forVec44(ywyw, "ywyw", gaga, "gaga", tqtq, "tqtq", 1, 3, 1, 3),
-  ...forVec44(ywzx, "ywzx", gabr, "gabr", tqps, "tqps", 1, 3, 2, 0),
-  ...forVec44(ywzy, "ywzy", gabg, "gabg", tqpt, "tqpt", 1, 3, 2, 1),
-  ...forVec44(ywzz, "ywzz", gabb, "gabb", tqpp, "tqpp", 1, 3, 2, 2),
-  ...forVec44(ywzw, "ywzw", gaba, "gaba", tqpq, "tqpq", 1, 3, 2, 3),
-  ...forVec44(ywwx, "ywwx", gaar, "gaar", tqqs, "tqqs", 1, 3, 3, 0),
-  ...forVec44(ywwy, "ywwy", gaag, "gaag", tqqt, "tqqt", 1, 3, 3, 1),
-  ...forVec44(ywwz, "ywwz", gaab, "gaab", tqqp, "tqqp", 1, 3, 3, 2),
-  ...forVec44(ywww, "ywww", gaaa, "gaaa", tqqq, "tqqq", 1, 3, 3, 3),
-  ...forVec43(zxxx, "zxxx", brrr, "brrr", psss, "psss", 2, 0, 0, 0),
-  ...forVec43(zxxy, "zxxy", brrg, "brrg", psst, "psst", 2, 0, 0, 1),
-  ...forVec43(zxxz, "zxxz", brrb, "brrb", pssp, "pssp", 2, 0, 0, 2),
-  ...forVec44(zxxw, "zxxw", brra, "brra", pssq, "pssq", 2, 0, 0, 3),
-  ...forVec43(zxyx, "zxyx", brgr, "brgr", psts, "psts", 2, 0, 1, 0),
-  ...forVec43(zxyy, "zxyy", brgg, "brgg", pstt, "pstt", 2, 0, 1, 1),
-  ...forVec43(zxyz, "zxyz", brgb, "brgb", pstp, "pstp", 2, 0, 1, 2),
-  ...forVec44(zxyw, "zxyw", brga, "brga", pstq, "pstq", 2, 0, 1, 3),
-  ...forVec43(zxzx, "zxzx", brbr, "brbr", psps, "psps", 2, 0, 2, 0),
-  ...forVec43(zxzy, "zxzy", brbg, "brbg", pspt, "pspt", 2, 0, 2, 1),
-  ...forVec43(zxzz, "zxzz", brbb, "brbb", pspp, "pspp", 2, 0, 2, 2),
-  ...forVec44(zxzw, "zxzw", brba, "brba", pspq, "pspq", 2, 0, 2, 3),
-  ...forVec44(zxwx, "zxwx", brar, "brar", psqs, "psqs", 2, 0, 3, 0),
-  ...forVec44(zxwy, "zxwy", brag, "brag", psqt, "psqt", 2, 0, 3, 1),
-  ...forVec44(zxwz, "zxwz", brab, "brab", psqp, "psqp", 2, 0, 3, 2),
-  ...forVec44(zxww, "zxww", braa, "braa", psqq, "psqq", 2, 0, 3, 3),
-  ...forVec43(zyxx, "zyxx", bgrr, "bgrr", ptss, "ptss", 2, 1, 0, 0),
-  ...forVec43(zyxy, "zyxy", bgrg, "bgrg", ptst, "ptst", 2, 1, 0, 1),
-  ...forVec43(zyxz, "zyxz", bgrb, "bgrb", ptsp, "ptsp", 2, 1, 0, 2),
-  ...forVec44(zyxw, "zyxw", bgra, "bgra", ptsq, "ptsq", 2, 1, 0, 3),
-  ...forVec43(zyyx, "zyyx", bggr, "bggr", ptts, "ptts", 2, 1, 1, 0),
-  ...forVec43(zyyy, "zyyy", bggg, "bggg", pttt, "pttt", 2, 1, 1, 1),
-  ...forVec43(zyyz, "zyyz", bggb, "bggb", pttp, "pttp", 2, 1, 1, 2),
-  ...forVec44(zyyw, "zyyw", bgga, "bgga", pttq, "pttq", 2, 1, 1, 3),
-  ...forVec43(zyzx, "zyzx", bgbr, "bgbr", ptps, "ptps", 2, 1, 2, 0),
-  ...forVec43(zyzy, "zyzy", bgbg, "bgbg", ptpt, "ptpt", 2, 1, 2, 1),
-  ...forVec43(zyzz, "zyzz", bgbb, "bgbb", ptpp, "ptpp", 2, 1, 2, 2),
-  ...forVec44(zyzw, "zyzw", bgba, "bgba", ptpq, "ptpq", 2, 1, 2, 3),
-  ...forVec44(zywx, "zywx", bgar, "bgar", ptqs, "ptqs", 2, 1, 3, 0),
-  ...forVec44(zywy, "zywy", bgag, "bgag", ptqt, "ptqt", 2, 1, 3, 1),
-  ...forVec44(zywz, "zywz", bgab, "bgab", ptqp, "ptqp", 2, 1, 3, 2),
-  ...forVec44(zyww, "zyww", bgaa, "bgaa", ptqq, "ptqq", 2, 1, 3, 3),
-  ...forVec43(zzxx, "zzxx", bbrr, "bbrr", ppss, "ppss", 2, 2, 0, 0),
-  ...forVec43(zzxy, "zzxy", bbrg, "bbrg", ppst, "ppst", 2, 2, 0, 1),
-  ...forVec43(zzxz, "zzxz", bbrb, "bbrb", ppsp, "ppsp", 2, 2, 0, 2),
-  ...forVec44(zzxw, "zzxw", bbra, "bbra", ppsq, "ppsq", 2, 2, 0, 3),
-  ...forVec43(zzyx, "zzyx", bbgr, "bbgr", ppts, "ppts", 2, 2, 1, 0),
-  ...forVec43(zzyy, "zzyy", bbgg, "bbgg", pptt, "pptt", 2, 2, 1, 1),
-  ...forVec43(zzyz, "zzyz", bbgb, "bbgb", pptp, "pptp", 2, 2, 1, 2),
-  ...forVec44(zzyw, "zzyw", bbga, "bbga", pptq, "pptq", 2, 2, 1, 3),
-  ...forVec43(zzzx, "zzzx", bbbr, "bbbr", ppps, "ppps", 2, 2, 2, 0),
-  ...forVec43(zzzy, "zzzy", bbbg, "bbbg", pppt, "pppt", 2, 2, 2, 1),
-  ...forVec43(zzzz, "zzzz", bbbb, "bbbb", pppp, "pppp", 2, 2, 2, 2),
-  ...forVec44(zzzw, "zzzw", bbba, "bbba", pppq, "pppq", 2, 2, 2, 3),
-  ...forVec44(zzwx, "zzwx", bbar, "bbar", ppqs, "ppqs", 2, 2, 3, 0),
-  ...forVec44(zzwy, "zzwy", bbag, "bbag", ppqt, "ppqt", 2, 2, 3, 1),
-  ...forVec44(zzwz, "zzwz", bbab, "bbab", ppqp, "ppqp", 2, 2, 3, 2),
-  ...forVec44(zzww, "zzww", bbaa, "bbaa", ppqq, "ppqq", 2, 2, 3, 3),
-  ...forVec44(zwxx, "zwxx", barr, "barr", pqss, "pqss", 2, 3, 0, 0),
-  ...forVec44(zwxy, "zwxy", barg, "barg", pqst, "pqst", 2, 3, 0, 1),
-  ...forVec44(zwxz, "zwxz", barb, "barb", pqsp, "pqsp", 2, 3, 0, 2),
-  ...forVec44(zwxw, "zwxw", bara, "bara", pqsq, "pqsq", 2, 3, 0, 3),
-  ...forVec44(zwyx, "zwyx", bagr, "bagr", pqts, "pqts", 2, 3, 1, 0),
-  ...forVec44(zwyy, "zwyy", bagg, "bagg", pqtt, "pqtt", 2, 3, 1, 1),
-  ...forVec44(zwyz, "zwyz", bagb, "bagb", pqtp, "pqtp", 2, 3, 1, 2),
-  ...forVec44(zwyw, "zwyw", baga, "baga", pqtq, "pqtq", 2, 3, 1, 3),
-  ...forVec44(zwzx, "zwzx", babr, "babr", pqps, "pqps", 2, 3, 2, 0),
-  ...forVec44(zwzy, "zwzy", babg, "babg", pqpt, "pqpt", 2, 3, 2, 1),
-  ...forVec44(zwzz, "zwzz", babb, "babb", pqpp, "pqpp", 2, 3, 2, 2),
-  ...forVec44(zwzw, "zwzw", baba, "baba", pqpq, "pqpq", 2, 3, 2, 3),
-  ...forVec44(zwwx, "zwwx", baar, "baar", pqqs, "pqqs", 2, 3, 3, 0),
-  ...forVec44(zwwy, "zwwy", baag, "baag", pqqt, "pqqt", 2, 3, 3, 1),
-  ...forVec44(zwwz, "zwwz", baab, "baab", pqqp, "pqqp", 2, 3, 3, 2),
-  ...forVec44(zwww, "zwww", baaa, "baaa", pqqq, "pqqq", 2, 3, 3, 3),
-  ...forVec44(wxxx, "wxxx", arrr, "arrr", qsss, "qsss", 3, 0, 0, 0),
-  ...forVec44(wxxy, "wxxy", arrg, "arrg", qsst, "qsst", 3, 0, 0, 1),
-  ...forVec44(wxxz, "wxxz", arrb, "arrb", qssp, "qssp", 3, 0, 0, 2),
-  ...forVec44(wxxw, "wxxw", arra, "arra", qssq, "qssq", 3, 0, 0, 3),
-  ...forVec44(wxyx, "wxyx", argr, "argr", qsts, "qsts", 3, 0, 1, 0),
-  ...forVec44(wxyy, "wxyy", argg, "argg", qstt, "qstt", 3, 0, 1, 1),
-  ...forVec44(wxyz, "wxyz", argb, "argb", qstp, "qstp", 3, 0, 1, 2),
-  ...forVec44(wxyw, "wxyw", arga, "arga", qstq, "qstq", 3, 0, 1, 3),
-  ...forVec44(wxzx, "wxzx", arbr, "arbr", qsps, "qsps", 3, 0, 2, 0),
-  ...forVec44(wxzy, "wxzy", arbg, "arbg", qspt, "qspt", 3, 0, 2, 1),
-  ...forVec44(wxzz, "wxzz", arbb, "arbb", qspp, "qspp", 3, 0, 2, 2),
-  ...forVec44(wxzw, "wxzw", arba, "arba", qspq, "qspq", 3, 0, 2, 3),
-  ...forVec44(wxwx, "wxwx", arar, "arar", qsqs, "qsqs", 3, 0, 3, 0),
-  ...forVec44(wxwy, "wxwy", arag, "arag", qsqt, "qsqt", 3, 0, 3, 1),
-  ...forVec44(wxwz, "wxwz", arab, "arab", qsqp, "qsqp", 3, 0, 3, 2),
-  ...forVec44(wxww, "wxww", araa, "araa", qsqq, "qsqq", 3, 0, 3, 3),
-  ...forVec44(wyxx, "wyxx", agrr, "agrr", qtss, "qtss", 3, 1, 0, 0),
-  ...forVec44(wyxy, "wyxy", agrg, "agrg", qtst, "qtst", 3, 1, 0, 1),
-  ...forVec44(wyxz, "wyxz", agrb, "agrb", qtsp, "qtsp", 3, 1, 0, 2),
-  ...forVec44(wyxw, "wyxw", agra, "agra", qtsq, "qtsq", 3, 1, 0, 3),
-  ...forVec44(wyyx, "wyyx", aggr, "aggr", qtts, "qtts", 3, 1, 1, 0),
-  ...forVec44(wyyy, "wyyy", aggg, "aggg", qttt, "qttt", 3, 1, 1, 1),
-  ...forVec44(wyyz, "wyyz", aggb, "aggb", qttp, "qttp", 3, 1, 1, 2),
-  ...forVec44(wyyw, "wyyw", agga, "agga", qttq, "qttq", 3, 1, 1, 3),
-  ...forVec44(wyzx, "wyzx", agbr, "agbr", qtps, "qtps", 3, 1, 2, 0),
-  ...forVec44(wyzy, "wyzy", agbg, "agbg", qtpt, "qtpt", 3, 1, 2, 1),
-  ...forVec44(wyzz, "wyzz", agbb, "agbb", qtpp, "qtpp", 3, 1, 2, 2),
-  ...forVec44(wyzw, "wyzw", agba, "agba", qtpq, "qtpq", 3, 1, 2, 3),
-  ...forVec44(wywx, "wywx", agar, "agar", qtqs, "qtqs", 3, 1, 3, 0),
-  ...forVec44(wywy, "wywy", agag, "agag", qtqt, "qtqt", 3, 1, 3, 1),
-  ...forVec44(wywz, "wywz", agab, "agab", qtqp, "qtqp", 3, 1, 3, 2),
-  ...forVec44(wyww, "wyww", agaa, "agaa", qtqq, "qtqq", 3, 1, 3, 3),
-  ...forVec44(wzxx, "wzxx", abrr, "abrr", qpss, "qpss", 3, 2, 0, 0),
-  ...forVec44(wzxy, "wzxy", abrg, "abrg", qpst, "qpst", 3, 2, 0, 1),
-  ...forVec44(wzxz, "wzxz", abrb, "abrb", qpsp, "qpsp", 3, 2, 0, 2),
-  ...forVec44(wzxw, "wzxw", abra, "abra", qpsq, "qpsq", 3, 2, 0, 3),
-  ...forVec44(wzyx, "wzyx", abgr, "abgr", qpts, "qpts", 3, 2, 1, 0),
-  ...forVec44(wzyy, "wzyy", abgg, "abgg", qptt, "qptt", 3, 2, 1, 1),
-  ...forVec44(wzyz, "wzyz", abgb, "abgb", qptp, "qptp", 3, 2, 1, 2),
-  ...forVec44(wzyw, "wzyw", abga, "abga", qptq, "qptq", 3, 2, 1, 3),
-  ...forVec44(wzzx, "wzzx", abbr, "abbr", qpps, "qpps", 3, 2, 2, 0),
-  ...forVec44(wzzy, "wzzy", abbg, "abbg", qppt, "qppt", 3, 2, 2, 1),
-  ...forVec44(wzzz, "wzzz", abbb, "abbb", qppp, "qppp", 3, 2, 2, 2),
-  ...forVec44(wzzw, "wzzw", abba, "abba", qppq, "qppq", 3, 2, 2, 3),
-  ...forVec44(wzwx, "wzwx", abar, "abar", qpqs, "qpqs", 3, 2, 3, 0),
-  ...forVec44(wzwy, "wzwy", abag, "abag", qpqt, "qpqt", 3, 2, 3, 1),
-  ...forVec44(wzwz, "wzwz", abab, "abab", qpqp, "qpqp", 3, 2, 3, 2),
-  ...forVec44(wzww, "wzww", abaa, "abaa", qpqq, "qpqq", 3, 2, 3, 3),
-  ...forVec44(wwxx, "wwxx", aarr, "aarr", qqss, "qqss", 3, 3, 0, 0),
-  ...forVec44(wwxy, "wwxy", aarg, "aarg", qqst, "qqst", 3, 3, 0, 1),
-  ...forVec44(wwxz, "wwxz", aarb, "aarb", qqsp, "qqsp", 3, 3, 0, 2),
-  ...forVec44(wwxw, "wwxw", aara, "aara", qqsq, "qqsq", 3, 3, 0, 3),
-  ...forVec44(wwyx, "wwyx", aagr, "aagr", qqts, "qqts", 3, 3, 1, 0),
-  ...forVec44(wwyy, "wwyy", aagg, "aagg", qqtt, "qqtt", 3, 3, 1, 1),
-  ...forVec44(wwyz, "wwyz", aagb, "aagb", qqtp, "qqtp", 3, 3, 1, 2),
-  ...forVec44(wwyw, "wwyw", aaga, "aaga", qqtq, "qqtq", 3, 3, 1, 3),
-  ...forVec44(wwzx, "wwzx", aabr, "aabr", qqps, "qqps", 3, 3, 2, 0),
-  ...forVec44(wwzy, "wwzy", aabg, "aabg", qqpt, "qqpt", 3, 3, 2, 1),
-  ...forVec44(wwzz, "wwzz", aabb, "aabb", qqpp, "qqpp", 3, 3, 2, 2),
-  ...forVec44(wwzw, "wwzw", aaba, "aaba", qqpq, "qqpq", 3, 3, 2, 3),
-  ...forVec44(wwwx, "wwwx", aaar, "aaar", qqqs, "qqqs", 3, 3, 3, 0),
-  ...forVec44(wwwy, "wwwy", aaag, "aaag", qqqt, "qqqt", 3, 3, 3, 1),
-  ...forVec44(wwwz, "wwwz", aaab, "aaab", qqqp, "qqqp", 3, 3, 3, 2),
-  ...forVec44(wwww, "wwww", aaaa, "aaaa", qqqq, "qqqq", 3, 3, 3, 3),
-];
+forVec12(x, "x", r, "r", s, "s", 0);
+forVec12(y, "y", g, "g", t, "t", 1);
+forVec13(z, "z", b, "b", p, "p", 2);
+forVec14(w, "w", a, "a", q, "q", 3);
+forVec22(xx, "xx", rr, "rr", ss, "ss", 0, 0);
+forVec22(xy, "xy", rg, "rg", st, "st", 0, 1);
+forVec23(xz, "xz", rb, "rb", sp, "sp", 0, 2);
+forVec24(xw, "xw", ra, "ra", sq, "sq", 0, 3);
+forVec22(yx, "yx", gr, "gr", ts, "ts", 1, 0);
+forVec22(yy, "yy", gg, "gg", tt, "tt", 1, 1);
+forVec23(yz, "yz", gb, "gb", tp, "tp", 1, 2);
+forVec24(yw, "yw", ga, "ga", tq, "tq", 1, 3);
+forVec23(zx, "zx", br, "br", ps, "ps", 2, 0);
+forVec23(zy, "zy", bg, "bg", pt, "pt", 2, 1);
+forVec23(zz, "zz", bb, "bb", pp, "pp", 2, 2);
+forVec24(zw, "zw", ba, "ba", pq, "pq", 2, 3);
+forVec24(wx, "wx", ar, "ar", qs, "qs", 3, 0);
+forVec24(wy, "wy", ag, "ag", qt, "qt", 3, 1);
+forVec24(wz, "wz", ab, "ab", qp, "qp", 3, 2);
+forVec24(ww, "ww", aa, "aa", qq, "qq", 3, 3);
+forVec32(xxx, "xxx", rrr, "rrr", sss, "sss", 0, 0, 0);
+forVec32(xxy, "xxy", rrg, "rrg", sst, "sst", 0, 0, 1);
+forVec33(xxz, "xxz", rrb, "rrb", ssp, "ssp", 0, 0, 2);
+forVec34(xxw, "xxw", rra, "rra", ssq, "ssq", 0, 0, 3);
+forVec32(xyx, "xyx", rgr, "rgr", sts, "sts", 0, 1, 0);
+forVec32(xyy, "xyy", rgg, "rgg", stt, "stt", 0, 1, 1);
+forVec33(xyz, "xyz", rgb, "rgb", stp, "stp", 0, 1, 2);
+forVec34(xyw, "xyw", rga, "rga", stq, "stq", 0, 1, 3);
+forVec33(xzx, "xzx", rbr, "rbr", sps, "sps", 0, 2, 0);
+forVec33(xzy, "xzy", rbg, "rbg", spt, "spt", 0, 2, 1);
+forVec33(xzz, "xzz", rbb, "rbb", spp, "spp", 0, 2, 2);
+forVec34(xzw, "xzw", rba, "rba", spq, "spq", 0, 2, 3);
+forVec34(xwx, "xwx", rar, "rar", sqs, "sqs", 0, 3, 0);
+forVec34(xwy, "xwy", rag, "rag", sqt, "sqt", 0, 3, 1);
+forVec34(xwz, "xwz", rab, "rab", sqp, "sqp", 0, 3, 2);
+forVec34(xww, "xww", raa, "raa", sqq, "sqq", 0, 3, 3);
+forVec32(yxx, "yxx", grr, "grr", tss, "tss", 1, 0, 0);
+forVec32(yxy, "yxy", grg, "grg", tst, "tst", 1, 0, 1);
+forVec33(yxz, "yxz", grb, "grb", tsp, "tsp", 1, 0, 2);
+forVec34(yxw, "yxw", gra, "gra", tsq, "tsq", 1, 0, 3);
+forVec32(yyx, "yyx", ggr, "ggr", tts, "tts", 1, 1, 0);
+forVec32(yyy, "yyy", ggg, "ggg", ttt, "ttt", 1, 1, 1);
+forVec33(yyz, "yyz", ggb, "ggb", ttp, "ttp", 1, 1, 2);
+forVec34(yyw, "yyw", gga, "gga", ttq, "ttq", 1, 1, 3);
+forVec33(yzx, "yzx", gbr, "gbr", tps, "tps", 1, 2, 0);
+forVec33(yzy, "yzy", gbg, "gbg", tpt, "tpt", 1, 2, 1);
+forVec33(yzz, "yzz", gbb, "gbb", tpp, "tpp", 1, 2, 2);
+forVec34(yzw, "yzw", gba, "gba", tpq, "tpq", 1, 2, 3);
+forVec34(ywx, "ywx", gar, "gar", tqs, "tqs", 1, 3, 0);
+forVec34(ywy, "ywy", gag, "gag", tqt, "tqt", 1, 3, 1);
+forVec34(ywz, "ywz", gab, "gab", tqp, "tqp", 1, 3, 2);
+forVec34(yww, "yww", gaa, "gaa", tqq, "tqq", 1, 3, 3);
+forVec33(zxx, "zxx", brr, "brr", pss, "pss", 2, 0, 0);
+forVec33(zxy, "zxy", brg, "brg", pst, "pst", 2, 0, 1);
+forVec33(zxz, "zxz", brb, "brb", psp, "psp", 2, 0, 2);
+forVec34(zxw, "zxw", bra, "bra", psq, "psq", 2, 0, 3);
+forVec33(zyx, "zyx", bgr, "bgr", pts, "pts", 2, 1, 0);
+forVec33(zyy, "zyy", bgg, "bgg", ptt, "ptt", 2, 1, 1);
+forVec33(zyz, "zyz", bgb, "bgb", ptp, "ptp", 2, 1, 2);
+forVec34(zyw, "zyw", bga, "bga", ptq, "ptq", 2, 1, 3);
+forVec33(zzx, "zzx", bbr, "bbr", pps, "pps", 2, 2, 0);
+forVec33(zzy, "zzy", bbg, "bbg", ppt, "ppt", 2, 2, 1);
+forVec33(zzz, "zzz", bbb, "bbb", ppp, "ppp", 2, 2, 2);
+forVec34(zzw, "zzw", bba, "bba", ppq, "ppq", 2, 2, 3);
+forVec34(zwx, "zwx", bar, "bar", pqs, "pqs", 2, 3, 0);
+forVec34(zwy, "zwy", bag, "bag", pqt, "pqt", 2, 3, 1);
+forVec34(zwz, "zwz", bab, "bab", pqp, "pqp", 2, 3, 2);
+forVec34(zww, "zww", baa, "baa", pqq, "pqq", 2, 3, 3);
+forVec34(wxx, "wxx", arr, "arr", qss, "qss", 3, 0, 0);
+forVec34(wxy, "wxy", arg, "arg", qst, "qst", 3, 0, 1);
+forVec34(wxz, "wxz", arb, "arb", qsp, "qsp", 3, 0, 2);
+forVec34(wxw, "wxw", ara, "ara", qsq, "qsq", 3, 0, 3);
+forVec34(wyx, "wyx", agr, "agr", qts, "qts", 3, 1, 0);
+forVec34(wyy, "wyy", agg, "agg", qtt, "qtt", 3, 1, 1);
+forVec34(wyz, "wyz", agb, "agb", qtp, "qtp", 3, 1, 2);
+forVec34(wyw, "wyw", aga, "aga", qtq, "qtq", 3, 1, 3);
+forVec34(wzx, "wzx", abr, "abr", qps, "qps", 3, 2, 0);
+forVec34(wzy, "wzy", abg, "abg", qpt, "qpt", 3, 2, 1);
+forVec34(wzz, "wzz", abb, "abb", qpp, "qpp", 3, 2, 2);
+forVec34(wzw, "wzw", aba, "aba", qpq, "qpq", 3, 2, 3);
+forVec34(wwx, "wwx", aar, "aar", qqs, "qqs", 3, 3, 0);
+forVec34(wwy, "wwy", aag, "aag", qqt, "qqt", 3, 3, 1);
+forVec34(wwz, "wwz", aab, "aab", qqp, "qqp", 3, 3, 2);
+forVec34(www, "www", aaa, "aaa", qqq, "qqq", 3, 3, 3);
+forVec42(xxxx, "xxxx", rrrr, "rrrr", ssss, "ssss", 0, 0, 0, 0);
+forVec42(xxxy, "xxxy", rrrg, "rrrg", ssst, "ssst", 0, 0, 0, 1);
+forVec43(xxxz, "xxxz", rrrb, "rrrb", sssp, "sssp", 0, 0, 0, 2);
+forVec44(xxxw, "xxxw", rrra, "rrra", sssq, "sssq", 0, 0, 0, 3);
+forVec42(xxyx, "xxyx", rrgr, "rrgr", ssts, "ssts", 0, 0, 1, 0);
+forVec42(xxyy, "xxyy", rrgg, "rrgg", sstt, "sstt", 0, 0, 1, 1);
+forVec43(xxyz, "xxyz", rrgb, "rrgb", sstp, "sstp", 0, 0, 1, 2);
+forVec44(xxyw, "xxyw", rrga, "rrga", sstq, "sstq", 0, 0, 1, 3);
+forVec43(xxzx, "xxzx", rrbr, "rrbr", ssps, "ssps", 0, 0, 2, 0);
+forVec43(xxzy, "xxzy", rrbg, "rrbg", sspt, "sspt", 0, 0, 2, 1);
+forVec43(xxzz, "xxzz", rrbb, "rrbb", sspp, "sspp", 0, 0, 2, 2);
+forVec44(xxzw, "xxzw", rrba, "rrba", sspq, "sspq", 0, 0, 2, 3);
+forVec44(xxwx, "xxwx", rrar, "rrar", ssqs, "ssqs", 0, 0, 3, 0);
+forVec44(xxwy, "xxwy", rrag, "rrag", ssqt, "ssqt", 0, 0, 3, 1);
+forVec44(xxwz, "xxwz", rrab, "rrab", ssqp, "ssqp", 0, 0, 3, 2);
+forVec44(xxww, "xxww", rraa, "rraa", ssqq, "ssqq", 0, 0, 3, 3);
+forVec42(xyxx, "xyxx", rgrr, "rgrr", stss, "stss", 0, 1, 0, 0);
+forVec42(xyxy, "xyxy", rgrg, "rgrg", stst, "stst", 0, 1, 0, 1);
+forVec43(xyxz, "xyxz", rgrb, "rgrb", stsp, "stsp", 0, 1, 0, 2);
+forVec44(xyxw, "xyxw", rgra, "rgra", stsq, "stsq", 0, 1, 0, 3);
+forVec42(xyyx, "xyyx", rggr, "rggr", stts, "stts", 0, 1, 1, 0);
+forVec42(xyyy, "xyyy", rggg, "rggg", sttt, "sttt", 0, 1, 1, 1);
+forVec43(xyyz, "xyyz", rggb, "rggb", sttp, "sttp", 0, 1, 1, 2);
+forVec44(xyyw, "xyyw", rgga, "rgga", sttq, "sttq", 0, 1, 1, 3);
+forVec43(xyzx, "xyzx", rgbr, "rgbr", stps, "stps", 0, 1, 2, 0);
+forVec43(xyzy, "xyzy", rgbg, "rgbg", stpt, "stpt", 0, 1, 2, 1);
+forVec43(xyzz, "xyzz", rgbb, "rgbb", stpp, "stpp", 0, 1, 2, 2);
+forVec44(xyzw, "xyzw", rgba, "rgba", stpq, "stpq", 0, 1, 2, 3);
+forVec44(xywx, "xywx", rgar, "rgar", stqs, "stqs", 0, 1, 3, 0);
+forVec44(xywy, "xywy", rgag, "rgag", stqt, "stqt", 0, 1, 3, 1);
+forVec44(xywz, "xywz", rgab, "rgab", stqp, "stqp", 0, 1, 3, 2);
+forVec44(xyww, "xyww", rgaa, "rgaa", stqq, "stqq", 0, 1, 3, 3);
+forVec43(xzxx, "xzxx", rbrr, "rbrr", spss, "spss", 0, 2, 0, 0);
+forVec43(xzxy, "xzxy", rbrg, "rbrg", spst, "spst", 0, 2, 0, 1);
+forVec43(xzxz, "xzxz", rbrb, "rbrb", spsp, "spsp", 0, 2, 0, 2);
+forVec44(xzxw, "xzxw", rbra, "rbra", spsq, "spsq", 0, 2, 0, 3);
+forVec43(xzyx, "xzyx", rbgr, "rbgr", spts, "spts", 0, 2, 1, 0);
+forVec43(xzyy, "xzyy", rbgg, "rbgg", sptt, "sptt", 0, 2, 1, 1);
+forVec43(xzyz, "xzyz", rbgb, "rbgb", sptp, "sptp", 0, 2, 1, 2);
+forVec44(xzyw, "xzyw", rbga, "rbga", sptq, "sptq", 0, 2, 1, 3);
+forVec43(xzzx, "xzzx", rbbr, "rbbr", spps, "spps", 0, 2, 2, 0);
+forVec43(xzzy, "xzzy", rbbg, "rbbg", sppt, "sppt", 0, 2, 2, 1);
+forVec43(xzzz, "xzzz", rbbb, "rbbb", sppp, "sppp", 0, 2, 2, 2);
+forVec44(xzzw, "xzzw", rbba, "rbba", sppq, "sppq", 0, 2, 2, 3);
+forVec44(xzwx, "xzwx", rbar, "rbar", spqs, "spqs", 0, 2, 3, 0);
+forVec44(xzwy, "xzwy", rbag, "rbag", spqt, "spqt", 0, 2, 3, 1);
+forVec44(xzwz, "xzwz", rbab, "rbab", spqp, "spqp", 0, 2, 3, 2);
+forVec44(xzww, "xzww", rbaa, "rbaa", spqq, "spqq", 0, 2, 3, 3);
+forVec44(xwxx, "xwxx", rarr, "rarr", sqss, "sqss", 0, 3, 0, 0);
+forVec44(xwxy, "xwxy", rarg, "rarg", sqst, "sqst", 0, 3, 0, 1);
+forVec44(xwxz, "xwxz", rarb, "rarb", sqsp, "sqsp", 0, 3, 0, 2);
+forVec44(xwxw, "xwxw", rara, "rara", sqsq, "sqsq", 0, 3, 0, 3);
+forVec44(xwyx, "xwyx", ragr, "ragr", sqts, "sqts", 0, 3, 1, 0);
+forVec44(xwyy, "xwyy", ragg, "ragg", sqtt, "sqtt", 0, 3, 1, 1);
+forVec44(xwyz, "xwyz", ragb, "ragb", sqtp, "sqtp", 0, 3, 1, 2);
+forVec44(xwyw, "xwyw", raga, "raga", sqtq, "sqtq", 0, 3, 1, 3);
+forVec44(xwzx, "xwzx", rabr, "rabr", sqps, "sqps", 0, 3, 2, 0);
+forVec44(xwzy, "xwzy", rabg, "rabg", sqpt, "sqpt", 0, 3, 2, 1);
+forVec44(xwzz, "xwzz", rabb, "rabb", sqpp, "sqpp", 0, 3, 2, 2);
+forVec44(xwzw, "xwzw", raba, "raba", sqpq, "sqpq", 0, 3, 2, 3);
+forVec44(xwwx, "xwwx", raar, "raar", sqqs, "sqqs", 0, 3, 3, 0);
+forVec44(xwwy, "xwwy", raag, "raag", sqqt, "sqqt", 0, 3, 3, 1);
+forVec44(xwwz, "xwwz", raab, "raab", sqqp, "sqqp", 0, 3, 3, 2);
+forVec44(xwww, "xwww", raaa, "raaa", sqqq, "sqqq", 0, 3, 3, 3);
+forVec42(yxxx, "yxxx", grrr, "grrr", tsss, "tsss", 1, 0, 0, 0);
+forVec42(yxxy, "yxxy", grrg, "grrg", tsst, "tsst", 1, 0, 0, 1);
+forVec43(yxxz, "yxxz", grrb, "grrb", tssp, "tssp", 1, 0, 0, 2);
+forVec44(yxxw, "yxxw", grra, "grra", tssq, "tssq", 1, 0, 0, 3);
+forVec42(yxyx, "yxyx", grgr, "grgr", tsts, "tsts", 1, 0, 1, 0);
+forVec42(yxyy, "yxyy", grgg, "grgg", tstt, "tstt", 1, 0, 1, 1);
+forVec43(yxyz, "yxyz", grgb, "grgb", tstp, "tstp", 1, 0, 1, 2);
+forVec44(yxyw, "yxyw", grga, "grga", tstq, "tstq", 1, 0, 1, 3);
+forVec43(yxzx, "yxzx", grbr, "grbr", tsps, "tsps", 1, 0, 2, 0);
+forVec43(yxzy, "yxzy", grbg, "grbg", tspt, "tspt", 1, 0, 2, 1);
+forVec43(yxzz, "yxzz", grbb, "grbb", tspp, "tspp", 1, 0, 2, 2);
+forVec44(yxzw, "yxzw", grba, "grba", tspq, "tspq", 1, 0, 2, 3);
+forVec44(yxwx, "yxwx", grar, "grar", tsqs, "tsqs", 1, 0, 3, 0);
+forVec44(yxwy, "yxwy", grag, "grag", tsqt, "tsqt", 1, 0, 3, 1);
+forVec44(yxwz, "yxwz", grab, "grab", tsqp, "tsqp", 1, 0, 3, 2);
+forVec44(yxww, "yxww", graa, "graa", tsqq, "tsqq", 1, 0, 3, 3);
+forVec42(yyxx, "yyxx", ggrr, "ggrr", ttss, "ttss", 1, 1, 0, 0);
+forVec42(yyxy, "yyxy", ggrg, "ggrg", ttst, "ttst", 1, 1, 0, 1);
+forVec43(yyxz, "yyxz", ggrb, "ggrb", ttsp, "ttsp", 1, 1, 0, 2);
+forVec44(yyxw, "yyxw", ggra, "ggra", ttsq, "ttsq", 1, 1, 0, 3);
+forVec42(yyyx, "yyyx", gggr, "gggr", ttts, "ttts", 1, 1, 1, 0);
+forVec42(yyyy, "yyyy", gggg, "gggg", tttt, "tttt", 1, 1, 1, 1);
+forVec43(yyyz, "yyyz", gggb, "gggb", tttp, "tttp", 1, 1, 1, 2);
+forVec44(yyyw, "yyyw", ggga, "ggga", tttq, "tttq", 1, 1, 1, 3);
+forVec43(yyzx, "yyzx", ggbr, "ggbr", ttps, "ttps", 1, 1, 2, 0);
+forVec43(yyzy, "yyzy", ggbg, "ggbg", ttpt, "ttpt", 1, 1, 2, 1);
+forVec43(yyzz, "yyzz", ggbb, "ggbb", ttpp, "ttpp", 1, 1, 2, 2);
+forVec44(yyzw, "yyzw", ggba, "ggba", ttpq, "ttpq", 1, 1, 2, 3);
+forVec44(yywx, "yywx", ggar, "ggar", ttqs, "ttqs", 1, 1, 3, 0);
+forVec44(yywy, "yywy", ggag, "ggag", ttqt, "ttqt", 1, 1, 3, 1);
+forVec44(yywz, "yywz", ggab, "ggab", ttqp, "ttqp", 1, 1, 3, 2);
+forVec44(yyww, "yyww", ggaa, "ggaa", ttqq, "ttqq", 1, 1, 3, 3);
+forVec43(yzxx, "yzxx", gbrr, "gbrr", tpss, "tpss", 1, 2, 0, 0);
+forVec43(yzxy, "yzxy", gbrg, "gbrg", tpst, "tpst", 1, 2, 0, 1);
+forVec43(yzxz, "yzxz", gbrb, "gbrb", tpsp, "tpsp", 1, 2, 0, 2);
+forVec44(yzxw, "yzxw", gbra, "gbra", tpsq, "tpsq", 1, 2, 0, 3);
+forVec43(yzyx, "yzyx", gbgr, "gbgr", tpts, "tpts", 1, 2, 1, 0);
+forVec43(yzyy, "yzyy", gbgg, "gbgg", tptt, "tptt", 1, 2, 1, 1);
+forVec43(yzyz, "yzyz", gbgb, "gbgb", tptp, "tptp", 1, 2, 1, 2);
+forVec44(yzyw, "yzyw", gbga, "gbga", tptq, "tptq", 1, 2, 1, 3);
+forVec43(yzzx, "yzzx", gbbr, "gbbr", tpps, "tpps", 1, 2, 2, 0);
+forVec43(yzzy, "yzzy", gbbg, "gbbg", tppt, "tppt", 1, 2, 2, 1);
+forVec43(yzzz, "yzzz", gbbb, "gbbb", tppp, "tppp", 1, 2, 2, 2);
+forVec44(yzzw, "yzzw", gbba, "gbba", tppq, "tppq", 1, 2, 2, 3);
+forVec44(yzwx, "yzwx", gbar, "gbar", tpqs, "tpqs", 1, 2, 3, 0);
+forVec44(yzwy, "yzwy", gbag, "gbag", tpqt, "tpqt", 1, 2, 3, 1);
+forVec44(yzwz, "yzwz", gbab, "gbab", tpqp, "tpqp", 1, 2, 3, 2);
+forVec44(yzww, "yzww", gbaa, "gbaa", tpqq, "tpqq", 1, 2, 3, 3);
+forVec44(ywxx, "ywxx", garr, "garr", tqss, "tqss", 1, 3, 0, 0);
+forVec44(ywxy, "ywxy", garg, "garg", tqst, "tqst", 1, 3, 0, 1);
+forVec44(ywxz, "ywxz", garb, "garb", tqsp, "tqsp", 1, 3, 0, 2);
+forVec44(ywxw, "ywxw", gara, "gara", tqsq, "tqsq", 1, 3, 0, 3);
+forVec44(ywyx, "ywyx", gagr, "gagr", tqts, "tqts", 1, 3, 1, 0);
+forVec44(ywyy, "ywyy", gagg, "gagg", tqtt, "tqtt", 1, 3, 1, 1);
+forVec44(ywyz, "ywyz", gagb, "gagb", tqtp, "tqtp", 1, 3, 1, 2);
+forVec44(ywyw, "ywyw", gaga, "gaga", tqtq, "tqtq", 1, 3, 1, 3);
+forVec44(ywzx, "ywzx", gabr, "gabr", tqps, "tqps", 1, 3, 2, 0);
+forVec44(ywzy, "ywzy", gabg, "gabg", tqpt, "tqpt", 1, 3, 2, 1);
+forVec44(ywzz, "ywzz", gabb, "gabb", tqpp, "tqpp", 1, 3, 2, 2);
+forVec44(ywzw, "ywzw", gaba, "gaba", tqpq, "tqpq", 1, 3, 2, 3);
+forVec44(ywwx, "ywwx", gaar, "gaar", tqqs, "tqqs", 1, 3, 3, 0);
+forVec44(ywwy, "ywwy", gaag, "gaag", tqqt, "tqqt", 1, 3, 3, 1);
+forVec44(ywwz, "ywwz", gaab, "gaab", tqqp, "tqqp", 1, 3, 3, 2);
+forVec44(ywww, "ywww", gaaa, "gaaa", tqqq, "tqqq", 1, 3, 3, 3);
+forVec43(zxxx, "zxxx", brrr, "brrr", psss, "psss", 2, 0, 0, 0);
+forVec43(zxxy, "zxxy", brrg, "brrg", psst, "psst", 2, 0, 0, 1);
+forVec43(zxxz, "zxxz", brrb, "brrb", pssp, "pssp", 2, 0, 0, 2);
+forVec44(zxxw, "zxxw", brra, "brra", pssq, "pssq", 2, 0, 0, 3);
+forVec43(zxyx, "zxyx", brgr, "brgr", psts, "psts", 2, 0, 1, 0);
+forVec43(zxyy, "zxyy", brgg, "brgg", pstt, "pstt", 2, 0, 1, 1);
+forVec43(zxyz, "zxyz", brgb, "brgb", pstp, "pstp", 2, 0, 1, 2);
+forVec44(zxyw, "zxyw", brga, "brga", pstq, "pstq", 2, 0, 1, 3);
+forVec43(zxzx, "zxzx", brbr, "brbr", psps, "psps", 2, 0, 2, 0);
+forVec43(zxzy, "zxzy", brbg, "brbg", pspt, "pspt", 2, 0, 2, 1);
+forVec43(zxzz, "zxzz", brbb, "brbb", pspp, "pspp", 2, 0, 2, 2);
+forVec44(zxzw, "zxzw", brba, "brba", pspq, "pspq", 2, 0, 2, 3);
+forVec44(zxwx, "zxwx", brar, "brar", psqs, "psqs", 2, 0, 3, 0);
+forVec44(zxwy, "zxwy", brag, "brag", psqt, "psqt", 2, 0, 3, 1);
+forVec44(zxwz, "zxwz", brab, "brab", psqp, "psqp", 2, 0, 3, 2);
+forVec44(zxww, "zxww", braa, "braa", psqq, "psqq", 2, 0, 3, 3);
+forVec43(zyxx, "zyxx", bgrr, "bgrr", ptss, "ptss", 2, 1, 0, 0);
+forVec43(zyxy, "zyxy", bgrg, "bgrg", ptst, "ptst", 2, 1, 0, 1);
+forVec43(zyxz, "zyxz", bgrb, "bgrb", ptsp, "ptsp", 2, 1, 0, 2);
+forVec44(zyxw, "zyxw", bgra, "bgra", ptsq, "ptsq", 2, 1, 0, 3);
+forVec43(zyyx, "zyyx", bggr, "bggr", ptts, "ptts", 2, 1, 1, 0);
+forVec43(zyyy, "zyyy", bggg, "bggg", pttt, "pttt", 2, 1, 1, 1);
+forVec43(zyyz, "zyyz", bggb, "bggb", pttp, "pttp", 2, 1, 1, 2);
+forVec44(zyyw, "zyyw", bgga, "bgga", pttq, "pttq", 2, 1, 1, 3);
+forVec43(zyzx, "zyzx", bgbr, "bgbr", ptps, "ptps", 2, 1, 2, 0);
+forVec43(zyzy, "zyzy", bgbg, "bgbg", ptpt, "ptpt", 2, 1, 2, 1);
+forVec43(zyzz, "zyzz", bgbb, "bgbb", ptpp, "ptpp", 2, 1, 2, 2);
+forVec44(zyzw, "zyzw", bgba, "bgba", ptpq, "ptpq", 2, 1, 2, 3);
+forVec44(zywx, "zywx", bgar, "bgar", ptqs, "ptqs", 2, 1, 3, 0);
+forVec44(zywy, "zywy", bgag, "bgag", ptqt, "ptqt", 2, 1, 3, 1);
+forVec44(zywz, "zywz", bgab, "bgab", ptqp, "ptqp", 2, 1, 3, 2);
+forVec44(zyww, "zyww", bgaa, "bgaa", ptqq, "ptqq", 2, 1, 3, 3);
+forVec43(zzxx, "zzxx", bbrr, "bbrr", ppss, "ppss", 2, 2, 0, 0);
+forVec43(zzxy, "zzxy", bbrg, "bbrg", ppst, "ppst", 2, 2, 0, 1);
+forVec43(zzxz, "zzxz", bbrb, "bbrb", ppsp, "ppsp", 2, 2, 0, 2);
+forVec44(zzxw, "zzxw", bbra, "bbra", ppsq, "ppsq", 2, 2, 0, 3);
+forVec43(zzyx, "zzyx", bbgr, "bbgr", ppts, "ppts", 2, 2, 1, 0);
+forVec43(zzyy, "zzyy", bbgg, "bbgg", pptt, "pptt", 2, 2, 1, 1);
+forVec43(zzyz, "zzyz", bbgb, "bbgb", pptp, "pptp", 2, 2, 1, 2);
+forVec44(zzyw, "zzyw", bbga, "bbga", pptq, "pptq", 2, 2, 1, 3);
+forVec43(zzzx, "zzzx", bbbr, "bbbr", ppps, "ppps", 2, 2, 2, 0);
+forVec43(zzzy, "zzzy", bbbg, "bbbg", pppt, "pppt", 2, 2, 2, 1);
+forVec43(zzzz, "zzzz", bbbb, "bbbb", pppp, "pppp", 2, 2, 2, 2);
+forVec44(zzzw, "zzzw", bbba, "bbba", pppq, "pppq", 2, 2, 2, 3);
+forVec44(zzwx, "zzwx", bbar, "bbar", ppqs, "ppqs", 2, 2, 3, 0);
+forVec44(zzwy, "zzwy", bbag, "bbag", ppqt, "ppqt", 2, 2, 3, 1);
+forVec44(zzwz, "zzwz", bbab, "bbab", ppqp, "ppqp", 2, 2, 3, 2);
+forVec44(zzww, "zzww", bbaa, "bbaa", ppqq, "ppqq", 2, 2, 3, 3);
+forVec44(zwxx, "zwxx", barr, "barr", pqss, "pqss", 2, 3, 0, 0);
+forVec44(zwxy, "zwxy", barg, "barg", pqst, "pqst", 2, 3, 0, 1);
+forVec44(zwxz, "zwxz", barb, "barb", pqsp, "pqsp", 2, 3, 0, 2);
+forVec44(zwxw, "zwxw", bara, "bara", pqsq, "pqsq", 2, 3, 0, 3);
+forVec44(zwyx, "zwyx", bagr, "bagr", pqts, "pqts", 2, 3, 1, 0);
+forVec44(zwyy, "zwyy", bagg, "bagg", pqtt, "pqtt", 2, 3, 1, 1);
+forVec44(zwyz, "zwyz", bagb, "bagb", pqtp, "pqtp", 2, 3, 1, 2);
+forVec44(zwyw, "zwyw", baga, "baga", pqtq, "pqtq", 2, 3, 1, 3);
+forVec44(zwzx, "zwzx", babr, "babr", pqps, "pqps", 2, 3, 2, 0);
+forVec44(zwzy, "zwzy", babg, "babg", pqpt, "pqpt", 2, 3, 2, 1);
+forVec44(zwzz, "zwzz", babb, "babb", pqpp, "pqpp", 2, 3, 2, 2);
+forVec44(zwzw, "zwzw", baba, "baba", pqpq, "pqpq", 2, 3, 2, 3);
+forVec44(zwwx, "zwwx", baar, "baar", pqqs, "pqqs", 2, 3, 3, 0);
+forVec44(zwwy, "zwwy", baag, "baag", pqqt, "pqqt", 2, 3, 3, 1);
+forVec44(zwwz, "zwwz", baab, "baab", pqqp, "pqqp", 2, 3, 3, 2);
+forVec44(zwww, "zwww", baaa, "baaa", pqqq, "pqqq", 2, 3, 3, 3);
+forVec44(wxxx, "wxxx", arrr, "arrr", qsss, "qsss", 3, 0, 0, 0);
+forVec44(wxxy, "wxxy", arrg, "arrg", qsst, "qsst", 3, 0, 0, 1);
+forVec44(wxxz, "wxxz", arrb, "arrb", qssp, "qssp", 3, 0, 0, 2);
+forVec44(wxxw, "wxxw", arra, "arra", qssq, "qssq", 3, 0, 0, 3);
+forVec44(wxyx, "wxyx", argr, "argr", qsts, "qsts", 3, 0, 1, 0);
+forVec44(wxyy, "wxyy", argg, "argg", qstt, "qstt", 3, 0, 1, 1);
+forVec44(wxyz, "wxyz", argb, "argb", qstp, "qstp", 3, 0, 1, 2);
+forVec44(wxyw, "wxyw", arga, "arga", qstq, "qstq", 3, 0, 1, 3);
+forVec44(wxzx, "wxzx", arbr, "arbr", qsps, "qsps", 3, 0, 2, 0);
+forVec44(wxzy, "wxzy", arbg, "arbg", qspt, "qspt", 3, 0, 2, 1);
+forVec44(wxzz, "wxzz", arbb, "arbb", qspp, "qspp", 3, 0, 2, 2);
+forVec44(wxzw, "wxzw", arba, "arba", qspq, "qspq", 3, 0, 2, 3);
+forVec44(wxwx, "wxwx", arar, "arar", qsqs, "qsqs", 3, 0, 3, 0);
+forVec44(wxwy, "wxwy", arag, "arag", qsqt, "qsqt", 3, 0, 3, 1);
+forVec44(wxwz, "wxwz", arab, "arab", qsqp, "qsqp", 3, 0, 3, 2);
+forVec44(wxww, "wxww", araa, "araa", qsqq, "qsqq", 3, 0, 3, 3);
+forVec44(wyxx, "wyxx", agrr, "agrr", qtss, "qtss", 3, 1, 0, 0);
+forVec44(wyxy, "wyxy", agrg, "agrg", qtst, "qtst", 3, 1, 0, 1);
+forVec44(wyxz, "wyxz", agrb, "agrb", qtsp, "qtsp", 3, 1, 0, 2);
+forVec44(wyxw, "wyxw", agra, "agra", qtsq, "qtsq", 3, 1, 0, 3);
+forVec44(wyyx, "wyyx", aggr, "aggr", qtts, "qtts", 3, 1, 1, 0);
+forVec44(wyyy, "wyyy", aggg, "aggg", qttt, "qttt", 3, 1, 1, 1);
+forVec44(wyyz, "wyyz", aggb, "aggb", qttp, "qttp", 3, 1, 1, 2);
+forVec44(wyyw, "wyyw", agga, "agga", qttq, "qttq", 3, 1, 1, 3);
+forVec44(wyzx, "wyzx", agbr, "agbr", qtps, "qtps", 3, 1, 2, 0);
+forVec44(wyzy, "wyzy", agbg, "agbg", qtpt, "qtpt", 3, 1, 2, 1);
+forVec44(wyzz, "wyzz", agbb, "agbb", qtpp, "qtpp", 3, 1, 2, 2);
+forVec44(wyzw, "wyzw", agba, "agba", qtpq, "qtpq", 3, 1, 2, 3);
+forVec44(wywx, "wywx", agar, "agar", qtqs, "qtqs", 3, 1, 3, 0);
+forVec44(wywy, "wywy", agag, "agag", qtqt, "qtqt", 3, 1, 3, 1);
+forVec44(wywz, "wywz", agab, "agab", qtqp, "qtqp", 3, 1, 3, 2);
+forVec44(wyww, "wyww", agaa, "agaa", qtqq, "qtqq", 3, 1, 3, 3);
+forVec44(wzxx, "wzxx", abrr, "abrr", qpss, "qpss", 3, 2, 0, 0);
+forVec44(wzxy, "wzxy", abrg, "abrg", qpst, "qpst", 3, 2, 0, 1);
+forVec44(wzxz, "wzxz", abrb, "abrb", qpsp, "qpsp", 3, 2, 0, 2);
+forVec44(wzxw, "wzxw", abra, "abra", qpsq, "qpsq", 3, 2, 0, 3);
+forVec44(wzyx, "wzyx", abgr, "abgr", qpts, "qpts", 3, 2, 1, 0);
+forVec44(wzyy, "wzyy", abgg, "abgg", qptt, "qptt", 3, 2, 1, 1);
+forVec44(wzyz, "wzyz", abgb, "abgb", qptp, "qptp", 3, 2, 1, 2);
+forVec44(wzyw, "wzyw", abga, "abga", qptq, "qptq", 3, 2, 1, 3);
+forVec44(wzzx, "wzzx", abbr, "abbr", qpps, "qpps", 3, 2, 2, 0);
+forVec44(wzzy, "wzzy", abbg, "abbg", qppt, "qppt", 3, 2, 2, 1);
+forVec44(wzzz, "wzzz", abbb, "abbb", qppp, "qppp", 3, 2, 2, 2);
+forVec44(wzzw, "wzzw", abba, "abba", qppq, "qppq", 3, 2, 2, 3);
+forVec44(wzwx, "wzwx", abar, "abar", qpqs, "qpqs", 3, 2, 3, 0);
+forVec44(wzwy, "wzwy", abag, "abag", qpqt, "qpqt", 3, 2, 3, 1);
+forVec44(wzwz, "wzwz", abab, "abab", qpqp, "qpqp", 3, 2, 3, 2);
+forVec44(wzww, "wzww", abaa, "abaa", qpqq, "qpqq", 3, 2, 3, 3);
+forVec44(wwxx, "wwxx", aarr, "aarr", qqss, "qqss", 3, 3, 0, 0);
+forVec44(wwxy, "wwxy", aarg, "aarg", qqst, "qqst", 3, 3, 0, 1);
+forVec44(wwxz, "wwxz", aarb, "aarb", qqsp, "qqsp", 3, 3, 0, 2);
+forVec44(wwxw, "wwxw", aara, "aara", qqsq, "qqsq", 3, 3, 0, 3);
+forVec44(wwyx, "wwyx", aagr, "aagr", qqts, "qqts", 3, 3, 1, 0);
+forVec44(wwyy, "wwyy", aagg, "aagg", qqtt, "qqtt", 3, 3, 1, 1);
+forVec44(wwyz, "wwyz", aagb, "aagb", qqtp, "qqtp", 3, 3, 1, 2);
+forVec44(wwyw, "wwyw", aaga, "aaga", qqtq, "qqtq", 3, 3, 1, 3);
+forVec44(wwzx, "wwzx", aabr, "aabr", qqps, "qqps", 3, 3, 2, 0);
+forVec44(wwzy, "wwzy", aabg, "aabg", qqpt, "qqpt", 3, 3, 2, 1);
+forVec44(wwzz, "wwzz", aabb, "aabb", qqpp, "qqpp", 3, 3, 2, 2);
+forVec44(wwzw, "wwzw", aaba, "aaba", qqpq, "qqpq", 3, 3, 2, 3);
+forVec44(wwwx, "wwwx", aaar, "aaar", qqqs, "qqqs", 3, 3, 3, 0);
+forVec44(wwwy, "wwwy", aaag, "aaag", qqqt, "qqqt", 3, 3, 3, 1);
+forVec44(wwwz, "wwwz", aaab, "aaab", qqqp, "qqqp", 3, 3, 3, 2);
+forVec44(wwww, "wwww", aaaa, "aaaa", qqqq, "qqqq", 3, 3, 3, 3);

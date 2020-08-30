@@ -1085,7 +1085,7 @@ export {
   qqqq,
 } from "./swizzles";
 
-export { argument } from "./argument";
+export { reference } from "./reference";
 
 export { Expression } from "./expression";
 

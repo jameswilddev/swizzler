@@ -187,6 +187,108 @@ if (!glContext.getShaderParameter(vertexShader, glContext.COMPILE_STATUS)) {
   );
 }
 
+export function glslScenario(
+  glsl: string,
+  expected: readonly [
+    null | number,
+    null | number,
+    null | number,
+    null | number
+  ]
+): void {
+  let fragmentShader: null | WebGLShader = null;
+  let program: null | WebGLProgram = null;
+  try {
+    fragmentShader = glContext.createShader(glContext.FRAGMENT_SHADER);
+    if (fragmentShader === null) {
+      fail("Failed to create a fragment shader.");
+    } else {
+      glContext.shaderSource(fragmentShader, glsl);
+      glContext.compileShader(fragmentShader);
+
+      if (
+        !glContext.getShaderParameter(fragmentShader, glContext.COMPILE_STATUS)
+      ) {
+        fail(
+          `Failed to compile the fragment shader; ${glContext.getShaderInfoLog(
+            fragmentShader
+          )}`
+        );
+      } else {
+        program = glContext.createProgram();
+
+        if (program === null) {
+          fail("Failed to create a program.");
+        } else {
+          glContext.attachShader(program, vertexShader);
+          glContext.attachShader(program, fragmentShader);
+
+          glContext.linkProgram(program);
+
+          if (!glContext.getProgramParameter(program, glContext.LINK_STATUS)) {
+            fail(
+              `Failed to link the program; ${glContext.getProgramInfoLog(
+                program
+              )}`
+            );
+          } else {
+            glContext.useProgram(program);
+
+            const position = glContext.getAttribLocation(program, "position");
+
+            glContext.enableVertexAttribArray(position);
+
+            glContext.vertexAttribPointer(
+              position,
+              4,
+              glContext.FLOAT,
+              false,
+              0,
+              0
+            );
+
+            glContext.drawElements(
+              glContext.TRIANGLES,
+              6,
+              glContext.UNSIGNED_BYTE,
+              0
+            );
+
+            const actual = new Uint8Array(4);
+
+            glContext.readPixels(
+              0,
+              0,
+              1,
+              1,
+              glContext.RGBA,
+              glContext.UNSIGNED_BYTE,
+              actual
+            );
+
+            const error = glContext.getError();
+
+            if (error !== glContext.NO_ERROR) {
+              fail(`GL error ${error}.`);
+            } else {
+              for (let i = 0; i < 4; i++) {
+                const expectedValue = expected[i];
+
+                if (expectedValue !== null) {
+                  expect(actual[i]).toBeCloseTo(expectedValue, 0);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } finally {
+    glContext.deleteProgram(program);
+    glContext.deleteShader(fragmentShader);
+  }
+}
+
 function glsl(
   descriptionSuffix: string,
   expression: Expression<Vec4Primitive>,
@@ -198,105 +300,12 @@ function glsl(
   ]
 ): void {
   it(`executes as GLSL${descriptionSuffix}`, () => {
-    const compiledGlsl = `precision mediump float;void main(void) {${compileGlsl(
-      [["gl_FragColor=", expression]]
-    )};}`;
-    let fragmentShader: null | WebGLShader = null;
-    let program: null | WebGLProgram = null;
-    try {
-      fragmentShader = glContext.createShader(glContext.FRAGMENT_SHADER);
-      if (fragmentShader === null) {
-        fail("Failed to create a fragment shader.");
-      } else {
-        glContext.shaderSource(fragmentShader, compiledGlsl);
-        glContext.compileShader(fragmentShader);
-
-        if (
-          !glContext.getShaderParameter(
-            fragmentShader,
-            glContext.COMPILE_STATUS
-          )
-        ) {
-          fail(
-            `Failed to compile the fragment shader; ${glContext.getShaderInfoLog(
-              fragmentShader
-            )}`
-          );
-        } else {
-          program = glContext.createProgram();
-
-          if (program === null) {
-            fail("Failed to create a program.");
-          } else {
-            glContext.attachShader(program, vertexShader);
-            glContext.attachShader(program, fragmentShader);
-
-            glContext.linkProgram(program);
-
-            if (
-              !glContext.getProgramParameter(program, glContext.LINK_STATUS)
-            ) {
-              fail(
-                `Failed to link the program; ${glContext.getProgramInfoLog(
-                  program
-                )}`
-              );
-            } else {
-              glContext.useProgram(program);
-
-              const position = glContext.getAttribLocation(program, "position");
-
-              glContext.enableVertexAttribArray(position);
-
-              glContext.vertexAttribPointer(
-                position,
-                4,
-                glContext.FLOAT,
-                false,
-                0,
-                0
-              );
-
-              glContext.drawElements(
-                glContext.TRIANGLES,
-                6,
-                glContext.UNSIGNED_BYTE,
-                0
-              );
-
-              const actual = new Uint8Array(4);
-
-              glContext.readPixels(
-                0,
-                0,
-                1,
-                1,
-                glContext.RGBA,
-                glContext.UNSIGNED_BYTE,
-                actual
-              );
-
-              const error = glContext.getError();
-
-              if (error !== glContext.NO_ERROR) {
-                fail(`GL error ${error}.`);
-              } else {
-                for (let i = 0; i < 4; i++) {
-                  const expectedValue = expected[i];
-
-                  if (expectedValue !== null) {
-                    expect(actual[i]).toBeCloseTo(expectedValue, 0);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } finally {
-      glContext.deleteProgram(program);
-      glContext.deleteShader(fragmentShader);
-    }
+    glslScenario(
+      `precision mediump float;void main(void) {${compileGlsl([
+        ["gl_FragColor=", expression],
+      ])};}`,
+      expected
+    );
   });
 }
 

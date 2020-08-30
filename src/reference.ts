@@ -2,7 +2,7 @@ import { LiteralImplementation } from "./implementations/literal-implementation"
 import { AnyPrimitive, primitiveArities } from "./primitive";
 import { Expression } from "./expression";
 
-export function argument<TPrimitive extends AnyPrimitive>(
+export function reference<TPrimitive extends AnyPrimitive>(
   primitive: TPrimitive,
   name: string
 ): Expression<TPrimitive> {

@@ -3,7 +3,9 @@ import { compileImplementation } from "./compile-implementation";
 import { Expression } from "../expression";
 
 export function compileTypeScript(
-  expression: Expression<AnyPrimitive>
+  expressions: ReadonlyArray<readonly [string, Expression<AnyPrimitive>]>
 ): string {
-  return compileImplementation("return ", expression.javascript);
+  return compileImplementation(
+    expressions.map((expression) => [expression[0], expression[1].javascript])
+  );
 }

@@ -1,11 +1,11 @@
-import { Vec4Primitive } from "../primitive";
+import { AnyPrimitive } from "../primitive";
 import { compileImplementation } from "./compile-implementation";
 import { Expression } from "../expression";
 
-export function compileGlsl(expression: Expression<Vec4Primitive>): string {
-  return `precision mediump float;
-
-void main(void) {
-${compileImplementation("gl_FragColor = ", expression.glsl)}
-}`;
+export function compileGlsl(
+  expressions: ReadonlyArray<readonly [string, Expression<AnyPrimitive>]>
+): string {
+  return compileImplementation(
+    expressions.map((expression) => [expression[0], expression[1].glsl])
+  );
 }

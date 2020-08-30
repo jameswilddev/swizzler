@@ -32,7 +32,7 @@ function typeScriptAndJavascript(
   expected: ReadonlyArray<null | number | boolean>
 ): void {
   it("executes as TypeScript", () => {
-    const compiledTypeScript = compileTypeScript(expression);
+    const compiledTypeScript = compileTypeScript([["return ", expression]]);
     const wrappedInFunctionForTranspilation = `function unusedName() { ${compiledTypeScript} }`;
     const transpiledToJavascript = transpile(wrappedInFunctionForTranspilation);
     const unwrappedFunctionBody = (transpiledToJavascript.match(
@@ -88,7 +88,7 @@ function typeScriptAndJavascript(
   });
 
   it("executes as Javascript", () => {
-    const actual = new Function(compileJavascript(expression))();
+    const actual = new Function(compileJavascript([["return ", expression]]))();
 
     if (expected.length === 1) {
       const scalar = expected[0];
@@ -198,7 +198,9 @@ function glsl(
   ]
 ): void {
   it(`executes as GLSL${descriptionSuffix}`, () => {
-    const compiledGlsl = compileGlsl(expression);
+    const compiledGlsl = `precision mediump float;void main(void) {${compileGlsl(
+      [["gl_FragColor=", expression]]
+    )};}`;
     let fragmentShader: null | WebGLShader = null;
     let program: null | WebGLProgram = null;
     try {

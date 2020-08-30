@@ -2,10 +2,11 @@ import { Implementation } from "../implementations/implementation";
 import { AnyPrimitive } from "../primitive";
 
 export function compileImplementation(
-  returnText: string,
-  root: Implementation<AnyPrimitive>
+  implementations: ReadonlyArray<
+    readonly [string, Implementation<AnyPrimitive>]
+  >
 ): string {
-  const output = "";
+  const lines = [];
 
   function recurse(
     implementation: Implementation<AnyPrimitive>
@@ -16,11 +17,15 @@ export function compileImplementation(
     return rendered;
   }
 
-  const final = recurse(root);
+  for (const implementation of implementations) {
+    const final = recurse(implementation[1]);
 
-  if (final.length === 1) {
-    return `${output}\t${returnText}${final[0]};`;
-  } else {
-    return `${output}\t${returnText}[${final.join(", ")}];`;
+    if (final.length === 1) {
+      lines.push(`${implementation[0]}${final[0]};`);
+    } else {
+      lines.push(`${implementation[0]}[${final.join(", ")}];`);
+    }
   }
+
+  return lines.join("\n");
 }

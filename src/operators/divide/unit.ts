@@ -1,9 +1,12 @@
-import { float, vec2, vec3, vec4, divide } from "../..";
+import { float, vec2, vec3, vec4, mat2, mat3, mat4, divide } from "../..";
 import {
   floatScenario,
   vec2Scenario,
   vec3Scenario,
   vec4Scenario,
+  mat2Scenario,
+  mat3Scenario,
+  mat4Scenario,
 } from "../../unit";
 
 floatScenario(
@@ -109,3 +112,153 @@ vec4Scenario(
     0.55555555555555555555555555555556,
   ]
 );
+
+mat2Scenario(
+  "divide float mat2",
+  divide(
+    float(0.4),
+    mat2(
+      float(1.666666666666667),
+      float(1.25),
+      float(5),
+      float(1.111111111111111)
+    )
+  ),
+  [0.24, 0.32, 0.08, 0.36]
+);
+
+mat3Scenario(
+  "divide float mat3",
+  divide(
+    float(0.4),
+    mat3(
+      float(1.666666666666667),
+      float(1.25),
+      float(5),
+      float(1.111111111111111),
+      float(10),
+      float(2),
+      float(2.5),
+      float(3.333333333333333),
+      float(1.428571428571429)
+    )
+  ),
+  [0.24, 0.32, 0.08, 0.36, 0.04, 0.2, 0.16, 0.12, 0.28]
+);
+
+mat4Scenario(
+  "divide float mat4",
+  divide(
+    float(0.4),
+    mat4(
+      float(1.666666666666667),
+      float(1.25),
+      float(5),
+      float(1.111111111111111),
+      float(10),
+      float(2),
+      float(2.5),
+      float(3.333333333333333),
+      float(1.428571428571429),
+      float(4.347826086956522),
+      float(1.282051282051282),
+      float(3.125),
+      float(1.538461538461538),
+      float(1.19047619047619),
+      float(1.818181818181818),
+      float(1.08695652173913)
+    )
+  ),
+  [
+    0.24,
+    0.32,
+    0.08,
+    0.36,
+    0.04,
+    0.2,
+    0.16,
+    0.12,
+    0.28,
+    0.092,
+    0.312,
+    0.128,
+    0.26,
+    0.336,
+    0.22,
+    0.368,
+  ]
+);
+
+mat2Scenario(
+  "divide mat2 float",
+  divide(mat2(float(0.6), float(0.8), float(0.2), float(0.9)), float(2.5)),
+  [0.24, 0.32, 0.08, 0.36]
+);
+
+mat3Scenario(
+  "divide mat3 float",
+  divide(
+    mat3(
+      float(0.6),
+      float(0.8),
+      float(0.2),
+      float(0.9),
+      float(0.1),
+      float(0.5),
+      float(0.4),
+      float(0.3),
+      float(0.7)
+    ),
+    float(2.5)
+  ),
+  [0.24, 0.32, 0.08, 0.36, 0.04, 0.2, 0.16, 0.12, 0.28]
+);
+
+mat4Scenario(
+  "divide mat4 float",
+  divide(
+    mat4(
+      float(0.6),
+      float(0.8),
+      float(0.2),
+      float(0.9),
+      float(0.1),
+      float(0.5),
+      float(0.4),
+      float(0.3),
+      float(0.7),
+      float(0.23),
+      float(0.78),
+      float(0.32),
+      float(0.65),
+      float(0.84),
+      float(0.55),
+      float(0.92)
+    ),
+    float(2.5)
+  ),
+  [
+    0.24,
+    0.32,
+    0.08,
+    0.36,
+    0.04,
+    0.2,
+    0.16,
+    0.12,
+    0.28,
+    0.092,
+    0.312,
+    0.128,
+    0.26,
+    0.336,
+    0.22,
+    0.368,
+  ]
+);
+
+xit("divide mat2 mat2", () => {});
+
+xit("divide mat3 mat3", () => {});
+
+xit("divide mat4 mat4", () => {});

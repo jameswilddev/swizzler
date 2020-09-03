@@ -257,8 +257,112 @@ mat4Scenario(
   ]
 );
 
-xit("divide mat2 mat2", () => {});
+mat2Scenario(
+  "divide mat2 mat2",
+  divide(
+    mat2(float(0.6), float(0.8), float(0.2), float(0.9)),
+    mat2(float(2.4), float(4.2), float(2.7), float(1.9))
+  ),
+  [0.25, 0.1904761904761905, 0.0740740740740741, 0.4736842105263158]
+);
 
-xit("divide mat3 mat3", () => {});
+mat3Scenario(
+  "divide mat3 mat3",
+  divide(
+    mat3(
+      float(0.6),
+      float(0.8),
+      float(0.2),
+      float(0.9),
+      float(0.2),
+      float(0.4),
+      float(0.7),
+      float(2.4),
+      float(0.58)
+    ),
+    mat3(
+      float(2.4),
+      float(4.2),
+      float(2.7),
+      float(1.9),
+      float(0.5),
+      float(1.8),
+      float(3.1),
+      float(5.2),
+      float(3.2)
+    )
+  ),
+  [
+    0.25,
+    0.1904761904761905,
+    0.0740740740740741,
+    0.4736842105263158,
+    0.4,
+    0.2222222222222222,
+    0.2258064516129032,
+    0.4615384615384615,
+    0.18125,
+  ]
+);
 
-xit("divide mat4 mat4", () => {});
+mat4Scenario(
+  "divide mat4 mat4",
+  divide(
+    mat4(
+      float(0.6),
+      float(0.8),
+      float(0.2),
+      float(0.9),
+      float(0.2),
+      float(0.4),
+      float(0.7),
+      float(2.4),
+      float(0.58),
+
+      float(2.1),
+      float(0.75),
+      float(0.48),
+      float(0.71),
+      float(3.2),
+      float(1.4),
+      float(2.8)
+    ),
+    mat4(
+      float(2.4),
+      float(4.2),
+      float(2.7),
+      float(1.9),
+      float(0.5),
+      float(1.8),
+      float(3.1),
+      float(5.2),
+      float(3.2),
+
+      float(2.5),
+      float(1.44),
+      float(0.67),
+      float(0.8),
+      float(4.8),
+      float(1.8),
+      float(3.7)
+    )
+  ),
+  [
+    0.25,
+    0.1904761904761905,
+    0.0740740740740741,
+    0.4736842105263158,
+    0.4,
+    0.2222222222222222,
+    0.2258064516129032,
+    0.4615384615384615,
+    0.18125,
+    0.84,
+    0.5208333333333333,
+    0.7164179104477612,
+    0.8875,
+    0.6666666666666667,
+    0.7777777777777778,
+    0.7567567567567568,
+  ]
+);

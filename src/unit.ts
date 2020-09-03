@@ -275,7 +275,10 @@ export function glslScenario(
                 const expectedValue = expected[i];
 
                 if (expectedValue !== null) {
-                  expect(actual[i]).toBeCloseTo(expectedValue, 0);
+                  expect([
+                    Math.floor(expectedValue),
+                    Math.ceil(expectedValue),
+                  ]).toContain(actual[i]);
                 }
               }
             }

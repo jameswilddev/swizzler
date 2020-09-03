@@ -333,3 +333,111 @@ mat4Scenario(
     0.698,
   ]
 );
+
+vec2Scenario(
+  "multiply mat2 vec2",
+  multiply(
+    mat2(float(0.14), float(0.07), float(0.11), float(0.58)),
+    vec2(float(0.36), float(0.11))
+  ),
+  [0.0625, 0.089]
+);
+
+vec3Scenario(
+  "multiply mat3 vec3",
+  multiply(
+    mat3(
+      float(0.14),
+      float(0.07),
+      float(0.91),
+      float(0.11),
+      float(0.58),
+      float(0.21),
+      float(0.88),
+      float(0.16),
+      float(0.49)
+    ),
+    vec3(float(0.36), float(0.11), float(0.07))
+  ),
+  [0.1241, 0.1002, 0.385]
+);
+
+vec4Scenario(
+  "multiply mat4 vec4",
+  multiply(
+    mat4(
+      float(0.14),
+      float(0.07),
+      float(0.91),
+      float(0.28),
+      float(0.11),
+      float(0.58),
+      float(0.21),
+      float(0.56),
+      float(0.88),
+      float(0.16),
+      float(0.49),
+      float(0.52),
+      float(0.37),
+      float(0.06),
+      float(0.27),
+      float(0.35)
+    ),
+    vec4(float(0.36), float(0.11), float(0.07), float(0.64))
+  ),
+  [0.3609, 0.1386, 0.5578, 0.4228]
+);
+
+vec2Scenario(
+  "multiply vec2 mat2",
+  multiply(
+    vec2(float(0.36), float(0.11)),
+    mat2(float(0.14), float(0.07), float(0.11), float(0.58))
+  ),
+  [0.0581, 0.1034]
+);
+
+vec3Scenario(
+  "multiply vec3 mat3",
+  multiply(
+    vec3(float(0.36), float(0.11), float(0.07)),
+    mat3(
+      float(0.14),
+      float(0.07),
+      float(0.91),
+      float(0.11),
+      float(0.58),
+      float(0.21),
+      float(0.88),
+      float(0.16),
+      float(0.49)
+    )
+  ),
+  [0.1218, 0.1181, 0.3687]
+);
+
+vec4Scenario(
+  "multiply vec4 mat4",
+  multiply(
+    vec4(float(0.36), float(0.11), float(0.07), float(0.64)),
+    mat4(
+      float(0.14),
+      float(0.07),
+      float(0.91),
+      float(0.28),
+      float(0.11),
+      float(0.58),
+      float(0.21),
+      float(0.56),
+      float(0.88),
+      float(0.16),
+      float(0.49),
+      float(0.52),
+      float(0.37),
+      float(0.06),
+      float(0.27),
+      float(0.35)
+    )
+  ),
+  [0.301, 0.4765, 0.7015, 0.3827]
+);

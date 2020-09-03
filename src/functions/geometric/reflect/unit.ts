@@ -15,7 +15,7 @@ floatScenario(
 floatScenario(
   "reflect float negative",
   add(multiply(reflect(float(-0.3), float(1)), float(0.5)), float(0.5)),
-  0.6
+  0.65
 );
 
 vec2Scenario(

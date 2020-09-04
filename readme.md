@@ -7,18 +7,38 @@ TypeScript DSL for building expressions which can be compiled to TypeScript, Jav
 ### Input
 
 ```typescript
-import { argument, float, vec2, multiply, dot, compileTypeScript, compileJavascript, compileGlsl } from "swizzler";
+import {
+  reference,
+  float,
+  vec2,
+  multiply,
+  dot,
+  subtract,
+  add,
+  compileTypeScript,
+  compileJavascript,
+  compileGlsl,
+} from "./src";
 
-const argumentA = argument("vec3", "testArgumentA");
-const argumentB = argument("float", "testArgumentB");
+const argumentA = reference("vec3", "testArgumentA");
+const argumentB = reference("float", "testArgumentB");
 
-const expression = subtract(argumentB, add(argumentA, dot(multiply(vec2(float(2.7), float(-4)), float(3.1)), vec2(float(2.8), float(4.4)))));
+const expression = subtract(
+  argumentB,
+  add(
+    argumentA,
+    dot(
+      multiply(vec2(float(2.7), float(-4)), float(3.1)),
+      vec2(float(2.8), float(4.4))
+    )
+  )
+);
 
-console.log(compileTypeScript("testFunctionName", [argumentA, argumentB], expression));
+console.log(compileTypeScript("const result = ", expression));
 
-console.log(compileJavascript("testFunctionName", [argumentA, argumentB], expression));
+console.log(compileJavascript("const result = ", expression));
 
-console.log(compileGlsl("testFunctionName", [argumentA, argumentB], expression));
+console.log(compileGlsl("vec3 a = ", expression));
 ```
 
 ### Outputs
@@ -26,24 +46,27 @@ console.log(compileGlsl("testFunctionName", [argumentA, argumentB], expression))
 #### TypeScript
 
 ```typescript
-function testFunctionName(
-  argumentA: readonly [number, number, number],
-  argumentB: number,
-): readonly [number, number, number] {
-  return [];
-}
+const result = [
+  testArgumentB - (testArgumentA_0 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA_1 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA_2 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+];
 ```
 
 #### Javascript
 
 ```javascript
-function testFunctionName() {}
+const result = [
+  testArgumentB - (testArgumentA_0 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA_1 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA_2 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+];
 ```
 
 #### GLSL
 
 ```glsl
-
+vec3 a = testArgumentB - (testArgumentA + dot(vec2(2.7,-4.0) * 3.1, vec2(2.8,4.4)));
 ```
 
 ## License

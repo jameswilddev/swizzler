@@ -2,9 +2,8 @@ import { Implementation } from "../implementations/implementation";
 import { AnyPrimitive } from "../primitive";
 
 export function compileImplementation(
-  implementations: ReadonlyArray<
-    readonly [string, Implementation<AnyPrimitive>]
-  >
+  prefix: string,
+  implementation: Implementation<AnyPrimitive>
 ): string {
   const lines = [];
 
@@ -17,14 +16,12 @@ export function compileImplementation(
     return rendered;
   }
 
-  for (const implementation of implementations) {
-    const final = recurse(implementation[1]);
+  const final = recurse(implementation);
 
-    if (final.length === 1) {
-      lines.push(`${implementation[0]}${final[0]};`);
-    } else {
-      lines.push(`${implementation[0]}[${final.join(", ")}];`);
-    }
+  if (final.length === 1) {
+    lines.push(`${prefix}${final[0]};`);
+  } else {
+    lines.push(`${prefix}[${final.join(", ")}];`);
   }
 
   return lines.join("\n");

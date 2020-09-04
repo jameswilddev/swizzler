@@ -1,4 +1,4 @@
-# `ayeful` [![Continuous Integration](https://github.com/jameswilddev/ayeful/workflows/Continuous%20Integration/badge.svg)](https://github.com/jameswilddev/ayeful/actions) [![License](https://img.shields.io/github/license/jameswilddev/ayeful.svg)](https://github.com/jameswilddev/ayeful/blob/master/license) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjameswilddev%2Fayeful.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjameswilddev%2Fayeful?ref=badge_shield) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+# `swizzler` [![Continuous Integration](https://github.com/jameswilddev/swizzler/workflows/Continuous%20Integration/badge.svg)](https://github.com/jameswilddev/swizzler/actions) [![License](https://img.shields.io/github/license/jameswilddev/swizzler.svg)](https://github.com/jameswilddev/swizzler/blob/master/license) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjameswilddev%2Fswizzler.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjameswilddev%2Fswizzler?ref=badge_shield) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
 TypeScript DSL for building expressions which can be compiled to TypeScript, JavaScript and GLSL.
 
@@ -7,7 +7,7 @@ TypeScript DSL for building expressions which can be compiled to TypeScript, Jav
 ### Input
 
 ```typescript
-import { argument, float, vec2, multiply, dot, compileTypeScript, compileJavascript, compileGlsl } from "ayeful";
+import { argument, float, vec2, multiply, dot, compileTypeScript, compileJavascript, compileGlsl } from "swizzler";
 
 const argumentA = argument("vec3", "testArgumentA");
 const argumentB = argument("float", "testArgumentB");
@@ -48,4 +48,4 @@ function testFunctionName() {}
 
 ## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjameswilddev%2Fayeful.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjameswilddev%2Fayeful?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjameswilddev%2Fswizzler.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjameswilddev%2Fswizzler?ref=badge_large)

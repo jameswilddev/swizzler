@@ -1,5 +1,5 @@
 {
-  "name": "ayeful",
+  "name": "swizzler",
   "version": "999.999.999",
   "engines": {
     "node": ">=12.13.0"
@@ -7,7 +7,7 @@
   "engineStrict": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jameswilddev/ayeful"
+    "url": "https://github.com/jameswilddev/swizzler"
   },
   "license": "MIT",
   "devDependencies": {

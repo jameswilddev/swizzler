@@ -36,7 +36,7 @@ export function mat2(...args: Four): Expression<Mat2Primitive>;
 export function mat2(
   ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
 ): Expression<Mat2Primitive> {
-  if (args.length === 1) {
+  if (args.length === 1 && args[0].primitive.startsWith("mat")) {
     return new Expression(
       new MatrixResizeImplementation("mat2", args[0].javascript),
       new FunctionImplementation(

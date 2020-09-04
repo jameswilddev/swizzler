@@ -174,7 +174,7 @@ export function mat4(...args: Sixteen): Expression<Mat4Primitive>;
 export function mat4(
   ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
 ): Expression<Mat4Primitive> {
-  if (args.length === 1 && args[0].primitive === "float") {
+  if (args.length === 1) {
     return new Expression(
       new MatrixResizeImplementation("mat4", args[0].javascript),
       new FunctionImplementation(

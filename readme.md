@@ -18,7 +18,7 @@ import {
   compileTypeScript,
   compileJavascript,
   compileGlsl,
-} from "./src";
+} from "swizzler";
 
 const argumentA = reference("vec3", "testArgumentA");
 const argumentB = reference("float", "testArgumentB");

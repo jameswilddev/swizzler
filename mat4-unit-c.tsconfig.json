@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/constructors/mat4/scenarios-c/unit.ts"
+    "constructors/mat4/scenarios-c/unit.ts"
   ]
 }

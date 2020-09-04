@@ -39,6 +39,8 @@ export class MatrixResizeImplementation<
               renderedArgs[0][5],
             ];
         }
+
+        /* istanbul ignore next */
         break;
 
       case "mat3":
@@ -82,6 +84,8 @@ export class MatrixResizeImplementation<
               renderedArgs[0][10],
             ];
         }
+
+        /* istanbul ignore next */
         break;
 
       case "mat4":
@@ -146,8 +150,12 @@ export class MatrixResizeImplementation<
               "1",
             ];
         }
+
+        /* istanbul ignore next */
+        break;
     }
 
+    /* istanbul ignore next */
     throw new Error(
       `Unimplemented matrix resize from ${renderedArgs[0].length} components to ${this.primitive}.`
     );

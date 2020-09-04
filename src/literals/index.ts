@@ -11,12 +11,22 @@ export function bool(value: boolean): Expression<BoolPrimitive> {
 }
 
 export function float(value: number): Expression<FloatPrimitive> {
-  const stringified = JSON.stringify(value);
+  if (Number.isNaN(value)) {
+    throw new Error("Cannot create a float literal of NaN.");
+  } else if (!Number.isFinite(value)) {
+    if (value > 0) {
+      throw new Error("Cannot create a float literal of positive infinity.");
+    } else {
+      throw new Error("Cannot create a float literal of negative infinity.");
+    }
+  } else {
+    const stringified = JSON.stringify(value);
 
-  return new Expression(
-    new LiteralImplementation("float", [stringified]),
-    new LiteralImplementation("float", [
-      stringified.includes(".") ? stringified : `${stringified}.`,
-    ])
-  );
+    return new Expression(
+      new LiteralImplementation("float", [stringified]),
+      new LiteralImplementation("float", [
+        stringified.includes(".") ? stringified : `${stringified}.`,
+      ])
+    );
+  }
 }

@@ -51,6 +51,11 @@ export { normalize } from "./functions/geometric/normalize";
 export { reflect } from "./functions/geometric/reflect";
 export { refract } from "./functions/geometric/refract";
 
+export { matrixCompMult } from "./functions/matrix/matrixCompMult";
+
+export { all } from "./functions/vector-relational/all";
+export { any } from "./functions/vector-relational/any";
+
 export { add } from "./operators/add";
 export { conditional } from "./operators/conditional";
 export { divide } from "./operators/divide";

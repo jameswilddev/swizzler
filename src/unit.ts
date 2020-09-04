@@ -589,3 +589,6 @@ export function bvec4Scenario(
     );
   });
 }
+
+// This is needed for coverage.
+Expression;

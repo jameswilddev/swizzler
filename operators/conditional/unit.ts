@@ -22,67 +22,117 @@ import {
 
 floatScenario(
   "conditional false float float",
-  conditional(bool(false), float(48 / 255), float(76 / 255)),
-  76 / 255
+  conditional(
+    bool(false),
+    float(0.1882352941176471),
+    float(0.2980392156862745)
+  ),
+  0.2980392156862745
 );
 floatScenario(
   "conditional true float float",
-  conditional(bool(true), float(48 / 255), float(76 / 255)),
-  48 / 255
+  conditional(bool(true), float(0.1882352941176471), float(0.2980392156862745)),
+  0.1882352941176471
 );
 vec2Scenario(
   "conditional false vec2 vec2",
   conditional(
     bool(false),
-    vec2(float(48 / 255), float(105 / 255)),
-    vec2(float(148 / 255), float(76 / 255))
+    vec2(float(0.1882352941176471), float(0.4117647058823529)),
+    vec2(float(0.5803921568627451), float(0.2980392156862745))
   ),
-  [148 / 255, 76 / 255]
+  [0.5803921568627451, 0.2980392156862745]
 );
 vec2Scenario(
   "conditional true vec2 vec2",
   conditional(
     bool(true),
-    vec2(float(48 / 255), float(105 / 255)),
-    vec2(float(148 / 255), float(76 / 255))
+    vec2(float(0.1882352941176471), float(0.4117647058823529)),
+    vec2(float(0.5803921568627451), float(0.2980392156862745))
   ),
-  [48 / 255, 105 / 255]
+  [0.1882352941176471, 0.4117647058823529]
 );
 vec3Scenario(
   "conditional false vec3 vec3",
   conditional(
     bool(false),
-    vec3(float(48 / 255), float(105 / 255), float(240 / 255)),
-    vec3(float(148 / 255), float(76 / 255), float(5 / 255))
+    vec3(
+      float(0.1882352941176471),
+      float(0.4117647058823529),
+      float(0.9411764705882353)
+    ),
+    vec3(
+      float(0.5803921568627451),
+      float(0.2980392156862745),
+      float(0.0196078431372549)
+    )
   ),
-  [148 / 255, 76 / 255, 5 / 255]
+  [0.5803921568627451, 0.2980392156862745, 0.0196078431372549]
 );
 vec3Scenario(
   "conditional true vec3 vec3",
   conditional(
     bool(true),
-    vec3(float(48 / 255), float(105 / 255), float(240 / 255)),
-    vec3(float(148 / 255), float(76 / 255), float(5 / 255))
+    vec3(
+      float(0.1882352941176471),
+      float(0.4117647058823529),
+      float(0.9411764705882353)
+    ),
+    vec3(
+      float(0.5803921568627451),
+      float(0.2980392156862745),
+      float(0.0196078431372549)
+    )
   ),
-  [48 / 255, 105 / 255, 240 / 255]
+  [0.1882352941176471, 0.4117647058823529, 0.9411764705882353]
 );
 vec4Scenario(
   "conditional false vec4 vec4",
   conditional(
     bool(false),
-    vec4(float(48 / 255), float(105 / 255), float(240 / 255), float(130 / 255)),
-    vec4(float(148 / 255), float(76 / 255), float(5 / 255), float(187 / 255))
+    vec4(
+      float(0.1882352941176471),
+      float(0.4117647058823529),
+      float(0.9411764705882353),
+      float(0.5098039215686275)
+    ),
+    vec4(
+      float(0.5803921568627451),
+      float(0.2980392156862745),
+      float(0.0196078431372549),
+      float(0.7333333333333333)
+    )
   ),
-  [148 / 255, 76 / 255, 5 / 255, 187 / 255]
+  [
+    0.5803921568627451,
+    0.2980392156862745,
+    0.0196078431372549,
+    0.7333333333333333,
+  ]
 );
 vec4Scenario(
   "conditional true vec4 vec4",
   conditional(
     bool(true),
-    vec4(float(48 / 255), float(105 / 255), float(240 / 255), float(130 / 255)),
-    vec4(float(148 / 255), float(76 / 255), float(5 / 255), float(187 / 255))
+    vec4(
+      float(0.1882352941176471),
+      float(0.4117647058823529),
+      float(0.9411764705882353),
+      float(0.5098039215686275)
+    ),
+    vec4(
+      float(0.5803921568627451),
+      float(0.2980392156862745),
+      float(0.0196078431372549),
+      float(0.7333333333333333)
+    )
   ),
-  [48 / 255, 105 / 255, 240 / 255, 130 / 255]
+  [
+    0.1882352941176471,
+    0.4117647058823529,
+    0.9411764705882353,
+    0.5098039215686275,
+  ]
 );
 boolScenario(
   "conditional false false false",

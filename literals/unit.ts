@@ -1,29 +1,41 @@
 import { bool, float, int, add } from "..";
 import { floatScenario, intScenario, boolScenario } from "../unit";
 
-floatScenario("float positive unit interval", float(75 / 255), 75 / 255);
+floatScenario(
+  "float positive unit interval",
+  float(0.2941176470588235),
+  0.2941176470588235
+);
 
-floatScenario("float zero", add(float(0), float(128 / 255)), 128 / 255);
+floatScenario(
+  "float zero",
+  add(float(0), float(0.5019607843137255)),
+  0.5019607843137255
+);
 
 floatScenario(
   "float negative unit interval",
-  add(float(-75 / 255), float(128 / 255)),
-  53 / 255
+  add(float(-0.2941176470588235), float(0.5019607843137255)),
+  0.207843137254902
 );
 
 floatScenario(
   "float positive integer",
-  add(float(2), float(-492 / 255)),
-  18 / 255
+  add(float(2), float(-1.929411764705882)),
+  0.0705882352941176
 );
 
 floatScenario(
   "float negative integer",
-  add(float(-2), float(532 / 255)),
-  22 / 255
+  add(float(-2), float(2.086274509803922)),
+  0.0862745098039216
 );
 
-floatScenario("floats", add(float(650 / 255), float(-410 / 255)), 240 / 255);
+floatScenario(
+  "floats",
+  add(float(2.549019607843137), float(-1.607843137254902)),
+  0.9411764705882353
+);
 
 it("float NaN", () => {
   expect(() => float(Number.NaN)).toThrowError(

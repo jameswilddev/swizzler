@@ -1084,7 +1084,7 @@ function forVec12(
   function overload(factory: Callback12, name: string): void {
     floatScenario(
       `${name} vec2`,
-      factory(vec2(float(47 / 255), float(148 / 255))),
+      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
       [47, 148][indexA] / 255
     );
 
@@ -1139,7 +1139,13 @@ function forVec13(
   function overload(factory: Callback13, name: string): void {
     floatScenario(
       `${name} vec3`,
-      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
+      factory(
+        vec3(
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902)
+        )
+      ),
       [47, 148, 104][indexA] / 255
     );
 
@@ -1200,10 +1206,10 @@ function forVec14(
       `${name} vec4`,
       factory(
         vec4(
-          float(47 / 255),
-          float(148 / 255),
-          float(104 / 255),
-          float(201 / 255)
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902),
+          float(0.7882352941176471)
         )
       ),
       [47, 148, 104, 201][indexA] / 255
@@ -1272,7 +1278,7 @@ function forVec22(
   function overload(factory: Callback22, name: string): void {
     vec2Scenario(
       `${name} vec2`,
-      factory(vec2(float(47 / 255), float(148 / 255))),
+      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
 
@@ -1341,7 +1347,13 @@ function forVec23(
   function overload(factory: Callback23, name: string): void {
     vec2Scenario(
       `${name} vec3`,
-      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
+      factory(
+        vec3(
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902)
+        )
+      ),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
 
@@ -1420,10 +1432,10 @@ function forVec24(
       `${name} vec4`,
       factory(
         vec4(
-          float(47 / 255),
-          float(148 / 255),
-          float(104 / 255),
-          float(201 / 255)
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902),
+          float(0.7882352941176471)
         )
       ),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
@@ -1583,10 +1595,10 @@ function forVec34(
       `${name} vec4`,
       factory(
         vec4(
-          float(47 / 255),
-          float(148 / 255),
-          float(104 / 255),
-          float(201 / 255)
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902),
+          float(0.7882352941176471)
         )
       ),
       [
@@ -1717,7 +1729,7 @@ function forVec42(
   function overload(factory: Callback42, name: string): void {
     vec4Scenario(
       `${name} vec2`,
-      factory(vec2(float(47 / 255), float(148 / 255))),
+      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
       [
         [47, 148][indexA] / 255,
         [47, 148][indexB] / 255,
@@ -1821,7 +1833,13 @@ function forVec43(
   function overload(factory: Callback43, name: string): void {
     vec4Scenario(
       `${name} vec3`,
-      factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
+      factory(
+        vec3(
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902)
+        )
+      ),
       [
         [47, 148, 104][indexA] / 255,
         [47, 148, 104][indexB] / 255,
@@ -1946,10 +1964,10 @@ function forVec44(
       `${name} vec4`,
       factory(
         vec4(
-          float(47 / 255),
-          float(148 / 255),
-          float(104 / 255),
-          float(201 / 255)
+          float(0.1843137254901961),
+          float(0.5803921568627451),
+          float(0.407843137254902),
+          float(0.7882352941176471)
         )
       ),
       [

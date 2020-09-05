@@ -20,10 +20,15 @@ export class CastToIntImplementation<TFrom extends AnyCastablePrimitive>
   render(
     renderedArgs: ReadonlyArray<ReadonlyArray<string>>
   ): ReadonlyArray<string> {
-    if (primitiveBases[this.a.primitive] === "bool") {
-      return renderedArgs[0].map((dimension) => `(${dimension})?1:0`);
-    } else {
-      return renderedArgs[0];
+    switch (primitiveBases[this.a.primitive]) {
+      case "bool":
+        return renderedArgs[0].map((dimension) => `(${dimension})?1:0`);
+
+      case "float":
+        return renderedArgs[0].map((dimension) => `(${dimension})^0`);
+
+      case "int":
+        return renderedArgs[0];
     }
   }
 }

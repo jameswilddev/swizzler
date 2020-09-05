@@ -191,3 +191,5 @@ bvec4Scenario(
   ),
   [true, true, false, true]
 );
+
+xit("conditional int", () => {});

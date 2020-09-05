@@ -1,30 +1,33 @@
 import {
-  Vec2Primitive,
+  Ivec4Primitive,
+  Mat2Primitive,
   BasePrimitive,
   AnyCastablePrimitive,
 } from "../../primitive";
 import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
 import { FunctionImplementation } from "../../implementations/function-implementation";
 import { Expression } from "../../expression";
-import { Two } from "../total-components";
-import { CastToFloatImplementation } from "../../implementations/cast-to-float-implementation";
+import { Four } from "../total-components";
+import { CastToIntImplementation } from "../../implementations/cast-to-int-implementation";
 
-export function vec2(a: Expression<BasePrimitive>): Expression<Vec2Primitive>;
+export function ivec4(
+  a: Expression<BasePrimitive | Mat2Primitive>
+): Expression<Ivec4Primitive>;
 
-export function vec2(...a: Two): Expression<Vec2Primitive>;
+export function ivec4(...a: Four): Expression<Ivec4Primitive>;
 
-export function vec2(
+export function ivec4(
   ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Vec2Primitive> {
+): Expression<Ivec4Primitive> {
   return new Expression(
     new ConcatenateImplementation(
-      "vec2",
-      2,
-      args.map((arg) => new CastToFloatImplementation(arg.javascript))
+      "ivec4",
+      4,
+      args.map((arg) => new CastToIntImplementation(arg.javascript))
     ),
     new FunctionImplementation(
-      "vec2",
-      "vec2",
+      "ivec4",
+      "ivec4",
       args.map((arg) => arg.glsl)
     )
   );

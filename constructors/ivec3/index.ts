@@ -1,30 +1,30 @@
 import {
-  AnyCastablePrimitive,
+  Ivec3Primitive,
   BasePrimitive,
-  Bvec3Primitive,
+  AnyCastablePrimitive,
 } from "../../primitive";
 import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
 import { FunctionImplementation } from "../../implementations/function-implementation";
-import { CastToBooleanImplementation } from "../../implementations/cast-to-boolean-implementation";
 import { Expression } from "../../expression";
 import { Three } from "../total-components";
+import { CastToIntImplementation } from "../../implementations/cast-to-int-implementation";
 
-export function bvec3(a: Expression<BasePrimitive>): Expression<Bvec3Primitive>;
+export function ivec3(a: Expression<BasePrimitive>): Expression<Ivec3Primitive>;
 
-export function bvec3(...a: Three): Expression<Bvec3Primitive>;
+export function ivec3(...a: Three): Expression<Ivec3Primitive>;
 
-export function bvec3(
+export function ivec3(
   ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Bvec3Primitive> {
+): Expression<Ivec3Primitive> {
   return new Expression(
     new ConcatenateImplementation(
-      "bvec3",
+      "ivec3",
       3,
-      args.map((arg) => new CastToBooleanImplementation(arg.javascript))
+      args.map((arg) => new CastToIntImplementation(arg.javascript))
     ),
     new FunctionImplementation(
-      "bvec3",
-      "bvec3",
+      "ivec3",
+      "ivec3",
       args.map((arg) => arg.glsl)
     )
   );

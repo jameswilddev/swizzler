@@ -1,41 +1,26 @@
 import {
-  FloatPrimitive,
-  Vec2Primitive,
   Vec3Primitive,
-  AnyFloatPrimitive,
+  BasePrimitive,
+  AnyCastablePrimitive,
 } from "../../primitive";
 import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
 import { FunctionImplementation } from "../../implementations/function-implementation";
 import { Expression } from "../../expression";
+import { Three } from "../total-components";
+import { CastToFloatImplementation } from "../../implementations/cast-to-float-implementation";
 
-export function vec3(a: Expression<FloatPrimitive>): Expression<Vec3Primitive>;
+export function vec3(a: Expression<BasePrimitive>): Expression<Vec3Primitive>;
 
-export function vec3(
-  a: Expression<FloatPrimitive>,
-  b: Expression<FloatPrimitive>,
-  c: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
+export function vec3(...a: Three): Expression<Vec3Primitive>;
 
 export function vec3(
-  a: Expression<Vec2Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
-
-export function vec3(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Vec2Primitive>
-): Expression<Vec3Primitive>;
-
-export function vec3(a: Expression<Vec3Primitive>): Expression<Vec3Primitive>;
-
-export function vec3(
-  ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
+  ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
 ): Expression<Vec3Primitive> {
   return new Expression(
     new ConcatenateImplementation(
       "vec3",
       3,
-      args.map((arg) => arg.javascript)
+      args.map((arg) => new CastToFloatImplementation(arg.javascript))
     ),
     new FunctionImplementation(
       "vec3",

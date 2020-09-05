@@ -3,6 +3,10 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
+  IntPrimitive,
+  Ivec2Primitive,
+  Ivec3Primitive,
+  Ivec4Primitive,
   BoolPrimitive,
   Bvec2Primitive,
   Bvec3Primitive,
@@ -11,6 +15,10 @@ import {
   vec2,
   vec3,
   vec4,
+  int,
+  ivec2,
+  ivec3,
+  ivec4,
   bool,
   bvec2,
   bvec3,
@@ -1038,19 +1046,26 @@ import {
   Expression,
 } from "..";
 import {
-  boolScenario,
-  bvec2Scenario,
-  bvec3Scenario,
-  bvec4Scenario,
   floatScenario,
   vec2Scenario,
   vec3Scenario,
   vec4Scenario,
+  intScenario,
+  ivec2Scenario,
+  ivec3Scenario,
+  ivec4Scenario,
+  boolScenario,
+  bvec2Scenario,
+  bvec3Scenario,
+  bvec4Scenario,
 } from "../unit";
 
 interface Callback12 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     FloatPrimitive
+  >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    IntPrimitive
   >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     BoolPrimitive
@@ -1071,6 +1086,12 @@ function forVec12(
       `${name} vec2`,
       factory(vec2(float(47 / 255), float(148 / 255))),
       [47, 148][indexA] / 255
+    );
+
+    intScenario(
+      `${name} ivec2`,
+      factory(ivec2(int(47), int(148))),
+      [47, 148][indexA]
     );
 
     boolScenario(
@@ -1102,6 +1123,7 @@ function forVec12(
 
 interface Callback13 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<FloatPrimitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<IntPrimitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<BoolPrimitive>;
 }
 
@@ -1119,6 +1141,12 @@ function forVec13(
       `${name} vec3`,
       factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
       [47, 148, 104][indexA] / 255
+    );
+
+    intScenario(
+      `${name} ivec3`,
+      factory(ivec3(int(47), int(148), int(104))),
+      [47, 148, 104][indexA]
     );
 
     boolScenario(
@@ -1154,6 +1182,7 @@ function forVec13(
 
 interface Callback14 {
   (a: Expression<Vec4Primitive>): Expression<FloatPrimitive>;
+  (a: Expression<Ivec4Primitive>): Expression<IntPrimitive>;
   (a: Expression<Bvec4Primitive>): Expression<BoolPrimitive>;
 }
 
@@ -1178,6 +1207,12 @@ function forVec14(
         )
       ),
       [47, 148, 104, 201][indexA] / 255
+    );
+
+    intScenario(
+      `${name} ivec4`,
+      factory(ivec4(int(47), int(148), int(104), int(201))),
+      [47, 148, 104, 201][indexA]
     );
 
     boolScenario(
@@ -1216,6 +1251,9 @@ interface Callback22 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec2Primitive
   >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec2Primitive
+  >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec2Primitive
   >;
@@ -1237,6 +1275,11 @@ function forVec22(
       factory(vec2(float(47 / 255), float(148 / 255))),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
+
+    ivec2Scenario(`${name} ivec2`, factory(ivec2(int(47), int(148))), [
+      [47, 148, 104, 201][indexA],
+      [47, 148, 104, 201][indexB],
+    ]);
 
     bvec2Scenario(
       `${name} bvec2 true ?`,
@@ -1281,6 +1324,7 @@ function forVec22(
 
 interface Callback23 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec2Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec2Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec2Primitive>;
 }
 
@@ -1299,6 +1343,12 @@ function forVec23(
       `${name} vec3`,
       factory(vec3(float(47 / 255), float(148 / 255), float(104 / 255))),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
+    );
+
+    ivec2Scenario(
+      `${name} ivec3`,
+      factory(ivec3(int(47), int(148), int(104))),
+      [[47, 148, 104, 201][indexA], [47, 148, 104, 201][indexB]]
     );
 
     bvec2Scenario(
@@ -1351,6 +1401,7 @@ function forVec23(
 
 interface Callback24 {
   (a: Expression<Vec4Primitive>): Expression<Vec2Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec2Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec2Primitive>;
 }
 
@@ -1376,6 +1427,12 @@ function forVec24(
         )
       ),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
+    );
+
+    ivec2Scenario(
+      `${name} ivec4`,
+      factory(ivec4(int(47), int(148), int(104), int(201))),
+      [[47, 148, 104, 201][indexA], [47, 148, 104, 201][indexB]]
     );
 
     bvec2Scenario(
@@ -1440,6 +1497,9 @@ interface Callback32 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec3Primitive
   >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec3Primitive
+  >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec3Primitive
   >;
@@ -1472,6 +1532,7 @@ function forVec32(
 
 interface Callback33 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec3Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec3Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec3Primitive>;
 }
 
@@ -1502,6 +1563,7 @@ function forVec33(
 
 interface Callback34 {
   (a: Expression<Vec4Primitive>): Expression<Vec3Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec3Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec3Primitive>;
 }
 
@@ -1531,6 +1593,16 @@ function forVec34(
         [47, 148, 104, 201][indexA] / 255,
         [47, 148, 104, 201][indexB] / 255,
         [47, 148, 104, 201][indexC] / 255,
+      ]
+    );
+
+    ivec3Scenario(
+      `${name} ivec4`,
+      factory(ivec4(int(47), int(148), int(104), int(201))),
+      [
+        [47, 148, 104, 201][indexA],
+        [47, 148, 104, 201][indexB],
+        [47, 148, 104, 201][indexC],
       ]
     );
 
@@ -1622,6 +1694,9 @@ interface Callback42 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec4Primitive
   >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec4Primitive
+  >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec4Primitive
   >;
@@ -1650,6 +1725,13 @@ function forVec42(
         [47, 148][indexD] / 255,
       ]
     );
+
+    ivec4Scenario(`${name} ivec2`, factory(ivec2(int(47), int(148))), [
+      [47, 148][indexA],
+      [47, 148][indexB],
+      [47, 148][indexC],
+      [47, 148][indexD],
+    ]);
 
     bvec4Scenario(
       `${name} bvec2 true ? ? ?`,
@@ -1720,6 +1802,7 @@ function forVec42(
 
 interface Callback43 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec4Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec4Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec4Primitive>;
 }
 
@@ -1746,6 +1829,18 @@ function forVec43(
         [47, 148, 104][indexD] / 255,
       ]
     );
+
+    ivec4Scenario(
+      `${name} ivec3`,
+      factory(ivec3(int(47), int(148), int(104))),
+      [
+        [47, 148, 104][indexA],
+        [47, 148, 104][indexB],
+        [47, 148, 104][indexC],
+        [47, 148, 104][indexD],
+      ]
+    );
+
     bvec4Scenario(
       `${name} bvec3 true ? ? ?`,
       factory(
@@ -1830,6 +1925,7 @@ function forVec43(
 
 interface Callback44 {
   (a: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec4Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec4Primitive>;
 }
 
@@ -1861,6 +1957,17 @@ function forVec44(
         [47, 148, 104, 201][indexB] / 255,
         [47, 148, 104, 201][indexC] / 255,
         [47, 148, 104, 201][indexD] / 255,
+      ]
+    );
+
+    ivec4Scenario(
+      `${name} ivec4`,
+      factory(ivec4(int(47), int(148), int(104), int(201))),
+      [
+        [47, 148, 104, 201][indexA],
+        [47, 148, 104, 201][indexB],
+        [47, 148, 104, 201][indexC],
+        [47, 148, 104, 201][indexD],
       ]
     );
 

@@ -2,15 +2,18 @@ export { compileGlsl } from "./compilation/compile-glsl";
 export { compileJavascript } from "./compilation/compile-javascript";
 export { compileTypeScript } from "./compilation/compile-type-script";
 
-export { vec2 } from "./constructors/vec2";
 export { bvec2 } from "./constructors/bvec2";
-export { vec3 } from "./constructors/vec3";
 export { bvec3 } from "./constructors/bvec3";
-export { vec4 } from "./constructors/vec4";
 export { bvec4 } from "./constructors/bvec4";
+export { ivec2 } from "./constructors/ivec2";
+export { ivec3 } from "./constructors/ivec3";
+export { ivec4 } from "./constructors/ivec4";
 export { mat2 } from "./constructors/mat2";
 export { mat3 } from "./constructors/mat3";
 export { mat4 } from "./constructors/mat4";
+export { vec2 } from "./constructors/vec2";
+export { vec3 } from "./constructors/vec3";
+export { vec4 } from "./constructors/vec4";
 
 export { acos } from "./functions/angle-and-trigonometry/acos";
 export { asin } from "./functions/angle-and-trigonometry/asin";
@@ -1094,7 +1097,7 @@ export { reference } from "./reference";
 
 export { Expression } from "./expression";
 
-export { bool, float } from "./literals";
+export { float, int, bool } from "./literals";
 
 export { getColumn } from "./matrix-swizzles";
 
@@ -1103,11 +1106,20 @@ export {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
+  Mat2Primitive,
+  Mat3Primitive,
+  Mat4Primitive,
+  AnyFloatPrimitive,
+  IntPrimitive,
+  Ivec2Primitive,
+  Ivec3Primitive,
+  Ivec4Primitive,
+  AnyIntPrimitive,
+  AnyNumericPrimitive,
   BoolPrimitive,
   Bvec2Primitive,
   Bvec3Primitive,
   Bvec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
+  AnyBoolPrimitive,
+  AnyPrimitive,
 } from "./primitive";

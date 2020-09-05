@@ -1,44 +1,42 @@
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
   Mat2Primitive,
   Mat3Primitive,
   Mat4Primitive,
-  AnyFloatPrimitive,
+  BasePrimitive,
+  AnyPrimitive,
+  AnyCastablePrimitive,
 } from "../../primitive";
 import { ConcatenateImplementation } from "../../implementations/concatenate-implementation";
 import { FunctionImplementation } from "../../implementations/function-implementation";
 import { Expression } from "../../expression";
 import { MatrixResizeImplementation } from "../../implementations/matrix-resize-implementation";
+import { Four } from "../total-components";
+import { CastToFloatImplementation } from "../../implementations/cast-to-float-implementation";
+import { Implementation } from "../../implementations/implementation";
 
-type One = readonly [Expression<FloatPrimitive>];
-
-type Two = readonly [Expression<Vec2Primitive>] | readonly [...One, ...One];
-
-type Three =
-  | readonly [Expression<Vec3Primitive>]
-  | readonly [...Two, ...One]
-  | readonly [...One, ...Two];
-
-type Four =
-  | readonly [Expression<Vec4Primitive>]
-  | readonly [...Three, ...One]
-  | readonly [...One, ...Three]
-  | readonly [...Two, ...Two];
-
-export function mat2(a: Expression<FloatPrimitive>): Expression<Mat2Primitive>;
-export function mat2(a: Expression<Mat3Primitive>): Expression<Mat2Primitive>;
-export function mat2(a: Expression<Mat4Primitive>): Expression<Mat2Primitive>;
+export function mat2(
+  a: Expression<BasePrimitive | Mat2Primitive | Mat3Primitive | Mat4Primitive>
+): Expression<Mat2Primitive>;
 export function mat2(...args: Four): Expression<Mat2Primitive>;
 
 export function mat2(
-  ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
+  ...args: ReadonlyArray<Expression<AnyPrimitive>>
 ): Expression<Mat2Primitive> {
-  if (args.length === 1 && args[0].primitive !== "vec4") {
+  if (args[0].primitive === "mat2") {
+    return args[0] as Expression<Mat2Primitive>;
+  } else if (
+    args.length === 1 &&
+    args[0].primitive !== "vec4" &&
+    args[0].primitive !== "ivec2" &&
+    args[0].primitive !== "bvec2"
+  ) {
     return new Expression(
-      new MatrixResizeImplementation("mat2", args[0].javascript),
+      new MatrixResizeImplementation(
+        "mat2",
+        new CastToFloatImplementation(
+          args[0].javascript as Implementation<AnyCastablePrimitive>
+        )
+      ),
       new FunctionImplementation(
         "mat2",
         "mat2",
@@ -50,7 +48,12 @@ export function mat2(
       new ConcatenateImplementation(
         "mat2",
         4,
-        args.map((arg) => arg.javascript)
+        args.map(
+          (arg) =>
+            new CastToFloatImplementation(
+              arg.javascript as Implementation<AnyCastablePrimitive>
+            )
+        )
       ),
       new FunctionImplementation(
         "mat2",

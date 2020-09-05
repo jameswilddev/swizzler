@@ -6,6 +6,10 @@ import {
   Vec2Primitive,
   Vec3Primitive,
   Vec4Primitive,
+  IntPrimitive,
+  Ivec2Primitive,
+  Ivec3Primitive,
+  Ivec4Primitive,
   BoolPrimitive,
   Bvec2Primitive,
   Bvec3Primitive,
@@ -25,6 +29,9 @@ const letters = ["x", "y", "z", "w"];
 interface Callback12 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     FloatPrimitive
+  >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    IntPrimitive
   >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     BoolPrimitive
@@ -59,6 +66,7 @@ function makeSwizzle12(indexA: 0 | 1): Callback12 {
 
 interface Callback13 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<FloatPrimitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<IntPrimitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<BoolPrimitive>;
 }
 
@@ -85,6 +93,7 @@ function makeSwizzle13(indexA: 0 | 1 | 2): Callback13 {
 
 interface Callback14 {
   (a: Expression<Vec4Primitive>): Expression<FloatPrimitive>;
+  (a: Expression<Ivec4Primitive>): Expression<IntPrimitive>;
   (a: Expression<Bvec4Primitive>): Expression<BoolPrimitive>;
 }
 
@@ -112,6 +121,9 @@ function makeSwizzle14(indexA: 0 | 1 | 2 | 3): Callback14 {
 interface Callback22 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec2Primitive
+  >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec2Primitive
   >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec2Primitive
@@ -147,6 +159,7 @@ function makeSwizzle22(indexA: 0 | 1, indexB: 0 | 1): Callback22 {
 
 interface Callback23 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec2Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec2Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec2Primitive>;
 }
 
@@ -174,6 +187,7 @@ function makeSwizzle23(indexA: 0 | 1 | 2, indexB: 0 | 1 | 2): Callback23 {
 
 interface Callback24 {
   (a: Expression<Vec4Primitive>): Expression<Vec2Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec2Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec2Primitive>;
 }
 
@@ -203,6 +217,9 @@ function makeSwizzle24(
 interface Callback32 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec3Primitive
+  >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec3Primitive
   >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec3Primitive
@@ -243,6 +260,7 @@ function makeSwizzle32(
 
 interface Callback33 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec3Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec3Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec3Primitive>;
 }
 
@@ -275,6 +293,7 @@ function makeSwizzle33(
 
 interface Callback34 {
   (a: Expression<Vec4Primitive>): Expression<Vec3Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec3Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec3Primitive>;
 }
 
@@ -306,6 +325,9 @@ function makeSwizzle34(
 interface Callback42 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
     Vec4Primitive
+  >;
+  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
+    Ivec4Primitive
   >;
   (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
     Bvec4Primitive
@@ -348,6 +370,7 @@ function makeSwizzle42(
 
 interface Callback43 {
   (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec4Primitive>;
+  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec4Primitive>;
   (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec4Primitive>;
 }
 
@@ -382,6 +405,7 @@ function makeSwizzle43(
 
 interface Callback44 {
   (a: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
+  (a: Expression<Ivec4Primitive>): Expression<Ivec4Primitive>;
   (a: Expression<Bvec4Primitive>): Expression<Bvec4Primitive>;
 }
 

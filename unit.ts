@@ -3,6 +3,7 @@ import gl = require("gl");
 import {
   float,
   vec4,
+  divide,
   compileTypeScript,
   compileJavascript,
   compileGlsl,
@@ -14,6 +15,10 @@ import {
   Mat2Primitive,
   Mat3Primitive,
   Mat4Primitive,
+  IntPrimitive,
+  Ivec2Primitive,
+  Ivec3Primitive,
+  Ivec4Primitive,
   BoolPrimitive,
   Bvec2Primitive,
   Bvec3Primitive,
@@ -479,6 +484,58 @@ export function mat4Scenario(
       expected[14] * 255,
       expected[15] * 255,
     ]);
+  });
+}
+
+export function intScenario(
+  description: string,
+  expression: Expression<IntPrimitive>,
+  expected: number
+): void {
+  describe(description, () => {
+    typeScriptAndJavascript(expression, [expected]);
+    glsl(
+      "",
+      divide(vec4(expression, float(0), float(0), float(0)), float(255)),
+      [expected, 0, 0, 0]
+    );
+  });
+}
+
+export function ivec2Scenario(
+  description: string,
+  expression: Expression<Ivec2Primitive>,
+  expected: readonly [number, number]
+): void {
+  describe(description, () => {
+    typeScriptAndJavascript(expression, expected);
+    glsl("", divide(vec4(expression, float(0), float(0)), float(255)), [
+      ...expected,
+      0,
+      0,
+    ]);
+  });
+}
+
+export function ivec3Scenario(
+  description: string,
+  expression: Expression<Ivec3Primitive>,
+  expected: readonly [number, number, number]
+): void {
+  describe(description, () => {
+    typeScriptAndJavascript(expression, expected);
+    glsl("", divide(vec4(expression, float(0)), float(255)), [...expected, 0]);
+  });
+}
+
+export function ivec4Scenario(
+  description: string,
+  expression: Expression<Ivec4Primitive>,
+  expected: readonly [number, number, number, number]
+): void {
+  describe(description, () => {
+    typeScriptAndJavascript(expression, expected);
+    glsl("", divide(vec4(expression), float(255)), expected);
   });
 }
 

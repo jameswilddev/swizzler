@@ -1,4 +1,18 @@
-import { add, float, vec2, vec3, vec4, mat2, mat3, mat4, negate } from "../..";
+import {
+  add,
+  float,
+  vec2,
+  vec3,
+  vec4,
+  mat2,
+  mat3,
+  mat4,
+  int,
+  ivec2,
+  ivec3,
+  ivec4,
+  negate,
+} from "../..";
 import {
   floatScenario,
   vec2Scenario,
@@ -7,6 +21,10 @@ import {
   mat2Scenario,
   mat3Scenario,
   mat4Scenario,
+  intScenario,
+  ivec2Scenario,
+  ivec3Scenario,
+  ivec4Scenario,
 } from "../../unit";
 
 floatScenario(
@@ -129,4 +147,24 @@ mat4Scenario(
   ]
 );
 
-xit("negate int", () => {});
+intScenario("negate int negative", add(int(128), negate(int(-27))), 155);
+
+intScenario("negate int positive", add(int(128), negate(int(27))), 101);
+
+ivec2Scenario(
+  "negate ivec2",
+  add(int(128), negate(ivec2(int(-27), int(104)))),
+  [155, 24]
+);
+
+ivec3Scenario(
+  "negate ivec3",
+  add(int(128), negate(ivec3(int(-27), int(104), int(-66)))),
+  [155, 24, 194]
+);
+
+ivec4Scenario(
+  "negate ivec4",
+  add(int(128), negate(ivec4(int(-27), int(104), int(-66), int(70)))),
+  [155, 24, 194, 58]
+);

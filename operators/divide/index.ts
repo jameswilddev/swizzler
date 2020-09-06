@@ -6,10 +6,16 @@ import {
   Mat2Primitive,
   Mat3Primitive,
   Mat4Primitive,
-  AnyFloatPrimitive,
+  IntPrimitive,
+  Ivec2Primitive,
+  Ivec3Primitive,
+  Ivec4Primitive,
+  AnyNumericPrimitive,
+  primitiveBases,
 } from "../../primitive";
 import { Expression } from "../../expression";
 import { binary } from "../../helpers";
+import { RoundImplementation } from "../../implementations/round-implementation";
 
 export function divide(
   a: Expression<FloatPrimitive>,
@@ -107,8 +113,67 @@ export function divide(
 ): Expression<Mat4Primitive>;
 
 export function divide(
-  a: Expression<AnyFloatPrimitive>,
-  b: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
-  return binary(a, "/", b);
+  a: Expression<IntPrimitive>,
+  b: Expression<IntPrimitive>
+): Expression<IntPrimitive>;
+
+export function divide(
+  a: Expression<Ivec2Primitive>,
+  b: Expression<IntPrimitive>
+): Expression<Ivec2Primitive>;
+
+export function divide(
+  a: Expression<Ivec3Primitive>,
+  b: Expression<IntPrimitive>
+): Expression<Ivec3Primitive>;
+
+export function divide(
+  a: Expression<Ivec4Primitive>,
+  b: Expression<IntPrimitive>
+): Expression<Ivec4Primitive>;
+
+export function divide(
+  a: Expression<IntPrimitive>,
+  b: Expression<Ivec2Primitive>
+): Expression<Ivec2Primitive>;
+
+export function divide(
+  a: Expression<IntPrimitive>,
+  b: Expression<Ivec3Primitive>
+): Expression<Ivec3Primitive>;
+
+export function divide(
+  a: Expression<IntPrimitive>,
+  b: Expression<Ivec4Primitive>
+): Expression<Ivec4Primitive>;
+
+export function divide(
+  a: Expression<Ivec2Primitive>,
+  b: Expression<Ivec2Primitive>
+): Expression<Ivec2Primitive>;
+
+export function divide(
+  a: Expression<Ivec3Primitive>,
+  b: Expression<Ivec3Primitive>
+): Expression<Ivec3Primitive>;
+
+export function divide(
+  a: Expression<Ivec4Primitive>,
+  b: Expression<Ivec4Primitive>
+): Expression<Ivec4Primitive>;
+
+export function divide(
+  a: Expression<AnyNumericPrimitive>,
+  b: Expression<AnyNumericPrimitive>
+): Expression<AnyNumericPrimitive> {
+  const unrounded = binary(a, "/", b);
+
+  if (primitiveBases[unrounded.primitive] === "int") {
+    return new Expression(
+      new RoundImplementation(unrounded.javascript),
+      unrounded.glsl
+    );
+  } else {
+    return unrounded;
+  }
 }

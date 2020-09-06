@@ -1,4 +1,17 @@
-import { float, vec2, vec3, vec4, mat2, mat3, mat4, divide } from "../..";
+import {
+  float,
+  vec2,
+  vec3,
+  vec4,
+  mat2,
+  mat3,
+  mat4,
+  int,
+  ivec2,
+  ivec3,
+  ivec4,
+  divide,
+} from "../..";
 import {
   floatScenario,
   vec2Scenario,
@@ -7,6 +20,10 @@ import {
   mat2Scenario,
   mat3Scenario,
   mat4Scenario,
+  intScenario,
+  ivec2Scenario,
+  ivec3Scenario,
+  ivec4Scenario,
 } from "../../unit";
 
 floatScenario(
@@ -405,4 +422,59 @@ mat4Scenario(
   ]
 );
 
-xit("conditional int", () => {});
+intScenario("divide int int", divide(int(27), int(4)), 6);
+
+ivec2Scenario("divide ivec2 int", divide(ivec2(int(29), int(100)), int(3)), [
+  9,
+  33,
+]);
+
+ivec3Scenario(
+  "divide ivec3 int",
+  divide(ivec3(int(29), int(100), int(41)), int(3)),
+  [9, 33, 13]
+);
+
+ivec4Scenario(
+  "divide ivec4 int",
+  divide(ivec4(int(29), int(100), int(41), int(8)), int(3)),
+  [9, 33, 13, 2]
+);
+
+ivec2Scenario("divide int ivec2", divide(int(201), ivec2(int(4), int(7))), [
+  50,
+  28,
+]);
+
+ivec3Scenario(
+  "divide int ivec3",
+  divide(int(201), ivec3(int(4), int(7), int(2))),
+  [50, 28, 100]
+);
+
+ivec4Scenario(
+  "divide int ivec4",
+  divide(int(201), ivec4(int(4), int(7), int(2), int(12))),
+  [50, 28, 100, 16]
+);
+
+ivec2Scenario(
+  "divide ivec2 ivec2",
+  divide(ivec2(int(27), int(100)), ivec2(int(4), int(2))),
+  [6, 50]
+);
+
+ivec3Scenario(
+  "divide ivec3 ivec3",
+  divide(ivec3(int(27), int(100), int(41)), ivec3(int(4), int(2), int(5))),
+  [6, 50, 8]
+);
+
+ivec4Scenario(
+  "divide ivec4 ivec4",
+  divide(
+    ivec4(int(27), int(100), int(41), int(8)),
+    ivec4(int(4), int(2), int(5), int(3))
+  ),
+  [6, 50, 8, 2]
+);

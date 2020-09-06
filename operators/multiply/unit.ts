@@ -1,4 +1,17 @@
-import { float, vec2, vec3, vec4, mat2, mat3, mat4, multiply } from "../..";
+import {
+  float,
+  vec2,
+  vec3,
+  vec4,
+  mat2,
+  mat3,
+  mat4,
+  int,
+  ivec2,
+  ivec3,
+  ivec4,
+  multiply,
+} from "../..";
 import {
   floatScenario,
   vec2Scenario,
@@ -7,6 +20,10 @@ import {
   mat2Scenario,
   mat3Scenario,
   mat4Scenario,
+  intScenario,
+  ivec2Scenario,
+  ivec3Scenario,
+  ivec4Scenario,
 } from "../../unit";
 
 floatScenario(
@@ -485,4 +502,59 @@ vec4Scenario(
   [0.301, 0.4765, 0.7015, 0.3827]
 );
 
-xit("multiply int", () => {});
+intScenario("multiply int int", multiply(int(27), int(4)), 108);
+
+ivec2Scenario("multiply ivec2 int", multiply(ivec2(int(27), int(73)), int(3)), [
+  81,
+  219,
+]);
+
+ivec3Scenario(
+  "multiply ivec3 int",
+  multiply(ivec3(int(27), int(73), int(41)), int(3)),
+  [81, 219, 123]
+);
+
+ivec4Scenario(
+  "multiply ivec4 int",
+  multiply(ivec4(int(27), int(73), int(41), int(4)), int(3)),
+  [81, 219, 123, 12]
+);
+
+ivec2Scenario("multiply int ivec2", multiply(int(3), ivec2(int(27), int(73))), [
+  81,
+  219,
+]);
+
+ivec3Scenario(
+  "multiply int ivec3",
+  multiply(int(3), ivec3(int(27), int(73), int(41))),
+  [81, 219, 123]
+);
+
+ivec4Scenario(
+  "multiply int ivec4",
+  multiply(int(3), ivec4(int(27), int(73), int(41), int(4))),
+  [81, 219, 123, 12]
+);
+
+ivec2Scenario(
+  "multiply ivec2 ivec2",
+  multiply(ivec2(int(27), int(100)), ivec2(int(4), int(2))),
+  [108, 200]
+);
+
+ivec3Scenario(
+  "multiply ivec3 ivec3",
+  multiply(ivec3(int(27), int(100), int(41)), ivec3(int(4), int(2), int(5))),
+  [108, 200, 205]
+);
+
+ivec4Scenario(
+  "multiply ivec4 ivec4",
+  multiply(
+    ivec4(int(27), int(100), int(41), int(3)),
+    ivec4(int(4), int(2), int(5), int(8))
+  ),
+  [108, 200, 205, 24]
+);

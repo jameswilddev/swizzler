@@ -1,4 +1,17 @@
-import { float, vec2, vec3, vec4, mat2, mat3, mat4, add } from "../..";
+import {
+  float,
+  vec2,
+  vec3,
+  vec4,
+  mat2,
+  mat3,
+  mat4,
+  int,
+  ivec2,
+  ivec3,
+  ivec4,
+  add,
+} from "../..";
 import {
   floatScenario,
   vec2Scenario,
@@ -7,6 +20,10 @@ import {
   mat2Scenario,
   mat3Scenario,
   mat4Scenario,
+  intScenario,
+  ivec2Scenario,
+  ivec3Scenario,
+  ivec4Scenario,
 } from "../../unit";
 
 floatScenario(
@@ -371,4 +388,59 @@ mat4Scenario(
   ]
 );
 
-xit("add int", () => {});
+intScenario("add int int", add(int(37), int(44)), 81);
+
+ivec2Scenario("add ivec2 int", add(ivec2(int(37), int(102)), int(44)), [
+  81,
+  146,
+]);
+
+ivec3Scenario(
+  "add ivec3 int",
+  add(ivec3(int(37), int(102), int(74)), int(44)),
+  [81, 146, 118]
+);
+
+ivec4Scenario(
+  "add ivec4 int",
+  add(ivec4(int(37), int(102), int(74), int(50)), int(44)),
+  [81, 146, 118, 94]
+);
+
+ivec2Scenario("add int ivec2", add(int(44), ivec2(int(37), int(102))), [
+  81,
+  146,
+]);
+
+ivec3Scenario(
+  "add int ivec3",
+  add(int(44), ivec3(int(37), int(102), int(74))),
+  [81, 146, 118]
+);
+
+ivec4Scenario(
+  "add int ivec4",
+  add(int(44), ivec4(int(37), int(102), int(74), int(50))),
+  [81, 146, 118, 94]
+);
+
+ivec2Scenario(
+  "add ivec2 ivec2",
+  add(ivec2(int(44), int(22)), ivec2(int(37), int(102))),
+  [81, 124]
+);
+
+ivec3Scenario(
+  "add ivec3 ivec3",
+  add(ivec3(int(44), int(22), int(12)), ivec3(int(37), int(102), int(74))),
+  [81, 124, 86]
+);
+
+ivec4Scenario(
+  "add ivec4 ivec4",
+  add(
+    ivec4(int(44), int(22), int(12), int(200)),
+    ivec4(int(37), int(102), int(74), int(50))
+  ),
+  [81, 124, 86, 250]
+);

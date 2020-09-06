@@ -62,6 +62,8 @@ export { any } from "./functions/vector-relational/any";
 export { add } from "./operators/add";
 export { conditional } from "./operators/conditional";
 export { divide } from "./operators/divide";
+export { equal } from "./operators/equal";
+export { inequal } from "./operators/inequal";
 export { multiply } from "./operators/multiply";
 export { subtract } from "./operators/subtract";
 export { negate } from "./operators/negate";

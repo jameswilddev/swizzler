@@ -49,4 +49,8 @@ vec2Scenario(
   [0.75, 0.25]
 );
 
-xit("vec2 complex", () => {});
+vec2Scenario(
+  "vec2 complex",
+  add(float(0.5), multiply(float(0.125), vec2(float(3.2), bool(true)))),
+  [0.9, 0.625]
+);

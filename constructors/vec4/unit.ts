@@ -148,4 +148,14 @@ vec4Scenario(
   [0.75, 0.25, 0.25, 0.75]
 );
 
-xit("vec4 complex", () => {});
+vec4Scenario(
+  "vec4 complex",
+  add(
+    float(0.5),
+    multiply(
+      float(0.125),
+      vec4(float(3.2), bvec2(bool(true), bool(false)), int(-2))
+    )
+  ),
+  [0.9, 0.625, 0.5, 0.25]
+);

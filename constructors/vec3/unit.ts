@@ -96,4 +96,11 @@ vec3Scenario(
   [0.75, 0.25, 0.25]
 );
 
-xit("vec3 complex", () => {});
+vec3Scenario(
+  "vec3 complex",
+  add(
+    float(0.5),
+    multiply(float(0.125), vec3(float(3.2), bool(true), int(-2)))
+  ),
+  [0.9, 0.625, 0.25]
+);

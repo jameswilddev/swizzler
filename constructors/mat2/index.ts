@@ -27,8 +27,8 @@ export function mat2(
   } else if (
     args.length === 1 &&
     args[0].primitive !== "vec4" &&
-    args[0].primitive !== "ivec2" &&
-    args[0].primitive !== "bvec2"
+    args[0].primitive !== "ivec4" &&
+    args[0].primitive !== "bvec4"
   ) {
     return new Expression(
       new MatrixResizeImplementation(

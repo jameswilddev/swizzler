@@ -34,7 +34,8 @@ import { conditional } from "./operators/conditional";
 
 function typeScriptAndJavascript(
   expression: Expression<AnyPrimitive>,
-  expected: ReadonlyArray<null | number | boolean>
+  expected: ReadonlyArray<null | number | boolean>,
+  exact: boolean
 ): void {
   it("executes as TypeScript", () => {
     const compiledTypeScript = compileTypeScript("return ", expression);
@@ -62,7 +63,11 @@ function typeScriptAndJavascript(
           break;
 
         default:
-          expect(actual).toBeCloseTo(scalar, 3);
+          if (exact) {
+            expect(actual).toBe(scalar);
+          } else {
+            expect(actual).toBeCloseTo(scalar, 3);
+          }
           break;
       }
     } else {
@@ -85,7 +90,11 @@ function typeScriptAndJavascript(
             break;
 
           default:
-            expect(actualValue).toBeCloseTo(expectedValue, 3);
+            if (exact) {
+              expect(actualValue).toBe(expectedValue);
+            } else {
+              expect(actualValue).toBeCloseTo(expectedValue, 3);
+            }
             break;
         }
       }
@@ -111,7 +120,11 @@ function typeScriptAndJavascript(
           break;
 
         default:
-          expect(actual).toBeCloseTo(scalar, 3);
+          if (exact) {
+            expect(actual).toBe(scalar);
+          } else {
+            expect(actual).toBeCloseTo(scalar, 3);
+          }
           break;
       }
     } else {
@@ -134,7 +147,11 @@ function typeScriptAndJavascript(
             break;
 
           default:
-            expect(actualValue).toBeCloseTo(expectedValue, 3);
+            if (exact) {
+              expect(actualValue).toBe(expectedValue);
+            } else {
+              expect(actualValue).toBeCloseTo(expectedValue, 3);
+            }
             break;
         }
       }
@@ -324,7 +341,7 @@ export function floatScenario(
   expected: number
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected]);
+    typeScriptAndJavascript(expression, [expected], false);
     glsl("", vec4(expression, float(0), float(0), float(0)), [
       expected * 255,
       0,
@@ -340,7 +357,7 @@ export function vec2Scenario(
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl("", vec4(expression, float(0), float(0)), [
       expected[0] * 255,
       expected[1] * 255,
@@ -356,7 +373,7 @@ export function vec3Scenario(
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl("", vec4(expression, float(0)), [
       expected[0] * 255,
       expected[1] * 255,
@@ -372,7 +389,7 @@ export function vec4Scenario(
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl("", expression, [
       expected[0] * 255,
       expected[1] * 255,
@@ -388,7 +405,7 @@ export function mat2Scenario(
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl("", vec4(expression), [
       expected[0] * 255,
       expected[1] * 255,
@@ -414,7 +431,7 @@ export function mat3Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl(" a", vec4(getColumn(expression, 0), float(0)), [
       expected[0] * 255,
       expected[1] * 255,
@@ -459,7 +476,7 @@ export function mat4Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, false);
     glsl(" a", getColumn(expression, 0), [
       expected[0] * 255,
       expected[1] * 255,
@@ -493,7 +510,7 @@ export function intScenario(
   expected: number
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected]);
+    typeScriptAndJavascript(expression, [expected], true);
     glsl(
       "",
       divide(vec4(expression, float(0), float(0), float(0)), float(255)),
@@ -508,7 +525,7 @@ export function ivec2Scenario(
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl("", divide(vec4(expression, float(0), float(0)), float(255)), [
       ...expected,
       0,
@@ -523,7 +540,7 @@ export function ivec3Scenario(
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl("", divide(vec4(expression, float(0)), float(255)), [...expected, 0]);
   });
 }
@@ -534,7 +551,7 @@ export function ivec4Scenario(
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl("", divide(vec4(expression), float(255)), expected);
   });
 }
@@ -558,7 +575,7 @@ export function boolScenario(
   expected: boolean
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected]);
+    typeScriptAndJavascript(expression, [expected], true);
     glsl(
       "",
       vec4(
@@ -578,7 +595,7 @@ export function bvec2Scenario(
   expected: readonly [null | boolean, null | boolean]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl(
       "",
       vec4(
@@ -598,7 +615,7 @@ export function bvec3Scenario(
   expected: readonly [null | boolean, null | boolean, null | boolean]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl(
       "",
       vec4(
@@ -628,7 +645,7 @@ export function bvec4Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected);
+    typeScriptAndJavascript(expression, expected, true);
     glsl(
       "",
       vec4(

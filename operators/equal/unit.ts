@@ -1278,11 +1278,23 @@ boolScenario(
   true
 );
 
-boolScenario("notEqual bool true true", notEqual(bool(true), bool(true)), false);
+boolScenario(
+  "notEqual bool true true",
+  notEqual(bool(true), bool(true)),
+  false
+);
 
-boolScenario("notEqual bool true false", notEqual(bool(true), bool(false)), true);
+boolScenario(
+  "notEqual bool true false",
+  notEqual(bool(true), bool(false)),
+  true
+);
 
-boolScenario("notEqual bool false true", notEqual(bool(false), bool(true)), true);
+boolScenario(
+  "notEqual bool false true",
+  notEqual(bool(false), bool(true)),
+  true
+);
 
 boolScenario(
   "notEqual bool false false",

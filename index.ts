@@ -60,11 +60,17 @@ export { all } from "./functions/vector-relational/all";
 export { any } from "./functions/vector-relational/any";
 
 export { add } from "./operators/add";
+export { componentwiseEqual } from "./operators/componentwise-equal";
+export { componentwiseNotEqual } from "./operators/componentwise-not-equal";
 export { conditional } from "./operators/conditional";
 export { divide } from "./operators/divide";
 export { equal } from "./operators/equal";
-export { inequal } from "./operators/inequal";
+export { greaterThan } from "./operators/greater-than";
+export { greaterThanEqual } from "./operators/greater-than-equal";
+export { lessThan } from "./operators/less-than";
+export { lessThanEqual } from "./operators/less-than-equal";
 export { multiply } from "./operators/multiply";
+export { notEqual } from "./operators/not-equal";
 export { subtract } from "./operators/subtract";
 export { negate } from "./operators/negate";
 export { not } from "./operators/not";

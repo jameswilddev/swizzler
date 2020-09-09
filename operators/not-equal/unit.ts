@@ -15,7 +15,7 @@ import {
   bvec3,
   bvec4,
   equal,
-} from "../../";
+} from "../..";
 import { boolScenario } from "../../unit";
 
 boolScenario("equal float true", equal(float(2.3), float(2.3)), true);

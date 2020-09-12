@@ -16,7 +16,7 @@ export function reference<TPrimitive extends AnyPrimitive>(
     javascriptLiteral = [];
 
     for (let i = 0; i < arity; i++) {
-      javascriptLiteral.push(`${name}_${i}`);
+      javascriptLiteral.push(`${name}[${i}]`);
     }
   }
 

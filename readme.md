@@ -47,9 +47,9 @@ console.log(compileGlsl("vec3 a = ", expression));
 
 ```typescript
 const result = [
-  testArgumentB - (testArgumentA_0 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
-  testArgumentB - (testArgumentA_1 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
-  testArgumentB - (testArgumentA_2 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[0] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[1] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[2] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
 ];
 ```
 
@@ -57,9 +57,9 @@ const result = [
 
 ```javascript
 const result = [
-  testArgumentB - (testArgumentA_0 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
-  testArgumentB - (testArgumentA_1 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
-  testArgumentB - (testArgumentA_2 + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[0] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[1] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
+  testArgumentB - (testArgumentA[2] + (2.7 * 3.1 * 2.8 + -4 * 3.1 * 4.4)),
 ];
 ```
 

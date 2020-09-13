@@ -28,18 +28,20 @@ import {
   y,
   z,
   w,
+  reference,
 } from ".";
 import { AnyPrimitive } from "./primitive";
 import { conditional } from "./operators/conditional";
 
 function typeScriptAndJavascript(
+  prefixJavascript: string,
   expression: Expression<AnyPrimitive>,
   expected: ReadonlyArray<null | number | boolean>,
   exact: boolean
 ): void {
   it("executes as TypeScript", () => {
     const compiledTypeScript = compileTypeScript("return ", expression);
-    const wrappedInFunctionForTranspilation = `function unusedName() { ${compiledTypeScript} }`;
+    const wrappedInFunctionForTranspilation = `function unusedName() { ${prefixJavascript}${compiledTypeScript} }`;
     const transpiledToJavascript = transpile(wrappedInFunctionForTranspilation);
     const unwrappedFunctionBody = (transpiledToJavascript.match(
       /^function unusedName\(\) { (.*) }\s*$/
@@ -102,7 +104,9 @@ function typeScriptAndJavascript(
   });
 
   it("executes as Javascript", () => {
-    const actual = new Function(compileJavascript("return ", expression))();
+    const actual = new Function(
+      `${prefixJavascript}${compileJavascript("return ", expression)}`
+    )();
 
     if (expected.length === 1) {
       const scalar = expected[0];
@@ -316,6 +320,7 @@ export function glslScenario(
 
 function glsl(
   descriptionSuffix: string,
+  prefixGlsl: string,
   expression: Expression<Vec4Primitive>,
   expected: readonly [
     null | number,
@@ -326,7 +331,7 @@ function glsl(
 ): void {
   it(`executes as GLSL${descriptionSuffix}`, () => {
     glslScenario(
-      `precision mediump float;void main(void) {${compileGlsl(
+      `precision mediump float;void main(void) {${prefixGlsl}${compileGlsl(
         "gl_FragColor=",
         expression
       )};}`,
@@ -335,89 +340,186 @@ function glsl(
   });
 }
 
-export function floatScenario(
+function dynamicAndConstant<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
+  inputs: T,
+  callback: (inputs: T, javascript: string, glsl: string) => void
+): void {
+  const numberOfInputs = Object.keys(inputs).length;
+
+  if (numberOfInputs === 0) {
+    callback(inputs, "", "");
+  } else {
+    describe("constant", () => {
+      callback(inputs, "", "");
+    });
+
+    describe("dynamic", () => {
+      let javascript = "";
+      let glsl = "";
+      const mappedInputs: { [key: string]: Expression<AnyPrimitive> } = {};
+
+      for (const key in inputs) {
+        const input = inputs[key];
+
+        javascript += compileJavascript(`const ${key} = `, input);
+        glsl += compileGlsl(`${input.primitive} ${key} = `, input);
+
+        mappedInputs[key] = reference(input.primitive, key);
+      }
+
+      callback(mappedInputs as T, javascript, glsl);
+    });
+
+    if (numberOfInputs) {
+      for (const dynamicKey in inputs) {
+        describe(`all constant except ${dynamicKey}`, () => {
+          let javascript = "";
+          let glsl = "";
+          const mappedInputs: { [key: string]: Expression<AnyPrimitive> } = {};
+
+          for (const key in inputs) {
+            const input = inputs[key];
+
+            if (key === dynamicKey) {
+              javascript += compileJavascript(`const ${key} = `, input);
+              glsl += compileGlsl(`${input.primitive} ${key} = `, input);
+
+              mappedInputs[key] = reference(input.primitive, key);
+            } else {
+              mappedInputs[key] = input;
+            }
+          }
+
+          callback(mappedInputs as T, javascript, glsl);
+        });
+      }
+    }
+  }
+}
+
+export function floatScenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<FloatPrimitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<FloatPrimitive>,
   expected: number
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected], false);
-    glsl("", vec4(expression, float(0), float(0), float(0)), [
-      expected * 255,
-      0,
-      0,
-      0,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, [expected], false);
+      glsl("", prefixGlsl, vec4(expression, float(0), float(0), float(0)), [
+        expected * 255,
+        0,
+        0,
+        0,
+      ]);
+    });
   });
 }
 
-export function vec2Scenario(
+export function vec2Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Vec2Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Vec2Primitive>,
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl("", vec4(expression, float(0), float(0)), [
-      expected[0] * 255,
-      expected[1] * 255,
-      0,
-      0,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl("", prefixGlsl, vec4(expression, float(0), float(0)), [
+        expected[0] * 255,
+        expected[1] * 255,
+        0,
+        0,
+      ]);
+    });
   });
 }
 
-export function vec3Scenario(
+export function vec3Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Vec3Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Vec3Primitive>,
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl("", vec4(expression, float(0)), [
-      expected[0] * 255,
-      expected[1] * 255,
-      expected[2] * 255,
-      0,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl("", prefixGlsl, vec4(expression, float(0)), [
+        expected[0] * 255,
+        expected[1] * 255,
+        expected[2] * 255,
+        0,
+      ]);
+    });
   });
 }
 
-export function vec4Scenario(
+export function vec4Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Vec4Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Vec4Primitive>,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl("", expression, [
-      expected[0] * 255,
-      expected[1] * 255,
-      expected[2] * 255,
-      expected[3] * 255,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl("", prefixGlsl, expression, [
+        expected[0] * 255,
+        expected[1] * 255,
+        expected[2] * 255,
+        expected[3] * 255,
+      ]);
+    });
   });
 }
 
-export function mat2Scenario(
+export function mat2Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Mat2Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Mat2Primitive>,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl("", vec4(expression), [
-      expected[0] * 255,
-      expected[1] * 255,
-      expected[2] * 255,
-      expected[3] * 255,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl("", prefixGlsl, vec4(expression), [
+        expected[0] * 255,
+        expected[1] * 255,
+        expected[2] * 255,
+        expected[3] * 255,
+      ]);
+    });
   });
 }
 
-export function mat3Scenario(
+export function mat3Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Mat3Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Mat3Primitive>,
   expected: readonly [
     number,
     number,
@@ -431,31 +533,38 @@ export function mat3Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl(" a", vec4(getColumn(expression, 0), float(0)), [
-      expected[0] * 255,
-      expected[1] * 255,
-      expected[2] * 255,
-      0,
-    ]);
-    glsl(" b", vec4(getColumn(expression, 1), float(0)), [
-      expected[3] * 255,
-      expected[4] * 255,
-      expected[5] * 255,
-      0,
-    ]);
-    glsl(" c", vec4(getColumn(expression, 2), float(0)), [
-      expected[6] * 255,
-      expected[7] * 255,
-      expected[8] * 255,
-      0,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl(" a", prefixGlsl, vec4(getColumn(expression, 0), float(0)), [
+        expected[0] * 255,
+        expected[1] * 255,
+        expected[2] * 255,
+        0,
+      ]);
+      glsl(" b", prefixGlsl, vec4(getColumn(expression, 1), float(0)), [
+        expected[3] * 255,
+        expected[4] * 255,
+        expected[5] * 255,
+        0,
+      ]);
+      glsl(" c", prefixGlsl, vec4(getColumn(expression, 2), float(0)), [
+        expected[6] * 255,
+        expected[7] * 255,
+        expected[8] * 255,
+        0,
+      ]);
+    });
   });
 }
 
-export function mat4Scenario(
+export function mat4Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Mat4Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Mat4Primitive>,
   expected: readonly [
     number,
     number,
@@ -476,83 +585,120 @@ export function mat4Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, false);
-    glsl(" a", getColumn(expression, 0), [
-      expected[0] * 255,
-      expected[1] * 255,
-      expected[2] * 255,
-      expected[3] * 255,
-    ]);
-    glsl(" b", getColumn(expression, 1), [
-      expected[4] * 255,
-      expected[5] * 255,
-      expected[6] * 255,
-      expected[7] * 255,
-    ]);
-    glsl(" c", getColumn(expression, 2), [
-      expected[8] * 255,
-      expected[9] * 255,
-      expected[10] * 255,
-      expected[11] * 255,
-    ]);
-    glsl(" d", getColumn(expression, 3), [
-      expected[12] * 255,
-      expected[13] * 255,
-      expected[14] * 255,
-      expected[15] * 255,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, false);
+      glsl(" a", prefixGlsl, getColumn(expression, 0), [
+        expected[0] * 255,
+        expected[1] * 255,
+        expected[2] * 255,
+        expected[3] * 255,
+      ]);
+      glsl(" b", prefixGlsl, getColumn(expression, 1), [
+        expected[4] * 255,
+        expected[5] * 255,
+        expected[6] * 255,
+        expected[7] * 255,
+      ]);
+      glsl(" c", prefixGlsl, getColumn(expression, 2), [
+        expected[8] * 255,
+        expected[9] * 255,
+        expected[10] * 255,
+        expected[11] * 255,
+      ]);
+      glsl(" d", prefixGlsl, getColumn(expression, 3), [
+        expected[12] * 255,
+        expected[13] * 255,
+        expected[14] * 255,
+        expected[15] * 255,
+      ]);
+    });
   });
 }
 
-export function intScenario(
+export function intScenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<IntPrimitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<IntPrimitive>,
   expected: number
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected], true);
-    glsl(
-      "",
-      divide(vec4(expression, float(0), float(0), float(0)), float(255)),
-      [expected, 0, 0, 0]
-    );
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, [expected], true);
+      glsl(
+        "",
+        prefixGlsl,
+        divide(vec4(expression, float(0), float(0), float(0)), float(255)),
+        [expected, 0, 0, 0]
+      );
+    });
   });
 }
 
-export function ivec2Scenario(
+export function ivec2Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Ivec2Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Ivec2Primitive>,
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl("", divide(vec4(expression, float(0), float(0)), float(255)), [
-      ...expected,
-      0,
-      0,
-    ]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl(
+        "",
+        prefixGlsl,
+        divide(vec4(expression, float(0), float(0)), float(255)),
+        [...expected, 0, 0]
+      );
+    });
   });
 }
 
-export function ivec3Scenario(
+export function ivec3Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Ivec3Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Ivec3Primitive>,
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl("", divide(vec4(expression, float(0)), float(255)), [...expected, 0]);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl("", prefixGlsl, divide(vec4(expression, float(0)), float(255)), [
+        ...expected,
+        0,
+      ]);
+    });
   });
 }
 
-export function ivec4Scenario(
+export function ivec4Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Ivec4Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Ivec4Primitive>,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl("", divide(vec4(expression), float(255)), expected);
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl("", prefixGlsl, divide(vec4(expression), float(255)), expected);
+    });
   });
 }
 
@@ -569,74 +715,101 @@ function convertBoolToGlsl(bool: null | boolean): null | number {
   }
 }
 
-export function boolScenario(
+export function boolScenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<BoolPrimitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<BoolPrimitive>,
   expected: boolean
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, [expected], true);
-    glsl(
-      "",
-      vec4(
-        conditional(expression, float(1), float(0)),
-        float(0),
-        float(0),
-        float(0)
-      ),
-      [convertBoolToGlsl(expected), 0, 0, 0]
-    );
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, [expected], true);
+      glsl(
+        "",
+        prefixGlsl,
+        vec4(
+          conditional(expression, float(1), float(0)),
+          float(0),
+          float(0),
+          float(0)
+        ),
+        [convertBoolToGlsl(expected), 0, 0, 0]
+      );
+    });
   });
 }
 
-export function bvec2Scenario(
+export function bvec2Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Bvec2Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Bvec2Primitive>,
   expected: readonly [null | boolean, null | boolean]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl(
-      "",
-      vec4(
-        conditional(x(expression), float(1), float(0)),
-        conditional(y(expression), float(1), float(0)),
-        float(0),
-        float(0)
-      ),
-      [convertBoolToGlsl(expected[0]), convertBoolToGlsl(expected[1]), 0, 0]
-    );
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl(
+        "",
+        prefixGlsl,
+        vec4(
+          conditional(x(expression), float(1), float(0)),
+          conditional(y(expression), float(1), float(0)),
+          float(0),
+          float(0)
+        ),
+        [convertBoolToGlsl(expected[0]), convertBoolToGlsl(expected[1]), 0, 0]
+      );
+    });
   });
 }
 
-export function bvec3Scenario(
+export function bvec3Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Bvec3Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Bvec3Primitive>,
   expected: readonly [null | boolean, null | boolean, null | boolean]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl(
-      "",
-      vec4(
-        conditional(x(expression), float(1), float(0)),
-        conditional(y(expression), float(1), float(0)),
-        conditional(z(expression), float(1), float(0)),
-        float(0)
-      ),
-      [
-        convertBoolToGlsl(expected[0]),
-        convertBoolToGlsl(expected[1]),
-        convertBoolToGlsl(expected[2]),
-        0,
-      ]
-    );
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl(
+        "",
+        prefixGlsl,
+        vec4(
+          conditional(x(expression), float(1), float(0)),
+          conditional(y(expression), float(1), float(0)),
+          conditional(z(expression), float(1), float(0)),
+          float(0)
+        ),
+        [
+          convertBoolToGlsl(expected[0]),
+          convertBoolToGlsl(expected[1]),
+          convertBoolToGlsl(expected[2]),
+          0,
+        ]
+      );
+    });
   });
 }
 
-export function bvec4Scenario(
+export function bvec4Scenario<
+  T extends { readonly [key: string]: Expression<AnyPrimitive> }
+>(
   description: string,
-  expression: Expression<Bvec4Primitive>,
+  inputs: T,
+  expressionFactory: (inputs: T) => Expression<Bvec4Primitive>,
   expected: readonly [
     null | boolean,
     null | boolean,
@@ -645,22 +818,27 @@ export function bvec4Scenario(
   ]
 ): void {
   describe(description, () => {
-    typeScriptAndJavascript(expression, expected, true);
-    glsl(
-      "",
-      vec4(
-        conditional(x(expression), float(1), float(0)),
-        conditional(y(expression), float(1), float(0)),
-        conditional(z(expression), float(1), float(0)),
-        conditional(w(expression), float(1), float(0))
-      ),
-      [
-        convertBoolToGlsl(expected[0]),
-        convertBoolToGlsl(expected[1]),
-        convertBoolToGlsl(expected[2]),
-        convertBoolToGlsl(expected[3]),
-      ]
-    );
+    dynamicAndConstant(inputs, (inputs, prefixJavascript, prefixGlsl) => {
+      const expression = expressionFactory(inputs);
+
+      typeScriptAndJavascript(prefixJavascript, expression, expected, true);
+      glsl(
+        "",
+        prefixGlsl,
+        vec4(
+          conditional(x(expression), float(1), float(0)),
+          conditional(y(expression), float(1), float(0)),
+          conditional(z(expression), float(1), float(0)),
+          conditional(w(expression), float(1), float(0))
+        ),
+        [
+          convertBoolToGlsl(expected[0]),
+          convertBoolToGlsl(expected[1]),
+          convertBoolToGlsl(expected[2]),
+          convertBoolToGlsl(expected[3]),
+        ]
+      );
+    });
   });
 }
 

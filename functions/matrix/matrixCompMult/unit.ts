@@ -3,20 +3,21 @@ import { mat2Scenario, mat3Scenario, mat4Scenario } from "../../../unit";
 
 mat2Scenario(
   "matrixCompMult mat2 mat2",
-  matrixCompMult(
-    mat2(
+  {
+    x: mat2(
       float(0.7551727849),
       float(0.400197014),
       float(0.3046979934),
       float(0.3141873797)
     ),
-    mat2(
+    y: mat2(
       float(0.885202527),
       float(0.8310498848),
       float(0.9576058977),
       float(0.5232529493)
-    )
-  ),
+    ),
+  },
+  ({ x, y }) => matrixCompMult(x, y),
   [
     0.6684808575151074,
     0.332583682382004,
@@ -27,8 +28,8 @@ mat2Scenario(
 
 mat3Scenario(
   "matrixCompMult mat3 mat3",
-  matrixCompMult(
-    mat3(
+  {
+    x: mat3(
       float(0.7551727849),
       float(0.400197014),
       float(0.3046979934),
@@ -39,7 +40,7 @@ mat3Scenario(
       float(0.6967501028),
       float(0.0673470038)
     ),
-    mat3(
+    y: mat3(
       float(0.885202527),
       float(0.8310498848),
       float(0.9576058977),
@@ -49,8 +50,9 @@ mat3Scenario(
       float(0.8237889445),
       float(0.3552009096),
       float(0.7542065203)
-    )
-  ),
+    ),
+  },
+  ({ x, y }) => matrixCompMult(x, y),
   [
     0.6684808575151074,
     0.332583682382004,
@@ -66,8 +68,8 @@ mat3Scenario(
 
 mat4Scenario(
   "matrixCompMult mat4 mat4",
-  matrixCompMult(
-    mat4(
+  {
+    x: mat4(
       float(0.7551727849),
       float(0.400197014),
       float(0.3046979934),
@@ -85,7 +87,7 @@ mat4Scenario(
       float(0.8206541115),
       float(0.4798649892)
     ),
-    mat4(
+    y: mat4(
       float(0.885202527),
       float(0.8310498848),
       float(0.9576058977),
@@ -102,8 +104,9 @@ mat4Scenario(
       float(0.8764339399),
       float(0.8832171653),
       float(0.0854829736)
-    )
-  ),
+    ),
+  },
+  ({ x, y }) => matrixCompMult(x, y),
   [
     0.6684808575151074,
     0.332583682382004,

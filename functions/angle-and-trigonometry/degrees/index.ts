@@ -11,33 +11,33 @@ import { LiteralImplementation } from "../../../implementations/literal-implemen
 import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function degrees(
-  degrees: Expression<FloatPrimitive>
+  radians: Expression<FloatPrimitive>
 ): Expression<FloatPrimitive>;
 
 export function degrees(
-  degrees: Expression<Vec2Primitive>
+  radians: Expression<Vec2Primitive>
 ): Expression<Vec2Primitive>;
 
 export function degrees(
-  degrees: Expression<Vec3Primitive>
+  radians: Expression<Vec3Primitive>
 ): Expression<Vec3Primitive>;
 
 export function degrees(
-  degrees: Expression<Vec4Primitive>
+  radians: Expression<Vec4Primitive>
 ): Expression<Vec4Primitive>;
 
 export function degrees(
-  degrees: Expression<AnyFloatPrimitive>
+  radians: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = degrees.primitive;
+  const primitive = radians.primitive;
 
   return new Expression(
     new BinaryOperatorImplementation(
       primitive,
-      degrees.javascript,
+      radians.javascript,
       "*",
       new LiteralImplementation("float", [JSON.stringify(180 / Math.PI)])
     ),
-    new FunctionImplementation(primitive, "degrees", [degrees.glsl])
+    new FunctionImplementation(primitive, "degrees", [radians.glsl])
   );
 }

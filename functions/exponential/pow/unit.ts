@@ -8,22 +8,28 @@ import {
 
 floatScenario(
   "pow float float",
-  pow(float(0.75), float(3.2)),
+  { x: float(0.75), y: float(3.2) },
+  ({ x, y }) => pow(x, y),
   0.39828691882753677372546481418202
 );
 
 vec2Scenario(
   "pow vec2 vec2",
-  pow(vec2(float(0.75), float(0.25)), vec2(float(3.2), float(1.2))),
+  {
+    x: vec2(float(0.75), float(0.25)),
+    y: vec2(float(3.2), float(1.2)),
+  },
+  ({ x, y }) => pow(x, y),
   [0.39828691882753677372546481418202, 0.18946457081379976029340747516331]
 );
 
 vec3Scenario(
   "pow vec3 vec3",
-  pow(
-    vec3(float(0.75), float(0.25), float(0.7)),
-    vec3(float(3.2), float(1.2), float(1.4))
-  ),
+  {
+    x: vec3(float(0.75), float(0.25), float(0.7)),
+    y: vec3(float(3.2), float(1.2), float(1.4)),
+  },
+  ({ x, y }) => pow(x, y),
   [
     0.39828691882753677372546481418202,
     0.18946457081379976029340747516331,
@@ -33,10 +39,11 @@ vec3Scenario(
 
 vec4Scenario(
   "pow vec4 vec4",
-  pow(
-    vec4(float(0.75), float(0.25), float(0.7), float(0.4)),
-    vec4(float(3.2), float(1.2), float(1.4), float(1.8))
-  ),
+  {
+    x: vec4(float(0.75), float(0.25), float(0.7), float(0.4)),
+    y: vec4(float(3.2), float(1.2), float(1.4), float(1.8)),
+  },
+  ({ x, y }) => pow(x, y),
   [
     0.39828691882753677372546481418202,
     0.18946457081379976029340747516331,

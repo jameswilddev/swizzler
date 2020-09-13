@@ -18,92 +18,110 @@ import {
 
 boolScenario(
   "greaterThan float lesser greater",
-  greaterThan(float(2.1), float(2.3)),
+  { a: float(2.1), b: float(2.3) },
+  ({ a, b }) => greaterThan(a, b),
   false
 );
 
 boolScenario(
   "greaterThan float equal",
-  greaterThan(float(2.2), float(2.2)),
+  { a: float(2.2), b: float(2.2) },
+  ({ a, b }) => greaterThan(a, b),
   false
 );
 
 boolScenario(
   "greaterThan float greater lesser",
-  greaterThan(float(2.3), float(2.1)),
+  { a: float(2.3), b: float(2.1) },
+  ({ a, b }) => greaterThan(a, b),
   true
 );
 
 bvec2Scenario(
   "greaterThan vec2 a",
-  greaterThan(vec2(float(2.1), float(1.1)), vec2(float(2.3), float(1.1))),
+  { a: vec2(float(2.1), float(1.1)), b: vec2(float(2.3), float(1.1)) },
+  ({ a, b }) => greaterThan(a, b),
   [false, false]
 );
 
 bvec2Scenario(
   "greaterThan vec2 b",
-  greaterThan(vec2(float(2.3), float(1.1)), vec2(float(2.1), float(1.1))),
+  { a: vec2(float(2.3), float(1.1)), b: vec2(float(2.1), float(1.1)) },
+  ({ a, b }) => greaterThan(a, b),
   [true, false]
 );
 
 bvec3Scenario(
   "greaterThan vec3",
-  greaterThan(
-    vec3(float(2.1), float(1.1), float(5.4)),
-    vec3(float(2.3), float(1.1), float(5.2))
-  ),
+  {
+    a: vec3(float(2.1), float(1.1), float(5.4)),
+    b: vec3(float(2.3), float(1.1), float(5.2)),
+  },
+  ({ a, b }) => greaterThan(a, b),
   [false, false, true]
 );
 
 bvec4Scenario(
   "greaterThan vec4",
-  greaterThan(
-    vec4(float(2.1), float(1.1), float(6.1), float(5.4)),
-    vec4(float(2.3), float(1.1), float(6.2), float(5.2))
-  ),
+  {
+    a: vec4(float(2.1), float(1.1), float(6.1), float(5.4)),
+    b: vec4(float(2.3), float(1.1), float(6.2), float(5.2)),
+  },
+  ({ a, b }) => greaterThan(a, b),
   [false, false, false, true]
 );
 
 boolScenario(
   "greaterThan float lesser greater",
-  greaterThan(int(21), int(22)),
+  { a: int(21), b: int(22) },
+  ({ a, b }) => greaterThan(a, b),
   false
 );
 
-boolScenario("greaterThan int equal", greaterThan(int(22), int(22)), false);
+boolScenario(
+  "greaterThan int equal",
+  { a: int(22), b: int(22) },
+  ({ a, b }) => greaterThan(a, b),
+  false
+);
 
 boolScenario(
   "greaterThan int greater lesser",
-  greaterThan(int(23), int(22)),
+  { a: int(23), b: int(22) },
+  ({ a, b }) => greaterThan(a, b),
   true
 );
 
 bvec2Scenario(
   "greaterThan ivec2 a",
-  greaterThan(ivec2(int(21), int(11)), ivec2(int(22), int(11))),
+  { a: ivec2(int(21), int(11)), b: ivec2(int(22), int(11)) },
+  ({ a, b }) => greaterThan(a, b),
   [false, false]
 );
 
 bvec2Scenario(
   "greaterThan ivec2 b",
-  greaterThan(ivec2(int(23), int(11)), ivec2(int(22), int(11))),
+  { a: ivec2(int(23), int(11)), b: ivec2(int(22), int(11)) },
+  ({ a, b }) => greaterThan(a, b),
   [true, false]
 );
 
 bvec3Scenario(
   "greaterThan ivec3",
-  greaterThan(
-    ivec3(int(21), int(11), int(54)),
-    ivec3(int(22), int(11), int(53))
-  ),
+  {
+    a: ivec3(int(21), int(11), int(54)),
+    b: ivec3(int(22), int(11), int(53)),
+  },
+  ({ a, b }) => greaterThan(a, b),
   [false, false, true]
 );
 
 bvec4Scenario(
   "greaterThan ivec4",
-  greaterThan(
-    ivec4(int(21), int(11), int(61), int(54)),
-    ivec4(int(22), int(11), int(62), int(52))
-  ),
+  {
+    a: ivec4(int(21), int(11), int(61), int(54)),
+    b: ivec4(int(22), int(11), int(62), int(52)),
+  },
+  ({ a, b }) => greaterThan(a, b),
   [false, false, false, true]
 );

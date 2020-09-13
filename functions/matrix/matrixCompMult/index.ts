@@ -29,11 +29,11 @@ export function matrixCompMult(
 ): Expression<AnyFloatPrimitive> {
   return new Expression(
     new BinaryOperatorImplementation(
-      a.primitive,
+      x.primitive,
       x.javascript,
       "*",
       y.javascript
     ),
-    new FunctionImplementation(a.primitive, "matrixCompMult", [x.glsl, y.glsl])
+    new FunctionImplementation(x.primitive, "matrixCompMult", [x.glsl, y.glsl])
   );
 }

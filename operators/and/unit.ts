@@ -1,10 +1,33 @@
 import { bool, and } from "../..";
 import { boolScenario } from "../../unit";
 
-boolScenario("and false false", and(bool(false), bool(false)), false);
+boolScenario(
+  "and false false",
+  { a: bool(false), b: bool(false) },
+  ({ a, b }) => and(a, b),
+  false
+);
 
-boolScenario("and false true", and(bool(false), bool(true)), false);
+boolScenario(
+  "and false true",
+  { a: bool(false), b: bool(true) },
+  ({ a, b }) => and(a, b),
+  false
+);
 
-boolScenario("and true false", and(bool(true), bool(false)), false);
+boolScenario(
+  "and true false",
+  {
+    a: bool(true),
+    b: bool(false),
+  },
+  ({ a, b }) => and(a, b),
+  false
+);
 
-boolScenario("and true true", and(bool(true), bool(true)), true);
+boolScenario(
+  "and true true",
+  { a: bool(true), b: bool(true) },
+  ({ a, b }) => and(a, b),
+  true
+);

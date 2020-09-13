@@ -18,158 +18,185 @@ import {
 } from "../..";
 import { boolScenario } from "../../unit";
 
-boolScenario("equal float true", equal(float(2.3), float(2.3)), true);
+boolScenario(
+  "equal float true",
+  { a: float(2.3), b: float(2.3) },
+  ({ a, b }) => equal(a, b),
+  true
+);
 
-boolScenario("equal float false", equal(float(2.3), float(2.1)), false);
+boolScenario(
+  "equal float false",
+  { a: float(2.3), b: float(2.1) },
+  ({ a, b }) => equal(a, b),
+  false
+);
 
 boolScenario(
   "equal vec2 true true",
-  equal(vec2(float(2.3), float(4.7)), vec2(float(2.3), float(4.7))),
+  { a: vec2(float(2.3), float(4.7)), b: vec2(float(2.3), float(4.7)) },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal vec2 false true",
-  equal(vec2(float(2.3), float(4.7)), vec2(float(2.1), float(4.7))),
+  { a: vec2(float(2.3), float(4.7)), b: vec2(float(2.1), float(4.7)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec2 true false",
-  equal(vec2(float(2.3), float(4.5)), vec2(float(2.3), float(4.1))),
+  { a: vec2(float(2.3), float(4.5)), b: vec2(float(2.3), float(4.1)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec3 true true true",
-  equal(
-    vec3(float(2.3), float(4.7), float(6.6)),
-    vec3(float(2.3), float(4.7), float(6.6))
-  ),
+  {
+    a: vec3(float(2.3), float(4.7), float(6.6)),
+    b: vec3(float(2.3), float(4.7), float(6.6)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal vec3 false true true",
-  equal(
-    vec3(float(2.3), float(4.7), float(6.6)),
-    vec3(float(2.1), float(4.7), float(6.6))
-  ),
+  {
+    a: vec3(float(2.3), float(4.7), float(6.6)),
+    b: vec3(float(2.1), float(4.7), float(6.6)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec3 true false true",
-  equal(
-    vec3(float(2.3), float(4.7), float(6.6)),
-    vec3(float(2.3), float(4.1), float(6.6))
-  ),
+  {
+    a: vec3(float(2.3), float(4.7), float(6.6)),
+    b: vec3(float(2.3), float(4.1), float(6.6)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec3 true true false",
-  equal(
-    vec3(float(2.3), float(4.7), float(6.6)),
-    vec3(float(2.3), float(4.7), float(6.1))
-  ),
+  {
+    a: vec3(float(2.3), float(4.7), float(6.6)),
+    b: vec3(float(2.3), float(4.7), float(6.1)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec4 true true true true",
-  equal(
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4))
-  ),
+  {
+    a: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal vec4 false true true true",
-  equal(
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
-    vec4(float(2.1), float(4.7), float(6.6), float(1.4))
-  ),
+  {
+    a: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: vec4(float(2.1), float(4.7), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec4 true false true true",
-  equal(
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
-    vec4(float(2.3), float(4.1), float(6.6), float(1.4))
-  ),
+  {
+    a: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: vec4(float(2.3), float(4.1), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec4 true true false true",
-  equal(
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
-    vec4(float(2.3), float(4.7), float(6.1), float(1.4))
-  ),
+  {
+    a: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: vec4(float(2.3), float(4.7), float(6.1), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal vec4 true true true false",
-  equal(
-    vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
-    vec4(float(2.3), float(4.7), float(6.6), float(1.1))
-  ),
+  {
+    a: vec4(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: vec4(float(2.3), float(4.7), float(6.6), float(1.1)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat2 true true true true",
-  equal(
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4))
-  ),
+  {
+    a: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal mat2 false true true true",
-  equal(
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
-    mat2(float(2.1), float(4.7), float(6.6), float(1.4))
-  ),
+  {
+    a: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: mat2(float(2.1), float(4.7), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat2 true false true true",
-  equal(
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
-    mat2(float(2.3), float(4.1), float(6.6), float(1.4))
-  ),
+  {
+    a: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: mat2(float(2.3), float(4.1), float(6.6), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat2 true true false true",
-  equal(
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
-    mat2(float(2.3), float(4.7), float(6.1), float(1.4))
-  ),
+  {
+    a: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: mat2(float(2.3), float(4.7), float(6.1), float(1.4)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat2 true true true false",
-  equal(
-    mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
-    mat2(float(2.3), float(4.7), float(6.6), float(1.1))
-  ),
+  {
+    a: mat2(float(2.3), float(4.7), float(6.6), float(1.4)),
+    b: mat2(float(2.3), float(4.7), float(6.6), float(1.1)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true true true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -180,7 +207,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -190,15 +217,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal mat3 false true true true true true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -209,7 +237,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.41),
       float(0.91),
       float(0.01),
@@ -219,15 +247,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true false true true true true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -238,7 +267,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.93),
       float(0.01),
@@ -248,15 +277,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true false true true true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -267,7 +297,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.03),
@@ -277,15 +307,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true false true true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -296,7 +327,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -306,15 +337,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true false true true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -325,7 +357,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -335,15 +367,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true true false true true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -354,7 +387,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -364,15 +397,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true true true false true true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -383,7 +417,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -393,15 +427,16 @@ boolScenario(
       float(0.42),
       float(0.06),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true true true true false true",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -412,7 +447,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -422,15 +457,16 @@ boolScenario(
       float(0.46),
       float(0.02),
       float(0.09)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat3 true true true true true true true true false",
-  equal(
-    mat3(
+  {
+    a: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -441,7 +477,7 @@ boolScenario(
       float(0.06),
       float(0.09)
     ),
-    mat3(
+    b: mat3(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -451,15 +487,16 @@ boolScenario(
       float(0.46),
       float(0.06),
       float(0.04)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -477,7 +514,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -494,15 +531,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal mat4 false true true true true true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -520,7 +558,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.41),
       float(0.91),
       float(0.01),
@@ -537,15 +575,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true false true true true true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -563,7 +602,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.93),
       float(0.01),
@@ -580,15 +619,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true false true true true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.07),
@@ -606,7 +646,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.03),
@@ -623,15 +663,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true false true true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -649,7 +690,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -666,15 +707,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true false true true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -692,7 +734,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -709,15 +751,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true false true true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -735,7 +778,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -752,15 +795,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true false true true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -778,7 +822,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -795,15 +839,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true false true true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -821,7 +866,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -838,15 +883,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true false true true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -864,7 +910,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -881,15 +927,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true false true true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -907,7 +954,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -924,15 +971,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true false true true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -950,7 +998,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -967,15 +1015,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true false true true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -993,7 +1042,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1010,15 +1059,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true true false true true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1036,7 +1086,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1053,15 +1103,16 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true true true false true true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1079,7 +1130,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1096,15 +1147,16 @@ boolScenario(
       float(0.31),
       float(0.75),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true true true true false true",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1122,7 +1174,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1139,15 +1191,16 @@ boolScenario(
       float(0.37),
       float(0.71),
       float(0.93)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal mat4 true true true true true true true true true true true true true true true false",
-  equal(
-    mat4(
+  {
+    a: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1165,7 +1218,7 @@ boolScenario(
       float(0.75),
       float(0.93)
     ),
-    mat4(
+    b: mat4(
       float(0.45),
       float(0.91),
       float(0.01),
@@ -1182,205 +1235,260 @@ boolScenario(
       float(0.37),
       float(0.75),
       float(0.91)
-    )
-  ),
+    ),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
-boolScenario("equal int true", equal(int(23), int(23)), true);
+boolScenario(
+  "equal int true",
+  { a: int(23), b: int(23) },
+  ({ a, b }) => equal(a, b),
+  true
+);
 
-boolScenario("equal int false", equal(int(23), int(21)), false);
+boolScenario(
+  "equal int false",
+  { a: int(23), b: int(21) },
+  ({ a, b }) => equal(a, b),
+  false
+);
 
 boolScenario(
   "equal ivec2 true true",
-  equal(ivec2(int(23), int(47)), ivec2(int(23), int(47))),
+  { a: ivec2(int(23), int(47)), b: ivec2(int(23), int(47)) },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal ivec2 false true",
-  equal(ivec2(int(23), int(47)), ivec2(int(21), int(47))),
+  { a: ivec2(int(23), int(47)), b: ivec2(int(21), int(47)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec2 true false",
-  equal(ivec2(int(23), int(45)), ivec2(int(23), int(41))),
+  { a: ivec2(int(23), int(45)), b: ivec2(int(23), int(41)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec3 true true true",
-  equal(ivec3(int(23), int(47), int(66)), ivec3(int(23), int(47), int(66))),
+  { a: ivec3(int(23), int(47), int(66)), b: ivec3(int(23), int(47), int(66)) },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal ivec3 false true true",
-  equal(ivec3(int(23), int(47), int(66)), ivec3(int(21), int(47), int(66))),
+  { a: ivec3(int(23), int(47), int(66)), b: ivec3(int(21), int(47), int(66)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec3 true false true",
-  equal(ivec3(int(23), int(47), int(66)), ivec3(int(23), int(41), int(66))),
+  { a: ivec3(int(23), int(47), int(66)), b: ivec3(int(23), int(41), int(66)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec3 true true false",
-  equal(ivec3(int(23), int(47), int(66)), ivec3(int(23), int(47), int(61))),
+  { a: ivec3(int(23), int(47), int(66)), b: ivec3(int(23), int(47), int(61)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec4 true true true true",
-  equal(
-    ivec4(int(23), int(47), int(66), int(14)),
-    ivec4(int(23), int(47), int(66), int(14))
-  ),
+  {
+    a: ivec4(int(23), int(47), int(66), int(14)),
+    b: ivec4(int(23), int(47), int(66), int(14)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal ivec4 false true true true",
-  equal(
-    ivec4(int(23), int(47), int(66), int(14)),
-    ivec4(int(21), int(47), int(66), int(14))
-  ),
+  {
+    a: ivec4(int(23), int(47), int(66), int(14)),
+    b: ivec4(int(21), int(47), int(66), int(14)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec4 true false true true",
-  equal(
-    ivec4(int(23), int(47), int(66), int(14)),
-    ivec4(int(23), int(41), int(66), int(14))
-  ),
+  {
+    a: ivec4(int(23), int(47), int(66), int(14)),
+    b: ivec4(int(23), int(41), int(66), int(14)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec4 true true false true",
-  equal(
-    ivec4(int(23), int(47), int(66), int(14)),
-    ivec4(int(23), int(47), int(61), int(14))
-  ),
+  {
+    a: ivec4(int(23), int(47), int(66), int(14)),
+    b: ivec4(int(23), int(47), int(61), int(14)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal ivec4 true true true false",
-  equal(
-    ivec4(int(23), int(47), int(66), int(14)),
-    ivec4(int(23), int(47), int(66), int(11))
-  ),
+  {
+    a: ivec4(int(23), int(47), int(66), int(14)),
+    b: ivec4(int(23), int(47), int(66), int(11)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
-boolScenario("equal bool true true", equal(bool(true), bool(true)), true);
+boolScenario(
+  "equal bool true true",
+  { a: bool(true), b: bool(true) },
+  ({ a, b }) => equal(a, b),
+  true
+);
 
-boolScenario("equal bool true false", equal(bool(true), bool(false)), false);
+boolScenario(
+  "equal bool true false",
+  { a: bool(true), b: bool(false) },
+  ({ a, b }) => equal(a, b),
+  false
+);
 
-boolScenario("equal bool false true", equal(bool(false), bool(true)), false);
+boolScenario(
+  "equal bool false true",
+  { a: bool(false), b: bool(true) },
+  ({ a, b }) => equal(a, b),
+  false
+);
 
-boolScenario("equal bool false false", equal(bool(false), bool(false)), true);
+boolScenario(
+  "equal bool false false",
+  { a: bool(false), b: bool(false) },
+  ({ a, b }) => equal(a, b),
+  true
+);
 
 boolScenario(
   "equal bvec2 true true",
-  equal(bvec2(bool(false), bool(true)), bvec2(bool(false), bool(true))),
+  { a: bvec2(bool(false), bool(true)), b: bvec2(bool(false), bool(true)) },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal bvec2 false true",
-  equal(bvec2(bool(false), bool(true)), bvec2(bool(true), bool(true))),
+  { a: bvec2(bool(false), bool(true)), b: bvec2(bool(true), bool(true)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec2 true false",
-  equal(bvec2(bool(false), bool(true)), bvec2(bool(false), bool(false))),
+  { a: bvec2(bool(false), bool(true)), b: bvec2(bool(false), bool(false)) },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec3 true true true",
-  equal(
-    bvec3(bool(true), bool(false), bool(true)),
-    bvec3(bool(true), bool(false), bool(true))
-  ),
+  {
+    a: bvec3(bool(true), bool(false), bool(true)),
+    b: bvec3(bool(true), bool(false), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal bvec3 false true true",
-  equal(
-    bvec3(bool(true), bool(false), bool(true)),
-    bvec3(bool(false), bool(false), bool(true))
-  ),
+  {
+    a: bvec3(bool(true), bool(false), bool(true)),
+    b: bvec3(bool(false), bool(false), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec3 true false true",
-  equal(
-    bvec3(bool(true), bool(false), bool(true)),
-    bvec3(bool(true), bool(true), bool(true))
-  ),
+  {
+    a: bvec3(bool(true), bool(false), bool(true)),
+    b: bvec3(bool(true), bool(true), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec3 true true false",
-  equal(
-    bvec3(bool(true), bool(false), bool(true)),
-    bvec3(bool(true), bool(false), bool(false))
-  ),
+  {
+    a: bvec3(bool(true), bool(false), bool(true)),
+    b: bvec3(bool(true), bool(false), bool(false)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec4 true true true true",
-  equal(
-    bvec4(bool(true), bool(true), bool(false), bool(true)),
-    bvec4(bool(true), bool(true), bool(false), bool(true))
-  ),
+  {
+    a: bvec4(bool(true), bool(true), bool(false), bool(true)),
+    b: bvec4(bool(true), bool(true), bool(false), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   true
 );
 
 boolScenario(
   "equal bvec4 false true true true",
-  equal(
-    bvec4(bool(true), bool(true), bool(false), bool(true)),
-    bvec4(bool(false), bool(true), bool(false), bool(true))
-  ),
+  {
+    a: bvec4(bool(true), bool(true), bool(false), bool(true)),
+    b: bvec4(bool(false), bool(true), bool(false), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec4 true false true true",
-  equal(
-    bvec4(bool(true), bool(true), bool(false), bool(true)),
-    bvec4(bool(true), bool(false), bool(false), bool(true))
-  ),
+  {
+    a: bvec4(bool(true), bool(true), bool(false), bool(true)),
+    b: bvec4(bool(true), bool(false), bool(false), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec4 true true false true",
-  equal(
-    bvec4(bool(true), bool(true), bool(false), bool(true)),
-    bvec4(bool(true), bool(true), bool(true), bool(true))
-  ),
+  {
+    a: bvec4(bool(true), bool(true), bool(false), bool(true)),
+    b: bvec4(bool(true), bool(true), bool(true), bool(true)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );
 
 boolScenario(
   "equal bvec4 true true true false",
-  equal(
-    bvec4(bool(true), bool(true), bool(false), bool(true)),
-    bvec4(bool(true), bool(true), bool(false), bool(false))
-  ),
+  {
+    a: bvec4(bool(true), bool(true), bool(false), bool(true)),
+    b: bvec4(bool(true), bool(true), bool(false), bool(false)),
+  },
+  ({ a, b }) => equal(a, b),
   false
 );

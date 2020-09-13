@@ -1,10 +1,33 @@
 import { bool, xor } from "../..";
 import { boolScenario } from "../../unit";
 
-boolScenario("xor false false", xor(bool(false), bool(false)), false);
+boolScenario(
+  "xor false false",
+  { a: bool(false), b: bool(false) },
+  ({ a, b }) => xor(a, b),
+  false
+);
 
-boolScenario("xor false true", xor(bool(false), bool(true)), true);
+boolScenario(
+  "xor false true",
+  { a: bool(false), b: bool(true) },
+  ({ a, b }) => xor(a, b),
+  true
+);
 
-boolScenario("xor true false", xor(bool(true), bool(false)), true);
+boolScenario(
+  "xor true false",
+  { a: bool(true), b: bool(false) },
+  ({ a, b }) => xor(a, b),
+  true
+);
 
-boolScenario("xor true true", xor(bool(true), bool(true)), false);
+boolScenario(
+  "xor true true",
+  {
+    a: bool(true),
+    b: bool(true),
+  },
+  ({ a, b }) => xor(a, b),
+  false
+);

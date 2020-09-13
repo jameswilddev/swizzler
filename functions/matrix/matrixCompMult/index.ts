@@ -9,31 +9,31 @@ import { BinaryOperatorImplementation } from "../../../implementations/binary-im
 import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function matrixCompMult(
-  a: Expression<Mat2Primitive>,
-  b: Expression<Mat2Primitive>
+  x: Expression<Mat2Primitive>,
+  y: Expression<Mat2Primitive>
 ): Expression<Mat2Primitive>;
 
 export function matrixCompMult(
-  a: Expression<Mat3Primitive>,
-  b: Expression<Mat3Primitive>
+  x: Expression<Mat3Primitive>,
+  y: Expression<Mat3Primitive>
 ): Expression<Mat3Primitive>;
 
 export function matrixCompMult(
-  a: Expression<Mat4Primitive>,
-  b: Expression<Mat4Primitive>
+  x: Expression<Mat4Primitive>,
+  y: Expression<Mat4Primitive>
 ): Expression<Mat4Primitive>;
 
 export function matrixCompMult(
-  a: Expression<AnyFloatPrimitive>,
-  b: Expression<AnyFloatPrimitive>
+  x: Expression<AnyFloatPrimitive>,
+  y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
   return new Expression(
     new BinaryOperatorImplementation(
       a.primitive,
-      a.javascript,
+      x.javascript,
       "*",
-      b.javascript
+      y.javascript
     ),
-    new FunctionImplementation(a.primitive, "matrixCompMult", [a.glsl, b.glsl])
+    new FunctionImplementation(a.primitive, "matrixCompMult", [x.glsl, y.glsl])
   );
 }

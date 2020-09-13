@@ -80,7 +80,7 @@ vec2Scenario(
 
 vec2Scenario(
   "smoothstep float float vec2 c",
-  smoothstep(float(0.3), float(0.7), vec2(float(0.6), float(0.1))),
+  { edge0: float(0.3), edge1: float(0.7), x: vec2(float(0.6), float(0.1)) },
   ({ edge0, edge1, x }) => smoothstep(edge0, edge1, x),
   [0.84375, 0]
 );

@@ -1084,25 +1084,29 @@ function forVec12(
   function overload(factory: Callback12, name: string): void {
     floatScenario(
       `${name} vec2`,
-      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
+      { a: vec2(float(0.1843137254901961), float(0.5803921568627451)) },
+      ({ a }) => factory(a),
       [47, 148][indexA] / 255
     );
 
     intScenario(
       `${name} ivec2`,
-      factory(ivec2(int(47), int(148))),
+      { a: ivec2(int(47), int(148)) },
+      ({ a }) => factory(a),
       [47, 148][indexA]
     );
 
     boolScenario(
       `${name} bvec2 true`,
-      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      { a: bvec2(bool(indexA === 0), bool(indexA === 1)) },
+      ({ a }) => factory(a),
       true
     );
 
     boolScenario(
       `${name} bvec2 false`,
-      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      { a: bvec2(bool(indexA !== 0), bool(indexA !== 1)) },
+      ({ a }) => factory(a),
       false
     );
   }
@@ -1139,35 +1143,35 @@ function forVec13(
   function overload(factory: Callback13, name: string): void {
     floatScenario(
       `${name} vec3`,
-      factory(
-        vec3(
+      {
+        a: vec3(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [47, 148, 104][indexA] / 255
     );
 
     intScenario(
       `${name} ivec3`,
-      factory(ivec3(int(47), int(148), int(104))),
+      { a: ivec3(int(47), int(148), int(104)) },
+      ({ a }) => factory(a),
       [47, 148, 104][indexA]
     );
 
     boolScenario(
       `${name} bvec3 true`,
-      factory(
-        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-      ),
+      { a: bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2)) },
+      ({ a }) => factory(a),
       true
     );
 
     boolScenario(
       `${name} bvec3 false`,
-      factory(
-        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-      ),
+      { a: bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2)) },
+      ({ a }) => factory(a),
       false
     );
   }
@@ -1204,46 +1208,50 @@ function forVec14(
   function overload(factory: Callback14, name: string): void {
     floatScenario(
       `${name} vec4`,
-      factory(
-        vec4(
+      {
+        a: vec4(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902),
           float(0.7882352941176471)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [47, 148, 104, 201][indexA] / 255
     );
 
     intScenario(
       `${name} ivec4`,
-      factory(ivec4(int(47), int(148), int(104), int(201))),
+      { a: ivec4(int(47), int(148), int(104), int(201)) },
+      ({ a }) => factory(a),
       [47, 148, 104, 201][indexA]
     );
 
     boolScenario(
       `${name} bvec4 true`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA === 0),
           bool(indexA === 1),
           bool(indexA === 2),
           bool(indexA === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       true
     );
 
     boolScenario(
       `${name} bvec4 false`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA !== 0),
           bool(indexA !== 1),
           bool(indexA !== 2),
           bool(indexA !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       false
     );
   }
@@ -1278,36 +1286,43 @@ function forVec22(
   function overload(factory: Callback22, name: string): void {
     vec2Scenario(
       `${name} vec2`,
-      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
+      { a: vec2(float(0.1843137254901961), float(0.5803921568627451)) },
+      ({ a }) => factory(a),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
 
-    ivec2Scenario(`${name} ivec2`, factory(ivec2(int(47), int(148))), [
-      [47, 148, 104, 201][indexA],
-      [47, 148, 104, 201][indexB],
-    ]);
+    ivec2Scenario(
+      `${name} ivec2`,
+      { a: ivec2(int(47), int(148)) },
+      ({ a }) => factory(a),
+      [[47, 148, 104, 201][indexA], [47, 148, 104, 201][indexB]]
+    );
 
     bvec2Scenario(
       `${name} bvec2 true ?`,
-      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      { a: bvec2(bool(indexA === 0), bool(indexA === 1)) },
+      ({ a }) => factory(a),
       [true, null]
     );
 
     bvec2Scenario(
       `${name} bvec2 false ?`,
-      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      { a: bvec2(bool(indexA !== 0), bool(indexA !== 1)) },
+      ({ a }) => factory(a),
       [false, null]
     );
 
     bvec2Scenario(
       `${name} bvec2 ? true`,
-      factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
+      { a: bvec2(bool(indexB === 0), bool(indexB === 1)) },
+      ({ a }) => factory(a),
       [null, true]
     );
 
     bvec2Scenario(
       `${name} bvec2 ? false`,
-      factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
+      { a: bvec2(bool(indexB !== 0), bool(indexB !== 1)) },
+      ({ a }) => factory(a),
       [null, false]
     );
   }
@@ -1347,51 +1362,49 @@ function forVec23(
   function overload(factory: Callback23, name: string): void {
     vec2Scenario(
       `${name} vec3`,
-      factory(
-        vec3(
+      {
+        a: vec3(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
 
     ivec2Scenario(
       `${name} ivec3`,
-      factory(ivec3(int(47), int(148), int(104))),
+      { a: ivec3(int(47), int(148), int(104)) },
+      ({ a }) => factory(a),
       [[47, 148, 104, 201][indexA], [47, 148, 104, 201][indexB]]
     );
 
     bvec2Scenario(
       `${name} bvec3 true ?`,
-      factory(
-        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-      ),
+      { a: bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2)) },
+      ({ a }) => factory(a),
       [true, null]
     );
 
     bvec2Scenario(
       `${name} bvec3 false ?`,
-      factory(
-        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-      ),
+      { a: bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2)) },
+      ({ a }) => factory(a),
       [false, null]
     );
 
     bvec2Scenario(
       `${name} bvec3 ? true`,
-      factory(
-        bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
-      ),
+      { a: bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2)) },
+      ({ a }) => factory(a),
       [null, true]
     );
 
     bvec2Scenario(
       `${name} bvec3 ? false`,
-      factory(
-        bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
-      ),
+      { a: bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2)) },
+      ({ a }) => factory(a),
       [null, false]
     );
   }
@@ -1430,72 +1443,78 @@ function forVec24(
   function overload(factory: Callback24, name: string): void {
     vec2Scenario(
       `${name} vec4`,
-      factory(
-        vec4(
+      {
+        a: vec4(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902),
           float(0.7882352941176471)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [[47, 148, 104, 201][indexA] / 255, [47, 148, 104, 201][indexB] / 255]
     );
 
     ivec2Scenario(
       `${name} ivec4`,
-      factory(ivec4(int(47), int(148), int(104), int(201))),
+      { a: ivec4(int(47), int(148), int(104), int(201)) },
+      ({ a }) => factory(a),
       [[47, 148, 104, 201][indexA], [47, 148, 104, 201][indexB]]
     );
 
     bvec2Scenario(
       `${name} bvec4 true ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA === 0),
           bool(indexA === 1),
           bool(indexA === 2),
           bool(indexA === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [true, null]
     );
 
     bvec2Scenario(
       `${name} bvec4 false ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA !== 0),
           bool(indexA !== 1),
           bool(indexA !== 2),
           bool(indexA !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [false, null]
     );
 
     bvec2Scenario(
       `${name} bvec4 ? true`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB === 0),
           bool(indexB === 1),
           bool(indexB === 2),
           bool(indexB === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, true]
     );
 
     bvec2Scenario(
       `${name} bvec4 ? false`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB !== 0),
           bool(indexB !== 1),
           bool(indexB !== 2),
           bool(indexB !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, false]
     );
   }
@@ -1593,14 +1612,15 @@ function forVec34(
   function overload(factory: Callback34, name: string): void {
     vec3Scenario(
       `${name} vec4`,
-      factory(
-        vec4(
+      {
+        a: vec4(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902),
           float(0.7882352941176471)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [
         [47, 148, 104, 201][indexA] / 255,
         [47, 148, 104, 201][indexB] / 255,
@@ -1610,7 +1630,8 @@ function forVec34(
 
     ivec3Scenario(
       `${name} ivec4`,
-      factory(ivec4(int(47), int(148), int(104), int(201))),
+      { a: ivec4(int(47), int(148), int(104), int(201)) },
+      ({ a }) => factory(a),
       [
         [47, 148, 104, 201][indexA],
         [47, 148, 104, 201][indexB],
@@ -1620,79 +1641,85 @@ function forVec34(
 
     bvec3Scenario(
       `${name} bvec4 true ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA === 0),
           bool(indexA === 1),
           bool(indexA === 2),
           bool(indexA === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [true, null, null]
     );
 
     bvec3Scenario(
       `${name} bvec4 false ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA !== 0),
           bool(indexA !== 1),
           bool(indexA !== 2),
           bool(indexA !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [false, null, null]
     );
 
     bvec3Scenario(
       `${name} bvec4 ? true ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB === 0),
           bool(indexB === 1),
           bool(indexB === 2),
           bool(indexB === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, true, null]
     );
 
     bvec3Scenario(
       `${name} bvec4 ? false ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB !== 0),
           bool(indexB !== 1),
           bool(indexB !== 2),
           bool(indexB !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, false, null]
     );
 
     bvec3Scenario(
       `${name} bvec4 ? ? true`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexC === 0),
           bool(indexC === 1),
           bool(indexC === 2),
           bool(indexC === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, true]
     );
 
     bvec3Scenario(
       `${name} bvec4 ? ? false`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexC !== 0),
           bool(indexC !== 1),
           bool(indexC !== 2),
           bool(indexC !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, false]
     );
   }
@@ -1729,7 +1756,8 @@ function forVec42(
   function overload(factory: Callback42, name: string): void {
     vec4Scenario(
       `${name} vec2`,
-      factory(vec2(float(0.1843137254901961), float(0.5803921568627451))),
+      { a: vec2(float(0.1843137254901961), float(0.5803921568627451)) },
+      ({ a }) => factory(a),
       [
         [47, 148][indexA] / 255,
         [47, 148][indexB] / 255,
@@ -1738,58 +1766,71 @@ function forVec42(
       ]
     );
 
-    ivec4Scenario(`${name} ivec2`, factory(ivec2(int(47), int(148))), [
-      [47, 148][indexA],
-      [47, 148][indexB],
-      [47, 148][indexC],
-      [47, 148][indexD],
-    ]);
+    ivec4Scenario(
+      `${name} ivec2`,
+      { a: ivec2(int(47), int(148)) },
+      ({ a }) => factory(a),
+      [
+        [47, 148][indexA],
+        [47, 148][indexB],
+        [47, 148][indexC],
+        [47, 148][indexD],
+      ]
+    );
 
     bvec4Scenario(
       `${name} bvec2 true ? ? ?`,
-      factory(bvec2(bool(indexA === 0), bool(indexA === 1))),
+      { a: bvec2(bool(indexA === 0), bool(indexA === 1)) },
+      ({ a }) => factory(a),
       [true, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 false ? ? ?`,
-      factory(bvec2(bool(indexA !== 0), bool(indexA !== 1))),
+      { a: bvec2(bool(indexA !== 0), bool(indexA !== 1)) },
+      ({ a }) => factory(a),
       [false, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? true ? ?`,
-      factory(bvec2(bool(indexB === 0), bool(indexB === 1))),
+      { a: bvec2(bool(indexB === 0), bool(indexB === 1)) },
+      ({ a }) => factory(a),
       [null, true, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? false ? ?`,
-      factory(bvec2(bool(indexB !== 0), bool(indexB !== 1))),
+      { a: bvec2(bool(indexB !== 0), bool(indexB !== 1)) },
+      ({ a }) => factory(a),
       [null, false, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? ? true ?`,
-      factory(bvec2(bool(indexC === 0), bool(indexC === 1))),
+      { a: bvec2(bool(indexC === 0), bool(indexC === 1)) },
+      ({ a }) => factory(a),
       [null, null, true, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? ? false ?`,
-      factory(bvec2(bool(indexC !== 0), bool(indexC !== 1))),
+      { a: bvec2(bool(indexC !== 0), bool(indexC !== 1)) },
+      ({ a }) => factory(a),
       [null, null, false, null]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? ? ? true`,
-      factory(bvec2(bool(indexD === 0), bool(indexD === 1))),
+      { a: bvec2(bool(indexD === 0), bool(indexD === 1)) },
+      ({ a }) => factory(a),
       [null, null, null, true]
     );
 
     bvec4Scenario(
       `${name} bvec2 ? ? ? false`,
-      factory(bvec2(bool(indexD !== 0), bool(indexD !== 1))),
+      { a: bvec2(bool(indexD !== 0), bool(indexD !== 1)) },
+      ({ a }) => factory(a),
       [null, null, null, false]
     );
   }
@@ -1833,13 +1874,14 @@ function forVec43(
   function overload(factory: Callback43, name: string): void {
     vec4Scenario(
       `${name} vec3`,
-      factory(
-        vec3(
+      {
+        a: vec3(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [
         [47, 148, 104][indexA] / 255,
         [47, 148, 104][indexB] / 255,
@@ -1850,7 +1892,8 @@ function forVec43(
 
     ivec4Scenario(
       `${name} ivec3`,
-      factory(ivec3(int(47), int(148), int(104))),
+      { a: ivec3(int(47), int(148), int(104)) },
+      ({ a }) => factory(a),
       [
         [47, 148, 104][indexA],
         [47, 148, 104][indexB],
@@ -1861,65 +1904,73 @@ function forVec43(
 
     bvec4Scenario(
       `${name} bvec3 true ? ? ?`,
-      factory(
-        bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2))
-      ),
+      {
+        a: bvec3(bool(indexA === 0), bool(indexA === 1), bool(indexA === 2)),
+      },
+      ({ a }) => factory(a),
       [true, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 false ? ? ?`,
-      factory(
-        bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2))
-      ),
+      {
+        a: bvec3(bool(indexA !== 0), bool(indexA !== 1), bool(indexA !== 2)),
+      },
+      ({ a }) => factory(a),
       [false, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? true ? ?`,
-      factory(
-        bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2))
-      ),
+      {
+        a: bvec3(bool(indexB === 0), bool(indexB === 1), bool(indexB === 2)),
+      },
+      ({ a }) => factory(a),
       [null, true, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? false ? ?`,
-      factory(
-        bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2))
-      ),
+      {
+        a: bvec3(bool(indexB !== 0), bool(indexB !== 1), bool(indexB !== 2)),
+      },
+      ({ a }) => factory(a),
       [null, false, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? ? true ?`,
-      factory(
-        bvec3(bool(indexC === 0), bool(indexC === 1), bool(indexC === 2))
-      ),
+      {
+        a: bvec3(bool(indexC === 0), bool(indexC === 1), bool(indexC === 2)),
+      },
+      ({ a }) => factory(a),
       [null, null, true, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? ? false ?`,
-      factory(
-        bvec3(bool(indexC !== 0), bool(indexC !== 1), bool(indexC !== 2))
-      ),
+      {
+        a: bvec3(bool(indexC !== 0), bool(indexC !== 1), bool(indexC !== 2)),
+      },
+      ({ a }) => factory(a),
       [null, null, false, null]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? ? ? true`,
-      factory(
-        bvec3(bool(indexD === 0), bool(indexD === 1), bool(indexD === 2))
-      ),
+      {
+        a: bvec3(bool(indexD === 0), bool(indexD === 1), bool(indexD === 2)),
+      },
+      ({ a }) => factory(a),
       [null, null, null, true]
     );
 
     bvec4Scenario(
       `${name} bvec3 ? ? ? false`,
-      factory(
-        bvec3(bool(indexD !== 0), bool(indexD !== 1), bool(indexD !== 2))
-      ),
+      {
+        a: bvec3(bool(indexD !== 0), bool(indexD !== 1), bool(indexD !== 2)),
+      },
+      ({ a }) => factory(a),
       [null, null, null, false]
     );
   }
@@ -1962,14 +2013,15 @@ function forVec44(
   function overload(factory: Callback44, name: string): void {
     vec4Scenario(
       `${name} vec4`,
-      factory(
-        vec4(
+      {
+        a: vec4(
           float(0.1843137254901961),
           float(0.5803921568627451),
           float(0.407843137254902),
           float(0.7882352941176471)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [
         [47, 148, 104, 201][indexA] / 255,
         [47, 148, 104, 201][indexB] / 255,
@@ -1980,7 +2032,8 @@ function forVec44(
 
     ivec4Scenario(
       `${name} ivec4`,
-      factory(ivec4(int(47), int(148), int(104), int(201))),
+      { a: ivec4(int(47), int(148), int(104), int(201)) },
+      ({ a }) => factory(a),
       [
         [47, 148, 104, 201][indexA],
         [47, 148, 104, 201][indexB],
@@ -1991,105 +2044,113 @@ function forVec44(
 
     bvec4Scenario(
       `${name} bvec4 true ? ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA === 0),
           bool(indexA === 1),
           bool(indexA === 2),
           bool(indexA === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [true, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 false ? ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexA !== 0),
           bool(indexA !== 1),
           bool(indexA !== 2),
           bool(indexA !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [false, null, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? true ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB === 0),
           bool(indexB === 1),
           bool(indexB === 2),
           bool(indexB === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, true, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? false ? ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexB !== 0),
           bool(indexB !== 1),
           bool(indexB !== 2),
           bool(indexB !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, false, null, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? ? true ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexC === 0),
           bool(indexC === 1),
           bool(indexC === 2),
           bool(indexC === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, true, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? ? false ?`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexC !== 0),
           bool(indexC !== 1),
           bool(indexC !== 2),
           bool(indexC !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, false, null]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? ? ? true`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexD === 0),
           bool(indexD === 1),
           bool(indexD === 2),
           bool(indexD === 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, null, true]
     );
 
     bvec4Scenario(
       `${name} bvec4 ? ? ? false`,
-      factory(
-        bvec4(
+      {
+        a: bvec4(
           bool(indexD !== 0),
           bool(indexD !== 1),
           bool(indexD !== 2),
           bool(indexD !== 3)
-        )
-      ),
+        ),
+      },
+      ({ a }) => factory(a),
       [null, null, null, false]
     );
   }

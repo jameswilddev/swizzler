@@ -28,5 +28,5 @@ export function cos(
 ): Expression<AnyFloatPrimitive> {
   angle;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

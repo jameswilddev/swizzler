@@ -181,5 +181,5 @@ export function add(
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

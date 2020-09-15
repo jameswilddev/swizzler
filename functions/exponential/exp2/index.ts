@@ -20,5 +20,5 @@ export function exp2(
 ): Expression<AnyFloatPrimitive> {
   x;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

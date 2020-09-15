@@ -28,5 +28,5 @@ export function length(
 ): Expression<FloatPrimitive> {
   x;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

@@ -49,5 +49,5 @@ export function negate(
 ): Expression<AnyNumericPrimitive> {
   a;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

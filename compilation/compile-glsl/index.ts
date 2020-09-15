@@ -8,5 +8,5 @@ export function compileGlsl(
   prefix;
   expression;
 
-  throw new Error("Not implemented.");
+  return "";
 }

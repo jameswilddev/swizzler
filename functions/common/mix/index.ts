@@ -58,5 +58,5 @@ export function mix(
   y;
   a;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

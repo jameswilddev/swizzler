@@ -49,5 +49,5 @@ export function min(
   x;
   y;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

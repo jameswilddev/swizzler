@@ -34,5 +34,5 @@ export function dot(
   x;
   y;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

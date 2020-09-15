@@ -66,5 +66,5 @@ export function greaterThan<
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

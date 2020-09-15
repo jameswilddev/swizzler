@@ -20,5 +20,5 @@ export function not(
 ): Expression<AnyBoolPrimitive> {
   a;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

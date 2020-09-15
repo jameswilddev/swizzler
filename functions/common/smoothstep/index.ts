@@ -58,5 +58,5 @@ export function smoothstep(
   edge1;
   x;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

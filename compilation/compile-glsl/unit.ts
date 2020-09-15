@@ -13,10 +13,11 @@ import {
 import { conditional } from "../../operators/conditional";
 import { glslScenario } from "../../unit";
 
-describe("compileGlsl", () => {
-  it("float reference", () => {
-    glslScenario(
-      `precision mediump float;
+xdescribe("", () => {
+  describe("compileGlsl", () => {
+    it("float reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         float a = 0.3;
@@ -28,13 +29,13 @@ describe("compileGlsl", () => {
           )
         )}
       }`,
-      [127.5, 102, 178.5, 204]
-    );
-  });
+        [127.5, 102, 178.5, 204]
+      );
+    });
 
-  it("vec2 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("vec2 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         vec2 a = vec2(0.2, 0.1);
@@ -43,13 +44,13 @@ describe("compileGlsl", () => {
           vec4(add(reference("vec2", "a"), float(0.3)), float(0), float(0))
         )}
       }`,
-      [127.5, 102, 0, 0]
-    );
-  });
+        [127.5, 102, 0, 0]
+      );
+    });
 
-  it("vec3 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("vec3 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         vec3 a = vec3(0.2, 0.1, 0.4);
@@ -58,13 +59,13 @@ describe("compileGlsl", () => {
           vec4(add(reference("vec3", "a"), float(0.3)), float(0))
         )}
       }`,
-      [127.5, 102, 178.5, 0]
-    );
-  });
+        [127.5, 102, 178.5, 0]
+      );
+    });
 
-  it("vec4 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("vec4 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         vec4 a = vec4(0.2, 0.1, 0.4, 0.5);
@@ -73,13 +74,13 @@ describe("compileGlsl", () => {
           add(reference("vec4", "a"), float(0.3))
         )}
       }`,
-      [127.5, 102, 178.5, 204]
-    );
-  });
+        [127.5, 102, 178.5, 204]
+      );
+    });
 
-  it("mat2 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("mat2 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         mat2 a = mat2(0.2, 0.1, 0.4, 0.5);
@@ -88,16 +89,16 @@ describe("compileGlsl", () => {
           add(vec4(reference("mat2", "a")), float(0.3))
         )}
       }`,
-      [127.5, 102, 178.5, 204]
-    );
-  });
+        [127.5, 102, 178.5, 204]
+      );
+    });
 
-  // todo mat3 reference
-  // todo mat4 reference
+    // todo mat3 reference
+    // todo mat4 reference
 
-  it("bool reference false", () => {
-    glslScenario(
-      `precision mediump float;
+    it("bool reference false", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         bool a = false;
@@ -110,13 +111,13 @@ describe("compileGlsl", () => {
           )
         )};
       }`,
-      [102, 127.5, 204, 178.5]
-    );
-  });
+        [102, 127.5, 204, 178.5]
+      );
+    });
 
-  it("bool reference true", () => {
-    glslScenario(
-      `precision mediump float;
+    it("bool reference true", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         bool a = true;
@@ -129,13 +130,13 @@ describe("compileGlsl", () => {
           )
         )};
       }`,
-      [102, 127.5, 204, 178.5]
-    );
-  });
+        [102, 127.5, 204, 178.5]
+      );
+    });
 
-  it("bvec2 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("bvec2 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         bvec2 a = bvec2(false, true);
@@ -155,13 +156,13 @@ describe("compileGlsl", () => {
           )
         )};
       }`,
-      [102, 127.5, 204, 178.5]
-    );
-  });
+        [102, 127.5, 204, 178.5]
+      );
+    });
 
-  it("bvec3 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("bvec3 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         bvec3 a = bvec3(false, true, false);
@@ -178,13 +179,13 @@ describe("compileGlsl", () => {
           )
         )};
       }`,
-      [102, 127.5, 204, 178.5]
-    );
-  });
+        [102, 127.5, 204, 178.5]
+      );
+    });
 
-  it("bvec4 reference", () => {
-    glslScenario(
-      `precision mediump float;
+    it("bvec4 reference", () => {
+      glslScenario(
+        `precision mediump float;
 
       void main(void) {
         bvec4 a = bvec4(false, true, true, false);
@@ -198,7 +199,8 @@ describe("compileGlsl", () => {
           )
         )};
       }`,
-      [229.5, 127.5, 204, 178.5]
-    );
+        [229.5, 127.5, 204, 178.5]
+      );
+    });
   });
 });

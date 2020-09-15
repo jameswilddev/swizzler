@@ -58,5 +58,5 @@ export function clamp(
   minVal;
   maxVal;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

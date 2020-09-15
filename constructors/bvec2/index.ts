@@ -15,5 +15,5 @@ export function bvec2(
 ): Expression<Bvec2Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("bvec2");
 }

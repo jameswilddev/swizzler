@@ -15,5 +15,5 @@ export function vec3(
 ): Expression<Vec3Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("vec3");
 }

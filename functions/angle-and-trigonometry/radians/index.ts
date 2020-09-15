@@ -28,5 +28,5 @@ export function radians(
 ): Expression<AnyFloatPrimitive> {
   degrees;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

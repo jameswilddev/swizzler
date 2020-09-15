@@ -8,5 +8,5 @@ export function and(
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

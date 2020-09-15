@@ -83,5 +83,5 @@ export function componentwiseEqual<TPrimitive extends AnyCastablePrimitive>(
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

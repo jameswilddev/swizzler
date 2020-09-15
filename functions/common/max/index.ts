@@ -49,5 +49,5 @@ export function max(
   x;
   y;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

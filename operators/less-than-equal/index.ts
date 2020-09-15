@@ -66,5 +66,5 @@ export function lessThanEqual<
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

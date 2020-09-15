@@ -40,5 +40,5 @@ export function refract(
   n;
   eta;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

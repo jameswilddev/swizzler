@@ -11,5 +11,5 @@ export function all(
 ): Expression<BoolPrimitive> {
   a;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

@@ -18,5 +18,5 @@ export function ivec4(
 ): Expression<Ivec4Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("ivec4");
 }

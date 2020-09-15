@@ -28,5 +28,5 @@ export function inversesqrt(
 ): Expression<AnyFloatPrimitive> {
   x;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

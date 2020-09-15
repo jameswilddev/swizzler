@@ -40,5 +40,5 @@ export function faceforward(
   i;
   nRef;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

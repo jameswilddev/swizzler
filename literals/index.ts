@@ -5,19 +5,19 @@ import { Expression } from "../expression";
 export function bool(value: boolean): Expression<BoolPrimitive> {
   value;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }
 
 // todo: cast
 export function float(value: number): Expression<FloatPrimitive> {
   value;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }
 
 // todo: cast
 export function int(value: number): Expression<IntPrimitive> {
   value;
 
-  throw new Error("Not implemented.");
+  return new Expression("int");
 }

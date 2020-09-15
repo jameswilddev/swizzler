@@ -45,7 +45,7 @@ function makeSwizzle12(indexA: 0 | 1): Callback12 {
   ): Expression<BasePrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("float");
   };
 
   return output as Callback12;
@@ -67,7 +67,7 @@ function makeSwizzle13(indexA: 0 | 1 | 2): Callback13 {
   ): Expression<BasePrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("float");
   };
 
   return output as Callback13;
@@ -89,7 +89,7 @@ function makeSwizzle14(indexA: 0 | 1 | 2 | 3): Callback14 {
   ): Expression<BasePrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("float");
   };
 
   return output as Callback14;
@@ -123,7 +123,7 @@ function makeSwizzle22(indexA: 0 | 1, indexB: 0 | 1): Callback22 {
   ): Expression<PairPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec2");
   };
 
   return output as Callback22;
@@ -146,7 +146,7 @@ function makeSwizzle23(indexA: 0 | 1 | 2, indexB: 0 | 1 | 2): Callback23 {
   ): Expression<PairPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec2");
   };
 
   return output as Callback23;
@@ -170,7 +170,7 @@ function makeSwizzle24(
   ): Expression<PairPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec2");
   };
 
   return output as Callback24;
@@ -209,7 +209,7 @@ function makeSwizzle32(
   ): Expression<TripletPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec3");
   };
 
   return output as Callback32;
@@ -237,7 +237,7 @@ function makeSwizzle33(
   ): Expression<TripletPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec3");
   };
 
   return output as Callback33;
@@ -263,7 +263,7 @@ function makeSwizzle34(
   ): Expression<TripletPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec3");
   };
 
   return output as Callback34;
@@ -304,7 +304,7 @@ function makeSwizzle42(
   ): Expression<QuartetPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec4");
   };
 
   return output as Callback42;
@@ -334,7 +334,7 @@ function makeSwizzle43(
   ): Expression<QuartetPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec4");
   };
 
   return output as Callback43;
@@ -362,7 +362,7 @@ function makeSwizzle44(
   ): Expression<QuartetPrimitive> => {
     a;
 
-    throw new Error("Not implemented.");
+    return new Expression("vec4");
   };
 
   return output as Callback44;

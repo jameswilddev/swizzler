@@ -100,5 +100,5 @@ export function notEqual<TPrimitive extends AnyPrimitive>(
   a;
   b;
 
-  throw new Error("Not implemented.");
+  return new Expression("bool");
 }

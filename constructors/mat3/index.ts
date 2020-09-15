@@ -18,5 +18,5 @@ export function mat3(
 ): Expression<Mat3Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("mat3");
 }

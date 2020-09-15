@@ -30,5 +30,5 @@ export function getColumn(
   matrix;
   column;
 
-  throw new Error("Not implemented.");
+  return new Expression("vec2");
 }

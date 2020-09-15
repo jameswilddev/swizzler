@@ -34,5 +34,5 @@ export function reflect(
   i;
   n;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

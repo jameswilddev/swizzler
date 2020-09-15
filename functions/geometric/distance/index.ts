@@ -34,5 +34,5 @@ export function distance(
   p0;
   p1;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

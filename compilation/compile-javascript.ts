@@ -8,5 +8,5 @@ export function compileJavascript(
   prefix;
   expression;
 
-  throw new Error("Not implemented.");
+  return "";
 }

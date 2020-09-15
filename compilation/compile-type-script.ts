@@ -8,5 +8,5 @@ export function compileTypeScript(
   prefix;
   expression;
 
-  throw new Error("Not implemented.");
+  return "";
 }

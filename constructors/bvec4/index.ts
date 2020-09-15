@@ -17,5 +17,6 @@ export function bvec4(
   ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
 ): Expression<Bvec4Primitive> {
   args;
-  throw new Error("Not implemented.");
+
+  return new Expression("bvec4");
 }

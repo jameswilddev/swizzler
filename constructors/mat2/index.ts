@@ -18,5 +18,5 @@ export function mat2(
 ): Expression<Mat2Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("mat2");
 }

@@ -40,5 +40,5 @@ export function atan(
 ): Expression<AnyFloatPrimitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

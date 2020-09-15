@@ -8,5 +8,5 @@ export function reference<TPrimitive extends AnyPrimitive>(
   primitive;
   name;
 
-  throw new Error("Not implemented.");
+  return new Expression(primitive);
 }

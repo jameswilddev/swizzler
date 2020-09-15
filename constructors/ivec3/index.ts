@@ -15,5 +15,5 @@ export function ivec3(
 ): Expression<Ivec3Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("ivec3");
 }

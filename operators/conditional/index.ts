@@ -117,5 +117,5 @@ export function conditional(
   b;
   c;
 
-  throw new Error("Not implemented.");
+  return new Expression("float");
 }

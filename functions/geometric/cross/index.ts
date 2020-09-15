@@ -8,5 +8,5 @@ export function cross(
   x;
   y;
 
-  throw new Error("Not implemented.");
+  return new Expression("vec3");
 }

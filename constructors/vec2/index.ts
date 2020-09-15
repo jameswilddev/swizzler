@@ -15,5 +15,5 @@ export function vec2(
 ): Expression<Vec2Primitive> {
   args;
 
-  throw new Error("Not implemented.");
+  return new Expression("vec2");
 }

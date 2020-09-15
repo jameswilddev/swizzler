@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function min(
   x: Expression<FloatPrimitive>,
@@ -47,5 +46,8 @@ export function min(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.min", "min", x, y);
+  x;
+  y;
+
+  throw new Error("Not implemented.");
 }

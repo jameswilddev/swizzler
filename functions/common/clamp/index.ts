@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function clamp(
   x: Expression<FloatPrimitive>,
@@ -55,20 +54,9 @@ export function clamp(
   minVal: Expression<AnyFloatPrimitive>,
   maxVal: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = x.primitive;
+  x;
+  minVal;
+  maxVal;
 
-  return new Expression(
-    new FunctionImplementation(primitive, "Math.min", [
-      maxVal.javascript,
-      new FunctionImplementation(primitive, "Math.max", [
-        minVal.javascript,
-        x.javascript,
-      ]),
-    ]),
-    new FunctionImplementation(primitive, "clamp", [
-      x.glsl,
-      minVal.glsl,
-      maxVal.glsl,
-    ])
-  );
+  throw new Error("Not implemented.");
 }

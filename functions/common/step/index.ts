@@ -6,10 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { TernaryOperatorImplementation } from "../../../implementations/ternary-operator-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../../implementations/literal-implementation";
 
 export function step(
   edge: Expression<FloatPrimitive>,
@@ -50,22 +46,8 @@ export function step(
   edge: Expression<AnyFloatPrimitive>,
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = x.primitive;
+  edge;
+  x;
 
-  return new Expression(
-    new TernaryOperatorImplementation(
-      primitive,
-      new BinaryOperatorImplementation(
-        "bool", // todo: find the real primitive for this
-        x.javascript,
-        "<",
-        edge.javascript
-      ),
-      "?",
-      new LiteralImplementation("float", ["0"]),
-      ":",
-      new LiteralImplementation("float", ["1"])
-    ),
-    new FunctionImplementation(primitive, "step", [edge.glsl, x.glsl])
-  );
+  throw new Error("Not implemented.");
 }

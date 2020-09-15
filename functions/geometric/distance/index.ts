@@ -6,9 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
 
 export function distance(
   p0: Expression<FloatPrimitive>,
@@ -34,28 +31,8 @@ export function distance(
   p0: Expression<AnyFloatPrimitive>,
   p1: Expression<AnyFloatPrimitive>
 ): Expression<FloatPrimitive> {
-  const primitive = p0.primitive;
+  p0;
+  p1;
 
-  const javascriptDifference = new BinaryOperatorImplementation(
-    primitive,
-    p0.javascript,
-    "-",
-    p1.javascript
-  );
-
-  return new Expression(
-    new FunctionImplementation("float", "Math.sqrt", [
-      new AggregateImplementation(
-        "float",
-        "+",
-        new BinaryOperatorImplementation(
-          primitive,
-          javascriptDifference,
-          "*",
-          javascriptDifference
-        )
-      ),
-    ]),
-    new FunctionImplementation("float", "distance", [p0.glsl, p1.glsl])
-  );
+  throw new Error("Not implemented.");
 }

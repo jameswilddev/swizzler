@@ -1,5 +1,3 @@
-import { SwizzleImplementation } from "../implementations/swizzle-implementation";
-import { PropertyImplementation } from "../implementations/property-implementation";
 import { Expression } from "../expression";
 import {
   FloatPrimitive,
@@ -14,17 +12,11 @@ import {
   Bvec2Primitive,
   Bvec3Primitive,
   Bvec4Primitive,
-  primitiveBases,
   BasePrimitive,
-  primitivePairs,
   PairPrimitive,
   TripletPrimitive,
-  primitiveTriplets,
   QuartetPrimitive,
-  primitiveQuartets,
 } from "../primitive";
-
-const letters = ["x", "y", "z", "w"];
 
 interface Callback12 {
   (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
@@ -39,6 +31,8 @@ interface Callback12 {
 }
 
 function makeSwizzle12(indexA: 0 | 1): Callback12 {
+  indexA;
+
   const output = (
     a: Expression<
       | Vec2Primitive
@@ -49,16 +43,9 @@ function makeSwizzle12(indexA: 0 | 1): Callback12 {
       | Bvec4Primitive
     >
   ): Expression<BasePrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveBases[a.primitive], a.javascript, [
-        indexA,
-      ]),
-      new PropertyImplementation(
-        primitiveBases[a.primitive],
-        a.glsl,
-        letters[indexA]
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback12;
@@ -71,21 +58,16 @@ interface Callback13 {
 }
 
 function makeSwizzle13(indexA: 0 | 1 | 2): Callback13 {
+  indexA;
+
   const output = (
     a: Expression<
       Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
     >
   ): Expression<BasePrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveBases[a.primitive], a.javascript, [
-        indexA,
-      ]),
-      new PropertyImplementation(
-        primitiveBases[a.primitive],
-        a.glsl,
-        letters[indexA]
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback13;
@@ -98,21 +80,16 @@ interface Callback14 {
 }
 
 function makeSwizzle14(indexA: 0 | 1 | 2 | 3): Callback14 {
+  indexA;
+
   const output = (
     a: Expression<
       Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
     >
   ): Expression<BasePrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveBases[a.primitive], a.javascript, [
-        indexA,
-      ]),
-      new PropertyImplementation(
-        primitiveBases[a.primitive],
-        a.glsl,
-        letters[indexA]
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback14;
@@ -131,6 +108,9 @@ interface Callback22 {
 }
 
 function makeSwizzle22(indexA: 0 | 1, indexB: 0 | 1): Callback22 {
+  indexA;
+  indexB;
+
   const output = (
     a: Expression<
       | Vec2Primitive
@@ -141,17 +121,9 @@ function makeSwizzle22(indexA: 0 | 1, indexB: 0 | 1): Callback22 {
       | Bvec4Primitive
     >
   ): Expression<PairPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitivePairs[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-      ]),
-      new PropertyImplementation(
-        primitivePairs[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback22;
@@ -164,22 +136,17 @@ interface Callback23 {
 }
 
 function makeSwizzle23(indexA: 0 | 1 | 2, indexB: 0 | 1 | 2): Callback23 {
+  indexA;
+  indexB;
+
   const output = (
     a: Expression<
       Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
     >
   ): Expression<PairPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitivePairs[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-      ]),
-      new PropertyImplementation(
-        primitivePairs[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback23;
@@ -195,20 +162,15 @@ function makeSwizzle24(
   indexA: 0 | 1 | 2 | 3,
   indexB: 0 | 1 | 2 | 3
 ): Callback24 {
+  indexA;
+  indexB;
+
   const output = (
     a: Expression<Vec4Primitive | Bvec4Primitive>
   ): Expression<PairPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitivePairs[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-      ]),
-      new PropertyImplementation(
-        primitivePairs[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback24;
@@ -231,6 +193,10 @@ function makeSwizzle32(
   indexB: 0 | 1,
   indexC: 0 | 1
 ): Callback32 {
+  indexA;
+  indexB;
+  indexC;
+
   const output = (
     a: Expression<
       | Vec2Primitive
@@ -241,18 +207,9 @@ function makeSwizzle32(
       | Bvec4Primitive
     >
   ): Expression<TripletPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveTriplets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-      ]),
-      new PropertyImplementation(
-        primitiveTriplets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback32;
@@ -269,23 +226,18 @@ function makeSwizzle33(
   indexB: 0 | 1 | 2,
   indexC: 0 | 1 | 2
 ): Callback33 {
+  indexA;
+  indexB;
+  indexC;
+
   const output = (
     a: Expression<
       Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
     >
   ): Expression<TripletPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveTriplets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-      ]),
-      new PropertyImplementation(
-        primitiveTriplets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback33;
@@ -302,21 +254,16 @@ function makeSwizzle34(
   indexB: 0 | 1 | 2 | 3,
   indexC: 0 | 1 | 2 | 3
 ): Callback34 {
+  indexA;
+  indexB;
+  indexC;
+
   const output = (
     a: Expression<Vec4Primitive | Bvec4Primitive>
   ): Expression<TripletPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveTriplets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-      ]),
-      new PropertyImplementation(
-        primitiveTriplets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback34;
@@ -340,6 +287,11 @@ function makeSwizzle42(
   indexC: 0 | 1,
   indexD: 0 | 1
 ): Callback42 {
+  indexA;
+  indexB;
+  indexC;
+  indexD;
+
   const output = (
     a: Expression<
       | Vec2Primitive
@@ -350,19 +302,9 @@ function makeSwizzle42(
       | Bvec4Primitive
     >
   ): Expression<QuartetPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveQuartets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-        indexD,
-      ]),
-      new PropertyImplementation(
-        primitiveQuartets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}${letters[indexD]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback42;
@@ -380,24 +322,19 @@ function makeSwizzle43(
   indexC: 0 | 1 | 2,
   indexD: 0 | 1 | 2
 ): Callback43 {
+  indexA;
+  indexB;
+  indexC;
+  indexD;
+
   const output = (
     a: Expression<
       Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
     >
   ): Expression<QuartetPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveQuartets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-        indexD,
-      ]),
-      new PropertyImplementation(
-        primitiveQuartets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}${letters[indexD]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback43;
@@ -415,22 +352,17 @@ function makeSwizzle44(
   indexC: 0 | 1 | 2 | 3,
   indexD: 0 | 1 | 2 | 3
 ): Callback44 {
+  indexA;
+  indexB;
+  indexC;
+  indexD;
+
   const output = (
     a: Expression<Vec4Primitive | Bvec4Primitive>
   ): Expression<QuartetPrimitive> => {
-    return new Expression(
-      new SwizzleImplementation(primitiveQuartets[a.primitive], a.javascript, [
-        indexA,
-        indexB,
-        indexC,
-        indexD,
-      ]),
-      new PropertyImplementation(
-        primitiveQuartets[a.primitive],
-        a.glsl,
-        `${letters[indexA]}${letters[indexB]}${letters[indexC]}${letters[indexD]}`
-      )
-    );
+    a;
+
+    throw new Error("Not implemented.");
   };
 
   return output as Callback44;

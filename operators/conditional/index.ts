@@ -11,14 +11,12 @@ import {
   Ivec3Primitive,
   Ivec4Primitive,
   AnyPrimitive,
-  combinationOfPrimitives,
   BoolPrimitive,
   Bvec2Primitive,
   Bvec3Primitive,
   Bvec4Primitive,
 } from "../../primitive";
 import { Expression } from "../../expression";
-import { TernaryOperatorImplementation } from "../../implementations/ternary-operator-implementation";
 
 export function conditional(
   a: Expression<BoolPrimitive>,
@@ -115,27 +113,9 @@ export function conditional(
   b: Expression<AnyPrimitive>,
   c: Expression<AnyPrimitive>
 ): Expression<AnyPrimitive> {
-  const primitive = combinationOfPrimitives<AnyPrimitive>(
-    b.primitive,
-    c.primitive
-  );
+  a;
+  b;
+  c;
 
-  return new Expression(
-    new TernaryOperatorImplementation(
-      primitive,
-      a.javascript,
-      "?",
-      b.javascript,
-      ":",
-      c.javascript
-    ),
-    new TernaryOperatorImplementation(
-      primitive,
-      a.glsl,
-      "?",
-      b.glsl,
-      ":",
-      c.glsl
-    )
-  );
+  throw new Error("Not implemented.");
 }

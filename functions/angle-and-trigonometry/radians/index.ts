@@ -6,9 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../../implementations/literal-implementation";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function radians(
   degrees: Expression<FloatPrimitive>
@@ -29,15 +26,7 @@ export function radians(
 export function radians(
   degrees: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = degrees.primitive;
+  degrees;
 
-  return new Expression(
-    new BinaryOperatorImplementation(
-      primitive,
-      degrees.javascript,
-      "*",
-      new LiteralImplementation("float", [JSON.stringify(Math.PI / 180)])
-    ),
-    new FunctionImplementation(primitive, "radians", [degrees.glsl])
-  );
+  throw new Error("Not implemented.");
 }

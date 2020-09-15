@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function tan(
   angle: Expression<FloatPrimitive>
@@ -27,5 +26,7 @@ export function tan(
 export function tan(
   angle: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.tan", "tan", angle);
+  angle;
+
+  throw new Error("Not implemented.");
 }

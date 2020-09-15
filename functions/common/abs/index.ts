@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function abs(x: Expression<FloatPrimitive>): Expression<FloatPrimitive>;
 
@@ -19,5 +18,7 @@ export function abs(x: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
 export function abs(
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.abs", "abs", x);
+  x;
+
+  throw new Error("Not implemented.");
 }

@@ -6,10 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
-import { LiteralImplementation } from "../../../implementations/literal-implementation";
 
 export function reflect(
   i: Expression<FloatPrimitive>,
@@ -35,34 +31,8 @@ export function reflect(
   i: Expression<AnyFloatPrimitive>,
   n: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = n.primitive;
+  i;
+  n;
 
-  return new Expression(
-    new BinaryOperatorImplementation(
-      primitive,
-      i.javascript,
-      "-",
-      new BinaryOperatorImplementation(
-        primitive,
-        new LiteralImplementation("float", ["2"]),
-        "*",
-        new BinaryOperatorImplementation(
-          primitive,
-          new AggregateImplementation(
-            "float",
-            "+",
-            new BinaryOperatorImplementation(
-              primitive,
-              n.javascript,
-              "*",
-              i.javascript
-            )
-          ),
-          "*",
-          n.javascript
-        )
-      )
-    ),
-    new FunctionImplementation(primitive, "reflect", [i.glsl, n.glsl])
-  );
+  throw new Error("Not implemented.");
 }

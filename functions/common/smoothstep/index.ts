@@ -6,9 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../../implementations/literal-implementation";
 
 export function smoothstep(
   edge0: Expression<FloatPrimitive>,
@@ -57,55 +54,9 @@ export function smoothstep(
   edge1: Expression<AnyFloatPrimitive>,
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const javascriptA = new FunctionImplementation(x.primitive, "Math.max", [
-    new LiteralImplementation("float", ["0"]),
-    new FunctionImplementation(x.primitive, "Math.min", [
-      new LiteralImplementation("float", ["1"]),
-      new BinaryOperatorImplementation(
-        x.primitive,
-        new BinaryOperatorImplementation(
-          x.primitive,
-          x.javascript,
-          "-",
-          edge0.javascript
-        ),
-        "/",
-        new BinaryOperatorImplementation(
-          edge0.primitive,
-          edge1.javascript,
-          "-",
-          edge0.javascript
-        )
-      ),
-    ]),
-  ]);
+  edge0;
+  edge1;
+  x;
 
-  return new Expression(
-    new BinaryOperatorImplementation(
-      x.primitive,
-      javascriptA,
-      "*",
-      new BinaryOperatorImplementation(
-        x.primitive,
-        javascriptA,
-        "*",
-        new BinaryOperatorImplementation(
-          x.primitive,
-          new LiteralImplementation("float", ["3"]),
-          "-",
-          new BinaryOperatorImplementation(
-            x.primitive,
-            new LiteralImplementation("float", ["2"]),
-            "*",
-            javascriptA
-          )
-        )
-      )
-    ),
-    new FunctionImplementation(x.primitive, "smoothstep", [
-      edge0.glsl,
-      edge1.glsl,
-      x.glsl,
-    ])
-  );
+  throw new Error("Not implemented.");
 }

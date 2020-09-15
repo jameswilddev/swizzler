@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function max(
   x: Expression<FloatPrimitive>,
@@ -47,5 +46,8 @@ export function max(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.max", "max", x, y);
+  x;
+  y;
+
+  throw new Error("Not implemented.");
 }

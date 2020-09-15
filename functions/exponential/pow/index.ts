@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function pow(
   x: Expression<FloatPrimitive>,
@@ -32,5 +31,8 @@ export function pow(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.pow", "pow", x, y);
+  x;
+  y;
+
+  throw new Error("Not implemented.");
 }

@@ -13,7 +13,6 @@ import {
   AnyNumericPrimitive,
 } from "../../primitive";
 import { Expression } from "../../expression";
-import { binary } from "../../helpers";
 
 export function add(
   a: Expression<FloatPrimitive>,
@@ -179,5 +178,8 @@ export function add(
   a: Expression<AnyNumericPrimitive>,
   b: Expression<AnyNumericPrimitive>
 ): Expression<AnyNumericPrimitive> {
-  return binary(a, "+", b);
+  a;
+  b;
+
+  throw new Error("Not implemented.");
 }

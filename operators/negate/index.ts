@@ -13,7 +13,6 @@ import {
   AnyNumericPrimitive,
 } from "../../primitive";
 import { Expression } from "../../expression";
-import { unary } from "../../helpers";
 
 export function negate(
   a: Expression<FloatPrimitive>
@@ -48,5 +47,7 @@ export function negate(
 export function negate(
   a: Expression<AnyNumericPrimitive>
 ): Expression<AnyNumericPrimitive> {
-  return unary(a.primitive, "-", a);
+  a;
+
+  throw new Error("Not implemented.");
 }

@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function sin(
   angle: Expression<FloatPrimitive>
@@ -27,5 +26,7 @@ export function sin(
 export function sin(
   angle: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.sin", "sin", angle);
+  angle;
+
+  throw new Error("Not implemented.");
 }

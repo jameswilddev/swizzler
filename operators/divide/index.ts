@@ -11,11 +11,8 @@ import {
   Ivec3Primitive,
   Ivec4Primitive,
   AnyNumericPrimitive,
-  primitiveBases,
 } from "../../primitive";
 import { Expression } from "../../expression";
-import { binary } from "../../helpers";
-import { RoundImplementation } from "../../implementations/round-implementation";
 
 export function divide(
   a: Expression<FloatPrimitive>,
@@ -166,14 +163,8 @@ export function divide(
   a: Expression<AnyNumericPrimitive>,
   b: Expression<AnyNumericPrimitive>
 ): Expression<AnyNumericPrimitive> {
-  const unrounded = binary(a, "/", b);
+  a;
+  b;
 
-  if (primitiveBases[unrounded.primitive] === "int") {
-    return new Expression(
-      new RoundImplementation(unrounded.javascript),
-      unrounded.glsl
-    );
-  } else {
-    return unrounded;
-  }
+  throw new Error("Not implemented.");
 }

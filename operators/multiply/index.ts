@@ -6,7 +6,6 @@ import {
   Mat2Primitive,
   Mat3Primitive,
   Mat4Primitive,
-  AnyFloatPrimitive,
   IntPrimitive,
   Ivec2Primitive,
   Ivec3Primitive,
@@ -14,11 +13,6 @@ import {
   AnyNumericPrimitive,
 } from "../../primitive";
 import { Expression } from "../../expression";
-import { binary } from "../../helpers";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { MatrixVectorMultiplyImplementation } from "../../implementations/matrix-vector-multiply-implementation";
-import { MatrixMatrixMultiplyImplementation } from "../../implementations/matrix-matrix-multiply-implementation";
-import { Implementation } from "../../implementations/implementation";
 
 export function multiply(
   a: Expression<FloatPrimitive>,
@@ -199,46 +193,8 @@ export function multiply(
   a: Expression<AnyNumericPrimitive>,
   b: Expression<AnyNumericPrimitive>
 ): Expression<AnyNumericPrimitive> {
-  if (
-    (a.primitive === "mat2" && b.primitive === "vec2") ||
-    (a.primitive === "mat3" && b.primitive === "vec3") ||
-    (a.primitive === "mat4" && b.primitive === "vec4")
-  ) {
-    return new Expression(
-      new MatrixVectorMultiplyImplementation(
-        a.primitive,
-        a.javascript as Implementation<AnyFloatPrimitive>,
-        b.javascript as Implementation<AnyFloatPrimitive>
-      ),
-      new BinaryOperatorImplementation(a.primitive, a.glsl, "*", b.glsl)
-    );
-  } else if (
-    (a.primitive === "vec2" && b.primitive === "mat2") ||
-    (a.primitive === "vec3" && b.primitive === "mat3") ||
-    (a.primitive === "vec4" && b.primitive === "mat4")
-  ) {
-    return new Expression(
-      new MatrixVectorMultiplyImplementation(
-        b.primitive,
-        a.javascript as Implementation<AnyFloatPrimitive>,
-        b.javascript as Implementation<AnyFloatPrimitive>
-      ),
-      new BinaryOperatorImplementation(b.primitive, a.glsl, "*", b.glsl)
-    );
-  } else if (
-    (a.primitive === "mat2" && b.primitive === "mat2") ||
-    (a.primitive === "mat3" && b.primitive === "mat3") ||
-    (a.primitive === "mat4" && b.primitive === "mat4")
-  ) {
-    return new Expression(
-      new MatrixMatrixMultiplyImplementation(
-        a.primitive,
-        a.javascript as Implementation<AnyFloatPrimitive>,
-        b.javascript as Implementation<AnyFloatPrimitive>
-      ),
-      new BinaryOperatorImplementation(b.primitive, a.glsl, "*", b.glsl)
-    );
-  } else {
-    return binary(a, "*", b);
-  }
+  a;
+  b;
+
+  throw new Error("Not implemented.");
 }

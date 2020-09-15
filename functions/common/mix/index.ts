@@ -6,8 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
 
 export function mix(
   x: Expression<FloatPrimitive>,
@@ -56,25 +54,9 @@ export function mix(
   y: Expression<AnyFloatPrimitive>,
   a: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  const primitive = x.primitive;
+  x;
+  y;
+  a;
 
-  return new Expression(
-    new BinaryOperatorImplementation(
-      primitive,
-      x.javascript,
-      "+",
-      new BinaryOperatorImplementation(
-        primitive,
-        new BinaryOperatorImplementation(
-          primitive,
-          y.javascript,
-          "-",
-          x.javascript
-        ),
-        "*",
-        a.javascript
-      )
-    ),
-    new FunctionImplementation(primitive, "mix", [x.glsl, y.glsl, a.glsl])
-  );
+  throw new Error("Not implemented.");
 }

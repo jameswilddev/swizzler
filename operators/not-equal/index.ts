@@ -1,6 +1,4 @@
 import { Expression } from "../../expression";
-import { AggregateImplementation } from "../../implementations/aggregate-implementation";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
 import {
   FloatPrimitive,
   Vec2Primitive,
@@ -99,18 +97,8 @@ export function notEqual<TPrimitive extends AnyPrimitive>(
   a: Expression<TPrimitive>,
   b: Expression<TPrimitive>
 ): Expression<BoolPrimitive> {
-  return new Expression(
-    new AggregateImplementation(
-      "bool",
-      "||",
-      new BinaryOperatorImplementation(
-        // This is wrong, but there's no right type for mat3/mat4; but, it doesn't matter anyway.
-        "bool",
-        a.javascript,
-        "!==",
-        b.javascript
-      )
-    ),
-    new BinaryOperatorImplementation("bool", a.glsl, "!=", b.glsl)
-  );
+  a;
+  b;
+
+  throw new Error("Not implemented.");
 }

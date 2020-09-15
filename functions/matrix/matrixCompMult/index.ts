@@ -5,8 +5,6 @@ import {
   AnyFloatPrimitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function matrixCompMult(
   x: Expression<Mat2Primitive>,
@@ -27,13 +25,8 @@ export function matrixCompMult(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return new Expression(
-    new BinaryOperatorImplementation(
-      x.primitive,
-      x.javascript,
-      "*",
-      y.javascript
-    ),
-    new FunctionImplementation(x.primitive, "matrixCompMult", [x.glsl, y.glsl])
-  );
+  x;
+  y;
+
+  throw new Error("Not implemented.");
 }

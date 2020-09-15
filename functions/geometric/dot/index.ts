@@ -6,9 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
-import { AggregateImplementation } from "../../../implementations/aggregate-implementation";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
 
 export function dot(
   x: Expression<FloatPrimitive>,
@@ -34,19 +31,8 @@ export function dot(
   x: Expression<AnyFloatPrimitive>,
   y: Expression<AnyFloatPrimitive>
 ): Expression<FloatPrimitive> {
-  const primitive = x.primitive;
+  x;
+  y;
 
-  return new Expression(
-    new AggregateImplementation(
-      "float",
-      "+",
-      new BinaryOperatorImplementation(
-        primitive,
-        x.javascript,
-        "*",
-        y.javascript
-      )
-    ),
-    new FunctionImplementation("float", "dot", [x.glsl, y.glsl])
-  );
+  throw new Error("Not implemented.");
 }

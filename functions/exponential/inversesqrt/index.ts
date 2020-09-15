@@ -6,9 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { BinaryOperatorImplementation } from "../../../implementations/binary-implementation";
-import { LiteralImplementation } from "../../../implementations/literal-implementation";
-import { FunctionImplementation } from "../../../implementations/function-implementation";
 
 export function inversesqrt(
   x: Expression<FloatPrimitive>
@@ -29,13 +26,7 @@ export function inversesqrt(
 export function inversesqrt(
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return new Expression(
-    new BinaryOperatorImplementation(
-      x.primitive,
-      new LiteralImplementation("float", ["1"]),
-      "/",
-      new FunctionImplementation(x.primitive, "Math.sqrt", [x.javascript])
-    ),
-    new FunctionImplementation(x.primitive, "inversesqrt", [x.glsl])
-  );
+  x;
+
+  throw new Error("Not implemented.");
 }

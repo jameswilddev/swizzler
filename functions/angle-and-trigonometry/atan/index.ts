@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function atan(x: Expression<FloatPrimitive>): Expression<FloatPrimitive>;
 
@@ -39,7 +38,7 @@ export function atan(
 export function atan(
   ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
 ): Expression<AnyFloatPrimitive> {
-  return args.length === 1
-    ? func("Math.atan", "atan", ...args)
-    : func("Math.atan2", "atan", ...args);
+  args;
+
+  throw new Error("Not implemented.");
 }

@@ -6,7 +6,6 @@ import {
   Vec4Primitive,
 } from "../../../primitive";
 import { Expression } from "../../../expression";
-import { func } from "../../../helpers";
 
 export function floor(
   x: Expression<FloatPrimitive>
@@ -21,5 +20,7 @@ export function floor(x: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
 export function floor(
   x: Expression<AnyFloatPrimitive>
 ): Expression<AnyFloatPrimitive> {
-  return func("Math.floor", "floor", x);
+  x;
+
+  throw new Error("Not implemented.");
 }

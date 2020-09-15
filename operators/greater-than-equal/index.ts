@@ -1,6 +1,4 @@
 import { Expression } from "../../expression";
-import { BinaryOperatorImplementation } from "../../implementations/binary-implementation";
-import { FunctionImplementation } from "../../implementations/function-implementation";
 import {
   FloatPrimitive,
   Vec2Primitive,
@@ -14,8 +12,6 @@ import {
   Bvec2Primitive,
   Bvec3Primitive,
   Bvec4Primitive,
-  castToBoolean,
-  primitiveArities,
   AnyFloatPrimitive,
   AnyBoolPrimitive,
   AnyCastablePrimitive,
@@ -67,24 +63,8 @@ export function greaterThanEqual<
   a: Expression<TPrimitive>,
   b: Expression<TPrimitive>
 ): Expression<AnyBoolPrimitive> {
-  return new Expression(
-    new BinaryOperatorImplementation(
-      castToBoolean[a.primitive],
-      a.javascript,
-      ">=",
-      b.javascript
-    ),
-    primitiveArities[a.primitive] === 1
-      ? new BinaryOperatorImplementation(
-          castToBoolean[a.primitive],
-          a.glsl,
-          ">=",
-          b.glsl
-        )
-      : new FunctionImplementation(
-          castToBoolean[a.primitive],
-          "greaterThanEqual",
-          [a.glsl, b.glsl]
-        )
-  );
+  a;
+  b;
+
+  throw new Error("Not implemented.");
 }

@@ -1,19 +1,13 @@
-import {
-  Vec2Primitive,
-  BasePrimitive,
-  AnyCastablePrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { vec2Placeholder } from "../../helpers";
+import { Base, Castable, Vec2 } from "../../primitive";
 import { Two } from "../total-components";
 
-export function vec2(a: Expression<BasePrimitive>): Expression<Vec2Primitive>;
+export function vec2(a: Base): Vec2;
 
-export function vec2(...a: Two): Expression<Vec2Primitive>;
+export function vec2(...a: Two): Vec2;
 
-export function vec2(
-  ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Vec2Primitive> {
+export function vec2(...args: ReadonlyArray<Castable>): Vec2 {
   args;
 
-  return new Expression("vec2");
+  return vec2Placeholder;
 }

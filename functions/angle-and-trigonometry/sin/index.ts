@@ -1,32 +1,16 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function sin(
-  angle: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function sin(angle: Float): Float;
 
-export function sin(
-  angle: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function sin(angle: Vec2): Vec2;
 
-export function sin(
-  angle: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function sin(angle: Vec3): Vec3;
 
-export function sin(
-  angle: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function sin(angle: Vec4): Vec4;
 
-export function sin(
-  angle: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function sin(angle: AnyFloat): AnyFloat {
   angle;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

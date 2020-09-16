@@ -7,22 +7,22 @@ import {
   compileTypeScript,
   compileJavascript,
   compileGlsl,
-  Expression,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Mat2,
+  Mat3,
+  Mat4,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
+  Any,
   getColumn,
   x,
   y,
@@ -30,12 +30,11 @@ import {
   w,
   reference,
 } from ".";
-import { AnyPrimitive } from "./primitive";
 import { conditional } from "./operators/conditional";
 
 function typeScriptAndJavascript(
   prefixJavascript: string,
-  expression: Expression<AnyPrimitive>,
+  expression: Any,
   expected: ReadonlyArray<null | number | boolean>,
   exact: boolean
 ): void {
@@ -321,7 +320,7 @@ export function glslScenario(
 function glsl(
   descriptionSuffix: string,
   prefixGlsl: string,
-  expression: Expression<Vec4Primitive>,
+  expression: Vec4,
   expected: readonly [
     null | number,
     null | number,
@@ -340,9 +339,7 @@ function glsl(
   });
 }
 
-function dynamicAndConstant<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+function dynamicAndConstant<T extends { readonly [key: string]: Any }>(
   inputs: T,
   callback: (inputs: T, javascript: string, glsl: string) => void
 ): void {
@@ -358,15 +355,15 @@ function dynamicAndConstant<
     describe("dynamic", () => {
       let javascript = "";
       let glsl = "";
-      const mappedInputs: { [key: string]: Expression<AnyPrimitive> } = {};
+      const mappedInputs: { [key: string]: Any } = {};
 
       for (const key in inputs) {
         const input = inputs[key];
 
         javascript += compileJavascript(`const ${key} = `, input);
-        glsl += compileGlsl(`${input.primitive} ${key} = `, input);
+        glsl += compileGlsl(`${input.type} ${key} = `, input);
 
-        mappedInputs[key] = reference(input.primitive, key);
+        mappedInputs[key] = reference(input.type, key);
       }
 
       callback(mappedInputs as T, javascript, glsl);
@@ -377,16 +374,16 @@ function dynamicAndConstant<
         describe(`all constant except ${dynamicKey}`, () => {
           let javascript = "";
           let glsl = "";
-          const mappedInputs: { [key: string]: Expression<AnyPrimitive> } = {};
+          const mappedInputs: { [key: string]: Any } = {};
 
           for (const key in inputs) {
             const input = inputs[key];
 
             if (key === dynamicKey) {
               javascript += compileJavascript(`const ${key} = `, input);
-              glsl += compileGlsl(`${input.primitive} ${key} = `, input);
+              glsl += compileGlsl(`${input.type} ${key} = `, input);
 
-              mappedInputs[key] = reference(input.primitive, key);
+              mappedInputs[key] = reference(input.type, key);
             } else {
               mappedInputs[key] = input;
             }
@@ -399,12 +396,10 @@ function dynamicAndConstant<
   }
 }
 
-export function floatScenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function floatScenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<FloatPrimitive>,
+  expressionFactory: (inputs: T) => Float,
   expected: number
 ): void {
   describe(description, () => {
@@ -422,12 +417,10 @@ export function floatScenario<
   });
 }
 
-export function vec2Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function vec2Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Vec2Primitive>,
+  expressionFactory: (inputs: T) => Vec2,
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
@@ -445,12 +438,10 @@ export function vec2Scenario<
   });
 }
 
-export function vec3Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function vec3Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Vec3Primitive>,
+  expressionFactory: (inputs: T) => Vec3,
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
@@ -468,12 +459,10 @@ export function vec3Scenario<
   });
 }
 
-export function vec4Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function vec4Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Vec4Primitive>,
+  expressionFactory: (inputs: T) => Vec4,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
@@ -491,12 +480,10 @@ export function vec4Scenario<
   });
 }
 
-export function mat2Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function mat2Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Mat2Primitive>,
+  expressionFactory: (inputs: T) => Mat2,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
@@ -514,12 +501,10 @@ export function mat2Scenario<
   });
 }
 
-export function mat3Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function mat3Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Mat3Primitive>,
+  expressionFactory: (inputs: T) => Mat3,
   expected: readonly [
     number,
     number,
@@ -559,12 +544,10 @@ export function mat3Scenario<
   });
 }
 
-export function mat4Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function mat4Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Mat4Primitive>,
+  expressionFactory: (inputs: T) => Mat4,
   expected: readonly [
     number,
     number,
@@ -617,12 +600,10 @@ export function mat4Scenario<
   });
 }
 
-export function intScenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function intScenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<IntPrimitive>,
+  expressionFactory: (inputs: T) => Int,
   expected: number
 ): void {
   describe(description, () => {
@@ -640,12 +621,10 @@ export function intScenario<
   });
 }
 
-export function ivec2Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function ivec2Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Ivec2Primitive>,
+  expressionFactory: (inputs: T) => Ivec2,
   expected: readonly [number, number]
 ): void {
   describe(description, () => {
@@ -663,12 +642,10 @@ export function ivec2Scenario<
   });
 }
 
-export function ivec3Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function ivec3Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Ivec3Primitive>,
+  expressionFactory: (inputs: T) => Ivec3,
   expected: readonly [number, number, number]
 ): void {
   describe(description, () => {
@@ -684,12 +661,10 @@ export function ivec3Scenario<
   });
 }
 
-export function ivec4Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function ivec4Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Ivec4Primitive>,
+  expressionFactory: (inputs: T) => Ivec4,
   expected: readonly [number, number, number, number]
 ): void {
   describe(description, () => {
@@ -715,12 +690,10 @@ function convertBoolToGlsl(bool: null | boolean): null | number {
   }
 }
 
-export function boolScenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function boolScenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<BoolPrimitive>,
+  expressionFactory: (inputs: T) => Bool,
   expected: boolean
 ): void {
   describe(description, () => {
@@ -743,12 +716,10 @@ export function boolScenario<
   });
 }
 
-export function bvec2Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function bvec2Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Bvec2Primitive>,
+  expressionFactory: (inputs: T) => Bvec2,
   expected: readonly [null | boolean, null | boolean]
 ): void {
   describe(description, () => {
@@ -771,12 +742,10 @@ export function bvec2Scenario<
   });
 }
 
-export function bvec3Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function bvec3Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Bvec3Primitive>,
+  expressionFactory: (inputs: T) => Bvec3,
   expected: readonly [null | boolean, null | boolean, null | boolean]
 ): void {
   describe(description, () => {
@@ -804,12 +773,10 @@ export function bvec3Scenario<
   });
 }
 
-export function bvec4Scenario<
-  T extends { readonly [key: string]: Expression<AnyPrimitive> }
->(
+export function bvec4Scenario<T extends { readonly [key: string]: Any }>(
   description: string,
   inputs: T,
-  expressionFactory: (inputs: T) => Expression<Bvec4Primitive>,
+  expressionFactory: (inputs: T) => Bvec4,
   expected: readonly [
     null | boolean,
     null | boolean,
@@ -841,6 +808,3 @@ export function bvec4Scenario<
     });
   });
 }
-
-// This is needed for coverage.
-Expression;

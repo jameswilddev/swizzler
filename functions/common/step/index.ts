@@ -1,53 +1,23 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function step(
-  edge: Expression<FloatPrimitive>,
-  x: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function step(edge: Float, x: Float): Float;
 
-export function step(
-  edge: Expression<FloatPrimitive>,
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function step(edge: Float, x: Vec2): Vec2;
 
-export function step(
-  edge: Expression<Vec2Primitive>,
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function step(edge: Vec2, x: Vec2): Vec2;
 
-export function step(
-  edge: Expression<FloatPrimitive>,
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function step(edge: Float, x: Vec3): Vec3;
 
-export function step(
-  edge: Expression<Vec3Primitive>,
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function step(edge: Vec3, x: Vec3): Vec3;
 
-export function step(
-  edge: Expression<FloatPrimitive>,
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function step(edge: Float, x: Vec4): Vec4;
 
-export function step(
-  edge: Expression<Vec4Primitive>,
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function step(edge: Vec4, x: Vec4): Vec4;
 
-export function step(
-  edge: Expression<AnyFloatPrimitive>,
-  x: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function step(edge: AnyFloat, x: AnyFloat): AnyFloat {
   edge;
   x;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

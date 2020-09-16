@@ -1,53 +1,23 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function max(
-  x: Expression<FloatPrimitive>,
-  y: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function max(x: Float, y: Float): Float;
 
-export function max(
-  x: Expression<Vec2Primitive>,
-  y: Expression<FloatPrimitive>
-): Expression<Vec2Primitive>;
+export function max(x: Vec2, y: Float): Vec2;
 
-export function max(
-  x: Expression<Vec2Primitive>,
-  y: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function max(x: Vec2, y: Vec2): Vec2;
 
-export function max(
-  x: Expression<Vec3Primitive>,
-  y: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
+export function max(x: Vec3, y: Float): Vec3;
 
-export function max(
-  x: Expression<Vec3Primitive>,
-  y: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function max(x: Vec3, y: Vec3): Vec3;
 
-export function max(
-  x: Expression<Vec4Primitive>,
-  y: Expression<FloatPrimitive>
-): Expression<Vec4Primitive>;
+export function max(x: Vec4, y: Float): Vec4;
 
-export function max(
-  x: Expression<Vec4Primitive>,
-  y: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function max(x: Vec4, y: Vec4): Vec4;
 
-export function max(
-  x: Expression<AnyFloatPrimitive>,
-  y: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function max(x: AnyFloat, y: AnyFloat): AnyFloat {
   x;
   y;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

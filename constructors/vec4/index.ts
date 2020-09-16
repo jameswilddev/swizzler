@@ -1,22 +1,13 @@
-import {
-  Vec4Primitive,
-  Mat2Primitive,
-  BasePrimitive,
-  AnyCastablePrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { vec4Placeholder } from "../../helpers";
+import { Base, Castable, Mat2, Vec4 } from "../../primitive";
 import { Four } from "../total-components";
 
-export function vec4(
-  a: Expression<BasePrimitive | Mat2Primitive>
-): Expression<Vec4Primitive>;
+export function vec4(a: Base | Mat2): Vec4;
 
-export function vec4(...a: Four): Expression<Vec4Primitive>;
+export function vec4(...a: Four): Vec4;
 
-export function vec4(
-  ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Vec4Primitive> {
+export function vec4(...args: ReadonlyArray<Castable>): Vec4 {
   args;
 
-  return new Expression("vec4");
+  return vec4Placeholder;
 }

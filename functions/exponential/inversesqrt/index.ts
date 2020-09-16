@@ -1,32 +1,16 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function inversesqrt(
-  x: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function inversesqrt(x: Float): Float;
 
-export function inversesqrt(
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function inversesqrt(x: Vec2): Vec2;
 
-export function inversesqrt(
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function inversesqrt(x: Vec3): Vec3;
 
-export function inversesqrt(
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function inversesqrt(x: Vec4): Vec4;
 
-export function inversesqrt(
-  x: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function inversesqrt(x: AnyFloat): AnyFloat {
   x;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

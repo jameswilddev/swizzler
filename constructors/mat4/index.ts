@@ -1,22 +1,12 @@
-import {
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  BasePrimitive,
-  AnyPrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { mat4Placeholder } from "../../helpers";
+import { Any, Base, Mat2, Mat3, Mat4 } from "../../primitive";
 import { Sixteen } from "../total-components";
 
-export function mat4(
-  a: Expression<BasePrimitive | Mat2Primitive | Mat3Primitive | Mat4Primitive>
-): Expression<Mat4Primitive>;
-export function mat4(...args: Sixteen): Expression<Mat4Primitive>;
+export function mat4(a: Base | Mat2 | Mat3 | Mat4): Mat4;
+export function mat4(...args: Sixteen): Mat4;
 
-export function mat4(
-  ...args: ReadonlyArray<Expression<AnyPrimitive>>
-): Expression<Mat4Primitive> {
+export function mat4(...args: ReadonlyArray<Any>): Mat4 {
   args;
 
-  return new Expression("mat4");
+  return mat4Placeholder;
 }

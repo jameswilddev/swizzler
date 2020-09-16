@@ -1,32 +1,16 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function radians(
-  degrees: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function radians(degrees: Float): Float;
 
-export function radians(
-  degrees: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function radians(degrees: Vec2): Vec2;
 
-export function radians(
-  degrees: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function radians(degrees: Vec3): Vec3;
 
-export function radians(
-  degrees: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function radians(degrees: Vec4): Vec4;
 
-export function radians(
-  degrees: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function radians(degrees: AnyFloat): AnyFloat {
   degrees;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

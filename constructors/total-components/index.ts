@@ -1,24 +1,16 @@
-import {
-  BasePrimitive,
-  PairPrimitive,
-  TripletPrimitive,
-  QuartetPrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { Base, Pair, Quartet, Triplet } from "../../primitive";
 
-export type One = readonly [Expression<BasePrimitive>];
+export type One = readonly [Base];
 
-export type Two =
-  | readonly [Expression<PairPrimitive>]
-  | readonly [...One, ...One];
+export type Two = readonly [Pair] | readonly [...One, ...One];
 
 export type Three =
-  | readonly [Expression<TripletPrimitive>]
+  | readonly [Triplet]
   | readonly [...Two, ...One]
   | readonly [...One, ...Two];
 
 export type Four =
-  | readonly [Expression<QuartetPrimitive>]
+  | readonly [Quartet]
   | readonly [...Three, ...One]
   | readonly [...One, ...Three]
   | readonly [...Two, ...Two];

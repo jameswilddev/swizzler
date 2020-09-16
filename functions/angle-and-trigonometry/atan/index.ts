@@ -1,44 +1,24 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function atan(x: Expression<FloatPrimitive>): Expression<FloatPrimitive>;
+export function atan(x: Float): Float;
 
-export function atan(x: Expression<Vec2Primitive>): Expression<Vec2Primitive>;
+export function atan(x: Vec2): Vec2;
 
-export function atan(x: Expression<Vec3Primitive>): Expression<Vec3Primitive>;
+export function atan(x: Vec3): Vec3;
 
-export function atan(x: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
+export function atan(x: Vec4): Vec4;
 
-export function atan(
-  y: Expression<FloatPrimitive>,
-  x: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function atan(y: Float, x: Float): Float;
 
-export function atan(
-  y: Expression<Vec2Primitive>,
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function atan(y: Vec2, x: Vec2): Vec2;
 
-export function atan(
-  y: Expression<Vec3Primitive>,
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function atan(y: Vec3, x: Vec3): Vec3;
 
-export function atan(
-  y: Expression<Vec4Primitive>,
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function atan(y: Vec4, x: Vec4): Vec4;
 
-export function atan(
-  ...args: ReadonlyArray<Expression<AnyFloatPrimitive>>
-): Expression<AnyFloatPrimitive> {
+export function atan(...args: ReadonlyArray<AnyFloat>): AnyFloat {
   args;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

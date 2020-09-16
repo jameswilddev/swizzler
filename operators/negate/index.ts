@@ -1,53 +1,43 @@
+import { floatPlaceholder } from "../../helpers";
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  AnyNumericPrimitive,
+  AnyNumber,
+  Float,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Mat2,
+  Mat3,
+  Mat4,
+  Vec2,
+  Vec3,
+  Vec4,
 } from "../../primitive";
-import { Expression } from "../../expression";
 
-export function negate(
-  a: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function negate(a: Float): Float;
 
-export function negate(a: Expression<Vec2Primitive>): Expression<Vec2Primitive>;
+export function negate(a: Vec2): Vec2;
 
-export function negate(a: Expression<Vec3Primitive>): Expression<Vec3Primitive>;
+export function negate(a: Vec3): Vec3;
 
-export function negate(a: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
+export function negate(a: Vec4): Vec4;
 
-export function negate(a: Expression<Mat2Primitive>): Expression<Mat2Primitive>;
+export function negate(a: Mat2): Mat2;
 
-export function negate(a: Expression<Mat3Primitive>): Expression<Mat3Primitive>;
+export function negate(a: Mat3): Mat3;
 
-export function negate(a: Expression<Mat4Primitive>): Expression<Mat4Primitive>;
+export function negate(a: Mat4): Mat4;
 
-export function negate(a: Expression<IntPrimitive>): Expression<IntPrimitive>;
+export function negate(a: Int): Int;
 
-export function negate(
-  a: Expression<Ivec2Primitive>
-): Expression<Ivec2Primitive>;
+export function negate(a: Ivec2): Ivec2;
 
-export function negate(
-  a: Expression<Ivec3Primitive>
-): Expression<Ivec3Primitive>;
+export function negate(a: Ivec3): Ivec3;
 
-export function negate(
-  a: Expression<Ivec4Primitive>
-): Expression<Ivec4Primitive>;
+export function negate(a: Ivec4): Ivec4;
 
-export function negate(
-  a: Expression<AnyNumericPrimitive>
-): Expression<AnyNumericPrimitive> {
+export function negate(a: AnyNumber): AnyNumber {
   a;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

@@ -1,44 +1,18 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function refract(
-  n: Expression<FloatPrimitive>,
-  i: Expression<FloatPrimitive>,
-  eta: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function refract(n: Float, i: Float, eta: Float): Float;
 
-export function refract(
-  n: Expression<Vec2Primitive>,
-  i: Expression<Vec2Primitive>,
-  eta: Expression<FloatPrimitive>
-): Expression<Vec2Primitive>;
+export function refract(n: Vec2, i: Vec2, eta: Float): Vec2;
 
-export function refract(
-  n: Expression<Vec3Primitive>,
-  i: Expression<Vec3Primitive>,
-  eta: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
+export function refract(n: Vec3, i: Vec3, eta: Float): Vec3;
 
-export function refract(
-  n: Expression<Vec4Primitive>,
-  i: Expression<Vec4Primitive>,
-  eta: Expression<FloatPrimitive>
-): Expression<Vec4Primitive>;
+export function refract(n: Vec4, i: Vec4, eta: Float): Vec4;
 
-export function refract(
-  i: Expression<AnyFloatPrimitive>,
-  n: Expression<AnyFloatPrimitive>,
-  eta: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function refract(i: AnyFloat, n: AnyFloat, eta: AnyFloat): AnyFloat {
   i;
   n;
   eta;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

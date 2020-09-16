@@ -1,19 +1,13 @@
-import {
-  Ivec3Primitive,
-  BasePrimitive,
-  AnyCastablePrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { ivec3Placeholder } from "../../helpers";
+import { Base, Castable, Ivec3 } from "../../primitive";
 import { Three } from "../total-components";
 
-export function ivec3(a: Expression<BasePrimitive>): Expression<Ivec3Primitive>;
+export function ivec3(a: Base): Ivec3;
 
-export function ivec3(...a: Three): Expression<Ivec3Primitive>;
+export function ivec3(...a: Three): Ivec3;
 
-export function ivec3(
-  ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Ivec3Primitive> {
+export function ivec3(...args: ReadonlyArray<Castable>): Ivec3 {
   args;
 
-  return new Expression("ivec3");
+  return ivec3Placeholder;
 }

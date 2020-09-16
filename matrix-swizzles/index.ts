@@ -1,34 +1,18 @@
-import {
-  Mat2Primitive,
-  Vec2Primitive,
-  Mat3Primitive,
-  Vec3Primitive,
-  Mat4Primitive,
-  Vec4Primitive,
-} from "../primitive";
-import { Expression } from "../expression";
+import { vec2Placeholder } from "../helpers";
+import { Mat2, Mat3, Mat4, Vec2, Vec3, Vec4 } from "../primitive";
+
+export function getColumn(matrix: Mat2, column: 0 | 1): Vec2;
+
+export function getColumn(matrix: Mat3, column: 0 | 1 | 2): Vec3;
+
+export function getColumn(matrix: Mat4, column: 0 | 1 | 2 | 3): Vec4;
 
 export function getColumn(
-  matrix: Expression<Mat2Primitive>,
-  column: 0 | 1
-): Expression<Vec2Primitive>;
-
-export function getColumn(
-  matrix: Expression<Mat3Primitive>,
-  column: 0 | 1 | 2
-): Expression<Vec3Primitive>;
-
-export function getColumn(
-  matrix: Expression<Mat4Primitive>,
+  matrix: Mat2 | Mat3 | Mat4,
   column: 0 | 1 | 2 | 3
-): Expression<Vec4Primitive>;
-
-export function getColumn(
-  matrix: Expression<Mat2Primitive | Mat3Primitive | Mat4Primitive>,
-  column: 0 | 1 | 2 | 3
-): Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive> {
+): Vec2 | Vec3 | Vec4 {
   matrix;
   column;
 
-  return new Expression("vec2");
+  return vec2Placeholder;
 }

@@ -1,12 +1,9 @@
-import { BoolPrimitive } from "../../primitive";
-import { Expression } from "../../expression";
+import { boolPlaceholder } from "../../helpers";
+import { Bool } from "../../primitive";
 
-export function and(
-  a: Expression<BoolPrimitive>,
-  b: Expression<BoolPrimitive>
-): Expression<BoolPrimitive> {
+export function and(a: Bool, b: Bool): Bool {
   a;
   b;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }

@@ -1,161 +1,124 @@
-import { Expression } from "../expression";
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
-  BasePrimitive,
-  PairPrimitive,
-  TripletPrimitive,
-  QuartetPrimitive,
+  floatPlaceholder,
+  vec2Placeholder,
+  vec3Placeholder,
+  vec4Placeholder,
+} from "../helpers";
+import {
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
+  Base,
+  Pair,
+  Triplet,
+  Quartet,
 } from "../primitive";
 
 interface Callback12 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    FloatPrimitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    IntPrimitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    BoolPrimitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Float;
+  (a: Ivec2 | Ivec3 | Ivec4): Int;
+  (a: Bvec2 | Bvec3 | Bvec4): Bool;
 }
 
 function makeSwizzle12(indexA: 0 | 1): Callback12 {
   indexA;
 
-  const output = (
-    a: Expression<
-      | Vec2Primitive
-      | Vec3Primitive
-      | Vec4Primitive
-      | Bvec2Primitive
-      | Bvec3Primitive
-      | Bvec4Primitive
-    >
-  ): Expression<BasePrimitive> => {
+  const output = (a: Vec2 | Vec3 | Vec4 | Bvec2 | Bvec3 | Bvec4): Base => {
     a;
 
-    return new Expression("float");
+    return floatPlaceholder;
   };
 
   return output as Callback12;
 }
 
 interface Callback13 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<FloatPrimitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<IntPrimitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<BoolPrimitive>;
+  (a: Vec3 | Vec4): Float;
+  (a: Ivec3 | Ivec4): Int;
+  (a: Bvec3 | Bvec4): Bool;
 }
 
 function makeSwizzle13(indexA: 0 | 1 | 2): Callback13 {
   indexA;
 
-  const output = (
-    a: Expression<
-      Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
-    >
-  ): Expression<BasePrimitive> => {
+  const output = (a: Vec3 | Vec4 | Bvec3 | Bvec4): Base => {
     a;
 
-    return new Expression("float");
+    return floatPlaceholder;
   };
 
   return output as Callback13;
 }
 
 interface Callback14 {
-  (a: Expression<Vec4Primitive>): Expression<FloatPrimitive>;
-  (a: Expression<Ivec4Primitive>): Expression<IntPrimitive>;
-  (a: Expression<Bvec4Primitive>): Expression<BoolPrimitive>;
+  (a: Vec4): Float;
+  (a: Ivec4): Int;
+  (a: Bvec4): Bool;
 }
 
 function makeSwizzle14(indexA: 0 | 1 | 2 | 3): Callback14 {
   indexA;
 
-  const output = (
-    a: Expression<
-      Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
-    >
-  ): Expression<BasePrimitive> => {
+  const output = (a: Vec3 | Vec4 | Bvec3 | Bvec4): Base => {
     a;
 
-    return new Expression("float");
+    return floatPlaceholder;
   };
 
   return output as Callback14;
 }
 
 interface Callback22 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec2Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec2Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec2Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec2;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec2;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec2;
 }
 
 function makeSwizzle22(indexA: 0 | 1, indexB: 0 | 1): Callback22 {
   indexA;
   indexB;
 
-  const output = (
-    a: Expression<
-      | Vec2Primitive
-      | Vec3Primitive
-      | Vec4Primitive
-      | Bvec2Primitive
-      | Bvec3Primitive
-      | Bvec4Primitive
-    >
-  ): Expression<PairPrimitive> => {
+  const output = (a: Vec2 | Vec3 | Vec4 | Bvec2 | Bvec3 | Bvec4): Pair => {
     a;
 
-    return new Expression("vec2");
+    return vec2Placeholder;
   };
 
   return output as Callback22;
 }
 
 interface Callback23 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec2Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec2Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec2Primitive>;
+  (a: Vec3 | Vec4): Vec2;
+  (a: Ivec3 | Ivec4): Ivec2;
+  (a: Bvec3 | Bvec4): Bvec2;
 }
 
 function makeSwizzle23(indexA: 0 | 1 | 2, indexB: 0 | 1 | 2): Callback23 {
   indexA;
   indexB;
 
-  const output = (
-    a: Expression<
-      Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
-    >
-  ): Expression<PairPrimitive> => {
+  const output = (a: Vec3 | Vec4 | Bvec3 | Bvec4): Pair => {
     a;
 
-    return new Expression("vec2");
+    return vec2Placeholder;
   };
 
   return output as Callback23;
 }
 
 interface Callback24 {
-  (a: Expression<Vec4Primitive>): Expression<Vec2Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec2Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec2Primitive>;
+  (a: Vec4): Vec2;
+  (a: Ivec4): Ivec2;
+  (a: Bvec4): Bvec2;
 }
 
 function makeSwizzle24(
@@ -165,27 +128,19 @@ function makeSwizzle24(
   indexA;
   indexB;
 
-  const output = (
-    a: Expression<Vec4Primitive | Bvec4Primitive>
-  ): Expression<PairPrimitive> => {
+  const output = (a: Vec4 | Bvec4): Pair => {
     a;
 
-    return new Expression("vec2");
+    return vec2Placeholder;
   };
 
   return output as Callback24;
 }
 
 interface Callback32 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec3Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec3Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec3Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec3;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec3;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec3;
 }
 
 function makeSwizzle32(
@@ -197,28 +152,19 @@ function makeSwizzle32(
   indexB;
   indexC;
 
-  const output = (
-    a: Expression<
-      | Vec2Primitive
-      | Vec3Primitive
-      | Vec4Primitive
-      | Bvec2Primitive
-      | Bvec3Primitive
-      | Bvec4Primitive
-    >
-  ): Expression<TripletPrimitive> => {
+  const output = (a: Vec2 | Vec3 | Vec4 | Bvec2 | Bvec3 | Bvec4): Triplet => {
     a;
 
-    return new Expression("vec3");
+    return vec3Placeholder;
   };
 
   return output as Callback32;
 }
 
 interface Callback33 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec3Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec3Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec3Primitive>;
+  (a: Vec3 | Vec4): Vec3;
+  (a: Ivec3 | Ivec4): Ivec3;
+  (a: Bvec3 | Bvec4): Bvec3;
 }
 
 function makeSwizzle33(
@@ -230,23 +176,19 @@ function makeSwizzle33(
   indexB;
   indexC;
 
-  const output = (
-    a: Expression<
-      Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
-    >
-  ): Expression<TripletPrimitive> => {
+  const output = (a: Vec3 | Vec4 | Bvec3 | Bvec4): Triplet => {
     a;
 
-    return new Expression("vec3");
+    return vec3Placeholder;
   };
 
   return output as Callback33;
 }
 
 interface Callback34 {
-  (a: Expression<Vec4Primitive>): Expression<Vec3Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec3Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec3Primitive>;
+  (a: Vec4): Vec3;
+  (a: Ivec4): Ivec3;
+  (a: Bvec4): Bvec3;
 }
 
 function makeSwizzle34(
@@ -258,27 +200,19 @@ function makeSwizzle34(
   indexB;
   indexC;
 
-  const output = (
-    a: Expression<Vec4Primitive | Bvec4Primitive>
-  ): Expression<TripletPrimitive> => {
+  const output = (a: Vec4 | Bvec4): Triplet => {
     a;
 
-    return new Expression("vec3");
+    return vec3Placeholder;
   };
 
   return output as Callback34;
 }
 
 interface Callback42 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec4Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec4Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec4Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec4;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec4;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec4;
 }
 
 function makeSwizzle42(
@@ -292,28 +226,19 @@ function makeSwizzle42(
   indexC;
   indexD;
 
-  const output = (
-    a: Expression<
-      | Vec2Primitive
-      | Vec3Primitive
-      | Vec4Primitive
-      | Bvec2Primitive
-      | Bvec3Primitive
-      | Bvec4Primitive
-    >
-  ): Expression<QuartetPrimitive> => {
+  const output = (a: Vec2 | Vec3 | Vec4 | Bvec2 | Bvec3 | Bvec4): Quartet => {
     a;
 
-    return new Expression("vec4");
+    return vec4Placeholder;
   };
 
   return output as Callback42;
 }
 
 interface Callback43 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec4Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec4Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec4Primitive>;
+  (a: Vec3 | Vec4): Vec4;
+  (a: Ivec3 | Ivec4): Ivec4;
+  (a: Bvec3 | Bvec4): Bvec4;
 }
 
 function makeSwizzle43(
@@ -327,23 +252,19 @@ function makeSwizzle43(
   indexC;
   indexD;
 
-  const output = (
-    a: Expression<
-      Vec3Primitive | Vec4Primitive | Bvec3Primitive | Bvec4Primitive
-    >
-  ): Expression<QuartetPrimitive> => {
+  const output = (a: Vec3 | Vec4 | Bvec3 | Bvec4): Quartet => {
     a;
 
-    return new Expression("vec4");
+    return vec4Placeholder;
   };
 
   return output as Callback43;
 }
 
 interface Callback44 {
-  (a: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec4Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec4Primitive>;
+  (a: Vec4): Vec4;
+  (a: Ivec4): Ivec4;
+  (a: Bvec4): Bvec4;
 }
 
 function makeSwizzle44(
@@ -357,12 +278,10 @@ function makeSwizzle44(
   indexC;
   indexD;
 
-  const output = (
-    a: Expression<Vec4Primitive | Bvec4Primitive>
-  ): Expression<QuartetPrimitive> => {
+  const output = (a: Vec4 | Bvec4): Quartet => {
     a;
 
-    return new Expression("vec4");
+    return vec4Placeholder;
   };
 
   return output as Callback44;

@@ -1,10 +1,6 @@
-import { AnyPrimitive } from "../../primitive";
-import { Expression } from "../../expression";
+import { Any } from "../../primitive";
 
-export function compileGlsl(
-  prefix: string,
-  expression: Expression<AnyPrimitive>
-): string {
+export function compileGlsl(prefix: string, expression: Any): string {
   prefix;
   expression;
 

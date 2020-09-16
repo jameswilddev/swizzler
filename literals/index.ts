@@ -1,23 +1,23 @@
-import { FloatPrimitive, IntPrimitive, BoolPrimitive } from "../primitive";
-import { Expression } from "../expression";
+import { boolPlaceholder, floatPlaceholder, intPlaceholder } from "../helpers";
+import { Bool, Float, Int } from "../primitive";
 
 // todo: cast
-export function bool(value: boolean): Expression<BoolPrimitive> {
+export function bool(value: boolean): Bool {
   value;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }
 
 // todo: cast
-export function float(value: number): Expression<FloatPrimitive> {
+export function float(value: number): Float {
   value;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }
 
 // todo: cast
-export function int(value: number): Expression<IntPrimitive> {
+export function int(value: number): Int {
   value;
 
-  return new Expression("int");
+  return intPlaceholder;
 }

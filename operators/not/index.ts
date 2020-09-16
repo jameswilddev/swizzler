@@ -1,24 +1,16 @@
-import {
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
-  AnyBoolPrimitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { boolPlaceholder } from "../../helpers";
+import { AnyBool, Bool, Bvec2, Bvec3, Bvec4 } from "../../primitive";
 
-export function not(a: Expression<BoolPrimitive>): Expression<BoolPrimitive>;
+export function not(a: Bool): Bool;
 
-export function not(a: Expression<Bvec2Primitive>): Expression<Bvec2Primitive>;
+export function not(a: Bvec2): Bvec2;
 
-export function not(a: Expression<Bvec3Primitive>): Expression<Bvec3Primitive>;
+export function not(a: Bvec3): Bvec3;
 
-export function not(a: Expression<Bvec4Primitive>): Expression<Bvec4Primitive>;
+export function not(a: Bvec4): Bvec4;
 
-export function not(
-  a: Expression<AnyBoolPrimitive>
-): Expression<AnyBoolPrimitive> {
+export function not(a: AnyBool): AnyBool {
   a;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }

@@ -1,87 +1,48 @@
-import { Expression } from "../../expression";
+import { boolPlaceholder } from "../../helpers";
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
-  AnyBoolPrimitive,
-  AnyCastablePrimitive,
+  AnyBool,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
+  Castable,
+  Float,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Vec2,
+  Vec3,
+  Vec4,
 } from "../../primitive";
 
-export function componentwiseNotEqual(
-  a: Expression<FloatPrimitive>,
-  b: Expression<FloatPrimitive>
-): Expression<BoolPrimitive>;
+export function componentwiseNotEqual(a: Float, b: Float): Bool;
 
-export function componentwiseNotEqual(
-  a: Expression<Vec2Primitive>,
-  b: Expression<Vec2Primitive>
-): Expression<Bvec2Primitive>;
+export function componentwiseNotEqual(a: Vec2, b: Vec2): Bvec2;
 
-export function componentwiseNotEqual(
-  a: Expression<Vec3Primitive>,
-  b: Expression<Vec3Primitive>
-): Expression<Bvec3Primitive>;
+export function componentwiseNotEqual(a: Vec3, b: Vec3): Bvec3;
 
-export function componentwiseNotEqual(
-  a: Expression<Vec4Primitive>,
-  b: Expression<Vec4Primitive>
-): Expression<Bvec4Primitive>;
+export function componentwiseNotEqual(a: Vec4, b: Vec4): Bvec4;
 
-export function componentwiseNotEqual(
-  a: Expression<IntPrimitive>,
-  b: Expression<IntPrimitive>
-): Expression<BoolPrimitive>;
+export function componentwiseNotEqual(a: Int, b: Int): Bool;
 
-export function componentwiseNotEqual(
-  a: Expression<Ivec2Primitive>,
-  b: Expression<Ivec2Primitive>
-): Expression<Bvec2Primitive>;
+export function componentwiseNotEqual(a: Ivec2, b: Ivec2): Bvec2;
 
-export function componentwiseNotEqual(
-  a: Expression<Ivec3Primitive>,
-  b: Expression<Ivec3Primitive>
-): Expression<Bvec3Primitive>;
+export function componentwiseNotEqual(a: Ivec3, b: Ivec3): Bvec3;
 
-export function componentwiseNotEqual(
-  a: Expression<Ivec4Primitive>,
-  b: Expression<Ivec4Primitive>
-): Expression<Bvec4Primitive>;
+export function componentwiseNotEqual(a: Ivec4, b: Ivec4): Bvec4;
 
-export function componentwiseNotEqual(
-  a: Expression<BoolPrimitive>,
-  b: Expression<BoolPrimitive>
-): Expression<BoolPrimitive>;
+export function componentwiseNotEqual(a: Bool, b: Bool): Bool;
 
-export function componentwiseNotEqual(
-  a: Expression<Bvec2Primitive>,
-  b: Expression<Bvec2Primitive>
-): Expression<Bvec2Primitive>;
+export function componentwiseNotEqual(a: Bvec2, b: Bvec2): Bvec2;
 
-export function componentwiseNotEqual(
-  a: Expression<Bvec3Primitive>,
-  b: Expression<Bvec3Primitive>
-): Expression<Bvec3Primitive>;
+export function componentwiseNotEqual(a: Bvec3, b: Bvec3): Bvec3;
 
-export function componentwiseNotEqual(
-  a: Expression<Bvec4Primitive>,
-  b: Expression<Bvec4Primitive>
-): Expression<Bvec4Primitive>;
+export function componentwiseNotEqual(a: Bvec4, b: Bvec4): Bvec4;
 
-export function componentwiseNotEqual<TPrimitive extends AnyCastablePrimitive>(
-  a: Expression<TPrimitive>,
-  b: Expression<TPrimitive>
-): Expression<AnyBoolPrimitive> {
+export function componentwiseNotEqual(a: Castable, b: Castable): AnyBool {
   a;
   b;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }

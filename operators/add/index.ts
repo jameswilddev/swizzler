@@ -1,185 +1,86 @@
+import { floatPlaceholder } from "../../helpers";
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  AnyNumericPrimitive,
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Mat2,
+  Mat3,
+  Mat4,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  AnyNumber,
 } from "../../primitive";
-import { Expression } from "../../expression";
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function add(a: Float, b: Float): Float;
 
-export function add(
-  a: Expression<Vec2Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Vec2Primitive>;
+export function add(a: Vec2, b: Float): Vec2;
 
-export function add(
-  a: Expression<Vec3Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
+export function add(a: Vec3, b: Float): Vec3;
 
-export function add(
-  a: Expression<Vec4Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Vec4Primitive>;
+export function add(a: Vec4, b: Float): Vec4;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function add(a: Float, b: Vec2): Vec2;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function add(a: Float, b: Vec3): Vec3;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function add(a: Float, b: Vec4): Vec4;
 
-export function add(
-  a: Expression<Vec2Primitive>,
-  b: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function add(a: Vec2, b: Vec2): Vec2;
 
-export function add(
-  a: Expression<Vec3Primitive>,
-  b: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function add(a: Vec3, b: Vec3): Vec3;
 
-export function add(
-  a: Expression<Vec4Primitive>,
-  b: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function add(a: Vec4, b: Vec4): Vec4;
 
-export function add(
-  a: Expression<Mat2Primitive>,
-  b: Expression<Mat2Primitive>
-): Expression<Mat2Primitive>;
+export function add(a: Mat2, b: Mat2): Mat2;
 
-export function add(
-  a: Expression<Mat3Primitive>,
-  b: Expression<Mat3Primitive>
-): Expression<Mat3Primitive>;
+export function add(a: Mat3, b: Mat3): Mat3;
 
-export function add(
-  a: Expression<Mat4Primitive>,
-  b: Expression<Mat4Primitive>
-): Expression<Mat4Primitive>;
+export function add(a: Mat4, b: Mat4): Mat4;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Mat2Primitive>
-): Expression<Mat2Primitive>;
+export function add(a: Float, b: Mat2): Mat2;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Mat3Primitive>
-): Expression<Mat3Primitive>;
+export function add(a: Float, b: Mat3): Mat3;
 
-export function add(
-  a: Expression<FloatPrimitive>,
-  b: Expression<Mat4Primitive>
-): Expression<Mat4Primitive>;
+export function add(a: Float, b: Mat4): Mat4;
 
-export function add(
-  a: Expression<Mat2Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Mat2Primitive>;
+export function add(a: Mat2, b: Float): Mat2;
 
-export function add(
-  a: Expression<Mat3Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Mat3Primitive>;
+export function add(a: Mat3, b: Float): Mat3;
 
-export function add(
-  a: Expression<Mat4Primitive>,
-  b: Expression<FloatPrimitive>
-): Expression<Mat4Primitive>;
+export function add(a: Mat4, b: Float): Mat4;
 
-export function add(
-  a: Expression<Mat2Primitive>,
-  b: Expression<Mat2Primitive>
-): Expression<Mat2Primitive>;
+export function add(a: Mat2, b: Mat2): Mat2;
 
-export function add(
-  a: Expression<Mat3Primitive>,
-  b: Expression<Mat3Primitive>
-): Expression<Mat3Primitive>;
+export function add(a: Mat3, b: Mat3): Mat3;
 
-export function add(
-  a: Expression<Mat4Primitive>,
-  b: Expression<Mat4Primitive>
-): Expression<Mat4Primitive>;
+export function add(a: Mat4, b: Mat4): Mat4;
 
-export function add(
-  a: Expression<IntPrimitive>,
-  b: Expression<IntPrimitive>
-): Expression<IntPrimitive>;
+export function add(a: Int, b: Int): Int;
 
-export function add(
-  a: Expression<Ivec2Primitive>,
-  b: Expression<IntPrimitive>
-): Expression<Ivec2Primitive>;
+export function add(a: Ivec2, b: Int): Ivec2;
 
-export function add(
-  a: Expression<Ivec3Primitive>,
-  b: Expression<IntPrimitive>
-): Expression<Ivec3Primitive>;
+export function add(a: Ivec3, b: Int): Ivec3;
 
-export function add(
-  a: Expression<Ivec4Primitive>,
-  b: Expression<IntPrimitive>
-): Expression<Ivec4Primitive>;
+export function add(a: Ivec4, b: Int): Ivec4;
 
-export function add(
-  a: Expression<IntPrimitive>,
-  b: Expression<Ivec2Primitive>
-): Expression<Ivec2Primitive>;
+export function add(a: Int, b: Ivec2): Ivec2;
 
-export function add(
-  a: Expression<IntPrimitive>,
-  b: Expression<Ivec3Primitive>
-): Expression<Ivec3Primitive>;
+export function add(a: Int, b: Ivec3): Ivec3;
 
-export function add(
-  a: Expression<IntPrimitive>,
-  b: Expression<Ivec4Primitive>
-): Expression<Ivec4Primitive>;
+export function add(a: Int, b: Ivec4): Ivec4;
 
-export function add(
-  a: Expression<Ivec2Primitive>,
-  b: Expression<Ivec2Primitive>
-): Expression<Ivec2Primitive>;
+export function add(a: Ivec2, b: Ivec2): Ivec2;
 
-export function add(
-  a: Expression<Ivec3Primitive>,
-  b: Expression<Ivec3Primitive>
-): Expression<Ivec3Primitive>;
+export function add(a: Ivec3, b: Ivec3): Ivec3;
 
-export function add(
-  a: Expression<Ivec4Primitive>,
-  b: Expression<Ivec4Primitive>
-): Expression<Ivec4Primitive>;
+export function add(a: Ivec4, b: Ivec4): Ivec4;
 
-export function add(
-  a: Expression<AnyNumericPrimitive>,
-  b: Expression<AnyNumericPrimitive>
-): Expression<AnyNumericPrimitive> {
+export function add(a: AnyNumber, b: AnyNumber): AnyNumber {
   a;
   b;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

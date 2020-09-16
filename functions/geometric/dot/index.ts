@@ -1,38 +1,17 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function dot(
-  x: Expression<FloatPrimitive>,
-  y: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function dot(x: Float, y: Float): Float;
 
-export function dot(
-  x: Expression<Vec2Primitive>,
-  y: Expression<Vec2Primitive>
-): Expression<FloatPrimitive>;
+export function dot(x: Vec2, y: Vec2): Float;
 
-export function dot(
-  x: Expression<Vec3Primitive>,
-  y: Expression<Vec3Primitive>
-): Expression<FloatPrimitive>;
+export function dot(x: Vec3, y: Vec3): Float;
 
-export function dot(
-  x: Expression<Vec4Primitive>,
-  y: Expression<Vec4Primitive>
-): Expression<FloatPrimitive>;
+export function dot(x: Vec4, y: Vec4): Float;
 
-export function dot(
-  x: Expression<AnyFloatPrimitive>,
-  y: Expression<AnyFloatPrimitive>
-): Expression<FloatPrimitive> {
+export function dot(x: AnyFloat, y: AnyFloat): Float {
   x;
   y;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

@@ -1,19 +1,13 @@
-import {
-  AnyCastablePrimitive,
-  BasePrimitive,
-  Bvec3Primitive,
-} from "../../primitive";
-import { Expression } from "../../expression";
+import { bvec3Placeholder } from "../../helpers";
+import { Base, Bvec3, Castable } from "../../primitive";
 import { Three } from "../total-components";
 
-export function bvec3(a: Expression<BasePrimitive>): Expression<Bvec3Primitive>;
+export function bvec3(a: Base): Bvec3;
 
-export function bvec3(...a: Three): Expression<Bvec3Primitive>;
+export function bvec3(...a: Three): Bvec3;
 
-export function bvec3(
-  ...args: ReadonlyArray<Expression<AnyCastablePrimitive>>
-): Expression<Bvec3Primitive> {
+export function bvec3(...args: ReadonlyArray<Castable>): Bvec3 {
   args;
 
-  return new Expression("bvec3");
+  return bvec3Placeholder;
 }

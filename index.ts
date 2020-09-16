@@ -1103,31 +1103,34 @@ export {
 
 export { reference } from "./reference";
 
-export { Expression } from "./expression";
-
 export { float, int, bool } from "./literals";
 
 export { getColumn } from "./matrix-swizzles";
 
 export {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  AnyFloatPrimitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  AnyIntPrimitive,
-  AnyNumericPrimitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
-  AnyBoolPrimitive,
-  AnyPrimitive,
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Mat2,
+  Mat3,
+  Mat4,
+  AnyFloat,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  AnyInt,
+  AnyNumber,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
+  AnyBool,
+  Base,
+  Pair,
+  Triplet,
+  Quartet,
+  Castable,
+  Any,
 } from "./primitive";

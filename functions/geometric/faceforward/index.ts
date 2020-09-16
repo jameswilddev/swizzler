@@ -1,44 +1,22 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
+
+export function faceforward(n: Float, i: Float, nRef: Float): Float;
+
+export function faceforward(n: Vec2, i: Vec2, nRef: Vec2): Vec2;
+
+export function faceforward(n: Vec3, i: Vec3, nRef: Vec3): Vec3;
+
+export function faceforward(n: Vec4, i: Vec4, nRef: Vec4): Vec4;
 
 export function faceforward(
-  n: Expression<FloatPrimitive>,
-  i: Expression<FloatPrimitive>,
-  nRef: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
-
-export function faceforward(
-  n: Expression<Vec2Primitive>,
-  i: Expression<Vec2Primitive>,
-  nRef: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
-
-export function faceforward(
-  n: Expression<Vec3Primitive>,
-  i: Expression<Vec3Primitive>,
-  nRef: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
-
-export function faceforward(
-  n: Expression<Vec4Primitive>,
-  i: Expression<Vec4Primitive>,
-  nRef: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
-
-export function faceforward(
-  n: Expression<AnyFloatPrimitive>,
-  i: Expression<AnyFloatPrimitive>,
-  nRef: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+  n: AnyFloat,
+  i: AnyFloat,
+  nRef: AnyFloat
+): AnyFloat {
   n;
   i;
   nRef;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

@@ -1,16 +1,16 @@
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
   float,
   vec2,
   vec3,
@@ -1043,7 +1043,6 @@ import {
   qqqt,
   qqqp,
   qqqq,
-  Expression,
 } from "..";
 import {
   floatScenario,
@@ -1061,15 +1060,9 @@ import {
 } from "../unit";
 
 interface Callback12 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    FloatPrimitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    IntPrimitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    BoolPrimitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Float;
+  (a: Ivec2 | Ivec3 | Ivec4): Int;
+  (a: Bvec2 | Bvec3 | Bvec4): Bool;
 }
 
 function forVec12(
@@ -1126,9 +1119,9 @@ function forVec12(
 }
 
 interface Callback13 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<FloatPrimitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<IntPrimitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<BoolPrimitive>;
+  (a: Vec3 | Vec4): Float;
+  (a: Ivec3 | Ivec4): Int;
+  (a: Bvec3 | Bvec4): Bool;
 }
 
 function forVec13(
@@ -1191,9 +1184,9 @@ function forVec13(
 }
 
 interface Callback14 {
-  (a: Expression<Vec4Primitive>): Expression<FloatPrimitive>;
-  (a: Expression<Ivec4Primitive>): Expression<IntPrimitive>;
-  (a: Expression<Bvec4Primitive>): Expression<BoolPrimitive>;
+  (a: Vec4): Float;
+  (a: Ivec4): Int;
+  (a: Bvec4): Bool;
 }
 
 function forVec14(
@@ -1262,15 +1255,9 @@ function forVec14(
 }
 
 interface Callback22 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec2Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec2Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec2Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec2;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec2;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec2;
 }
 
 function forVec22(
@@ -1344,9 +1331,9 @@ function forVec22(
 }
 
 interface Callback23 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec2Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec2Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec2Primitive>;
+  (a: Vec3 | Vec4): Vec2;
+  (a: Ivec3 | Ivec4): Ivec2;
+  (a: Bvec3 | Bvec4): Bvec2;
 }
 
 function forVec23(
@@ -1425,9 +1412,9 @@ function forVec23(
 }
 
 interface Callback24 {
-  (a: Expression<Vec4Primitive>): Expression<Vec2Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec2Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec2Primitive>;
+  (a: Vec4): Vec2;
+  (a: Ivec4): Ivec2;
+  (a: Bvec4): Bvec2;
 }
 
 function forVec24(
@@ -1525,15 +1512,9 @@ function forVec24(
 }
 
 interface Callback32 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec3Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec3Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec3Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec3;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec3;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec3;
 }
 
 function forVec32(
@@ -1562,9 +1543,9 @@ function forVec32(
 }
 
 interface Callback33 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec3Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec3Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec3Primitive>;
+  (a: Vec3 | Vec4): Vec3;
+  (a: Ivec3 | Ivec4): Ivec3;
+  (a: Bvec3 | Bvec4): Bvec3;
 }
 
 function forVec33(
@@ -1593,9 +1574,9 @@ function forVec33(
 }
 
 interface Callback34 {
-  (a: Expression<Vec4Primitive>): Expression<Vec3Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec3Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec3Primitive>;
+  (a: Vec4): Vec3;
+  (a: Ivec4): Ivec3;
+  (a: Bvec4): Bvec3;
 }
 
 function forVec34(
@@ -1730,15 +1711,9 @@ function forVec34(
 }
 
 interface Callback42 {
-  (a: Expression<Vec2Primitive | Vec3Primitive | Vec4Primitive>): Expression<
-    Vec4Primitive
-  >;
-  (a: Expression<Ivec2Primitive | Ivec3Primitive | Ivec4Primitive>): Expression<
-    Ivec4Primitive
-  >;
-  (a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>): Expression<
-    Bvec4Primitive
-  >;
+  (a: Vec2 | Vec3 | Vec4): Vec4;
+  (a: Ivec2 | Ivec3 | Ivec4): Ivec4;
+  (a: Bvec2 | Bvec3 | Bvec4): Bvec4;
 }
 
 function forVec42(
@@ -1854,9 +1829,9 @@ function forVec42(
 }
 
 interface Callback43 {
-  (a: Expression<Vec3Primitive | Vec4Primitive>): Expression<Vec4Primitive>;
-  (a: Expression<Ivec3Primitive | Ivec4Primitive>): Expression<Ivec4Primitive>;
-  (a: Expression<Bvec3Primitive | Bvec4Primitive>): Expression<Bvec4Primitive>;
+  (a: Vec3 | Vec4): Vec4;
+  (a: Ivec3 | Ivec4): Ivec4;
+  (a: Bvec3 | Bvec4): Bvec4;
 }
 
 function forVec43(
@@ -1993,9 +1968,9 @@ function forVec43(
 }
 
 interface Callback44 {
-  (a: Expression<Vec4Primitive>): Expression<Vec4Primitive>;
-  (a: Expression<Ivec4Primitive>): Expression<Ivec4Primitive>;
-  (a: Expression<Bvec4Primitive>): Expression<Bvec4Primitive>;
+  (a: Vec4): Vec4;
+  (a: Ivec4): Ivec4;
+  (a: Bvec4): Bvec4;
 }
 
 function forVec44(

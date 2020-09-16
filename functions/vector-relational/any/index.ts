@@ -1,15 +1,8 @@
-import {
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { boolPlaceholder } from "../../../helpers";
+import { Bool, Bvec2, Bvec3, Bvec4 } from "../../../primitive";
 
-export function any(
-  a: Expression<Bvec2Primitive | Bvec3Primitive | Bvec4Primitive>
-): Expression<BoolPrimitive> {
+export function any(a: Bvec2 | Bvec3 | Bvec4): Bool {
   a;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }

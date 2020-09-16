@@ -1,12 +1,9 @@
-import { BoolPrimitive } from "../../primitive";
-import { Expression } from "../../expression";
+import { boolPlaceholder } from "../../helpers";
+import { Bool } from "../../primitive";
 
-export function or(
-  a: Expression<BoolPrimitive>,
-  b: Expression<BoolPrimitive>
-): Expression<BoolPrimitive> {
+export function or(a: Bool, b: Bool): Bool {
   a;
   b;
 
-  return new Expression("bool");
+  return boolPlaceholder;
 }

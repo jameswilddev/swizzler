@@ -1,12 +1,9 @@
-import { Vec3Primitive } from "../../../primitive";
-import { Expression } from "../../../expression";
+import { vec3Placeholder } from "../../../helpers";
+import { Vec3 } from "../../../primitive";
 
-export function cross(
-  x: Expression<Vec3Primitive>,
-  y: Expression<Vec3Primitive>
-): Expression<Vec3Primitive> {
+export function cross(x: Vec3, y: Vec3): Vec3 {
   x;
   y;
 
-  return new Expression("vec3");
+  return vec3Placeholder;
 }

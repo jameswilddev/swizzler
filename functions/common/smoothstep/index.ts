@@ -1,62 +1,28 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
+
+export function smoothstep(edge0: Float, edge1: Float, x: Float): Float;
+
+export function smoothstep(edge0: Float, edge1: Float, x: Vec2): Vec2;
+
+export function smoothstep(edge0: Vec2, edge1: Vec2, x: Vec2): Vec2;
+
+export function smoothstep(edge0: Float, edge1: Float, x: Vec3): Vec3;
+
+export function smoothstep(edge0: Vec3, edge1: Vec3, x: Vec3): Vec3;
+
+export function smoothstep(edge0: Float, edge1: Float, x: Vec4): Vec4;
+
+export function smoothstep(edge0: Vec4, edge1: Vec4, x: Vec4): Vec4;
 
 export function smoothstep(
-  edge0: Expression<FloatPrimitive>,
-  edge1: Expression<FloatPrimitive>,
-  x: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
-
-export function smoothstep(
-  edge0: Expression<FloatPrimitive>,
-  edge1: Expression<FloatPrimitive>,
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
-
-export function smoothstep(
-  edge0: Expression<Vec2Primitive>,
-  edge1: Expression<Vec2Primitive>,
-  x: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
-
-export function smoothstep(
-  edge0: Expression<FloatPrimitive>,
-  edge1: Expression<FloatPrimitive>,
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
-
-export function smoothstep(
-  edge0: Expression<Vec3Primitive>,
-  edge1: Expression<Vec3Primitive>,
-  x: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
-
-export function smoothstep(
-  edge0: Expression<FloatPrimitive>,
-  edge1: Expression<FloatPrimitive>,
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
-
-export function smoothstep(
-  edge0: Expression<Vec4Primitive>,
-  edge1: Expression<Vec4Primitive>,
-  x: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
-
-export function smoothstep(
-  edge0: Expression<AnyFloatPrimitive>,
-  edge1: Expression<AnyFloatPrimitive>,
-  x: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+  edge0: AnyFloat,
+  edge1: AnyFloat,
+  x: AnyFloat
+): AnyFloat {
   edge0;
   edge1;
   x;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

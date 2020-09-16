@@ -1,62 +1,24 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function mix(
-  x: Expression<FloatPrimitive>,
-  y: Expression<FloatPrimitive>,
-  a: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function mix(x: Float, y: Float, a: Float): Float;
 
-export function mix(
-  x: Expression<Vec2Primitive>,
-  y: Expression<Vec2Primitive>,
-  a: Expression<FloatPrimitive>
-): Expression<Vec2Primitive>;
+export function mix(x: Vec2, y: Vec2, a: Float): Vec2;
 
-export function mix(
-  x: Expression<Vec2Primitive>,
-  y: Expression<Vec2Primitive>,
-  a: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function mix(x: Vec2, y: Vec2, a: Vec2): Vec2;
 
-export function mix(
-  x: Expression<Vec3Primitive>,
-  y: Expression<Vec3Primitive>,
-  a: Expression<FloatPrimitive>
-): Expression<Vec3Primitive>;
+export function mix(x: Vec3, y: Vec3, a: Float): Vec3;
 
-export function mix(
-  x: Expression<Vec3Primitive>,
-  y: Expression<Vec3Primitive>,
-  a: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function mix(x: Vec3, y: Vec3, a: Vec3): Vec3;
 
-export function mix(
-  x: Expression<Vec4Primitive>,
-  y: Expression<Vec4Primitive>,
-  a: Expression<FloatPrimitive>
-): Expression<Vec4Primitive>;
+export function mix(x: Vec4, y: Vec4, a: Float): Vec4;
 
-export function mix(
-  x: Expression<Vec4Primitive>,
-  y: Expression<Vec4Primitive>,
-  a: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function mix(x: Vec4, y: Vec4, a: Vec4): Vec4;
 
-export function mix(
-  x: Expression<AnyFloatPrimitive>,
-  y: Expression<AnyFloatPrimitive>,
-  a: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function mix(x: AnyFloat, y: AnyFloat, a: AnyFloat): AnyFloat {
   x;
   y;
   a;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

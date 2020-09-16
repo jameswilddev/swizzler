@@ -1,32 +1,15 @@
-import {
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  AnyFloatPrimitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Mat2, Mat3, Mat4 } from "../../../primitive";
 
-export function matrixCompMult(
-  x: Expression<Mat2Primitive>,
-  y: Expression<Mat2Primitive>
-): Expression<Mat2Primitive>;
+export function matrixCompMult(x: Mat2, y: Mat2): Mat2;
 
-export function matrixCompMult(
-  x: Expression<Mat3Primitive>,
-  y: Expression<Mat3Primitive>
-): Expression<Mat3Primitive>;
+export function matrixCompMult(x: Mat3, y: Mat3): Mat3;
 
-export function matrixCompMult(
-  x: Expression<Mat4Primitive>,
-  y: Expression<Mat4Primitive>
-): Expression<Mat4Primitive>;
+export function matrixCompMult(x: Mat4, y: Mat4): Mat4;
 
-export function matrixCompMult(
-  x: Expression<AnyFloatPrimitive>,
-  y: Expression<AnyFloatPrimitive>
-): Expression<AnyFloatPrimitive> {
+export function matrixCompMult(x: AnyFloat, y: AnyFloat): AnyFloat {
   x;
   y;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

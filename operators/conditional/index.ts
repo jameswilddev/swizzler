@@ -1,121 +1,57 @@
+import { floatPlaceholder } from "../../helpers";
 import {
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-  Mat2Primitive,
-  Mat3Primitive,
-  Mat4Primitive,
-  IntPrimitive,
-  Ivec2Primitive,
-  Ivec3Primitive,
-  Ivec4Primitive,
-  AnyPrimitive,
-  BoolPrimitive,
-  Bvec2Primitive,
-  Bvec3Primitive,
-  Bvec4Primitive,
+  Float,
+  Vec2,
+  Vec3,
+  Vec4,
+  Mat2,
+  Mat3,
+  Mat4,
+  Int,
+  Ivec2,
+  Ivec3,
+  Ivec4,
+  Bool,
+  Bvec2,
+  Bvec3,
+  Bvec4,
+  Any,
 } from "../../primitive";
-import { Expression } from "../../expression";
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<FloatPrimitive>,
-  c: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function conditional(a: Bool, b: Float, c: Float): Float;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Vec2Primitive>,
-  c: Expression<Vec2Primitive>
-): Expression<Vec2Primitive>;
+export function conditional(a: Bool, b: Vec2, c: Vec2): Vec2;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Vec3Primitive>,
-  c: Expression<Vec3Primitive>
-): Expression<Vec3Primitive>;
+export function conditional(a: Bool, b: Vec3, c: Vec3): Vec3;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Vec4Primitive>,
-  c: Expression<Vec4Primitive>
-): Expression<Vec4Primitive>;
+export function conditional(a: Bool, b: Vec4, c: Vec4): Vec4;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Mat2Primitive>,
-  c: Expression<Mat2Primitive>
-): Expression<Mat2Primitive>;
+export function conditional(a: Bool, b: Mat2, c: Mat2): Mat2;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Mat3Primitive>,
-  c: Expression<Mat3Primitive>
-): Expression<Mat3Primitive>;
+export function conditional(a: Bool, b: Mat3, c: Mat3): Mat3;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Mat4Primitive>,
-  c: Expression<Mat4Primitive>
-): Expression<Mat4Primitive>;
+export function conditional(a: Bool, b: Mat4, c: Mat4): Mat4;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<IntPrimitive>,
-  c: Expression<IntPrimitive>
-): Expression<IntPrimitive>;
+export function conditional(a: Bool, b: Int, c: Int): Int;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Ivec2Primitive>,
-  c: Expression<Ivec2Primitive>
-): Expression<Ivec2Primitive>;
+export function conditional(a: Bool, b: Ivec2, c: Ivec2): Ivec2;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Ivec3Primitive>,
-  c: Expression<Ivec3Primitive>
-): Expression<Ivec3Primitive>;
+export function conditional(a: Bool, b: Ivec3, c: Ivec3): Ivec3;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Ivec4Primitive>,
-  c: Expression<Ivec4Primitive>
-): Expression<Ivec4Primitive>;
+export function conditional(a: Bool, b: Ivec4, c: Ivec4): Ivec4;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<BoolPrimitive>,
-  c: Expression<BoolPrimitive>
-): Expression<BoolPrimitive>;
+export function conditional(a: Bool, b: Bool, c: Bool): Bool;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Bvec2Primitive>,
-  c: Expression<Bvec2Primitive>
-): Expression<Bvec2Primitive>;
+export function conditional(a: Bool, b: Bvec2, c: Bvec2): Bvec2;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Bvec3Primitive>,
-  c: Expression<Bvec3Primitive>
-): Expression<Bvec3Primitive>;
+export function conditional(a: Bool, b: Bvec3, c: Bvec3): Bvec3;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<Bvec4Primitive>,
-  c: Expression<Bvec4Primitive>
-): Expression<Bvec4Primitive>;
+export function conditional(a: Bool, b: Bvec4, c: Bvec4): Bvec4;
 
-export function conditional(
-  a: Expression<BoolPrimitive>,
-  b: Expression<AnyPrimitive>,
-  c: Expression<AnyPrimitive>
-): Expression<AnyPrimitive> {
+export function conditional(a: Bool, b: Any, c: Any): Any {
   a;
   b;
   c;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }

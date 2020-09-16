@@ -1,32 +1,16 @@
-import {
-  AnyFloatPrimitive,
-  FloatPrimitive,
-  Vec2Primitive,
-  Vec3Primitive,
-  Vec4Primitive,
-} from "../../../primitive";
-import { Expression } from "../../../expression";
+import { floatPlaceholder } from "../../../helpers";
+import { AnyFloat, Float, Vec2, Vec3, Vec4 } from "../../../primitive";
 
-export function length(
-  x: Expression<FloatPrimitive>
-): Expression<FloatPrimitive>;
+export function length(x: Float): Float;
 
-export function length(
-  x: Expression<Vec2Primitive>
-): Expression<FloatPrimitive>;
+export function length(x: Vec2): Float;
 
-export function length(
-  x: Expression<Vec3Primitive>
-): Expression<FloatPrimitive>;
+export function length(x: Vec3): Float;
 
-export function length(
-  x: Expression<Vec4Primitive>
-): Expression<FloatPrimitive>;
+export function length(x: Vec4): Float;
 
-export function length(
-  x: Expression<AnyFloatPrimitive>
-): Expression<FloatPrimitive> {
+export function length(x: AnyFloat): Float {
   x;
 
-  return new Expression("float");
+  return floatPlaceholder;
 }
